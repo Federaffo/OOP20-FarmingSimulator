@@ -1,15 +1,19 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class WindowManager extends JFrame{
     private static final long serialVersionUID = -5704310736291818589L;
 
     //private JFrame frame = new JFrame();
+    private JPanel lpanel;
     private JPanel panel;
+    private JPanel shopPanel;
     
     public WindowManager() {
         initUI();
@@ -49,10 +53,29 @@ public class WindowManager extends JFrame{
 //            super.repaint();
 //        }
 //    }
+    
+    public void switchPanel() {
+        if(panel.isVisible()) {
+            shopPanel.setVisible(true);
+            panel.setVisible(false);
+        }else {
+            panel.setVisible(true);
+            shopPanel.setVisible(false);
+        }
+        
+        
+    }
+    
+    public void addShopPanel(JPanel pan) {
+        this.shopPanel = pan;
+        add(pan);
+        
+    }
 
-    public void addPanel(JPanel drawer) {
-        //this.panel = drawer;
-        add(drawer);
+    public void addPanel(JLayeredPane lpane) {
+        this.panel = (JPanel) lpane.getComponent(0);
+        this.shopPanel = (JPanel) lpane.getComponent(1);
+        add(lpane, BorderLayout.CENTER);
     }
     
    
