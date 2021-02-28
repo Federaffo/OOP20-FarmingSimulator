@@ -19,7 +19,7 @@ public class Engine {
     private WindowManager window;
     private GameDrawer drawer; 
     private Timer timer;
-    private Game game;
+    //private Game game;
     private ShopPanel shop;
     private JLayeredPane lpane = new JLayeredPane();
 
