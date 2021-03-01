@@ -12,15 +12,17 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import gui.MainScreenDrawer;
+import gui.ShopDrawer;
 import gui.WindowManager;
 
 public class Engine {
     
     private WindowManager window;
-    private GameDrawer drawer; 
+    private JPanel drawer; 
     private Timer timer;
-    //private Game game;
-    private ShopPanel shop;
+    private Game game;
+    private JPanel shop;
     private JLayeredPane lpane = new JLayeredPane();
 
     //private JPanel mainPanel;
@@ -31,27 +33,13 @@ public class Engine {
     }
 
     public void start() {
-        //mainPanel = new JPanel();
-        //mainPanel.setFocusable(true);
-        
-        shop = new ShopPanel();
+        shop = new ShopDrawer(game);
         shop.setBackground(Color.red);
         shop.setBounds(0, 0, 600, 400);
-        //shop.setOpaque(true);
-//        shop.setFocusable(true);
-//        shop.setVisible(true);
-//        shop.requestFocusInWindow();
         
-        drawer = new GameDrawer();
+        drawer = new MainScreenDrawer(game);
         drawer.setBackground(Color.blue);
         drawer.setBounds(0, 0, 600, 400);
-        //drawer.setOpaque(true);
-//        drawer.setFocusable(true);
-//        drawer.setVisible(true);
-
-        //mainPanel.add(drawer);
-        //mainPanel.add(shop);
-        //drawer.requestFocusInWindow();
         
         lpane.setBounds(0, 0, 600, 400);
         lpane.add(drawer, 0, 0);
@@ -59,8 +47,6 @@ public class Engine {
         
         drawer.addKeyListener(new MyKeyListener());
         
-
-        //window.addShopPanel(shop);
         window.addPanel(lpane);
         timer.start();
     }
@@ -72,31 +58,6 @@ public class Engine {
                 window.switchPanel();
         }
     }
-    
-    private class ShopPanel extends JPanel {
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            var g2d = (Graphics2D) g;
-            g2d.setColor(Color.red);
-            g2d.drawRect(50, 50, 100, 100);
-            super.repaint();
-        }
-    }
-    
-    private class GameDrawer extends JPanel {
-        @Override
-        public void paintComponent(Graphics g) {
-            
-            super.paintComponent(g);
-            var g2d = (Graphics2D) g;
-            g2d.setColor(Color.blue);
-            g2d.drawRect(10, 10, 100, 100);
-            super.repaint();
-        }
-    }
-    
-    
     
     // Cattura pressione tasti
     private class MyKeyListener implements KeyListener{
