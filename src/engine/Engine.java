@@ -30,24 +30,10 @@ public class Engine {
     public Engine() {
         game = new Game();
         window = new WindowManager(game);
-        timer = new Timer(5000, new GameLoop());
+        timer = new Timer(1000, new GameLoop());
     }
 
     public void start() {
-//        shop = new ShopDrawer(game);
-//        shop.setBackground(Color.red);
-//        shop.setBounds(0, 0, 600, 400);
-//        
-//        drawer = new MainScreenDrawer(game);
-//        drawer.setBackground(Color.blue);
-//        drawer.setBounds(0, 0, 600, 400);
-//        
-//        lpane.setBounds(0, 0, 600, 400);
-//        lpane.add(drawer, 0, 0);
-//        lpane.add(shop, 1, 0);
-//        
-//               
-//        window.addPanel(lpane);
         timer.start();
     }
     
@@ -55,7 +41,9 @@ public class Engine {
     private class GameLoop implements ActionListener {
         public void actionPerformed(ActionEvent arg0) {
             System.out.println("switch");
-                window.switchPanel();
+                //window.switchPanel();
+            	game.loop();
+                window.showShop();
         }
     }
     

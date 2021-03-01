@@ -2,13 +2,18 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
+import javax.swing.SpringLayout;
 
 import engine.Game;
 
@@ -18,14 +23,29 @@ public class ShopDrawer extends GameDrawer {
     public ShopDrawer(Game g) {
         super(g);
 
-        add(new JLabel("BENVENUTO ALLO SHOP"), BorderLayout.NORTH);
+        add(new JLabel("BENVENUTO ALLO SHOP"));
         
-        String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+        String[] itemString = { "Manzo", "Doggo", "Fieno", "Pig" };
+     
+        JPanel buyPanel = new JPanel();
+        JPanel sellPanel = new JPanel();
         
-        //setLayout(new BoxLayout(new Container(), 2));
-        add(new JComboBox<Object>(petStrings), BorderLayout.NORTH);
-        add(new JTextArea(), BorderLayout.CENTER);
-        add(new JButton("COMPRAAAAA"),BorderLayout.SOUTH);
+        setLayout(new FlowLayout());
+        
+        //setLayout(new BoxLayout(buyPanel, BoxLayout.PAGE_AXIS));
+
+        buyPanel.setLayout(new FlowLayout(1, 50, 50));
+        buyPanel.setBackground(Color.CYAN);
+        buyPanel.add(new JComboBox<Object>(itemString), FlowLayout.LEFT);
+        buyPanel.add(new JSpinner());
+        buyPanel.add(new JButton("COMPRAAAAA"),  FlowLayout.RIGHT);
+
+        sellPanel.setLayout(new FlowLayout(1,150,50));
+        sellPanel.setBackground(Color.GRAY);
+        sellPanel.add(new JButton("SELL ALL"));
+        
+        add(buyPanel, FlowLayout.CENTER);
+        add(sellPanel, FlowLayout.CENTER);
     }
 
     @Override
@@ -33,7 +53,7 @@ public class ShopDrawer extends GameDrawer {
         super.paintComponent(g);
         var g2d = (Graphics2D) g;
         g2d.setColor(Color.BLUE);
-        g2d.drawRect(50, 50, 100, 100);
+        //g2d.drawRect(50, 50, 100, 100);
         super.repaint();
     }
 }

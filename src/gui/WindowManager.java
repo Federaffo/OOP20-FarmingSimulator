@@ -38,11 +38,11 @@ public class WindowManager extends JFrame{
         
         shopPanel = new ShopDrawer(game);
         shopPanel.setBackground(Color.red);
-        shopPanel.setBounds(0, 0, 600, 400);
+        shopPanel.setBounds(0, 0, 1200, 700);
         
         mainPanel = new MainScreenDrawer(game);
         mainPanel.setBackground(Color.blue);
-        mainPanel.setBounds(0, 0, 600, 400);
+        mainPanel.setBounds(0, 0, 1200, 700);
         
         lpanel.setBounds(0, 0, 600, 400);
         lpanel.add(mainPanel, 0, 0);
@@ -70,6 +70,14 @@ public class WindowManager extends JFrame{
         
         
     }
+
+	public void showShop() {
+		for (var jPan : lpanel.getComponents()) {
+			jPan.setVisible(false);
+		}
+		shopPanel.setVisible(true);
+        shopPanel.requestFocus();
+	}
     
    
 }
