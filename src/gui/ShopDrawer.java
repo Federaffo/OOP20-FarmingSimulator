@@ -8,6 +8,8 @@ import java.awt.Graphics2D;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
 import engine.Game;
 
 public class ShopDrawer extends GameDrawer {
@@ -18,8 +20,12 @@ public class ShopDrawer extends GameDrawer {
 
         add(new JLabel("BENVENUTO ALLO SHOP"), BorderLayout.NORTH);
         
-        //add(new JComboBox<>());
-        add(new JButton("LOl"),BorderLayout.SOUTH);
+        String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+        
+        //setLayout(new BoxLayout(new Container(), 2));
+        add(new JComboBox<Object>(petStrings), BorderLayout.NORTH);
+        add(new JTextArea(), BorderLayout.CENTER);
+        add(new JButton("COMPRAAAAA"),BorderLayout.SOUTH);
     }
 
     @Override

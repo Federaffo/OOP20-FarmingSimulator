@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 
 import engine.Game;
 public abstract class GameDrawer extends JPanel {
-    
+    private static final long serialVersionUID = -7700514648149727065L;
+
     private Game game;
     
     public GameDrawer(Game game) {
