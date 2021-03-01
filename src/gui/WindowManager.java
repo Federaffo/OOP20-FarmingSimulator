@@ -1,81 +1,73 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import engine.Game;
+
 public class WindowManager extends JFrame{
     private static final long serialVersionUID = -5704310736291818589L;
 
     //private JFrame frame = new JFrame();
-    private JPanel lpanel;
-    private JPanel panel;
+    private JLayeredPane lpanel;
+    private JPanel mainPanel;
     private JPanel shopPanel;
+    private Game game;
     
-    public WindowManager() {
-        initUI();
-        //panel = new GamePanel();
-    }
     
-    private void initUI() {
-        setSize(500, 800);
+    public WindowManager(Game game) {
+        this.game = game;
+        setSize(1200, 700);
         setTitle("Farming Simulator");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        
+        createPanel();
     }
     
-//    public void createWindow() {
-//        this.frame.setTitle("Farming Simulator");
-//        this.frame.setContentPane(panel);
-//        this.frame.pack();
-//        this.frame.setVisible(true);
-//    }
-//    
+    public void createPanel() {
+        lpanel =  new JLayeredPane();
+        
+        shopPanel = new ShopDrawer(game);
+        shopPanel.setBackground(Color.red);
+        shopPanel.setBounds(0, 0, 600, 400);
+        
+        mainPanel = new MainScreenDrawer(game);
+        mainPanel.setBackground(Color.blue);
+        mainPanel.setBounds(0, 0, 600, 400);
+        
+        lpanel.setBounds(0, 0, 600, 400);
+        lpanel.add(mainPanel, 0, 0);
+        lpanel.add(shopPanel, 1, 0);
+        
+        add(lpanel);
+        
+    }
     
-
     public void addKeyListener(KeyListener k) {
         System.out.println("listener added");
-        this.panel.addKeyListener(k);
+        this.mainPanel.addKeyListener(k);
     }
     
-//    private class GamePanel extends JPanel{
-//        @Override
-//        public void paintComponent(Graphics g) {
-//            super.paintComponent(g);
-//            var g2d = (Graphics2D) g;
-//            g2d.setColor(Color.blue);
-//            g2d.drawRect(10, 10, 100, 100);
-//            super.repaint();
-//        }
-//    }
-    
     public void switchPanel() {
-        if(panel.isVisible()) {
+        if(mainPanel.isVisible()) {
             shopPanel.setVisible(true);
-            panel.setVisible(false);
+            shopPanel.requestFocus();
+            mainPanel.setVisible(false);
         }else {
-            panel.setVisible(true);
+            mainPanel.setVisible(true);
+            mainPanel.requestFocus();
             shopPanel.setVisible(false);
         }
         
         
-    }
-    
-    public void addShopPanel(JPanel pan) {
-        this.shopPanel = pan;
-        add(pan);
-        
-    }
-
-    public void addPanel(JLayeredPane lpane) {
-        this.panel = (JPanel) lpane.getComponent(0);
-        this.shopPanel = (JPanel) lpane.getComponent(1);
-        add(lpane, BorderLayout.CENTER);
     }
     
    

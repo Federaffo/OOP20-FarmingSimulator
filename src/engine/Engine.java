@@ -19,35 +19,35 @@ import gui.WindowManager;
 public class Engine {
     
     private WindowManager window;
-    private JPanel drawer; 
     private Timer timer;
     private Game game;
-    private JPanel shop;
-    private JLayeredPane lpane = new JLayeredPane();
+//    private JPanel drawer; 
+//    private JPanel shop;
+//    private JLayeredPane lpane = new JLayeredPane();
 
     //private JPanel mainPanel;
     
     public Engine() {
-        window = new WindowManager();
-        timer = new Timer(1000, new GameLoop());
+        game = new Game();
+        window = new WindowManager(game);
+        timer = new Timer(5000, new GameLoop());
     }
 
     public void start() {
-        shop = new ShopDrawer(game);
-        shop.setBackground(Color.red);
-        shop.setBounds(0, 0, 600, 400);
-        
-        drawer = new MainScreenDrawer(game);
-        drawer.setBackground(Color.blue);
-        drawer.setBounds(0, 0, 600, 400);
-        
-        lpane.setBounds(0, 0, 600, 400);
-        lpane.add(drawer, 0, 0);
-        lpane.add(shop, 1, 0);
-        
-        drawer.addKeyListener(new MyKeyListener());
-        
-        window.addPanel(lpane);
+//        shop = new ShopDrawer(game);
+//        shop.setBackground(Color.red);
+//        shop.setBounds(0, 0, 600, 400);
+//        
+//        drawer = new MainScreenDrawer(game);
+//        drawer.setBackground(Color.blue);
+//        drawer.setBounds(0, 0, 600, 400);
+//        
+//        lpane.setBounds(0, 0, 600, 400);
+//        lpane.add(drawer, 0, 0);
+//        lpane.add(shop, 1, 0);
+//        
+//               
+//        window.addPanel(lpane);
         timer.start();
     }
     
@@ -59,23 +59,28 @@ public class Engine {
         }
     }
     
+//    public void print() {
+//        System.out.println("main");
+//    }
+//    public void printShop() {
+//        System.out.println("SHOP");
+//    }
+    
     // Cattura pressione tasti
-    private class MyKeyListener implements KeyListener{
-        @Override
-        public void keyTyped(KeyEvent e) {
-            System.out.println(e.getKeyCode());                
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());                
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            System.out.println(e.getKeyCode());                
-        }
-        
-    }
+//    private class MyKeyListener implements KeyListener{
+//        @Override
+//        public void keyTyped(KeyEvent e) {
+//        }
+//
+//        @Override
+//        public void keyPressed(KeyEvent e) {
+//            print();               
+//        }
+//
+//        @Override
+//        public void keyReleased(KeyEvent e) {
+//        }
+//        
+//    }
 
 }

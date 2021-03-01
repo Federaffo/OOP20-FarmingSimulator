@@ -1,9 +1,13 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import engine.Game;
 
 public class ShopDrawer extends GameDrawer {
@@ -11,15 +15,19 @@ public class ShopDrawer extends GameDrawer {
 
     public ShopDrawer(Game g) {
         super(g);
+
+        add(new JLabel("BENVENUTO ALLO SHOP"), BorderLayout.NORTH);
+        
+        //add(new JComboBox<>());
+        add(new JButton("LOl"),BorderLayout.SOUTH);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         var g2d = (Graphics2D) g;
-        g2d.setColor(Color.red);
+        g2d.setColor(Color.BLUE);
         g2d.drawRect(50, 50, 100, 100);
         super.repaint();
     }
-
 }
