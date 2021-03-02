@@ -11,6 +11,8 @@ public class Direction {
 		
 	}
 	
+	
+	
 	public boolean isUp() {
 		return up;
 	}

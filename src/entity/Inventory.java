@@ -1,25 +1,25 @@
 package entity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import item.Food;
-import item.Seed;
+import item.FoodType;
 import item.SeedType;
 
 public class Inventory {
 	
 	private Map<SeedType, Integer> seeds;
-	private List<Food> foods;
+	private Map<FoodType, Integer> foods;
 	
 	//build a void inventory
 	public Inventory() {
 		seeds = new HashMap<>();
-		foods = new ArrayList<>();
+		foods = new HashMap<>();
 		
 		for(SeedType s : SeedType.values()) {
 			seeds.put(s, 0);
+		}
+		for(FoodType s : FoodType.values()) {
+			foods.put(s, 0);
 		}
 	}
 	
@@ -27,14 +27,34 @@ public class Inventory {
 	public void addSeeds(SeedType type, Integer number) {
 		seeds.put(type, seeds.get(type) + number);
 	}
-	//remove and return 1 seed of {type} type
-	public Seed removeSeed(SeedType type) {
+	
+	//remove 1 seed of {type} type
+	public void removeSeed(SeedType type) {
 		seeds.put(type, seeds.get(type) - 1);
-		return new Seed(type);
 	}
+	
 	//check if there are {number} seeds of {type} type inside inventory
 	public boolean gotSeeds(SeedType type, Integer number) {
 		if(seeds.get(type) >= number)
+			return true;
+		else
+			return false;
+	}
+
+	
+	//add {number} foods of {type} type to inventory
+	public void addFoods(FoodType type, Integer number) {
+		foods.put(type, foods.get(type) + number);
+	}
+	
+	//remove 1 food of {type} type
+	public void removeFood(FoodType type) {
+		foods.put(type, foods.get(type) - 1);
+	}
+	
+	//check if there are {number} foods of {type} type inside inventory
+	public boolean gotFoods(FoodType type, Integer number) {
+		if(foods.get(type) >= number)
 			return true;
 		else
 			return false;

@@ -1,26 +1,37 @@
 package entity;
 
-import utils.Way;
-
-public class Player {
+public class Player implements Entity{
 	
-	private String name;
+	private final static Integer SPEED = 5;
 	private Pair<Integer, Integer> pos;
-	private Object bag;
+	private Inventory bag;
+	private Direction direction;
 	
+	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
-		pos = position;
-	}
-	public Player(Object inventory) {
-		bag = inventory;
+		bag = new Inventory();
+		direction = new Direction();
 	}
 	
-	public void move(Direction d){
-		if(d.isUp()) pos.setY(pos.getY()+1);
-		if(d.isDown()) pos.setY(pos.getY()-1);
-		if(d.isLeft()) pos.setX(pos.getX()-1);
-		if(d.isRight()) pos.setX(pos.getX()+1);
+	//method for setting player direction
+	public void setUp(boolean isMoving) {
+		direction.setUp(isMoving);
 	}
-	public void setDir(Way way) {}
-	public void resetDir(Way way) {}
+	public void setDown(boolean isMoving) {
+		direction.setDown(isMoving);
+	}
+	public void setLeft(boolean isMoving) {
+		direction.setLeft(isMoving);
+	}
+	public void setRight(boolean isMoving) {
+		direction.setRight(isMoving);
+	}
+
+	//move the player in the current direction
+	public void move(){
+		if(direction.isUp()) pos.setY(pos.getY()-SPEED);
+		if(direction.isDown()) pos.setY(pos.getY()+SPEED);
+		if(direction.isLeft()) pos.setX(pos.getX()-SPEED);
+		if(direction.isRight()) pos.setX(pos.getX()+SPEED);
+	}
 }
