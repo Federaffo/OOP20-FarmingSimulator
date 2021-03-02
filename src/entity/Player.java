@@ -6,6 +6,7 @@ public class Player implements Entity{
 	private Pair<Integer, Integer> pos;
 	private Inventory bag;
 	private Direction direction;
+	private boolean facingRight;
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
@@ -22,9 +23,11 @@ public class Player implements Entity{
 	}
 	public void setLeft(boolean isMoving) {
 		direction.setLeft(isMoving);
+		facingRight = false;
 	}
 	public void setRight(boolean isMoving) {
 		direction.setRight(isMoving);
+		facingRight = true;
 	}
 	
 	//getter coordinates
@@ -35,7 +38,10 @@ public class Player implements Entity{
 		return pos.getY();
 	}
 	
-	
+	//return facing direction
+	public boolean isFacingRight() {
+		return facingRight;
+	}
 
 	//move the player in the current direction
 	public void move(){
