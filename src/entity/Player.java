@@ -10,6 +10,7 @@ public class Player implements Entity{
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
+		this.pos = position;
 		bag = new Inventory();
 		direction = new Direction();
 	}
