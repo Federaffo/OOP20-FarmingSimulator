@@ -26,6 +26,16 @@ public class Player implements Entity{
 	public void setRight(boolean isMoving) {
 		direction.setRight(isMoving);
 	}
+	
+	//getter coordinates
+	public int getX() {
+		return pos.getX();
+	}
+	public int getY() {
+		return pos.getY();
+	}
+	
+	
 
 	//move the player in the current direction
 	public void move(){
