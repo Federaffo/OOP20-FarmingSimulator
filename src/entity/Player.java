@@ -1,5 +1,7 @@
 package entity;
 
+import utils.Way;
+
 public class Player {
 	
 	private String name;
@@ -19,4 +21,6 @@ public class Player {
 		if(d.isLeft()) pos.setX(pos.getX()-1);
 		if(d.isRight()) pos.setX(pos.getX()+1);
 	}
+	public void setDir(Way way) {}
+	public void resetDir(Way way) {}
 }
