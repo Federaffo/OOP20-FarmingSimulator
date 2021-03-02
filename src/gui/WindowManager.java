@@ -1,8 +1,7 @@
 package gui;
 
-
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
@@ -20,10 +19,12 @@ public class WindowManager extends JFrame{
     private JPanel shopPanel;
     private Game game;
     
-    
     public WindowManager(Game game) {
+    	Dimension screenSize = getToolkit().getScreenSize();
+    	
         this.game = game;
-        setSize(1200, 700);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        
         setTitle("Farming Simulator");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,12 +72,21 @@ public class WindowManager extends JFrame{
         
     }
 
+    private void disableAllPanel() {
+    	for (var jPan : lpanel.getComponents()) {
+    		jPan.setVisible(false);
+    	}    	
+    }
 	public void showShop() {
-		for (var jPan : lpanel.getComponents()) {
-			jPan.setVisible(false);
-		}
+		disableAllPanel();
 		shopPanel.setVisible(true);
         shopPanel.requestFocus();
+	}
+	
+	public void showMainScreen() {
+		disableAllPanel();
+		mainPanel.setVisible(true);
+		mainPanel.requestFocus();
 	}
     
    

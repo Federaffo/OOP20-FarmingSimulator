@@ -21,11 +21,6 @@ public class Engine {
     private WindowManager window;
     private Timer timer;
     private Game game;
-//    private JPanel drawer; 
-//    private JPanel shop;
-//    private JLayeredPane lpane = new JLayeredPane();
-
-    //private JPanel mainPanel;
     
     public Engine() {
         game = new Game();
@@ -43,32 +38,10 @@ public class Engine {
             System.out.println("switch");
                 //window.switchPanel();
             	game.loop();
-                window.showShop();
+                //window.showShop();
+            	window.showMainScreen();
         }
     }
     
-//    public void print() {
-//        System.out.println("main");
-//    }
-//    public void printShop() {
-//        System.out.println("SHOP");
-//    }
-    
-    // Cattura pressione tasti
-//    private class MyKeyListener implements KeyListener{
-//        @Override
-//        public void keyTyped(KeyEvent e) {
-//        }
-//
-//        @Override
-//        public void keyPressed(KeyEvent e) {
-//            print();               
-//        }
-//
-//        @Override
-//        public void keyReleased(KeyEvent e) {
-//        }
-//        
-//    }
 
 }
