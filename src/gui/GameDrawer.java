@@ -10,7 +10,7 @@ import engine.Game;
 public abstract class GameDrawer extends JPanel {
     private static final long serialVersionUID = -7700514648149727065L;
 
-    private Game game;
+    protected Game game;
     
     public GameDrawer(Game game) {
         this.game = game;
@@ -29,13 +29,11 @@ public abstract class GameDrawer extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("grabbed ");
             game.keyPressed(e);          
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            System.out.println("released ");
             game.keyReleased(e);                      
         }
     }

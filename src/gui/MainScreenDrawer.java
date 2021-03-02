@@ -21,7 +21,7 @@ public class MainScreenDrawer extends GameDrawer{
         super.paintComponent(g);
         var g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
-        g2d.drawRect(50, 50, 100, 100);
-        super.repaint();
+        g2d.drawRect(game.x, game.y, 50, 50);
+        //super.repaint();
     }
 }
