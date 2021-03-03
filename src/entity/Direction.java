@@ -11,8 +11,6 @@ public class Direction {
 		
 	}
 	
-	
-	
 	public boolean isUp() {
 		return up;
 	}
@@ -36,5 +34,12 @@ public class Direction {
 	}
 	public void setRight(boolean right) {
 		this.right = right;
+	}
+	
+	public boolean isAllFalse() {
+		if(!up && !right && !down && !left) {
+			return true;
+		}
+		return false;
 	}
 }
