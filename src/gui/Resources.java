@@ -22,9 +22,13 @@ public class Resources {
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "left1.png")));
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "right0.png")));
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "right1.png")));
-			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "hd.wav")));
+			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "up0.png")));
+			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "up1.png")));
+			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "down0.png")));
+			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "down1.png")));
 
-			mainTheme = new File("res/hd.wav");
+			
+			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -36,7 +40,7 @@ public class Resources {
 	}
 
 	public static enum textures {
-		PLAYER(0), PLAYER_LEFT(1), PLAYER_LEFT2(2), PLAYER_RIGHT(3), PLAYER_RIGHT2(4), GRASS(5);
+		PLAYER(0), PLAYER_LEFT(1), PLAYER_LEFT2(2), PLAYER_RIGHT(3), PLAYER_RIGHT2(4),PLAYER_UP(5),PLAYER_UP2(6),PLAYER_DOWN(7),PLAYER_DOWN2(8),;
 
 		private int indx;
 
