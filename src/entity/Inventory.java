@@ -1,7 +1,13 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.stream.Stream;
+
 import item.FoodType;
 import item.SeedType;
 
@@ -9,6 +15,8 @@ public class Inventory {
 	
 	private Map<SeedType, Integer> seeds;
 	private Map<FoodType, Integer> foods;
+	private Queue<SeedType> activeSeed;
+	
 	
 	//build a void inventory
 	public Inventory() {
@@ -21,16 +29,67 @@ public class Inventory {
 		for(FoodType s : FoodType.values()) {
 			foods.put(s, 0);
 		}
+		
+		activeSeed = new LinkedBlockingDeque<SeedType>();
+		Stream.of(SeedType.values()).forEach(x->activeSeed.add(x));
+	}
+	
+	//return a Pair of <SeedType, number of seeds> of the next seed
+	public Optional<Pair<SeedType, Integer>> nextSeed(){
+		boolean isThereASeed = false;
+		moveBottom(activeSeed.element());
+		
+		for (SeedType seedType : activeSeed) {
+			
+			if(seeds.get(seedType) > 0) {
+				moveTop(seedType);
+				isThereASeed = true;
+				break;
+			}
+		}
+		
+		if(isThereASeed == false) {
+			return Optional.empty();
+		}else {
+			return Optional.of(new Pair<SeedType, Integer>(activeSeed.element(), seeds.get(activeSeed)));
+		}
+	}
+	//return the current seed selected
+	public Optional<Pair<SeedType, Integer>> getCurrentSeed(){
+		if(seeds.get(activeSeed) > 0) {
+			return Optional.of(new Pair<SeedType, Integer>(activeSeed.element(), seeds.get(activeSeed)));
+		}else {
+			return Optional.empty();
+		}
+	}
+	//move the object to the bottom
+	private void moveBottom(SeedType type) {
+		activeSeed.remove(type);
+		activeSeed.add(type);
+	}
+	//move the object to the top
+	private void moveTop(SeedType type) {
+		for (SeedType seedType : activeSeed) {
+			if(!seedType.equals(type)) {
+				moveBottom(seedType);
+			}
+		}
 	}
 	
 	//add {number} seeds of {type} type to inventory
 	public void addSeeds(SeedType type, Integer number) {
 		seeds.put(type, seeds.get(type) + number);
+		
+		//set the activeSeed to the seed added to inventory
+		moveTop(type);
 	}
-	
 	//remove 1 seed of {type} type
 	public void removeSeed(SeedType type) {
 		seeds.put(type, seeds.get(type) - 1);
+		
+		if(seeds.get(type) == 0) {
+			
+		}
 	}
 	
 	//check if there are {number} seeds of {type} type inside inventory
@@ -40,7 +99,6 @@ public class Inventory {
 		else
 			return false;
 	}
-
 	
 	//add {number} foods of {type} type to inventory
 	public void addFoods(FoodType type, Integer number) {
