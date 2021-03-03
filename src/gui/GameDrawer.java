@@ -3,6 +3,10 @@ package gui;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.JPanel;
 
@@ -15,11 +19,22 @@ public abstract class GameDrawer extends JPanel {
     public GameDrawer(Game game) {
         this.game = game;
         addKeyListener(new MyKeyListener());
+        addMouseWheelListener(new MyMouseListener());
     }
     
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
+    }
+    
+    private class MyMouseListener implements MouseWheelListener{
+    	@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			if(e.getWheelRotation() == 1) {
+			}
+			if(e.getWheelRotation() == -1) {
+			}
+		}
     }
     
     private class MyKeyListener implements KeyListener{
@@ -29,12 +44,13 @@ public abstract class GameDrawer extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            game.keyPressed(e);          
+        	game.keyPressed(e);          
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
             game.keyReleased(e);                      
         }
+
     }
 }

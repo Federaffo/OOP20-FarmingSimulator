@@ -23,8 +23,8 @@ public class WindowManager extends JFrame{
     	Dimension screenSize = getToolkit().getScreenSize();
     	
         this.game = game;
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        
+        //setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setBounds(0, 0, 1200, 700);
         setTitle("Farming Simulator");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +42,7 @@ public class WindowManager extends JFrame{
         shopPanel.setBounds(0, 0, 1200, 700);
         
         mainPanel = new MainScreenDrawer(game);
-        mainPanel.setBackground(Color.blue);
+        mainPanel.setBackground(Color.green);
         mainPanel.setBounds(0, 0, 1200, 700);
         
         lpanel.setBounds(0, 0, 600, 400);
