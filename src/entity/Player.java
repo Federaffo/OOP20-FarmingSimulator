@@ -44,6 +44,10 @@ public class Player implements Entity{
 		}
 	}
 	
+	public Direction getDirection() {
+		return this.direction;
+	}
+	
 	public boolean isMoving() {
 		return isMoving;
 	}
