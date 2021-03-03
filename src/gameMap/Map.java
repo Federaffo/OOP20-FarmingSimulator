@@ -13,10 +13,13 @@ public class Map {
 		
 		for(int i=0; i<x; i++) {
 			for(int j=0; j<y; j++) {
-				if(new Random().nextInt(100) < 20)
-					mappa[i][j] = factory.getTerrainBlock();
-				else
-					mappa[i][j] = factory.getFieldBlock();
+				if(new Random().nextInt(100) > 20) {
+					mappa[i][j] = factory.getTerrainBlock();					
+				}else if( new Random().nextInt(100) < 50) {
+					mappa[i][j] = factory.getFieldBlock();					
+				}else {
+					mappa[i][j] = factory.getObstacleBlock();					
+				}
 			}
 		}
 	}
