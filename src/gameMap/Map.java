@@ -1,5 +1,6 @@
 package gameMap;
 
+
 public class Map {
 	
 	private Block[][] mappa;
@@ -14,6 +15,11 @@ public class Map {
 				mappa[i][j] = factory.getTerrainBlock();
 			}
 		}
+	}
+	
+	//return block in the position indicated
+	public Block getBlock(int x, int y) {
+		return mappa[x][y];
 	}
 	
 	
