@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
@@ -15,16 +16,17 @@ public class WindowManager extends JFrame{
 
     //private JFrame frame = new JFrame();
     private JLayeredPane lpanel;
-    private JPanel mainPanel;
-    private JPanel shopPanel;
+    private GameDrawer mainPanel;
+    private GameDrawer shopPanel;
     private Game game;
+    private Dimension screenSize;
     
     public WindowManager(Game game) {
-    	Dimension screenSize = getToolkit().getScreenSize();
+    	screenSize = getToolkit().getScreenSize();
     	
         this.game = game;
         //setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        setBounds(0, 0, 1200, 700);
+        setBounds(0, 0, (int) (screenSize.width*0.8),  (int) (screenSize.height*0.8));
         setTitle("Farming Simulator");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,20 +39,19 @@ public class WindowManager extends JFrame{
     public void createPanel() {
         lpanel =  new JLayeredPane();
         
-        shopPanel = new ShopDrawer(game);
+        shopPanel = new ShopDrawer(game,screenSize);
         shopPanel.setBackground(Color.red);
-        shopPanel.setBounds(0, 0, 1200, 700);
+        shopPanel.setBounds(0, 0,  (int) (screenSize.width*0.50),  (int) (screenSize.height*0.50));
         
-        mainPanel = new MainScreenDrawer(game);
+        mainPanel = new MainScreenDrawer(game,screenSize);
         mainPanel.setBackground(Color.green);
-        mainPanel.setBounds(0, 0, 1200, 700);
+        mainPanel.setBounds(0, 0, (int) (screenSize.width*0.8), (int) (screenSize.height*0.8));
         
-        lpanel.setBounds(0, 0, 600, 400);
+        lpanel.setBounds(0, 0,  (int) (screenSize.width*0.8),  (int) (screenSize.height*0.8));
         lpanel.add(mainPanel, 0, 0);
         lpanel.add(shopPanel, 1, 0);
         
         add(lpanel);
-        
     }
     
     public void addKeyListener(KeyListener k) {

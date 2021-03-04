@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class MainScreenDrawer extends GameDrawer {
 	private int frame = 0;
 	private Resources res = new Resources();
 	
-	public MainScreenDrawer(Game game) {
-		super(game);
+	public MainScreenDrawer(Game game, Dimension screenSize) {
+		super(game,screenSize);
 		res.load();
 	}
 
