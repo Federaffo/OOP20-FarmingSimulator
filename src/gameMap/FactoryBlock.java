@@ -19,20 +19,37 @@ public class FactoryBlock {
 	}
 
 	public BlockImpl getFieldBlock(int posx, int posy) {
-		return new BlockImpl(BlockType.FIELD, true, true, posx, posy) {
-			private Optional<Seed> seed = Optional.empty();
-
-			public void plant() {
-				seed = Optional.of(new Seed(SeedType.POTATO_SEED));
-			}
-
-			public Pair<Food, Integer> harvest() {
-				Food food = seed.get().Harvest();
-				return new Pair<>(food, 3);
-			}
-		};
+		return new BlockFieldImpl(BlockType.FIELD, true, true, posx, posy);
+	
 	}
+	
+	private class BlockFieldImpl extends BlockImpl implements FieldBlock{
 
+		public BlockFieldImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
+			super(bt, isWalkable, isInteractable, posx, posy);
+		}
+		private Optional<Seed> seed = Optional.empty();
+
+		public void plant(SeedType st) {
+			seed = Optional.of(new Seed(st));
+		}
+
+		public Pair<Food, Integer> harvest() {
+			Food food = seed.get().Harvest();
+			seed = Optional.empty();
+			return new Pair<>(food, 3);
+		}
+
+		public boolean isEmpty() {
+			return seed.isEmpty();
+		}
+		
+		public Seed getSeed() {
+			return seed.get();
+		}
+		
+	}
+	
 	private class BlockImpl extends Rectangle implements Block {
 
 		public final static int SIZE = 50;
@@ -43,7 +60,7 @@ public class FactoryBlock {
 		private final int posy;
 
 		public BlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
-			super(posx * SIZE, posy *SIZE, SIZE, SIZE);
+			super(posx * SIZE, posy * SIZE, SIZE, SIZE);
 			this.blockType = bt;
 			this.isWalkable = isWalkable;
 			this.isInteractable = isInteractable;

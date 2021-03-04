@@ -30,6 +30,9 @@ public class KeyNotifier {
 		case KeyEvent.VK_D:
 			pg.setRight(true);
 			break;
+		case KeyEvent.VK_F:
+			game.interact();
+			break;
 		default:
 			break;
 		}
