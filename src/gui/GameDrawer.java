@@ -22,16 +22,10 @@ public abstract class GameDrawer extends JPanel {
 	private KeyNotifier notifier;
 	protected Game game;
 	protected Dimension screenSize;
-
-	public GameDrawer(Game game) {
-		this.game = game;
-		notifier = new KeyNotifier(game);
-		addKeyListener(new MyKeyListener());
-		addMouseWheelListener(new MyMouseListener());
-	}
 	
 	public GameDrawer(Game game, Dimension screenSize) {
         this.game = game;
+		notifier = new KeyNotifier(game);
         addKeyListener(new MyKeyListener());
         addMouseWheelListener(new MyMouseListener());
         this.screenSize=screenSize;
