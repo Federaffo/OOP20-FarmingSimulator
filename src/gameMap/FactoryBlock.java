@@ -43,7 +43,7 @@ public class FactoryBlock {
 		private final int posy;
 
 		public BlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
-			super();
+			super(posx * SIZE, posy *SIZE, SIZE, SIZE);
 			this.blockType = bt;
 			this.isWalkable = isWalkable;
 			this.isInteractable = isInteractable;
