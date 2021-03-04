@@ -9,13 +9,14 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Stream;
 
+import item.Food;
 import item.FoodType;
 import item.SeedType;
 
 public class Inventory {
 	
 	private Map<SeedType, Integer> seeds;
-	private Map<FoodType, Integer> foods;
+	private Map<Food, Integer> foods;
 	private Queue<SeedType> activeSeed;
 	
 	
@@ -27,7 +28,7 @@ public class Inventory {
 		for(SeedType s : SeedType.values()) {
 			seeds.put(s, 0);
 		}
-		for(FoodType s : FoodType.values()) {
+		for(Food s : Food.values()) {
 			foods.put(s, 0);
 		}
 		
@@ -103,17 +104,17 @@ public class Inventory {
 	}
 	
 	//add {number} foods of {type} type to inventory
-	public void addFoods(FoodType type, Integer number) {
+	public void addFoods(Food type, Integer number) {
 		foods.put(type, foods.get(type) + number);
 	}
 	
 	//remove 1 food of {type} type
-	public void removeFood(FoodType type) {
+	public void removeFood(Food type) {
 		foods.put(type, foods.get(type) - 1);
 	}
 	
 	//check if there are {number} foods of {type} type inside inventory
-	public boolean gotFoods(FoodType type, Integer number) {
+	public boolean gotFoods(Food type, Integer number) {
 		if(foods.get(type) >= number)
 			return true;
 		else
