@@ -4,15 +4,20 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import engine.Game;
+import entity.Direction;
+import gameMap.Block;
+import gameMap.BlockType;
 import gui.Resources.textures;
 
 public class MainScreenDrawer extends GameDrawer {
+	private static final int ANIMATION_SPEED = 20;
 	private static final long serialVersionUID = -8051528011999726915L;
-	private int indx = 0;
-
+	private int animationDelay = 0;
+	private int frame = 0;
 	private Resources res = new Resources();
 	
 	public MainScreenDrawer(Game game, Dimension screenSize) {
@@ -23,25 +28,47 @@ public class MainScreenDrawer extends GameDrawer {
 	@Override
 	public void paintComponent(Graphics g) {
 
-
 		super.paintComponent(g);
+		drawMap(g);
 		drawPg(g);
+	}
 
-		// super.repaint();
+	private void drawMap(Graphics g) {
+
+		for(int i = 0; i < 30; i++) {
+			for(int j = 0; j < 30; j++) {
+				Block block = game.getMap().getBlock(i, j);
+				if(block.getType() == BlockType.TERRAIN) {
+					g.drawImage(Resources.getAtIndx(textures.GRASS.getIndx()), i * 50 ,j * 50, 50, 50, null);
+				}else if( block.getType() == BlockType.FIELD){
+					g.drawImage(Resources.getAtIndx(textures.FARMLAND.getIndx()), i * 50 ,j * 50, 50, 50, null);
+				}else if(block.getType() == BlockType.OBSTACLE) {
+					g.drawImage(Resources.getAtIndx(textures.WALL.getIndx()), i * 50 ,j * 50, 50, 50, null);
+				}
+			}
+		}
 	}
 
 	private void drawPg(Graphics g) {
-		indx += 1;
-		indx %= 20;
-		int x = indx / 10;
-		if (game.getPlayer().isMoving()) {
-			if (game.getPlayer().isFacingRight()) {
-				g.drawImage(res.getAtIndx(textures.PLAYER_RIGHT.getIndx() + x), game.getPlayer().getX(),game.getPlayer().getY(), 40, 70, null);
-			} else {
-				g.drawImage(res.getAtIndx(textures.PLAYER_LEFT.getIndx() + x), game.getPlayer().getX(),game.getPlayer().getY(), 40, 70, null);
-			}
+		
+		animationDelay += 1;
+		animationDelay %= ANIMATION_SPEED;
+		frame =(int) animationDelay / (ANIMATION_SPEED / 2);
+
+		Direction dir = game.getPlayer().getDirection();
+		
+		
+		if(dir.isRight()) {
+			g.drawImage(Resources.getAtIndx(textures.PLAYER_RIGHT.getIndx() + frame), game.getPlayer().getPosX(),game.getPlayer().getPosY(), 40, 70, null);
+		}else if(dir.isLeft()) {
+			g.drawImage(Resources.getAtIndx(textures.PLAYER_LEFT.getIndx() + frame), game.getPlayer().getPosX(),game.getPlayer().getPosY(), 40, 70, null);
+		}else if(dir.isDown()) {
+			g.drawImage(Resources.getAtIndx(textures.PLAYER_DOWN.getIndx() + frame), game.getPlayer().getPosX(),game.getPlayer().getPosY(), 40, 70, null);
+		}else if(dir.isUp()) {
+			g.drawImage(Resources.getAtIndx(textures.PLAYER_UP.getIndx() + frame), game.getPlayer().getPosX(),game.getPlayer().getPosY(), 40, 70, null);
 		}else {
-			g.drawImage(res.getAtIndx(textures.PLAYER.getIndx()), game.getPlayer().getX(),game.getPlayer().getY(), 40, 70, null);
+			g.drawImage(Resources.getAtIndx(textures.PLAYER.getIndx()), game.getPlayer().getPosX(),game.getPlayer().getPosY(), 40, 70, null);
 		}
+
 	}
 }

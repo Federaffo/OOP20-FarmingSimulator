@@ -1,6 +1,8 @@
 package entity;
 
-public class Player implements Entity{
+import java.awt.Rectangle;
+
+public class Player extends Rectangle implements Entity{
 	
 	private final static Integer SPEED = 5;
 	private Pair<Integer, Integer> pos;
@@ -11,6 +13,7 @@ public class Player implements Entity{
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
+		super(position.getX(), position.getY(), 50, 50);
 		this.pos = position;
 		bag = new Inventory();
 		direction = new Direction();
@@ -44,21 +47,29 @@ public class Player implements Entity{
 		}
 	}
 	
+	public Direction getDirection() {
+		return this.direction;
+	}
+	
 	public boolean isMoving() {
 		return isMoving;
 	}
 	
 	//getter coordinates
-	public int getX() {
+	public int getPosX() {
 		return pos.getX();
 	}
-	public int getY() {
+	public int getPosY() {
 		return pos.getY();
 	}
 	
 	//return facing direction
 	public boolean isFacingRight() {
 		return facingRight;
+	}
+	
+	public Inventory getInventory() {
+		return this.bag;
 	}
 
 	//move the player in the current direction
