@@ -47,7 +47,7 @@ public class MainScreenDrawer extends GameDrawer {
 		res.load();
 		this.resizer = screenSize.getWidth() / (50 * 32);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
-		HUD(game, screenSize);
+		GenerateHUD(game, screenSize);
 	}
 
 	@Override
@@ -60,28 +60,23 @@ public class MainScreenDrawer extends GameDrawer {
 	}
 
 	private void drawHUD(Graphics g) {
-
+		
 	}
 
-	private void HUD(Game g, Dimension screenSize) {
+	private void GenerateHUD(Game g, Dimension screenSize) {
 		final int iconHeight = (int) (screenSize.height * 0.0001);
 		final int iconWidth = (int) (screenSize.width * 0.0001);
-
-		/* Panel Money */
-
-		/* da modificare, creare HUDpanel */
-
-		JPanel moneyPanel = new JPanel() {
-
-			private Image img;
-
+		
+		JPanel labelHUD= new JPanel(){
 			protected void paintComponent(Graphics g) {
-				setOpaque(false);
-				g.drawImage(Resources.getAtIndx(textures.FARMLAND.getIndx()), 0, 0, null);
+				setOpaque(true);
+				g.drawImage(Resources.getAtIndx(textures.LABELHUD.getIndx()).getScaledInstance(10, 20, Image.SCALE_DEFAULT), 0, 0, null);
 				super.paintComponent(g);
 			}
-
 		};
+
+		/* Panel Money */
+		JPanel moneyPanel = new JPanel() ;
 		moneyPanel.setBounds(0, 0, iconWidth, iconHeight);
 		JLabel moneyLabel = new JLabel();
 
@@ -89,12 +84,8 @@ public class MainScreenDrawer extends GameDrawer {
 				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		moneyLabel.setIcon(imageIcon);
 		moneyLabel.setText("50000");
-		moneyLabel.setFont(new Font("Serif", Font.BOLD, 20));
+		moneyLabel.setFont(new Font("Sans", Font.ITALIC | Font.BOLD, 20));
 
-		// moneyIcon.setIcon(new
-		// ImageIcon(Resources.getAtIndx(textures.MONEY.getIndx())));
-		// moneyIcon.setSize(10,10);
-		// moneyPanel.setBackground(Color.YELLOW);
 
 		moneyPanel.add(moneyLabel);
 		moneyPanel.setOpaque(false);
@@ -102,15 +93,26 @@ public class MainScreenDrawer extends GameDrawer {
 
 		/* Panel Time */
 		JPanel timePanel = new JPanel();
+		timePanel.setBounds(0, 0, iconWidth, iconHeight);
+		JLabel timeLabel = new JLabel();
+
+		ImageIcon timeIcon = new ImageIcon(new ImageIcon(Resources.getAtIndx(textures.TIME.getIndx())).getImage()
+				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		timeLabel.setIcon(timeIcon);
+		timeLabel.setText("50000");
+		timePanel.add(timeLabel);
 		/* Fine panel time */
 
 		/* Panel info */
 		JPanel infoPanel = new JPanel();
 		/* fine panel info */
 
-		add(moneyPanel);
-		add(timePanel);
-		add(infoPanel);
+		labelHUD.add(moneyPanel);
+		labelHUD.add(timePanel);
+		labelHUD.add(infoPanel);
+		labelHUD.setVisible(true);
+
+		add(labelHUD);
 	}
 
 	private void drawMap(Graphics g) {
