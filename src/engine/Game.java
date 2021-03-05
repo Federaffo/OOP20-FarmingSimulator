@@ -15,7 +15,7 @@ import item.SeedType;
 
 public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
-	private Map map = new Map(30, 30);
+	private Map map = new Map(32, 18);
 
 	public void loop() {
 		pg.move();

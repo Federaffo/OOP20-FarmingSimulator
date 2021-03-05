@@ -42,7 +42,7 @@ public class MainScreenDrawer extends GameDrawer {
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
 		res.load();
-		this.resizer = 0.5;
+		this.resizer = screenSize.getWidth() / (50 * 32);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
 		HUD(game, screenSize);
 	}
@@ -112,8 +112,8 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void drawMap(Graphics g) {
 
-		for (int i = 0; i < 30; i++) {
-			for (int j = 0; j < 30; j++) {
+		for (int i = 0; i < 32; i++) {
+			for (int j = 0; j < 18; j++) {
 				Block block = game.getMap().getBlock(i, j);
 				Player pg = game.getPlayer();
 
@@ -151,7 +151,7 @@ public class MainScreenDrawer extends GameDrawer {
 
 		// g.drawRect(posX, posY, 50 * molt, 50 * molt);
 		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
-		System.out.println(posX);
+		//System.out.println(posX);
 		if (dir.isRight()) {
 			g.drawImage(Resources.getAtIndx(textures.PLAYER_RIGHT.getIndx() + frame), game.getPlayer().getPosX(),
 					game.getPlayer().getPosY(), 40, 70, null);
