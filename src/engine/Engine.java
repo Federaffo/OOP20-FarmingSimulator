@@ -38,8 +38,8 @@ public class Engine {
 		public void actionPerformed(ActionEvent arg0) {
 			// window.switchPanel();
 			game.loop();
-			window.showShop();
-			//window.showMainScreen();
+			//window.showShop();
+			window.showMainScreen();
 		}
 	}
 
