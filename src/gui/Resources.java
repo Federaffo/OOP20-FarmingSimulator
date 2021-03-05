@@ -30,8 +30,10 @@ public class Resources {
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "grass.png")));
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "farmland.png")));
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "wall.png")));
-
+			
 			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "moneyIcon.png")));
+			
+			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
 
 			
 			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
@@ -46,7 +48,7 @@ public class Resources {
 	}
 
 	public static enum textures {
-		PLAYER(0), PLAYER_LEFT(1), PLAYER_LEFT2(2), PLAYER_RIGHT(3), PLAYER_RIGHT2(4),PLAYER_UP(5),PLAYER_UP2(6),PLAYER_DOWN(7),PLAYER_DOWN2(8),GRASS(9), FARMLAND(10), WALL(11), MONEY(12);
+		PLAYER(0), PLAYER_LEFT(1), PLAYER_LEFT2(2), PLAYER_RIGHT(3), PLAYER_RIGHT2(4),PLAYER_UP(5),PLAYER_UP2(6),PLAYER_DOWN(7),PLAYER_DOWN2(8),GRASS(9), FARMLAND(10), WALL(11), MONEY(12), SEED(13);
 
 		private int indx;
 

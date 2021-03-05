@@ -27,7 +27,10 @@ import entity.Direction;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
+import gameMap.FieldBlock;
 import gui.Resources.textures;
+import item.Seed;
+import item.SeedState;
 
 public class MainScreenDrawer extends GameDrawer {
 	private static final int BASE_SIZE = 50;
@@ -128,9 +131,22 @@ public class MainScreenDrawer extends GameDrawer {
 				if (block.getType() == BlockType.TERRAIN) {
 					g.drawImage(Resources.getAtIndx(textures.GRASS.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
+					
 				} else if (block.getType() == BlockType.FIELD) {
 					g.drawImage(Resources.getAtIndx(textures.FARMLAND.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
+					FieldBlock fieldBlock = (FieldBlock) block;
+					if(!fieldBlock.isEmpty()) {
+						Seed seed = fieldBlock.getSeed();
+						if(seed.getSeedState()==SeedState.PLANTED) {
+							g.drawImage(Resources.getAtIndx(textures.SEED.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+									BLOCK_SIZE, BLOCK_SIZE, null);
+						}else if(seed.getSeedState()==SeedState.GROWN) {
+							g.drawImage(Resources.getAtIndx(textures.MONEY.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+									BLOCK_SIZE, BLOCK_SIZE, null);
+						}
+					}
+					
 				} else if (block.getType() == BlockType.OBSTACLE) {
 					g.drawImage(Resources.getAtIndx(textures.WALL.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
