@@ -1,9 +1,11 @@
 package gameMap;
 
-public enum BlockType {
+import item.Texturable;
+
+public enum BlockType implements Texturable{
 
 	TERRAIN(), /*BLOCCHI CAMMINABILI*/
 	FIELD(), /*BLOCCHI IN CUI SI PIANTA*/
-	OBSTACLE();
+	WALL();
 	
 }

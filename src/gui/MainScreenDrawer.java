@@ -1,34 +1,21 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-
 import engine.Game;
 import entity.Direction;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
-import gui.Resources.textures;
+import gui.Resources.texture;
 import item.Seed;
 import item.SeedState;
 
@@ -70,7 +57,7 @@ public class MainScreenDrawer extends GameDrawer {
 		JPanel labelHUD= new JPanel(){
 			protected void paintComponent(Graphics g) {
 				setOpaque(true);
-				g.drawImage(Resources.getAtIndx(textures.LABELHUD.getIndx()).getScaledInstance(10, 20, Image.SCALE_DEFAULT), 0, 0, null);
+				g.drawImage(Resources.getTextures(texture.LABELHUD).getScaledInstance(10, 20, Image.SCALE_DEFAULT), 0, 0, null);
 				super.paintComponent(g);
 			}
 		};
@@ -80,7 +67,7 @@ public class MainScreenDrawer extends GameDrawer {
 		moneyPanel.setBounds(0, 0, iconWidth, iconHeight);
 		JLabel moneyLabel = new JLabel();
 
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon(Resources.getAtIndx(textures.MONEY.getIndx())).getImage()
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon(Resources.getTextures(texture.MONEY)).getImage()
 				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		moneyLabel.setIcon(imageIcon);
 		moneyLabel.setText("50000");
@@ -96,7 +83,7 @@ public class MainScreenDrawer extends GameDrawer {
 		timePanel.setBounds(0, 0, iconWidth, iconHeight);
 		JLabel timeLabel = new JLabel();
 
-		ImageIcon timeIcon = new ImageIcon(new ImageIcon(Resources.getAtIndx(textures.TIME.getIndx())).getImage()
+		ImageIcon timeIcon = new ImageIcon(new ImageIcon(Resources.getTextures(texture.TIME)).getImage()
 				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		timeLabel.setIcon(timeIcon);
 		timeLabel.setText("50000");
@@ -131,26 +118,26 @@ public class MainScreenDrawer extends GameDrawer {
 				// System.out.println(intersect.width + "," + intersect.height);
 
 				if (block.getType() == BlockType.TERRAIN) {
-					g.drawImage(Resources.getAtIndx(textures.GRASS.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+					g.drawImage(Resources.getTextures(BlockType.TERRAIN), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
 					
 				} else if (block.getType() == BlockType.FIELD) {
-					g.drawImage(Resources.getAtIndx(textures.FARMLAND.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+					g.drawImage(Resources.getTextures(BlockType.FIELD), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
 					FieldBlock fieldBlock = (FieldBlock) block;
 					if(!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
 						if(seed.getSeedState()==SeedState.PLANTED) {
-							g.drawImage(Resources.getAtIndx(textures.SEED.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}else if(seed.getSeedState()==SeedState.GROWN) {
-							g.drawImage(Resources.getAtIndx(textures.MONEY.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(texture.MONEY), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
 					
-				} else if (block.getType() == BlockType.OBSTACLE) {
-					g.drawImage(Resources.getAtIndx(textures.WALL.getIndx()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+				} else if (block.getType() == BlockType.WALL) {
+					g.drawImage(Resources.getTextures(BlockType.WALL), i * BLOCK_SIZE, j * BLOCK_SIZE,
 							BLOCK_SIZE, BLOCK_SIZE, null);
 				}
 			}
@@ -170,22 +157,24 @@ public class MainScreenDrawer extends GameDrawer {
 		// g.drawRect(posX, posY, 50 * molt, 50 * molt);
 		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
 		//System.out.println(posX);
-		if (dir.isRight()) {
-			g.drawImage(Resources.getAtIndx(textures.PLAYER_RIGHT.getIndx() + frame), game.getPlayer().getPosX(),
-					game.getPlayer().getPosY(), 40, 70, null);
-		} else if (dir.isLeft()) {
-			g.drawImage(Resources.getAtIndx(textures.PLAYER_LEFT.getIndx() + frame), game.getPlayer().getPosX(),
-					game.getPlayer().getPosY(), 40, 70, null);
-		} else if (dir.isDown()) {
-			g.drawImage(Resources.getAtIndx(textures.PLAYER_DOWN.getIndx() + frame), game.getPlayer().getPosX(),
-					game.getPlayer().getPosY(), 40, 70, null);
-		} else if (dir.isUp()) {
-			g.drawImage(Resources.getAtIndx(textures.PLAYER_UP.getIndx() + frame), game.getPlayer().getPosX(),
-					game.getPlayer().getPosY(), 40, 70, null);
-		} else {
-			g.drawImage(Resources.getAtIndx(textures.PLAYER.getIndx()), game.getPlayer().getPosX(),
-					game.getPlayer().getPosY(), 40, 70, null);
-		}
+		g.drawImage(Resources.getPlayerInDirection(dir), posX , posY, 40, 70, null);
+		
+//		if (dir.isRight()) {
+//			g.drawImage(Resources.getAtIndx(textures.PLAYER_RIGHT.getIndx() + frame), game.getPlayer().getPosX(),
+//					game.getPlayer().getPosY(), 40, 70, null);
+//		} else if (dir.isLeft()) {
+//			g.drawImage(Resources.getAtIndx(textures.PLAYER_LEFT.getIndx() + frame), game.getPlayer().getPosX(),
+//					game.getPlayer().getPosY(), 40, 70, null);
+//		} else if (dir.isDown()) {
+//			g.drawImage(Resources.getAtIndx(textures.PLAYER_DOWN.getIndx() + frame), game.getPlayer().getPosX(),
+//					game.getPlayer().getPosY(), 40, 70, null);
+//		} else if (dir.isUp()) {
+//			g.drawImage(Resources.getAtIndx(textures.PLAYER_UP.getIndx() + frame), game.getPlayer().getPosX(),
+//					game.getPlayer().getPosY(), 40, 70, null);
+//		} else {
+//			g.drawImage(Resources.getAtIndx(textures.PLAYER.getIndx()), game.getPlayer().getPosX(),
+//					game.getPlayer().getPosY(), 40, 70, null);
+//		}
 
 	}
 }

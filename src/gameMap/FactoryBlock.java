@@ -15,7 +15,7 @@ public class FactoryBlock {
 	}
 
 	public BlockImpl getObstacleBlock(int posx, int posy) {
-		return new BlockImpl(BlockType.OBSTACLE, false, false, posx, posy);
+		return new BlockImpl(BlockType.WALL, false, false, posx, posy);
 	}
 
 	public BlockImpl getFieldBlock(int posx, int posy) {

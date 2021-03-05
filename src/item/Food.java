@@ -1,6 +1,6 @@
 package item;
 
-public enum Food {
+public enum Food implements Texturable{
 	/* cibi animali*/
 	PORK_MEET(FoodType.MEET,20,"Pork Meet"),
 	COW_MEET(FoodType.MEET,25,"Cow Meet"),

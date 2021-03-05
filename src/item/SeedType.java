@@ -1,7 +1,7 @@
 package item;
 
 
-public enum SeedType {
+public enum SeedType implements Texturable {
 	
 	WHEAT_SEED(Food.WHEAT,ItemConstants.SHORT_GROW_TIME,10),
 	CARROT_SEED(Food.CARROT,ItemConstants.MEDIUM_GROW_TIME,20),
@@ -13,7 +13,7 @@ public enum SeedType {
 	CHERRY_SEED(Food.CHERRY,ItemConstants.LONG_GROW_TIME,100);
 
 	private final long growTime; /* true= posso raccogliere, false = non raccoglibile */
-	private final Food ofWhichFood; /* mi segno di quale cibo è il mio seme */
+	private final Food ofWhichFood; /* mi segno di quale cibo ï¿½ il mio seme */
 	private final double price;
 	
 	SeedType (final Food fd, final long growTime, final double pr){
