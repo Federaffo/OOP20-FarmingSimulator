@@ -65,6 +65,10 @@ public class Game {
 
 	}
 
+	public void play() {
+		state = GameState.PLAY;
+	}
+	
 	public void shop() {
 		if (state == GameState.SHOP) {
 			state = GameState.PLAY;
