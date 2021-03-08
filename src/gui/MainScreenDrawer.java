@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.BorderLayout;
+import gui.JPanelHUD;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,6 +30,7 @@ public class MainScreenDrawer extends GameDrawer {
 	private int BLOCK_SIZE;
 	private double resizer;
 	private Resources res = new Resources();
+	
 
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
@@ -54,52 +57,53 @@ public class MainScreenDrawer extends GameDrawer {
 		final int iconHeight = (int) (screenSize.height * 0.0001);
 		final int iconWidth = (int) (screenSize.width * 0.0001);
 		
-		JPanel labelHUD= new JPanel(){
+		JPanel panelHUD= new JPanel();/*{
 			protected void paintComponent(Graphics g) {
 				setOpaque(true);
 				g.drawImage(Resources.getTextures(texture.LABELHUD).getScaledInstance(10, 20, Image.SCALE_DEFAULT), 0, 0, null);
 				super.paintComponent(g);
 			}
-		};
-
+		};*/	
+		panelHUD.setOpaque(false);
+		
+		
 		/* Panel Money */
-		JPanel moneyPanel = new JPanel() ;
-		moneyPanel.setBounds(0, 0, iconWidth, iconHeight);
-		JLabel moneyLabel = new JLabel();
-
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon(Resources.getTextures(texture.MONEY)).getImage()
-				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		moneyLabel.setIcon(imageIcon);
-		moneyLabel.setText("50000");
-		moneyLabel.setFont(new Font("Sans", Font.ITALIC | Font.BOLD, 20));
-
-
-		moneyPanel.add(moneyLabel);
-		moneyPanel.setOpaque(false);
-		/* fine panel money */
+		JPanel moneyPanel = new JPanelHUD(iconHeight,iconWidth,texture.MONEY,true,"50000").createPanel() ;
+		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel = new JPanel();
-		timePanel.setBounds(0, 0, iconWidth, iconHeight);
-		JLabel timeLabel = new JLabel();
-
-		ImageIcon timeIcon = new ImageIcon(new ImageIcon(Resources.getTextures(texture.TIME)).getImage()
-				.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		timeLabel.setIcon(timeIcon);
-		timeLabel.setText("50000");
-		timePanel.add(timeLabel);
-		/* Fine panel time */
+		JPanel timePanel =new JPanelHUD(iconHeight,iconWidth,texture.TIME,true,"10:56").createPanel() ;
+		/* Fine */
 
 		/* Panel info */
-		JPanel infoPanel = new JPanel();
+		JPanel infoPanel = new JPanelHUD(iconHeight,iconWidth,texture.INFO,true,"Press X for info").createPanel();
 		/* fine panel info */
 
-		labelHUD.add(moneyPanel);
-		labelHUD.add(timePanel);
-		labelHUD.add(infoPanel);
-		labelHUD.setVisible(true);
+		panelHUD.add(moneyPanel);
+		panelHUD.add(timePanel);
+		panelHUD.add(infoPanel);
+		panelHUD.setVisible(true);
 
-		add(labelHUD);
+		/* HOTBAR */
+		JPanel panelHB=new JPanel();
+		for(int i=0;i<9;i++) {
+			JPanel boxPanel = new JPanel();
+			JLabel boxLabel= new JLabel();
+			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(texture.MONEY)).getImage()
+					.getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+			boxLabel.setIcon(boxIcon);
+			boxPanel.add(boxLabel);
+			panelHB.add(boxPanel);
+		}
+		
+		panelHB.setOpaque(false);
+		/*fine hotbar*/
+		
+		
+		
+		setLayout(new BorderLayout());
+		add(panelHUD,BorderLayout.NORTH);
+		add(panelHB,BorderLayout.SOUTH);
 	}
 
 	private void drawMap(Graphics g) {

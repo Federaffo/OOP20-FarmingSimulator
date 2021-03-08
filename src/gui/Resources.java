@@ -77,6 +77,7 @@ public class Resources {
 			textures.put(texture.MONEY, ImageIO.read(new File(RES_FOLDER + File.separator + "moneyIcon.png")));
 			textures.put(texture.SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
 			textures.put(texture.TIME, ImageIO.read(new File(RES_FOLDER + File.separator + "timeIcon.png")));
+			textures.put(texture.INFO, ImageIO.read(new File(RES_FOLDER + File.separator + "infoIcon.png")));
 
 			
 			textures.put(texture.PLAYER_RIGHT, ImageIO.read(new File(RES_FOLDER + File.separator + "right0.png")));
@@ -149,7 +150,7 @@ public class Resources {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
 
-		LABELHUD, MONEY, SEED, TIME;
+		LABELHUD, MONEY, SEED, TIME, INFO;
 
 	}
 
