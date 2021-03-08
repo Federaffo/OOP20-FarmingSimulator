@@ -1,11 +1,13 @@
 package entity;
 
 import java.awt.Rectangle;
+import java.util.Set;
+
+import gameMap.Block;
 
 public class Player extends Rectangle implements Entity{
 	
 	private final static Integer SPEED = 5;
-	private Pair<Integer, Integer> pos;
 	private Inventory bag;
 	private Direction direction;
 	private boolean facingRight;
@@ -14,7 +16,7 @@ public class Player extends Rectangle implements Entity{
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
 		super(position.getX(), position.getY(), 50, 50);
-		this.pos = position;
+
 		bag = new Inventory();
 		direction = new Direction();
 	}
@@ -57,10 +59,10 @@ public class Player extends Rectangle implements Entity{
 	
 	//getter coordinates
 	public int getPosX() {
-		return pos.getX();
+		return super.x;
 	}
 	public int getPosY() {
-		return pos.getY();
+		return super.y;
 	}
 	
 	//return facing direction
@@ -74,9 +76,28 @@ public class Player extends Rectangle implements Entity{
 
 	//move the player in the current direction
 	public void move(){
-		if(direction.isUp()) pos.setY(pos.getY()-SPEED);
-		if(direction.isDown()) pos.setY(pos.getY()+SPEED);
-		if(direction.isLeft()) pos.setX(pos.getX()-SPEED);
-		if(direction.isRight()) pos.setX(pos.getX()+SPEED);
+		if(direction.isUp()) super.y -= SPEED;
+		if(direction.isDown()) super.y += SPEED;
+		if(direction.isLeft()) super.x -= SPEED;
+		if(direction.isRight()) super.x += SPEED;
 	}
+	
+	
+	//return the block the player is standing on
+	public Block blockPosition(Set<Block> array ) {
+		float area = 0;
+		Block currentBlockPos = null;
+		
+		for (Block b : array) {
+			Rectangle temp = this.intersection((Rectangle) b);
+			float tempArea = temp.width * temp.height;
+			
+			if(tempArea > area) {
+				currentBlockPos = b;
+			}
+		}
+		
+		return currentBlockPos;
+	}
+	
 }

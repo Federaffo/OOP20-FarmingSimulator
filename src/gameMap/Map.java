@@ -1,6 +1,8 @@
 package gameMap;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Map {
 	
@@ -29,5 +31,21 @@ public class Map {
 		return mappa[x][y];
 	}
 	
+	
+	//return set of the map
+	public Set<Block> getMapSet(){
+		Set<Block> mapSet = new HashSet<>();
+		
+		int row = mappa.length;
+		int col = mappa[0].length;
+		
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++) {
+				mapSet.add(mappa[row][col]);
+			}
+		}
+		
+		return mapSet;
+	}
 	
 }
