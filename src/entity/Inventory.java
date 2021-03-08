@@ -128,7 +128,9 @@ public class Inventory {
 	
 	//rimuove tutto il cibo nell'inventario
 	public void  removeAllFood() {
-		this.foods = new HashMap<>();
+		for (var food : foods.keySet()) {
+			foods.put(food, 0);
+		}
 	}
 	
 }

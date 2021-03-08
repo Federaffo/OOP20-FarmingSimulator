@@ -39,7 +39,8 @@ public class Engine {
 		public void actionPerformed(ActionEvent arg0) {
 			game.loop();
 //			window.setWindow(gameState);
-
+			System.out.println(game.getPlayer().getInventory().getFood().toString());
+			
 			if(gameState != game.getState()) {
 				gameState = game.getState();
 				window.setWindow(gameState);
