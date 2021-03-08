@@ -1,5 +1,6 @@
 package engine;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import entity.Pair;
@@ -30,10 +31,11 @@ public class Game {
 	}
 
 	public void interact() {
-		Block temp = map.getBlock(0, 0);
+		
+		Block temp = pg.blockPosition(map.getMapSet());
 		if (temp.getType() == BlockType.FIELD) {
 			FieldBlock myBlock = (FieldBlock) temp;
-			//pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
+			pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
 			if (myBlock.isEmpty()) {
 				if (pg.getInventory().getCurrentSeed().isPresent()) {
 					SeedType st = pg.getInventory().getCurrentSeed().get().getX();

@@ -92,8 +92,10 @@ public class Player extends Rectangle implements Entity{
 			Rectangle temp = this.intersection((Rectangle) b);
 			float tempArea = temp.width * temp.height;
 			
-			if(tempArea > area) {
+			
+			if(tempArea > area && temp.width>0 && temp.height>0) {
 				currentBlockPos = b;
+				area = tempArea;
 			}
 		}
 		
