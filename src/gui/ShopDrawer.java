@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -28,12 +30,15 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
 import engine.Game;
+import gameShop.Shop;
 
 public class ShopDrawer extends GameDrawer {
 	private static final long serialVersionUID = 5108963132975063659L;
+	private Game game;
 
 	public ShopDrawer(Game g, Dimension screenSize) {
 		super(g,screenSize);
+		this.game = g;
 		final int HGAP=(int) (screenSize.width*0.005);
 		final int VGAP=(int) (screenSize.height*0.01);
 		final int LEFTB=(int) (screenSize.width*0.08);
@@ -76,7 +81,17 @@ public class ShopDrawer extends GameDrawer {
 		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,BOTTOMB,RIGHTB));
 		sellPanel.setBackground(Color.CYAN);	
 		sellPanel.add(new JButton("SELL"));
-		sellPanel.add(new JButton("SELL ALL"));
+		JButton sellAll = new JButton("SELL ALL");
+		sellPanel.add(sellAll);
+		
+		sellAll.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				g.sellAll();
+			}
+		});
+		
 		/* Fine Pannello sell */
 		
 		/* Pannello Invetario */

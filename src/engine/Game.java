@@ -10,6 +10,7 @@ import gameMap.BlockType;
 import gameMap.FactoryBlock;
 import gameMap.FieldBlock;
 import gameMap.Map;
+import gameShop.Shop;
 import item.Food;
 import item.SeedState;
 import item.SeedType;
@@ -17,6 +18,7 @@ import item.SeedType;
 public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map(32, 18);
+	private Shop shop = new Shop();
 
 	public void loop() {
 		pg.move();
@@ -28,6 +30,11 @@ public class Game {
 
 	public Player getPlayer() {
 		return this.pg;
+	}
+	
+	public void sellAll() {
+		shop.sellAll(pg.getInventory().getFood());
+		pg.getInventory().removeAllFood();
 	}
 
 	public void interact() {

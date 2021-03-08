@@ -26,11 +26,13 @@ public class Shop {
 		return fd.getPrice();
 	}
 
-	//da cambiare quando verrà implementato l'inventario	
-	public double sellAll(Set<Food> foodToSell) { 
+	//da cambiare quando verrï¿½ implementato l'inventario	
+	public double sellAll(Map<Food, Integer> foodToSell) { 
 		double somma = 0;
-		for (Food f : foodToSell) {
-			somma += f.getPrice();
+		for (Food f : foodToSell.keySet()) {
+			for(int i=0; i<foodToSell.get(f) ; i++) {
+				somma += f.getPrice();
+			}
 		}
 		return somma;
 	}

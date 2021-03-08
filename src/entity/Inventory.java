@@ -120,4 +120,15 @@ public class Inventory {
 		else
 			return false;
 	}
+	
+	//restituisce tutto il cibo nell'inventario
+	public Map<Food, Integer> getFood(){
+		return this.foods;
+	}
+	
+	//rimuove tutto il cibo nell'inventario
+	public void  removeAllFood() {
+		this.foods = new HashMap<>();
+	}
+	
 }
