@@ -55,7 +55,7 @@ public class WindowManager extends JFrame {
 		mainPanel.setPreferredSize(windowSize);
 
 		infoPanel = new InfoDrawer(game, windowSize);
-		infoPanel.setBackground(Color.green);
+		infoPanel.setBackground(Color.yellow);
 		infoPanel.setSize(windowSize);
 		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		infoPanel.setPreferredSize(windowSize);

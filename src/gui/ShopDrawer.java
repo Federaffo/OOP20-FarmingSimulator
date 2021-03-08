@@ -54,6 +54,8 @@ public class ShopDrawer extends GameDrawer {
 		titlePanel.setLayout(new BoxLayout(titlePanel,BoxLayout.Y_AXIS));
 		JTextArea title = new JTextArea("WELCOME TO THE SHOP!");
 		JTextArea descr = new JTextArea("Qui puoi compare materiali e vendere i tuoi oggetti");
+		title.setEditable(false);
+		descr.setEditable(false);
 		title.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,0,RIGHTB));
 		descr.setBorder(BorderFactory.createEmptyBorder(0,LEFTB,BOTTOMB,RIGHTB));
 		titlePanel.setBackground(Color.ORANGE);

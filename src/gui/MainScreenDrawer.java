@@ -56,8 +56,7 @@ public class MainScreenDrawer extends GameDrawer {
 	}
 
 	private void GenerateHUD(Game g, Dimension screenSize) {
-		final int iconHeight = (int) (screenSize.height * 0.0001);
-		final int iconWidth = (int) (screenSize.width * 0.0001);
+		final int iconScaleDim = (int) (screenSize.width * 0.02);
 		
 		JPanel panelHUD= new JPanel();/*{
 			protected void paintComponent(Graphics g) {
@@ -70,15 +69,15 @@ public class MainScreenDrawer extends GameDrawer {
 		
 		
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconHeight,iconWidth,texture.MONEY,true,"50000").createPanel() ;
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim,texture.MONEY,true,"50000").createPanel() ;
 		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel =new JPanelHUD(iconHeight,iconWidth,texture.TIME,true,"10:56").createPanel() ;
+		JPanel timePanel =new JPanelHUD(iconScaleDim,texture.TIME,true,"10:56").createPanel() ;
 		/* Fine */
 
 		/* Panel info */
-		JPanel infoPanel = new JPanelHUD(iconHeight,iconWidth,texture.INFO,true,"Press X for info").createPanel();
+		JPanel infoPanel = new JPanelHUD(iconScaleDim,texture.INFO,true,"Press X for info").createPanel();
 		/* fine panel info */
 
 		panelHUD.add(moneyPanel);
