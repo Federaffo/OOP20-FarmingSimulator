@@ -16,9 +16,11 @@ import item.SeedState;
 import item.SeedType;
 
 public class Game {
+
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map(32, 18);
 	private Shop shop = new Shop();
+	private GameState state = GameState.PLAY;
 
 	public void loop() {
 		pg.move();
@@ -31,14 +33,18 @@ public class Game {
 	public Player getPlayer() {
 		return this.pg;
 	}
-	
+
 	public void sellAll() {
 		shop.sellAll(pg.getInventory().getFood());
 		pg.getInventory().removeAllFood();
 	}
 
+	public GameState getState() {
+		return this.state;
+	}
+
 	public void interact() {
-		
+
 		Block temp = pg.blockPosition(map.getMapSet());
 		if (temp.getType() == BlockType.FIELD) {
 			FieldBlock myBlock = (FieldBlock) temp;
@@ -57,6 +63,22 @@ public class Game {
 			}
 		}
 
+	}
+
+	public void shop() {
+		if (state == GameState.SHOP) {
+			state = GameState.PLAY;
+		} else {
+			state = GameState.SHOP;
+		}
+	}
+
+	public void info() {
+		if(state == GameState.INFO) {
+			state = GameState.PLAY;
+		}else {
+			state = GameState.INFO;
+		}
 	}
 
 }

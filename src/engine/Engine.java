@@ -21,7 +21,8 @@ public class Engine {
 	private WindowManager window;
 	private Timer timer;
 	private Game game;
-
+	private GameState gameState = GameState.PLAY;
+		
 	public Engine() {
 		player = new MusicPlayer();
 		game = new Game();
@@ -36,10 +37,13 @@ public class Engine {
 
 	private class GameLoop implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			// window.switchPanel();
 			game.loop();
-			//window.showShop();
-			window.showMainScreen();
+//			window.setWindow(gameState);
+
+			if(gameState != game.getState()) {
+				gameState = game.getState();
+				window.setWindow(gameState);
+			}
 		}
 	}
 

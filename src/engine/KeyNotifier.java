@@ -33,6 +33,11 @@ public class KeyNotifier {
 		case KeyEvent.VK_F:
 			game.interact();
 			break;
+		case KeyEvent.VK_E:
+			game.shop();
+			break;
+		case KeyEvent.VK_X:
+			game.info();
 		default:
 			break;
 		}

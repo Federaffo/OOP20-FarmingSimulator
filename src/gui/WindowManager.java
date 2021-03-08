@@ -11,6 +11,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import engine.Game;
+import engine.GameState;
 
 public class WindowManager extends JFrame {
 	private static final long serialVersionUID = -5704310736291818589L;
@@ -19,6 +20,7 @@ public class WindowManager extends JFrame {
 	private JLayeredPane lpanel;
 	private GameDrawer mainPanel;
 	private GameDrawer shopPanel;
+	private GameDrawer infoPanel;
 	private Game game;
 	private Dimension windowSize;
 
@@ -45,40 +47,35 @@ public class WindowManager extends JFrame {
 		shopPanel.setBackground(Color.red);
 		shopPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		shopPanel.setPreferredSize(windowSize);
-		
+
 		mainPanel = new MainScreenDrawer(game, windowSize);
 		mainPanel.setBackground(Color.green);
 		mainPanel.setSize(windowSize);
 		mainPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		mainPanel.setPreferredSize(windowSize);
 
+		infoPanel = new InfoDrawer(game, windowSize);
+		infoPanel.setBackground(Color.green);
+		infoPanel.setSize(windowSize);
+		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
+		infoPanel.setPreferredSize(windowSize);
+
 		lpanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		lpanel.add(mainPanel, 0, 0);
 		lpanel.add(shopPanel, 1, 0);
+		lpanel.add(infoPanel, 2, 0);
 		lpanel.setPreferredSize(windowSize);
 		lpanel.requestFocus();
-        //setContentPane(mainPanel);
-        add(lpanel);
+		// setContentPane(mainPanel);
+		add(lpanel);
 //		add(shopPanel);
 //		add(mainPanel);
+		showMainScreen();
 	}
 
 	public void addKeyListener(KeyListener k) {
 		System.out.println("listener added");
 		this.mainPanel.addKeyListener(k);
-	}
-
-	public void switchPanel() {
-		if (mainPanel.isVisible()) {
-			shopPanel.setVisible(true);
-			shopPanel.requestFocus();
-			mainPanel.setVisible(false);
-		} else {
-			mainPanel.setVisible(true);
-			mainPanel.requestFocus();
-			shopPanel.setVisible(false);
-		}
-
 	}
 
 	private void disableAllPanel() {
@@ -93,10 +90,26 @@ public class WindowManager extends JFrame {
 		shopPanel.requestFocus();
 	}
 
+	public void showInfo() {
+		disableAllPanel();
+		infoPanel.setVisible(true);
+		infoPanel.requestFocus();
+	}
+
 	public void showMainScreen() {
 		disableAllPanel();
 		mainPanel.setVisible(true);
 		mainPanel.requestFocus();
+	}
+
+	public void setWindow(GameState gameState) {
+		if (gameState == GameState.SHOP) {
+			showShop();
+		} else if (gameState == GameState.PLAY) {
+			showMainScreen();
+		} else if (gameState == GameState.INFO) {
+			showInfo();
+		}
 	}
 
 }

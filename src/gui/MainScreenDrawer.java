@@ -47,6 +47,8 @@ public class MainScreenDrawer extends GameDrawer {
 		drawMap(g);
 		drawPg(g);
 		drawHUD(g);
+		
+		repaint();
 	}
 
 	private void drawHUD(Graphics g) {

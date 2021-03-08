@@ -25,7 +25,7 @@ public class Resources {
 	// private static List<BufferedImage> textures = new ArrayList<>();
 	private static File mainTheme;
 	private static int animationDelay = 0;
-	private static final int ANIMATION_SPEED = 50;
+	private static final int ANIMATION_SPEED = 500;
 
 	public void load() {
 		try {
