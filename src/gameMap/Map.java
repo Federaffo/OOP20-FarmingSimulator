@@ -14,8 +14,6 @@ public class Map {
 	
 		mappa = new Block[x][y];
 		FactoryBlock factory = new FactoryBlock();
-		row = x;//
-		col = y;//
 		
 		for(int i=0; i<x; i++) {
 			for(int j=0; j<y; j++) {
@@ -40,8 +38,8 @@ public class Map {
 	public Set<Block> getMapSet(){
 		Set<Block> mapSet = new HashSet<>();
 		
-		//int row = mappa.length;
-		//int col = mappa[0].length;
+		int row = mappa.length;
+		int col = mappa[0].length;
 		
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<col; j++) {

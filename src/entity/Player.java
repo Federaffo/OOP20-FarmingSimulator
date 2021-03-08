@@ -12,6 +12,7 @@ public class Player extends Rectangle implements Entity{
 	private Direction direction;
 	private boolean facingRight;
 	private boolean isMoving;
+	private double money;
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
@@ -19,6 +20,7 @@ public class Player extends Rectangle implements Entity{
 
 		bag = new Inventory();
 		direction = new Direction();
+		money = 0;
 	}
 	
 	//method for setting player direction
@@ -100,6 +102,17 @@ public class Player extends Rectangle implements Entity{
 		}
 		
 		return currentBlockPos;
+	}
+	
+	
+	public double getMoney() {
+		return money;
+	}
+	public void incrementMoney(double moneyToAdd) {
+		money += moneyToAdd;
+	}
+	public void decrease(double moneyToRemove) {
+		money -= moneyToRemove;
 	}
 	
 }
