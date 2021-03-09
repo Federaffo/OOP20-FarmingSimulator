@@ -68,7 +68,8 @@ public class MainScreenDrawer extends GameDrawer {
 		panelHUD.setOpaque(false);
 
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "50000").createPanel();
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, Double.toString(g.getPlayer().getMoney())).createPanel();
+		System.out.println( Double.toString(g.getPlayer().getMoney()));
 		/* fine */
 
 		/* Panel Time */
@@ -146,7 +147,6 @@ public class MainScreenDrawer extends GameDrawer {
 
 		public PanelHB() {
 			add(label, new BorderLayout().SOUTH);
-
 		}
 
 		@Override
@@ -164,7 +164,7 @@ public class MainScreenDrawer extends GameDrawer {
 			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
-
+			label.setBackground(new Color(255,255,255,50));
 		}
 	}
 

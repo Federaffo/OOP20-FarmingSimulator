@@ -38,6 +38,7 @@ public class InfoDrawer extends GameDrawer{
 		myLabel.setText("WASD - il personaggio si muove per la mappa");
 		
 		infoPanel.add(myLabel);
+		//setOpaque(false);
 		add(infoPanel);		
 	}
 

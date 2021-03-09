@@ -21,6 +21,7 @@ public class WindowManager extends JFrame {
 	private GameDrawer mainPanel;
 	private GameDrawer shopPanel;
 	private GameDrawer infoPanel;
+	private GameDrawer quitPanel;
 	private Game game;
 	private Dimension windowSize;
 
@@ -59,11 +60,18 @@ public class WindowManager extends JFrame {
 		infoPanel.setSize(windowSize);
 		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		infoPanel.setPreferredSize(windowSize);
+		
+		quitPanel = new QuitDrawer(game, windowSize);
+		quitPanel.setBackground(Color.black);
+		quitPanel.setSize(windowSize);
+		quitPanel.setBounds(0, 0, windowSize.width, (int)(windowSize.height*0.06));
+		quitPanel.setPreferredSize(windowSize);
 
 		lpanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		lpanel.add(mainPanel, 0, 0);
 		lpanel.add(shopPanel, 1, 0);
 		lpanel.add(infoPanel, 2, 0);
+		lpanel.add(quitPanel, 3, 0);
 		lpanel.setPreferredSize(windowSize);
 		lpanel.requestFocus();
 		// setContentPane(mainPanel);
@@ -88,18 +96,26 @@ public class WindowManager extends JFrame {
 		disableAllPanel();
 		shopPanel.setVisible(true);
 		shopPanel.requestFocus();
+		showQuitScreen();
 	}
 
 	public void showInfo() {
-		disableAllPanel();
+		//disableAllPanel();
 		infoPanel.setVisible(true);
 		infoPanel.requestFocus();
+		showQuitScreen();
 	}
 
 	public void showMainScreen() {
 		disableAllPanel();
 		mainPanel.setVisible(true);
 		mainPanel.requestFocus();
+	}
+	
+	public void showQuitScreen() {
+		//disableAllPanel();
+		quitPanel.setVisible(true);
+		quitPanel.requestFocus();
 	}
 
 	public void setWindow(GameState gameState) {

@@ -58,7 +58,7 @@ public class ShopDrawer extends GameDrawer {
 		descr.setEditable(false);
 		title.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,0,RIGHTB));
 		descr.setBorder(BorderFactory.createEmptyBorder(0,LEFTB,BOTTOMB,RIGHTB));
-		titlePanel.setBackground(Color.ORANGE);
+		titlePanel.setBackground(new Color(255,0,0,200));
 		title.setBackground(titlePanel.getBackground());
 		descr.setBackground(titlePanel.getBackground());
 		titlePanel.add(title);
@@ -111,7 +111,6 @@ public class ShopDrawer extends GameDrawer {
 		add(buyPanel);
 		add(inventPanel);
 		add(sellPanel);
-		
 	}
 
 	@Override

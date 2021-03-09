@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Optional;
 
@@ -38,7 +39,12 @@ public class JPanelHUD extends JPanel {
 			myLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, 20));
 		}
 		myPanel.add(myLabel);
+		
 		myPanel.setOpaque(true);
 		return myPanel;
+	}
+	
+	public void paintComponent(Graphics g) {
+		
 	}
 }
