@@ -30,7 +30,7 @@ public class QuitDrawer extends GameDrawer {
 	}
 
 	private void generateQuitPanel(Game g, Dimension screenSize) {
-		final int RIGHTB=(int) -(screenSize.width*0.95);
+		final int RIGHTB=(int) -(screenSize.width*0.90);
 		
 		JButton quit=new JButton();
 		quit.setText("X");
