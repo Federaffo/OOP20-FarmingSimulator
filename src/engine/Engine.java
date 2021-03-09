@@ -14,6 +14,7 @@ import javax.swing.Timer;
 
 import gui.MusicPlayer;
 import gui.WindowManager;
+import item.SeedType;
 
 public class Engine {
 
@@ -33,13 +34,20 @@ public class Engine {
 	public void start() {
 		player.run();
 		timer.start();
+		
+		game.getPlayer().getInventory().addSeeds(SeedType.POTATO_SEED, 10);
+		game.getPlayer().getInventory().addSeeds(SeedType.CARROT_SEED, 10);
+		game.getPlayer().getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
+		game.getPlayer().getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
+
 	}
 
 	private class GameLoop implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			game.loop();
 //			window.setWindow(gameState);
-			System.out.println(game.getPlayer().getInventory().getFood().toString());
+			
+			
 			
 			if(gameState != game.getState()) {
 				gameState = game.getState();

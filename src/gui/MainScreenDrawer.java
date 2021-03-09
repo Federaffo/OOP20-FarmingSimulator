@@ -52,11 +52,11 @@ public class MainScreenDrawer extends GameDrawer {
 		setIcon();
 		repaint();
 	}
-	
+
 	private void setIcon() {
-		
+
 	}
-	
+
 	private void GenerateHUD(Game g, Dimension screenSize) {
 		final int iconScaleDim = (int) (screenSize.width * 0.02);
 
@@ -105,13 +105,10 @@ public class MainScreenDrawer extends GameDrawer {
 				}
 				// System.out.println(intersect.width + "," + intersect.height);
 
-				if (block.getType() == BlockType.TERRAIN) {
-					g.drawImage(Resources.getTextures(BlockType.TERRAIN), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-							BLOCK_SIZE, null);
-
-				} else if (block.getType() == BlockType.FIELD) {
-					g.drawImage(Resources.getTextures(BlockType.FIELD), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-							BLOCK_SIZE, null);
+				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,BLOCK_SIZE, null);
+				
+				
+				if (block.getType() == BlockType.FIELD) {
 					FieldBlock fieldBlock = (FieldBlock) block;
 					if (!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
@@ -119,20 +116,15 @@ public class MainScreenDrawer extends GameDrawer {
 							g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 									BLOCK_SIZE, null);
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(Resources.getTextures(texture.MONEY), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(seed.getSeedType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
 
-				} else if (block.getType() == BlockType.WALL) {
-					g.drawImage(Resources.getTextures(BlockType.WALL), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-							BLOCK_SIZE, null);
 				}
 			}
 		}
 	}
-	
-	
 
 	private void drawPg(Graphics g) {
 
@@ -148,15 +140,15 @@ public class MainScreenDrawer extends GameDrawer {
 		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
 		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY, 40, 70, null);
 	}
-	
-	private class PanelHB extends JPanel{
-		private JLabel label = new JLabel(); 
-		
+
+	private class PanelHB extends JPanel {
+		private JLabel label = new JLabel();
+
 		public PanelHB() {
 			add(label, new BorderLayout().SOUTH);
 
 		}
-		
+
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponents(g);
@@ -168,14 +160,12 @@ public class MainScreenDrawer extends GameDrawer {
 			} else {
 				currSeed = Resources.texture.MONEY;
 			}
-			
-			ImageIcon boxIcon = new ImageIcon(
-					new ImageIcon(Resources.getTextures(currSeed)).getImage()
+
+			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
-			
-			
+
 		}
 	}
-	
+
 }
