@@ -48,7 +48,9 @@ public class Game {
 		Block temp = pg.blockPosition(map.getMapSet());
 		if (temp.getType() == BlockType.FIELD) {
 			FieldBlock myBlock = (FieldBlock) temp;
+			pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
 			pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
+
 			if (myBlock.isEmpty()) {
 				if (pg.getInventory().getCurrentSeed().isPresent()) {
 					SeedType st = pg.getInventory().getCurrentSeed().get().getX();

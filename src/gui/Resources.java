@@ -49,21 +49,21 @@ public class Resources {
 //			
 //			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
 
-			textures.put(Food.PORK_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.COW_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.EGG, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.MILK, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.CARROT, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.POTATO, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.TOMATO, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.APPLE, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.ORANGE, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.CHERRY, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(Food.WHEAT, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
+			textures.put(Food.PORK_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.COW_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.EGG, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.MILK, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.CARROT, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.POTATO, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.TOMATO, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.APPLE, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.ORANGE, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.CHERRY, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(Food.WHEAT, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 
 			textures.put(SeedType.WHEAT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(SeedType.CARROT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-			textures.put(SeedType.POTATO_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
+			textures.put(SeedType.CARROT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			textures.put(SeedType.POTATO_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
 			textures.put(SeedType.TOMATO_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
 			textures.put(SeedType.APPLE_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
 			textures.put(SeedType.ORANGE_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
