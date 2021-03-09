@@ -68,8 +68,9 @@ public class MainScreenDrawer extends GameDrawer {
 		panelHUD.setOpaque(false);
 
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, Double.toString(g.getPlayer().getMoney())).createPanel();
-		System.out.println( Double.toString(g.getPlayer().getMoney()));
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, Double.toString(g.getPlayer().getMoney()))
+				.createPanel();
+		System.out.println(Double.toString(g.getPlayer().getMoney()));
 		/* fine */
 
 		/* Panel Time */
@@ -106,9 +107,9 @@ public class MainScreenDrawer extends GameDrawer {
 				}
 				// System.out.println(intersect.width + "," + intersect.height);
 
-				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,BLOCK_SIZE, null);
-				
-				
+				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
+						BLOCK_SIZE, null);
+
 				if (block.getType() == BlockType.FIELD) {
 					FieldBlock fieldBlock = (FieldBlock) block;
 					if (!fieldBlock.isEmpty()) {
@@ -155,16 +156,21 @@ public class MainScreenDrawer extends GameDrawer {
 			Texturable currSeed;
 			if (game.getPlayer().getInventory().getCurrentSeed().isPresent()) {
 				currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
-				System.out.println(currSeed);
 				label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
 			} else {
-				currSeed = Resources.texture.MONEY;
+				game.getPlayer().getInventory().nextSeed();
+				if (game.getPlayer().getInventory().getCurrentSeed().isPresent()) {
+					currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
+					label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
+				} else {
+					currSeed = Resources.texture.MONEY;
+				}
 			}
 
 			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
-			label.setBackground(new Color(255,255,255,50));
+			label.setBackground(new Color(255, 255, 255, 50));
 		}
 	}
 
