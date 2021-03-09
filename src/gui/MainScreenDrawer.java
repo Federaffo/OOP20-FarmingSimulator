@@ -38,7 +38,7 @@ public class MainScreenDrawer extends GameDrawer {
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
 		res.load();
-		this.resizer = screenSize.getWidth() / (50 * 32);
+		this.resizer = screenSize.getWidth() / (BASE_SIZE * 32);
 		GenerateHUD(game, screenSize);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
 	}
@@ -107,15 +107,6 @@ public class MainScreenDrawer extends GameDrawer {
 			for (int j = 0; j < 18; j++) {
 				Block block = game.getMap().getBlock(i, j);
 				Player pg = game.getPlayer();
-
-				Rectangle intersect = new Rectangle((int) (pg.getPosX() * resizer), (int) (pg.getPosY() * resizer),
-						BLOCK_SIZE, BLOCK_SIZE)
-								.intersection(new Rectangle(1 * BLOCK_SIZE, 1 * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE));
-				if (!intersect.isEmpty()) {
-					g.setColor(Color.CYAN);
-					g.drawRect(intersect.x, intersect.y, intersect.width, intersect.height);
-				}
-				// System.out.println(intersect.width + "," + intersect.height);
 
 				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 						BLOCK_SIZE, null);

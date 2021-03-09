@@ -22,33 +22,12 @@ public class Resources {
 	private static final String RES_FOLDER = "res";
 
 	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
-	// private static List<BufferedImage> textures = new ArrayList<>();
 	private static File mainTheme;
 	private static int animationDelay = 0;
 	private static final int ANIMATION_SPEED = 500;
 
 	public void load() {
 		try {
-
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "left0.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "left1.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "right0.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "right1.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "up0.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "up1.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "down0.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "down1.png")));
-//			
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "grass.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "farmland.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "wall.png")));
-//			
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "labelHUD.png")));
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "moneyIcon.png")));
-//			
-//			textures.add(ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
-
 			textures.put(Food.PORK_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 			textures.put(Food.COW_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 			textures.put(Food.EGG, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));

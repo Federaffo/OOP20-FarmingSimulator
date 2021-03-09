@@ -29,8 +29,7 @@ public class WindowManager extends JFrame {
 		Dimension screenSize = getToolkit().getScreenSize();
 		windowSize = new Dimension((int) (screenSize.width * 0.8), (int) ((screenSize.width * 0.8) * (0.5625)));
 		this.game = game;
-		// setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+		
 		setBounds(0, 0, windowSize.width + 20, windowSize.height + 50);
 		setTitle("Farming Simulator");
 		setLocationRelativeTo(null);
@@ -74,10 +73,8 @@ public class WindowManager extends JFrame {
 		lpanel.add(quitPanel, 3, 0);
 		lpanel.setPreferredSize(windowSize);
 		lpanel.requestFocus();
-		// setContentPane(mainPanel);
+
 		add(lpanel);
-//		add(shopPanel);
-//		add(mainPanel);
 		showMainScreen();
 	}
 
