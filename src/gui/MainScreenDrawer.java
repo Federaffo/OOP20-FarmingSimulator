@@ -38,7 +38,7 @@ public class MainScreenDrawer extends GameDrawer {
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
 		res.load();
-		this.resizer = screenSize.getWidth() / (50 * 32);
+		this.resizer = screenSize.getWidth() / (BASE_SIZE * 32);
 		GenerateHUD(game, screenSize);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
 	}
@@ -69,11 +69,11 @@ public class MainScreenDrawer extends GameDrawer {
 
 
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "50", g);
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "0", g);
 		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "10:56");
+		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "00:00");
 		/* Fine */
 
 		/* Panel info */
@@ -81,8 +81,8 @@ public class MainScreenDrawer extends GameDrawer {
 		/* fine panel info */
 		
 		/* Add HUD compoments to a temporary Panel */
-		tmpHUD.add(moneyPanel);			//serve così possiamo 
-		tmpHUD.add(timePanel);			//settare l'opacità
+		tmpHUD.add(moneyPanel);			//serve cosï¿½ possiamo 
+		tmpHUD.add(timePanel);			//settare l'opacitï¿½
 		tmpHUD.add(infoPanel);			//e il colore su questo panel
 		tmpHUD.setOpaque(true);
 		tmpHUD.setBackground(new Color(204, 136, 0,180));
@@ -107,15 +107,6 @@ public class MainScreenDrawer extends GameDrawer {
 			for (int j = 0; j < 18; j++) {
 				Block block = game.getMap().getBlock(i, j);
 				Player pg = game.getPlayer();
-
-				Rectangle intersect = new Rectangle((int) (pg.getPosX() * resizer), (int) (pg.getPosY() * resizer),
-						BLOCK_SIZE, BLOCK_SIZE)
-								.intersection(new Rectangle(1 * BLOCK_SIZE, 1 * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE));
-				if (!intersect.isEmpty()) {
-					g.setColor(Color.CYAN);
-					g.drawRect(intersect.x, intersect.y, intersect.width, intersect.height);
-				}
-				// System.out.println(intersect.width + "," + intersect.height);
 
 				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 						BLOCK_SIZE, null);
@@ -166,10 +157,15 @@ public class MainScreenDrawer extends GameDrawer {
 			Texturable currSeed;
 			if (game.getPlayer().getInventory().getCurrentSeed().isPresent()) {
 				currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
-//				System.out.println(currSeed);
 				label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
 			} else {
-				currSeed = Resources.texture.MONEY;
+				game.getPlayer().getInventory().nextSeed();
+				if (game.getPlayer().getInventory().getCurrentSeed().isPresent()) {
+					currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
+					label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
+				} else {
+					currSeed = Resources.texture.MONEY;
+				}
 			}
 
 			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
