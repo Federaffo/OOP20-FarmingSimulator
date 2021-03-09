@@ -35,7 +35,8 @@ public class Game {
 	}
 
 	public void sellAll() {
-		shop.sellAll(pg.getInventory().getFood());
+		double money = shop.sellAll(pg.getInventory().getFood());
+		pg.incrementMoney(money);
 		pg.getInventory().removeAllFood();
 	}
 
