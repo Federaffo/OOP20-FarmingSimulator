@@ -59,35 +59,46 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void GenerateHUD(Game g, Dimension screenSize) {
 		final int iconScaleDim = (int) (screenSize.width * 0.02);
+		
+		JPanel panelHUD = new JPanel() ;
+		JPanel panelHB=new JPanel();
+		JPanel tmpHUD=new JPanel();
+		JPanel tmpHB=new JPanel();
 
-		JPanel panelHUD = new JPanel();/*
-										 * { protected void paintComponent(Graphics g) { setOpaque(true);
-										 * g.drawImage(Resources.getTextures(texture.LABELHUD).getScaledInstance(10, 20,
-										 * Image.SCALE_DEFAULT), 0, 0, null); super.paintComponent(g); } };
-										 */
 		panelHUD.setOpaque(false);
 
+
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, Double.toString(g.getPlayer().getMoney())).createPanel();
-		System.out.println( Double.toString(g.getPlayer().getMoney()));
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "50", g);
 		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "10:56").createPanel();
+		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "10:56");
 		/* Fine */
 
 		/* Panel info */
-		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info").createPanel();
+		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info");
 		/* fine panel info */
-
-		panelHUD.add(moneyPanel);
-		panelHUD.add(timePanel);
-		panelHUD.add(infoPanel);
+		
+		/* Add HUD compoments to a temporary Panel */
+		tmpHUD.add(moneyPanel);			//serve così possiamo 
+		tmpHUD.add(timePanel);			//settare l'opacità
+		tmpHUD.add(infoPanel);			//e il colore su questo panel
+		tmpHUD.setOpaque(true);
+		tmpHUD.setBackground(new Color(204, 136, 0,180));
+		panelHUD.add(tmpHUD);
 		panelHUD.setVisible(true);
+		 
+		/* add HotBar components to a temporary Panel */
+		tmpHB.add(new PanelHB());
+		tmpHB.setOpaque(true);
+		tmpHB.setBackground(new Color(255,200,200,180));
+		panelHB.add(tmpHB);
+		panelHB.setOpaque(false);
 
 		setLayout(new BorderLayout());
 		add(panelHUD, BorderLayout.NORTH);
-		add(new PanelHB(), BorderLayout.SOUTH);
+		add(panelHB, BorderLayout.SOUTH);
 	}
 
 	private void drawMap(Graphics g) {
@@ -106,9 +117,9 @@ public class MainScreenDrawer extends GameDrawer {
 				}
 				// System.out.println(intersect.width + "," + intersect.height);
 
-				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,BLOCK_SIZE, null);
-				
-				
+				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
+						BLOCK_SIZE, null);
+
 				if (block.getType() == BlockType.FIELD) {
 					FieldBlock fieldBlock = (FieldBlock) block;
 					if (!fieldBlock.isEmpty()) {
@@ -155,7 +166,7 @@ public class MainScreenDrawer extends GameDrawer {
 			Texturable currSeed;
 			if (game.getPlayer().getInventory().getCurrentSeed().isPresent()) {
 				currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
-				System.out.println(currSeed);
+//				System.out.println(currSeed);
 				label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
 			} else {
 				currSeed = Resources.texture.MONEY;
@@ -164,7 +175,7 @@ public class MainScreenDrawer extends GameDrawer {
 			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
-			label.setBackground(new Color(255,255,255,50));
+			label.setBackground(new Color(255, 255, 255, 50));
 		}
 	}
 
