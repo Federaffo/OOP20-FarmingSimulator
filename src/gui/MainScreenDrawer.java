@@ -59,36 +59,46 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void GenerateHUD(Game g, Dimension screenSize) {
 		final int iconScaleDim = (int) (screenSize.width * 0.02);
+		
+		JPanel panelHUD = new JPanel() ;
+		JPanel panelHB=new JPanel();
+		JPanel tmpHUD=new JPanel();
+		JPanel tmpHB=new JPanel();
 
-		JPanel panelHUD = new JPanel();/*
-										 * { protected void paintComponent(Graphics g) { setOpaque(true);
-										 * g.drawImage(Resources.getTextures(texture.LABELHUD).getScaledInstance(10, 20,
-										 * Image.SCALE_DEFAULT), 0, 0, null); super.paintComponent(g); } };
-										 */
 		panelHUD.setOpaque(false);
 
+
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, Double.toString(g.getPlayer().getMoney()))
-				.createPanel();
-		System.out.println(Double.toString(g.getPlayer().getMoney()));
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "0", g);
 		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "10:56").createPanel();
+		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "00:00");
 		/* Fine */
 
 		/* Panel info */
-		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info").createPanel();
+		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info");
 		/* fine panel info */
-
-		panelHUD.add(moneyPanel);
-		panelHUD.add(timePanel);
-		panelHUD.add(infoPanel);
+		
+		/* Add HUD compoments to a temporary Panel */
+		tmpHUD.add(moneyPanel);			//serve cos� possiamo 
+		tmpHUD.add(timePanel);			//settare l'opacit�
+		tmpHUD.add(infoPanel);			//e il colore su questo panel
+		tmpHUD.setOpaque(true);
+		tmpHUD.setBackground(new Color(204, 136, 0,180));
+		panelHUD.add(tmpHUD);
 		panelHUD.setVisible(true);
+		 
+		/* add HotBar components to a temporary Panel */
+		tmpHB.add(new PanelHB());
+		tmpHB.setOpaque(true);
+		tmpHB.setBackground(new Color(255,200,200,180));
+		panelHB.add(tmpHB);
+		panelHB.setOpaque(false);
 
 		setLayout(new BorderLayout());
 		add(panelHUD, BorderLayout.NORTH);
-		add(new PanelHB(), BorderLayout.SOUTH);
+		add(panelHB, BorderLayout.SOUTH);
 	}
 
 	private void drawMap(Graphics g) {
