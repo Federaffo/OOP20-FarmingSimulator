@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,10 +32,24 @@ public class WindowManager extends JFrame {
 		windowSize = new Dimension((int) (screenSize.width * 0.8), (int) ((screenSize.width * 0.8) * (0.5625)));
 		this.game = game;
 		
-		setBounds(0, 0, windowSize.width + 20, windowSize.height + 50);
+		setBounds(0, 0, windowSize.width, windowSize.height);
 		setTitle("Farming Simulator");
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.);
+		
+		addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent we) {
+				  JFrame exitWindow = new JFrame();
+				  exitWindow.setVisible(true);
+				  exitWindow.setTitle("Exit");
+				  exitWindow.setBounds(0, 0, windowSize.width, windowSize.height);
+				  exitWindow.setLocationRelativeTo(null);
+				  exitWindow.add(new ExitPanel(game));
+				  exitWindow.pack();
+			    //System.exit(0);
+			  }
+			});
+		
 		setResizable(false);
 		setVisible(true);
 		createPanel();

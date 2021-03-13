@@ -4,8 +4,9 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import com.google.gson.annotations.Expose;
+
 public class Map {
-	
 	private Block[][] mappa;
 	int row = 0;//
 	int col = 0;//

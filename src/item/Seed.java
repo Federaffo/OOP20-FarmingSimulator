@@ -8,7 +8,9 @@ public class Seed {
 	private SeedState state; /* guardo lo stato della mia pianta */
 	private final long growTime; /* true= posso raccogliere, false = non raccoglibile */
 	private final Food ofWhichFood; /* mi segno di quale cibo � il mio seme */
-	private Timer timerPlant;
+	
+	//Transient lo uso per evitare che venga serializzato in Json quando salvo il game
+	private transient Timer timerPlant;
 
 	public Seed(final SeedType st) {
 		this.seedType = st;

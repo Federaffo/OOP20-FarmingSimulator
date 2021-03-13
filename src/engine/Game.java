@@ -3,6 +3,8 @@ package engine;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
+import com.google.gson.annotations.Expose;
+
 import entity.Pair;
 import entity.Player;
 import gameMap.Block;
@@ -16,12 +18,16 @@ import item.SeedState;
 import item.SeedType;
 
 public class Game {
-
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map(32, 18);
 	private Shop shop = new Shop();
 	private GameState state = GameState.PLAY;
 
+	public void loadGame(Map map, Player player) {
+		this.pg = player;
+		this.map = map;
+	}
+	
 	public void loop() {
 		pg.move();
 	}

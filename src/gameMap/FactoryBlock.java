@@ -3,6 +3,8 @@ package gameMap;
 import java.awt.Rectangle;
 import java.util.*;
 
+import com.google.gson.annotations.Expose;
+
 import entity.Pair;
 import item.Food;
 import item.Seed;
@@ -20,36 +22,38 @@ public class FactoryBlock {
 
 	public BlockImpl getFieldBlock(int posx, int posy) {
 		return new BlockFieldImpl(BlockType.FIELD, true, true, posx, posy);
-	
+
 	}
-	
-	private class BlockFieldImpl extends BlockImpl implements FieldBlock{
+
+	private class BlockFieldImpl extends BlockImpl implements FieldBlock {
+		private static final long serialVersionUID = 1L;
 
 		public BlockFieldImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
 			super(bt, isWalkable, isInteractable, posx, posy);
 		}
-		private Optional<Seed> seed = Optional.empty();
+
+		private Optional<Seed> myseed = Optional.empty();
 
 		public void plant(SeedType st) {
-			seed = Optional.of(new Seed(st));
+			myseed = Optional.of(new Seed(st));
 		}
 
 		public Pair<Food, Integer> harvest() {
-			Food food = seed.get().Harvest();
-			seed = Optional.empty();
+			Food food = myseed.get().Harvest();
+			myseed = Optional.empty();
 			return new Pair<>(food, 3);
 		}
 
 		public boolean isEmpty() {
-			return seed.isEmpty();
+			return myseed.isEmpty();
 		}
-		
+
 		public Seed getSeed() {
-			return seed.get();
+			return myseed.get();
 		}
-		
+
 	}
-	
+
 	private class BlockImpl extends Rectangle implements Block {
 
 		public final static int SIZE = 50;
@@ -58,7 +62,8 @@ public class FactoryBlock {
 		private final boolean isInteractable;
 		private final int posx;
 		private final int posy;
-
+		
+		
 		public BlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
 			super(posx * SIZE, posy * SIZE, SIZE, SIZE);
 			this.blockType = bt;

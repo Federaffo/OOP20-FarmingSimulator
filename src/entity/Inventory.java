@@ -9,12 +9,14 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Stream;
 
+import com.google.gson.annotations.Expose;
+
 import item.Food;
 import item.FoodType;
 import item.SeedType;
+import jdk.jfr.Category;
 
 public class Inventory {
-	
 	private Map<SeedType, Integer> seeds;
 	private Map<Food, Integer> foods;
 	private Queue<SeedType> activeSeed;

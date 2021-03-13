@@ -2,14 +2,11 @@ package engine;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import gui.MusicPlayer;
@@ -23,15 +20,19 @@ public class Engine {
 	private Timer timer;
 	private Game game;
 	private GameState gameState = GameState.PLAY;
-		
-	public Engine() {
-		player = new MusicPlayer();
-		game = new Game();
-		window = new WindowManager(game);
-		timer = new Timer(16, new GameLoop());
+	
+	public void CreateGame() {
+		new Loader();
 	}
 
+
+
 	public void start() {
+		
+		player = new MusicPlayer();
+		window = new WindowManager(game);
+		timer = new Timer(16, new GameLoop());
+		
 		player.run();
 		timer.start();
 		
@@ -45,10 +46,7 @@ public class Engine {
 	private class GameLoop implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			game.loop();
-//			window.setWindow(gameState);
-			
-			
-			
+
 			if(gameState != game.getState()) {
 				gameState = game.getState();
 				window.setWindow(gameState);
@@ -56,6 +54,46 @@ public class Engine {
 		}
 	}
 
-	
+	private class Loader extends JFrame{
+		public Loader() {
+			setTitle("Farming Simulator");
+			setResizable(false);
+			setVisible(true);
+			setLocationRelativeTo(null);
+			createPanel();
+			pack();
+		}
+
+		private void createPanel() {
+			JPanel panel = new JPanel();
+			JLabel label = new JLabel("Vuoi caricare l'ultima partita?");
+			JButton load = new JButton("Si");
+			JButton restart = new JButton("No");
+			
+			load.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					game = new GameSaver().load();
+					closeAndStart();
+				}
+
+			});
+			restart.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					game = new Game();
+					closeAndStart();
+				}
+			});
+			
+			panel.add(label);
+			panel.add(load);
+			panel.add(restart);
+			add(panel);
+		}
+		private void closeAndStart() {
+			setVisible(false); //you can't see me!
+			dispose(); 
+			start();
+		}
+	}
 
 }

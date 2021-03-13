@@ -1,8 +1,7 @@
 package item;
 
-
 public enum SeedType implements Texturable {
-	
+	 
 	WHEAT_SEED(Food.WHEAT,ItemConstants.SHORT_GROW_TIME,10),
 	CARROT_SEED(Food.CARROT,ItemConstants.MEDIUM_GROW_TIME,20),
 	POTATO_SEED(Food.POTATO,ItemConstants.MEDIUM_GROW_TIME,20),

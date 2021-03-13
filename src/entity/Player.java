@@ -3,16 +3,18 @@ package entity;
 import java.awt.Rectangle;
 import java.util.Set;
 
+import com.google.gson.annotations.Expose;
+
 import gameMap.Block;
 
 public class Player extends Rectangle implements Entity{
 	
 	private final static Integer SPEED = 5;
-	private Inventory bag;
 	private Direction direction;
 	private boolean facingRight;
 	private boolean isMoving;
 	private double money;
+	private Inventory bag;
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {

@@ -37,8 +37,5 @@ public enum Food implements Texturable{
 	public double getPrice() {
 		return this.price;
 	}
-	
-	public String toString() {
-		return "Food "+this.name+", Price "+this.price;
-	}
+
 }
