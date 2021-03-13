@@ -31,6 +31,7 @@ import javax.swing.SpringLayout;
 
 import engine.Game;
 import gameShop.Shop;
+import item.SeedType;
 
 public class ShopDrawer extends GameDrawer {
 	private static final long serialVersionUID = 5108963132975063659L;
@@ -45,6 +46,8 @@ public class ShopDrawer extends GameDrawer {
 		final int RIGHTB=(int) (screenSize.width*0.08);
 		final int TOPB=(int) (screenSize.height*0.08);
 		final int BOTTOMB=(int) (screenSize.height*0.08);
+		
+		final int countSeed = g.getShop().getSeedItemList().size();
 
 		setLayout(new GridLayout(2,3,HGAP,VGAP));
 		//setBorder(BorderFactory.createEmptyBorder(50,10,50,10)); //padding sullo shopPanel
@@ -67,14 +70,30 @@ public class ShopDrawer extends GameDrawer {
 		
 		/* Pannello buy */
 		JPanel buyPanel = new JPanel();
-		String[] itemString = { "Manzo", "Doggo", "Fieno", "Pig" };
+		
+		String[] itemString = new String[countSeed];
+		int i = 0;
+		for (SeedType seed : g.getShop().getSeedItemList()) {
+			itemString[i++] = seed.getName(); 
+		}
+
 		buyPanel.setBackground(Color.PINK);
 		buyPanel.setLayout(new BoxLayout(buyPanel,BoxLayout.Y_AXIS));
 		buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,BOTTOMB,RIGHTB));
-		buyPanel.add(new JComboBox<Object>(itemString));
+		JComboBox<Object> selectSeed = new JComboBox<>(itemString);
+		buyPanel.add(selectSeed);
 		int startValue=0, minValue=0, maxValue=1000, step=1;
-		buyPanel.add(new JSpinner(new SpinnerNumberModel(startValue,minValue,maxValue,step)));
-		buyPanel.add(new JButton("COMPRAAAAA"));
+		JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue,minValue,maxValue,step));
+		buyPanel.add(quantity);
+		JButton buy = new JButton("COMPRAAAAA");
+		buyPanel.add(buy);
+		
+		buy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()), (Integer) quantity.getValue());
+				//System.out.println(g.getPlayer().getInventory().gotSeeds(SeedType.CHERRY_SEED,10));
+			}
+		});
 		/* Fine Pannello buy */
 
 		/* Pannello sell */

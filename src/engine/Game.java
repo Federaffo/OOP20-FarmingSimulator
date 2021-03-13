@@ -39,7 +39,19 @@ public class Game {
 	public Player getPlayer() {
 		return this.pg;
 	}
-
+	
+	public Shop getShop() {
+		return this.shop;
+	}
+	
+	public void buy(SeedType st, int quantity) {
+		if(pg.getMoney()>=st.getPrice()*quantity) {
+			pg.getInventory().addSeeds(st, quantity);
+			pg.decrease(st.getPrice()*quantity);
+		}
+		
+	}
+	
 	public void sellAll() {
 		double money = shop.sellAll(pg.getInventory().getFood());
 		pg.incrementMoney(money);
@@ -71,6 +83,7 @@ public class Game {
 		}
 
 	}
+	
 
 	public void play() {
 		state = GameState.PLAY;

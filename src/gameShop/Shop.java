@@ -21,6 +21,10 @@ public class Shop {
 			seedItemList.add(st);
 		}
 	}
+	
+	public Set<SeedType> getSeedItemList(){
+		return this.seedItemList;
+	}
 
 	public double sell(Food fd) {
 		return fd.getPrice();
