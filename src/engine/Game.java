@@ -30,6 +30,7 @@ public class Game {
 	
 	public void loop() {
 		pg.move();
+		pg.checkCollision(map.getMapSet());
 	}
 
 	public Map getMap() {

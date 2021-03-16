@@ -86,6 +86,30 @@ public class Player extends Rectangle implements Entity{
 		if(direction.isRight()) super.x += SPEED;
 	}
 	
+	public void checkCollision(Set<Block> map) {
+		for (Block block : map) {
+			Rectangle temp = this.intersection((Rectangle) block);
+			
+			if(temp.width>0 && temp.height>0) {
+				if(!block.isWalkable()) {
+					if(temp.width >= temp.height) {
+						if(this.y < temp.y) {
+							this.y -= temp.height;  
+						}else {
+							this.y += temp.height;  
+						}
+					}else {
+						if(this.x < temp.x) {
+							this.x -= temp.width;  
+						}else {
+							this.x += temp.width;  
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	
 	//return the block the player is standing on
 	public Block blockPosition(Set<Block> array ) {
