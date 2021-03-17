@@ -45,18 +45,20 @@ public class Game {
 		return this.shop;
 	}
 	
-	public void buy(SeedType st, int quantity) {
+	public boolean buy(SeedType st, int quantity) {
 		if(pg.getMoney()>=st.getPrice()*quantity) {
 			pg.getInventory().addSeeds(st, quantity);
 			pg.decrease(st.getPrice()*quantity);
+			return true;
 		}
-		
+		return false;
 	}
 	
-	public void sellAll() {
+	public double sellAll() {
 		double money = shop.sellAll(pg.getInventory().getFood());
 		pg.incrementMoney(money);
 		pg.getInventory().removeAllFood();
+		return money;
 	}
 
 	public GameState getState() {
