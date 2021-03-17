@@ -87,8 +87,13 @@ public class ShopDrawer extends GameDrawer {
 		int startValue=0, minValue=0, maxValue=1000, step=1;
 		JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue,minValue,maxValue,step));
 		buyPanel.add(quantity);
+		
+		JLabel prezzoTot = new JLabel("" + (SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())*((Integer)quantity.getValue()));
+		buyPanel.add(prezzoTot);
+		
 		JButton buy = new JButton("COMPRAAAAA");
 		buyPanel.add(buy);
+		
 		
 		buy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,10 +146,6 @@ public class ShopDrawer extends GameDrawer {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		var g2d = (Graphics2D) g;
-		g2d.setColor(Color.BLUE);
-		// g2d.drawRect(50, 50, 100, 100);
-		super.repaint();
+		
 	}
 }
