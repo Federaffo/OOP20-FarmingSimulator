@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
@@ -28,6 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import engine.Game;
 import gameShop.Shop;
@@ -90,7 +92,12 @@ public class ShopDrawer extends GameDrawer {
 		
 		buy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()), (Integer) quantity.getValue());
+				if(g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()), (Integer) quantity.getValue())) {
+					JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
+				}else {
+					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
+				}
+				
 				//System.out.println(g.getPlayer().getInventory().gotSeeds(SeedType.CHERRY_SEED,10));
 			}
 		});
@@ -101,7 +108,6 @@ public class ShopDrawer extends GameDrawer {
 		sellPanel.setLayout(new BoxLayout(sellPanel,BoxLayout.Y_AXIS));
 		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,BOTTOMB,RIGHTB));
 		sellPanel.setBackground(Color.CYAN);	
-		sellPanel.add(new JButton("SELL"));
 		JButton sellAll = new JButton("SELL ALL");
 		sellPanel.add(sellAll);
 		
@@ -109,7 +115,8 @@ public class ShopDrawer extends GameDrawer {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				g.sellAll();
+				double money = g.sellAll();
+				JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
 			}
 		});
 		
