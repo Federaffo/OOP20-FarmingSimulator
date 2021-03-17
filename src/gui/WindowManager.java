@@ -7,12 +7,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import engine.Game;
+import engine.GameSaver;
 import engine.GameState;
 
 public class WindowManager extends JFrame {
@@ -31,25 +34,26 @@ public class WindowManager extends JFrame {
 		Dimension screenSize = getToolkit().getScreenSize();
 		windowSize = new Dimension((int) (screenSize.width * 0.8), (int) ((screenSize.width * 0.8) * (0.5625)));
 		this.game = game;
-		
+
 		setBounds(0, 0, windowSize.width, windowSize.height);
 		setTitle("Farming Simulator");
 		setLocationRelativeTo(null);
-		//setDefaultCloseOperation(JFrame.);
+
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		addWindowListener(new WindowAdapter() {
-			  public void windowClosing(WindowEvent we) {
-				  JFrame exitWindow = new JFrame();
-				  exitWindow.setVisible(true);
-				  exitWindow.setTitle("Exit");
-				  exitWindow.setBounds(0, 0, windowSize.width, windowSize.height);
-				  exitWindow.setLocationRelativeTo(null);
-				  exitWindow.add(new ExitPanel(game));
-				  exitWindow.pack();
-			    //System.exit(0);
-			  }
-			});
-		
+			public void windowClosing(WindowEvent we) {
+				int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
+				int result = JOptionPane.showConfirmDialog(null, "Would You Like to Save?", "Exit", dialogButton);
+				if (result == JOptionPane.YES_OPTION) {
+					new GameSaver().save(game);
+					System.exit(0);
+				}else if(result == JOptionPane.NO_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+
 		setResizable(false);
 		setVisible(true);
 		createPanel();
@@ -71,15 +75,15 @@ public class WindowManager extends JFrame {
 		mainPanel.setPreferredSize(windowSize);
 
 		infoPanel = new InfoDrawer(game, windowSize);
-		//infoPanel.setBackground(new Color(255,255,255,100));
+		// infoPanel.setBackground(new Color(255,255,255,100));
 		infoPanel.setSize(windowSize);
 		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		infoPanel.setPreferredSize(windowSize);
-		
+
 		quitPanel = new QuitDrawer(game, windowSize);
 		quitPanel.setBackground(Color.black);
 		quitPanel.setSize(windowSize);
-		quitPanel.setBounds(0, 0, windowSize.width, (int)(windowSize.height*0.06));
+		quitPanel.setBounds(0, 0, windowSize.width, (int) (windowSize.height * 0.06));
 		quitPanel.setPreferredSize(windowSize);
 
 		lpanel.setBounds(0, 0, windowSize.width, windowSize.height);
@@ -113,7 +117,7 @@ public class WindowManager extends JFrame {
 	}
 
 	public void showInfo() {
-		//disableAllPanel();
+		// disableAllPanel();
 		infoPanel.setVisible(true);
 		infoPanel.requestFocus();
 		showQuitScreen();
@@ -124,9 +128,9 @@ public class WindowManager extends JFrame {
 		mainPanel.setVisible(true);
 		mainPanel.requestFocus();
 	}
-	
+
 	public void showQuitScreen() {
-		//disableAllPanel();
+		// disableAllPanel();
 		quitPanel.setVisible(true);
 		quitPanel.requestFocus();
 	}

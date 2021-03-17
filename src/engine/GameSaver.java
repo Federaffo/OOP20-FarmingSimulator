@@ -13,12 +13,12 @@ import gameMap.Block;
 import gameMap.FactoryBlock;
 
 public class GameSaver {
-
-	private Game game;
+	private final String dot = ".";
+	private final String fileName = "saves.txt";
 	private Gson gson;
 
 	public GameSaver() {
-		 gson = new GsonBuilder().registerTypeAdapter(Block.class, new InterfaceAdapter()).setPrettyPrinting().create();
+		gson = new GsonBuilder().registerTypeAdapter(Block.class, new InterfaceAdapter()).setPrettyPrinting().create();
 	}
 
 	public void save(Game game) {
@@ -26,32 +26,31 @@ public class GameSaver {
 
 		Game object = gson.fromJson(json, Game.class);
 		System.out.println(json);
-		
-		
-		try (FileWriter writer = new FileWriter("C:\\Users\\feder\\Desktop\\SO\\test.txt")) {
+
+		try (FileWriter writer = new FileWriter(dot + File.separator + fileName)) {
 			gson.toJson(game, writer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println(object.getMap().getBlock(4, 10).getType());
 //		System.out.println(object.getPlayer());
 
 	}
-	
+
 	public Game load() {
 		try {
-			File myObj = new File("C:\\Users\\feder\\Desktop\\SO\\test.txt");
+			File myObj = new File(dot + File.separator + fileName);
 			String json = "";
-		      Scanner myReader = new Scanner(myObj);
-		      while (myReader.hasNextLine()) {
-		         json += myReader.nextLine();
-		      }
-		      myReader.close();
-			
-		      return gson.fromJson(json, Game.class);
-			
-		}catch (Exception e) {
+			Scanner myReader = new Scanner(myObj);
+			while (myReader.hasNextLine()) {
+				json += myReader.nextLine();
+			}
+			myReader.close();
+
+			return gson.fromJson(json, Game.class);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

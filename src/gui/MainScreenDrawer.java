@@ -164,7 +164,9 @@ public class MainScreenDrawer extends GameDrawer {
 					currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
 					label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
 				} else {
-					currSeed = Resources.texture.MONEY;
+					currSeed = Resources.texture.EMPTY;
+					label.setText(Integer.toString(0));
+
 				}
 			}
 
