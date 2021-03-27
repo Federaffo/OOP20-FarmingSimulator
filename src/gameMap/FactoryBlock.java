@@ -22,17 +22,38 @@ public class FactoryBlock {
 
 	public BlockImpl getFieldBlock(int posx, int posy) {
 		return new BlockFieldImpl(BlockType.FIELD, true, true, posx, posy);
-
+	}
+	
+	public BlockImpl getLockedBlock(int posx, int posy) {
+		return new UnlockableBlockImpl(BlockType.LOCKED, true, true, posx, posy);
 	}
 
+	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
+		private boolean locked=true;
+
+		public UnlockableBlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
+			super(bt, isWalkable, isInteractable, posx, posy);
+		}
+
+		@Override
+		public boolean isLocked() {
+			return this.locked;
+		}
+
+		@Override
+		public void unlockBlock() {
+			this.locked=false;
+		}
+		
+	}
+	
 	private class BlockFieldImpl extends BlockImpl implements FieldBlock {
 		private static final long serialVersionUID = 1L;
+		private Optional<Seed> myseed = Optional.empty();
 
 		public BlockFieldImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
 			super(bt, isWalkable, isInteractable, posx, posy);
 		}
-
-		private Optional<Seed> myseed = Optional.empty();
 
 		public void plant(SeedType st) {
 			myseed = Optional.of(new Seed(st));

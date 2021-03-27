@@ -22,7 +22,7 @@ public class Player extends Rectangle implements Entity{
 
 		bag = new Inventory();
 		direction = new Direction();
-		money = 0;
+		money = 100;
 	}
 	
 	//method for setting player direction
