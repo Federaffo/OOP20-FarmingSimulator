@@ -29,6 +29,9 @@ import javax.swing.JTextArea;
 import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 import engine.Game;
@@ -40,112 +43,134 @@ public class ShopDrawer extends GameDrawer {
 	private Game game;
 
 	public ShopDrawer(Game g, Dimension screenSize) {
-		super(g,screenSize);
+		super(g, screenSize);
 		this.game = g;
-		final int HGAP=(int) (screenSize.width*0.005);
-		final int VGAP=(int) (screenSize.height*0.01);
-		final int LEFTB=(int) (screenSize.width*0.08);
-		final int RIGHTB=(int) (screenSize.width*0.08);
-		final int TOPB=(int) (screenSize.height*0.08);
-		final int BOTTOMB=(int) (screenSize.height*0.08);
-		
+		final int HGAP = (int) (screenSize.width * 0.005);
+		final int VGAP = (int) (screenSize.height * 0.01);
+		final int LEFTB = (int) (screenSize.width * 0.08);
+		final int RIGHTB = (int) (screenSize.width * 0.08);
+		final int TOPB = (int) (screenSize.height * 0.08);
+		final int BOTTOMB = (int) (screenSize.height * 0.08);
+
 		final int countSeed = g.getShop().getSeedItemList().size();
 
-		setLayout(new GridLayout(2,3,HGAP,VGAP));
-		//setBorder(BorderFactory.createEmptyBorder(50,10,50,10)); //padding sullo shopPanel
-		
+		setLayout(new GridLayout(2, 3, HGAP, VGAP));
+		// setBorder(BorderFactory.createEmptyBorder(50,10,50,10)); //padding sullo
+		// shopPanel
+
 		/* Pannello Title */
-		JPanel titlePanel=new JPanel();
-		titlePanel.setLayout(new BoxLayout(titlePanel,BoxLayout.Y_AXIS));
+		JPanel titlePanel = new JPanel();
+		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 		JTextArea title = new JTextArea("WELCOME TO THE SHOP!");
 		JTextArea descr = new JTextArea("Qui puoi compare materiali e vendere i tuoi oggetti");
 		title.setEditable(false);
 		descr.setEditable(false);
-		title.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,0,RIGHTB));
-		descr.setBorder(BorderFactory.createEmptyBorder(0,LEFTB,BOTTOMB,RIGHTB));
-		titlePanel.setBackground(new Color(255,0,0,200));
+		title.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, 0, RIGHTB));
+		descr.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
+		titlePanel.setBackground(new Color(255, 0, 0, 200));
 		title.setBackground(titlePanel.getBackground());
 		descr.setBackground(titlePanel.getBackground());
 		titlePanel.add(title);
 		titlePanel.add(descr);
 		/* Fine Pannello Title */
-		
+
 		/* Pannello buy */
+
 		JPanel buyPanel = new JPanel();
-		
+
 		String[] itemString = new String[countSeed];
 		int i = 0;
 		for (SeedType seed : g.getShop().getSeedItemList()) {
-			itemString[i++] = seed.getName(); 
+			itemString[i++] = seed.getName();
 		}
 
 		buyPanel.setBackground(Color.PINK);
-		buyPanel.setLayout(new BoxLayout(buyPanel,BoxLayout.Y_AXIS));
-		buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,BOTTOMB,RIGHTB));
+		buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+		buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+
 		JComboBox<Object> selectSeed = new JComboBox<>(itemString);
 		buyPanel.add(selectSeed);
-		int startValue=0, minValue=0, maxValue=1000, step=1;
-		JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue,minValue,maxValue,step));
+
+		int startValue = 0, minValue = 0, maxValue = 1000, step = 1;
+		JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue, minValue, maxValue, step));
 		buyPanel.add(quantity);
-		
-		JLabel prezzoTot = new JLabel("" + (SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())*((Integer)quantity.getValue()));
+
+		JLabel prezzoTot = new JLabel("" + (SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+				* ((Integer) quantity.getValue()));
 		buyPanel.add(prezzoTot);
-		
+
 		JButton buy = new JButton("COMPRAAAAA");
 		buyPanel.add(buy);
-		
-		
-		buy.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()), (Integer) quantity.getValue())) {
-					JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
-				}else {
-					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
-				}
-				
-				//System.out.println(g.getPlayer().getInventory().gotSeeds(SeedType.CHERRY_SEED,10));
+
+		quantity.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				// TODO Auto-generated method stub
+				prezzoTot.setText(
+						Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+								* ((Integer) quantity.getValue())));
 			}
 		});
+
+		selectSeed.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prezzoTot.setText(
+						Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+								* ((Integer) quantity.getValue())));
+			}
+		});
+
+		buy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()),
+						(Integer) quantity.getValue())) {
+					JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
+				} else {
+					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
+				}
+
+				// System.out.println(g.getPlayer().getInventory().gotSeeds(SeedType.CHERRY_SEED,10));
+			}
+		});
+
 		/* Fine Pannello buy */
 
 		/* Pannello sell */
+
 		JPanel sellPanel = new JPanel();
-		sellPanel.setLayout(new BoxLayout(sellPanel,BoxLayout.Y_AXIS));
-		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB,LEFTB,BOTTOMB,RIGHTB));
-		sellPanel.setBackground(Color.CYAN);	
+		sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
+		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+		sellPanel.setBackground(Color.CYAN);
 		JButton sellAll = new JButton("SELL ALL");
 		sellPanel.add(sellAll);
-		
+
 		sellAll.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				double money = g.sellAll();
 				JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
 			}
 		});
-		
+
 		/* Fine Pannello sell */
-		
+
 		/* Pannello Invetario */
-		JPanel inventPanel=new JPanel();
+
+		JPanel inventPanel = new JPanel();
 		inventPanel.add(new JLabel(""));
 		inventPanel.add(new JLabel("Inventario"));
 		inventPanel.add(new JLabel(""));
 		inventPanel.setBackground(Color.ORANGE);
-		
 
-		
-		/* Fine Pannello Inventario*/
-		
+		/* Fine Pannello Inventario */
+
 		add(titlePanel);
 		add(buyPanel);
 		add(inventPanel);
 		add(sellPanel);
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		
 	}
 }
