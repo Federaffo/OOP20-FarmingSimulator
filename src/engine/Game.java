@@ -74,17 +74,16 @@ public class Game {
 				if(pg.getMoney()>=unlockPrice) {
 					int pay = JOptionPane.showConfirmDialog(null,
 							"Do you want to unlock this block for " + unlockPrice + " money ?", "Purchase Locked Block",
-							JOptionPane.YES_NO_OPTION);
-					
-					
-					pg.decrease(unlockPrice); //decremento i soldi del Player
-					unlockPrice+=50; //aumento il prezzo del prossimo blocco
+							JOptionPane.YES_NO_OPTION);			
 					
 					//dopo aver pagato per lo sbloccaggio del blocco trasformo il blocco da UnlockBlock a FieldBlock
 					if (pay == JOptionPane.YES_OPTION) {
 						((UnlockableBlock) temp).unlockBlock();
 						Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
 						map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
+						
+						pg.decrease(unlockPrice); //decremento i soldi del Player
+						unlockPrice+=50; //aumento il prezzo del prossimo blocco
 					}						
 				}else {
 					JOptionPane.showMessageDialog(null, "You don't have enough money!");
