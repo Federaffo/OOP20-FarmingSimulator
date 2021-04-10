@@ -26,6 +26,7 @@ public class Engine {
 		int result = JOptionPane.showConfirmDialog(null, "Do you want to load the last game?", "Load", JOptionPane.YES_NO_OPTION);
 		if (result == JOptionPane.YES_OPTION) {
 			this.game = new GameSaver().load();
+			this.game.growAllSeed();
 		}else {
 			this.game = new Game();
 		}

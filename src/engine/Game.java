@@ -66,9 +66,9 @@ public class Game {
 	public void interact() {
 
 		Block temp = pg.blockPosition(map.getMapSet());
-		//controllo se il blocco è di tipo UnlockBlock
+		//controllo se il blocco ï¿½ di tipo UnlockBlock
 		if (temp instanceof UnlockableBlock) {
-			//controllo se il blocco è bloccato
+			//controllo se il blocco ï¿½ bloccato
 			if (((UnlockableBlock) temp).isLocked()) {
 				//controllo se il Player ha abbastanza soldi per permettersi di sbloccare il blocco
 				if(pg.getMoney()>=unlockPrice) {
@@ -108,6 +108,17 @@ public class Game {
 		}
 	}
 
+	public void growAllSeed() {
+		for (Block block : map.getMapSet()) {
+			if(block instanceof FieldBlock) {
+				FieldBlock field = (FieldBlock) block;
+				if(!field.isEmpty()) {
+					field.getSeed().Grow();
+				}
+			}
+		}
+	}
+	
 	public void play() {
 		state = GameState.PLAY;
 	}

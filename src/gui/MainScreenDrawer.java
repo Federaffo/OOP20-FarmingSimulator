@@ -130,7 +130,7 @@ public class MainScreenDrawer extends GameDrawer {
 	}
 
 	private void drawPg(Graphics g) {
-
+		int offsetY = 20;
 		animationDelay += 1;
 		animationDelay %= ANIMATION_SPEED;
 		frame = (int) animationDelay / (ANIMATION_SPEED / 2);
@@ -141,7 +141,7 @@ public class MainScreenDrawer extends GameDrawer {
 
 		// g.drawRect(posX, posY, 50 * molt, 50 * molt);
 		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
-		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY, 40, 70, null);
+		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY - (int)(offsetY * resizer), (int) (40 * resizer), (int) (70 * resizer), null);
 	}
 
 	private class PanelHB extends JPanel {
