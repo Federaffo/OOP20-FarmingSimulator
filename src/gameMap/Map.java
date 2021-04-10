@@ -16,12 +16,8 @@ public class Map {
 	private final static Integer ROW = 18;
 	private final static Integer COLUMN = 32;
 	private FactoryBlock factory = new FactoryBlock();
-	private int xDim;
-	private int yDim;
 
 	public Map() {
-		xDim = ROW;
-		yDim = COLUMN;
 		mappa = new Block[COLUMN][ROW];
 
 		int x = 0;
@@ -91,9 +87,9 @@ public class Map {
 	}
 
 	public Pair<Integer, Integer> getBlockPosition(Block b) {
-		for (int i = 0; i < xDim; i++) {
-			for (int j = 0; j < yDim; j++) {
-				if (mappa[i][j] == b)
+		for (int i = 0; i < COLUMN; i++) {
+			for (int j = 0; j < ROW; j++) {
+				if (mappa[i][j].equals(b))
 					return new Pair<>(i, j);
 			}
 		}

@@ -29,7 +29,7 @@ public class FactoryBlock {
 	}
 	
 	public BlockImpl getWaterBlock(int posx, int posy) {
-		return new BlockImpl(BlockType.WATER, true, true, posx, posy);
+		return new BlockImpl(BlockType.WATER, true, false, posx, posy);
 	}
 	
 	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
