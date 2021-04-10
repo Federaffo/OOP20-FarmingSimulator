@@ -52,7 +52,8 @@ public class Resources {
 			textures.put(BlockType.FIELD, ImageIO.read(new File(RES_FOLDER + File.separator + "farmland.png")));
 			textures.put(BlockType.WALL, ImageIO.read(new File(RES_FOLDER + File.separator + "wall.png")));
 			textures.put(BlockType.LOCKED, ImageIO.read(new File(RES_FOLDER + File.separator + "lock3.png")));
-
+			textures.put(BlockType.WATER, ImageIO.read(new File(RES_FOLDER + File.separator + "water.png")));
+			
 			textures.put(texture.LABELHUD, ImageIO.read(new File(RES_FOLDER + File.separator + "labelHUD.png")));
 			textures.put(texture.MONEY, ImageIO.read(new File(RES_FOLDER + File.separator + "moneyIcon.png")));
 			textures.put(texture.SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "pianta.png")));
