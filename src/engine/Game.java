@@ -16,7 +16,7 @@ import item.SeedType;
 
 public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
-	private Map map = new Map(32, 18);
+	private Map map = new Map();
 	private Shop shop = new Shop();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice=50;

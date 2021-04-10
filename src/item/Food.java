@@ -7,10 +7,10 @@ public enum Food implements Texturable{
 	EGG(FoodType.MEET,5,"Egg"),
 	MILK(FoodType.MEET,8,"Milk"),
 	/* ortaggi e verdura */
-	WHEAT(FoodType.VEGETABLE,1,"Wheat"),
-	CARROT(FoodType.VEGETABLE,3,"Carrot"),
-	POTATO(FoodType.VEGETABLE,5,"Potato"),
-	TOMATO(FoodType.VEGETABLE,7,"Tomato"),
+	WHEAT(FoodType.VEGETABLE,5,"Wheat"),
+	CARROT(FoodType.VEGETABLE,10,"Carrot"),
+	POTATO(FoodType.VEGETABLE,22,"Potato"),
+	TOMATO(FoodType.VEGETABLE,40,"Tomato"),
 	/* frutta */
 	APPLE(FoodType.FRUIT,10,"Apple"),
 	ORANGE(FoodType.FRUIT,12,"Orange"),
