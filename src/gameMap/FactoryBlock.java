@@ -6,7 +6,7 @@ import java.util.*;
 import com.google.gson.annotations.Expose;
 
 import entity.Pair;
-import item.Food;
+import item.FoodType;
 import item.Seed;
 import item.SeedType;
 
@@ -63,8 +63,8 @@ public class FactoryBlock {
 			myseed = Optional.of(new Seed(st));
 		}
 
-		public Pair<Food, Integer> harvest() {
-			Food food = myseed.get().Harvest();
+		public Pair<FoodType, Integer> harvest() {
+			FoodType food = myseed.get().Harvest();
 			myseed = Optional.empty();
 			return new Pair<>(food, 3);
 		}

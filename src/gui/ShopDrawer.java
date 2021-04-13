@@ -46,7 +46,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 import engine.Game;
 import gameShop.Shop;
-import item.Food;
+import item.FoodType;
 import item.SeedType;
 import item.Texturable;
 

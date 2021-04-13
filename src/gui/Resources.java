@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 
 import entity.Direction;
 import gameMap.BlockType;
-import item.Food;
+import item.FoodType;
 import item.Texturable;
 import item.SeedType;
 
@@ -40,17 +40,17 @@ public class Resources {
 			textures.put(SeedType.CHERRY_SEED, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
 			
 			//food
-			textures.put(Food.PORK_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato.png")));
-			textures.put(Food.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato.png")));
-			textures.put(Food.APPLE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.ORANGE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.CHERRY, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
+			textures.put(FoodType.PORK_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato.png")));
+			textures.put(FoodType.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato.png")));
+			textures.put(FoodType.APPLE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.ORANGE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.CHERRY, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
 
 			//block
 			textures.put(BlockType.TERRAIN, ImageIO.read(getClass().getResourceAsStream("/grass.png")));
