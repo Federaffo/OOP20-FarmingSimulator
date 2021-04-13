@@ -20,6 +20,7 @@ import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
 import gui.Resources.texture;
+import item.FoodType;
 import item.Seed;
 import item.SeedState;
 import item.SeedType;
@@ -116,8 +117,19 @@ public class MainScreenDrawer extends GameDrawer {
 					if (!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
-							g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-									BLOCK_SIZE, null);
+							if(seed.getSeedType().equals(SeedType.APPLE_SEED)) {
+								g.drawImage(Resources.getTextures(texture.APPLE_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}else if(seed.getSeedType().equals(SeedType.ORANGE_SEED)){
+								g.drawImage(Resources.getTextures(texture.ORANGE_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}else if(seed.getSeedType().equals(SeedType.CHERRY_SEED)){
+								g.drawImage(Resources.getTextures(texture.CHERRY_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}else {
+								g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);								
+							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
 							g.drawImage(Resources.getTextures(seed.getSeedType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
