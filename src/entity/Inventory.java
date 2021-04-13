@@ -128,6 +128,12 @@ public class Inventory {
 		return this.foods;
 	}
 	
+	//restituisce tutti i semi nell'inventario
+	public Map<SeedType, Integer> getSeeds(){
+		return this.seeds;
+	}
+	
+	
 	//rimuove tutto il cibo nell'inventario
 	public void  removeAllFood() {
 		for (var food : foods.keySet()) {
