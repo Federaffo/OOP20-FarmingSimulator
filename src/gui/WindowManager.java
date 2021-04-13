@@ -64,7 +64,7 @@ public class WindowManager extends JFrame {
 		lpanel = new JLayeredPane();
 
 		shopPanel = new ShopDrawer(game, windowSize);
-		shopPanel.setBackground(Color.red);
+		shopPanel.setBackground(shopPanel.getBackground());
 		shopPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		shopPanel.setPreferredSize(windowSize);
 

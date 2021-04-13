@@ -31,7 +31,6 @@ public class Seed {
 
 	public void Grow() {
 		this.state = SeedState.GROWN;
-		timerPlant.cancel();
 	}
 
 	public Food Harvest() {

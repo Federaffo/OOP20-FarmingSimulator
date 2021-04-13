@@ -10,6 +10,7 @@ import gameMap.Block;
 public class Player extends Rectangle implements Entity{
 	
 	private final static Integer SPEED = 5;
+	private final static Integer PLAYER_SIZE = 50;
 	private Direction direction;
 	private boolean facingRight;
 	private boolean isMoving;
@@ -18,7 +19,7 @@ public class Player extends Rectangle implements Entity{
 	
 	//create a new player in the indicated position
 	public Player(Pair<Integer, Integer> position) {
-		super(position.getX(), position.getY(), 50, 50);
+		super(position.getX()*PLAYER_SIZE, position.getY()*PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
 
 		bag = new Inventory();
 		direction = new Direction();

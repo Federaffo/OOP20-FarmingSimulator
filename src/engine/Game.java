@@ -16,7 +16,7 @@ import item.SeedType;
 
 public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
-	private Map map = new Map(32, 18);
+	private Map map = new Map();
 	private Shop shop = new Shop();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50;
@@ -69,6 +69,7 @@ public class Game {
 		// controllo se il blocco è di tipo UnlockBlock
 		if (temp instanceof UnlockableBlock) {
 			// controllo se il blocco è bloccato
+
 			if (((UnlockableBlock) temp).isLocked()) {
 				// controllo se il Player ha abbastanza soldi per permettersi di sbloccare il
 				// blocco
@@ -110,6 +111,17 @@ public class Game {
 		}
 	}
 
+	public void growAllSeed() {
+		for (Block block : map.getMapSet()) {
+			if(block instanceof FieldBlock) {
+				FieldBlock field = (FieldBlock) block;
+				if(!field.isEmpty()) {
+					field.getSeed().Grow();
+				}
+			}
+		}
+	}
+	
 	public void play() {
 		state = GameState.PLAY;
 	}

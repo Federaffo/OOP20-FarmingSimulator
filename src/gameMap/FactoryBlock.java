@@ -27,7 +27,11 @@ public class FactoryBlock {
 	public BlockImpl getLockedBlock(int posx, int posy) {
 		return new UnlockableBlockImpl(BlockType.LOCKED, true, true, posx, posy);
 	}
-
+	
+	public BlockImpl getWaterBlock(int posx, int posy) {
+		return new BlockImpl(BlockType.WATER, true, false, posx, posy);
+	}
+	
 	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
 		private boolean locked=true;
 
