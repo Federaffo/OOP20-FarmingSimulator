@@ -52,6 +52,7 @@ import item.Texturable;
 public class ShopDrawer extends GameDrawer {
 	private static final long serialVersionUID = 5108963132975063659L;
 	private Game game;
+	private JTextArea invTA = new JTextArea();
 
 	public ShopDrawer(Game g, Dimension screenSize) {
 		super(g, screenSize);
@@ -66,30 +67,29 @@ public class ShopDrawer extends GameDrawer {
 		final int countSeed = g.getShop().getSeedItemList().size();
 
 		setLayout(new GridLayout(2, 3, HGAP, VGAP));
-		// setBorder(BorderFactory.createEmptyBorder(50,10,50,10)); //padding sullo
-		// shopPanel
+
 
 		/* Pannello Title */
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBackground(new Color(17, 96, 98));
-		
+
 		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 		JTextArea title = new JTextArea();
 		Font font = new Font("Garamond", Font.BOLD, 50);
-		List<String> titleContent= List.of("Welcome" ,"to" ,"the" ,"Shop!");
-		for(String s : titleContent) {
-			title.append(s+" ");
+		List<String> titleContent = List.of("Welcome", "to", "the", "Shop!");
+		for (String s : titleContent) {
+			title.append(s + " ");
 		}
 		title.setForeground(Color.WHITE);
 		title.setFont(font);
 		title.setLineWrap(true);
 		title.setEditable(false);
-		
+
 		JTextArea descr = new JTextArea();
 		Font font2 = new Font("Segoe Script", Font.BOLD, 20);
-		List<String> descrContent= List.of("Here" ,"you" ,"can" ,"buy", "and" ,"sell", "your", "items");
-		for(String s : descrContent) {
-			descr.append(s+" ");
+		List<String> descrContent = List.of("Here", "you", "can", "buy", "and", "sell", "your", "items");
+		for (String s : descrContent) {
+			descr.append(s + " ");
 		}
 		descr.setForeground(Color.WHITE);
 		descr.setFont(font2);
@@ -100,13 +100,34 @@ public class ShopDrawer extends GameDrawer {
 		title.setBackground(titlePanel.getBackground());
 		descr.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
 		descr.setBackground(titlePanel.getBackground());
-		
+
 		titlePanel.add(title);
 		titlePanel.add(descr);
 		/* Fine Pannello Title */
 
-		/* Pannello buy */
+		
+		/* Pannello Invetario */
+		JPanel inventPanel = new JPanel();
+		Font font3 = new Font("Garamond", Font.BOLD, 30);
+		JLabel titleInv = new JLabel("Inventario");
+		JScrollPane jsp = new JScrollPane(invTA);
 
+		titleInv.setForeground(Color.white);
+		titleInv.setFont(font3);
+		titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+
+		inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
+		inventPanel.add(titleInv);
+		inventPanel.setBackground(new Color(17, 96, 98));
+		
+		jsp.setBackground(new Color(17, 96, 98));
+		jsp.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
+		inventPanel.add(jsp);
+		inventoryUpdate();
+		/* Fine Pannello Inventario */
+
+		
+		/* Pannello buy */
 		JPanel buyPanel = new JPanel();
 		buyPanel.add(Box.createRigidArea(new Dimension(0, 80)));
 		String[] itemString = new String[countSeed];
@@ -162,21 +183,20 @@ public class ShopDrawer extends GameDrawer {
 				} else {
 					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
 				}
-				repaint();
+				inventoryUpdate();
 			}
 		});
-
 		/* Fine Pannello buy */
 
+		
 		/* Pannello sell */
-
 		JPanel sellPanel = new JPanel();
 		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
 		sellPanel.setBackground(new Color(17, 96, 98));
 		JButton sellAll = new JButton("SELL ALL YOUR ITEMS");
 		sellAll.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
-		
-		sellPanel.add(sellAll,BorderLayout.CENTER);
+
+		sellPanel.add(sellAll, BorderLayout.CENTER);
 
 		sellAll.addActionListener(new ActionListener() {
 
@@ -184,41 +204,28 @@ public class ShopDrawer extends GameDrawer {
 			public void actionPerformed(ActionEvent e) {
 				double money = g.sellAll();
 				JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
+				inventoryUpdate();
 			}
 		});
-
 		/* Fine Pannello sell */
-
-		/* Pannello Invetario */
-
-		JPanel inventPanel = new JPanel();
-		Font font3 = new Font("Garamond", Font.BOLD, 30);
-		JLabel titleInv = new JLabel("Inventario");
-		JTextArea invTA = new JTextArea();
-		JScrollPane jsp = new JScrollPane(invTA);
-		
-		titleInv.setForeground(Color.white);
-		titleInv.setFont(font3);
-		titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
-		
-		inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
-		inventPanel.add(titleInv);
-		inventPanel.setBackground(new Color(17, 96, 98));
-
-		for (var f : game.getPlayer().getInventory().getFood().entrySet()) {
-			invTA.append("-> "+f.getKey()+" : "+f.getValue()+"\n");
-			System.out.println(f.getValue());
-		}
-		//for(Food f : game.getPlayer().getInventory().getFood().keySet())
-		
-		jsp.setBackground(new Color(17, 96, 98));
-		jsp.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
-		inventPanel.add(jsp);
-		/* Fine Pannello Inventario */
 
 		add(titlePanel);
 		add(buyPanel);
 		add(inventPanel);
 		add(sellPanel);
+		
+	}
+	private void inventoryUpdate() {
+		invTA.setText("");
+		for (var f : game.getPlayer().getInventory().getFood().entrySet()) {
+			invTA.append("[Food Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+		}
+		for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {
+			invTA.append("[Seed Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+		}
+	}
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		inventoryUpdate();
 	}
 }
