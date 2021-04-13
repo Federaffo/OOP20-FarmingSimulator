@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.TextArea;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -52,7 +53,8 @@ import item.Texturable;
 public class ShopDrawer extends GameDrawer {
 	private static final long serialVersionUID = 5108963132975063659L;
 	private Game game;
-	private JTextArea invTA = new JTextArea();
+	private JTextArea invTAfood = new JTextArea();
+	private JTextArea invTAseed = new JTextArea();
 
 	public ShopDrawer(Game g, Dimension screenSize) {
 		super(g, screenSize);
@@ -108,21 +110,29 @@ public class ShopDrawer extends GameDrawer {
 		
 		/* Pannello Invetario */
 		JPanel inventPanel = new JPanel();
-		Font font3 = new Font("Garamond", Font.BOLD, 30);
+		JPanel scrollPanel = new JPanel();
+		Font font3 = new Font("Garamond", Font.BOLD, 40);
 		JLabel titleInv = new JLabel("Inventario");
-		JScrollPane jsp = new JScrollPane(invTA);
-
+		JScrollPane jspF = new JScrollPane(invTAfood);
+		JScrollPane jspS = new JScrollPane(invTAseed);
+		
 		titleInv.setForeground(Color.white);
 		titleInv.setFont(font3);
-		titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+		titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB/2, RIGHTB));
 
 		inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
+		scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
 		inventPanel.add(titleInv);
 		inventPanel.setBackground(new Color(17, 96, 98));
 		
-		jsp.setBackground(new Color(17, 96, 98));
-		jsp.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
-		inventPanel.add(jsp);
+		scrollPanel.add(jspF);
+		scrollPanel.add(jspS);
+		jspF.setBackground(new Color(17, 96, 98));
+		jspF.setBorder(BorderFactory.createEmptyBorder(0, LEFTB/4, BOTTOMB/2, RIGHTB/4));
+		jspS.setBackground(new Color(17, 96, 98));
+		jspS.setBorder(BorderFactory.createEmptyBorder(0, LEFTB/4, BOTTOMB/2, RIGHTB/4));
+		inventPanel.add(scrollPanel);
+		inventPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		inventoryUpdate();
 		/* Fine Pannello Inventario */
 
@@ -216,12 +226,13 @@ public class ShopDrawer extends GameDrawer {
 		
 	}
 	private void inventoryUpdate() {
-		invTA.setText("");
+		invTAfood.setText("");
+		invTAseed.setText("");
 		for (var f : game.getPlayer().getInventory().getFood().entrySet()) {
-			invTA.append("[Food Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+			invTAfood.append("[Food Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
 		}
 		for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {
-			invTA.append("[Seed Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+			invTAseed.append("[Seed Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
 		}
 	}
 	public void paintComponent(Graphics g) {
