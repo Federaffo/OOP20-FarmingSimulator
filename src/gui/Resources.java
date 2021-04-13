@@ -1,8 +1,11 @@
 package gui;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +21,6 @@ import item.Texturable;
 import item.SeedType;
 
 public class Resources {
-
 	private static final String RES_FOLDER = "res";
 
 	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
@@ -28,6 +30,9 @@ public class Resources {
 
 	public void load() {
 		try {
+			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+
+			//textures.put(Food.PORK_MEET, new BufferedReader(new InputStreamReader("carrot.png")));
 			textures.put(Food.PORK_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 			textures.put(Food.COW_MEET, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 			textures.put(Food.EGG, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
@@ -41,7 +46,7 @@ public class Resources {
 			textures.put(Food.WHEAT, ImageIO.read(new File(RES_FOLDER + File.separator + "weat.png")));
 
 			textures.put(SeedType.WHEAT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "weat.png")));
-			textures.put(SeedType.CARROT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
+			//textures.put(SeedType.CARROT_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "carrot.png")));
 			textures.put(SeedType.POTATO_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "potato.png")));
 			textures.put(SeedType.TOMATO_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "tomato.png")));
 			textures.put(SeedType.APPLE_SEED, ImageIO.read(new File(RES_FOLDER + File.separator + "stop.png")));
