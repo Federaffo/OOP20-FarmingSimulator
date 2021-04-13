@@ -1,17 +1,17 @@
 package gameMap;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import com.google.gson.annotations.Expose;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import entity.Pair;
 
 public class Map {
+	private final static String MAP_PATH ="/map/map.txt";
+	
 	private Block[][] mappa;
 	private final static Integer ROW = 18;
 	private final static Integer COLUMN = 32;
@@ -23,46 +23,43 @@ public class Map {
 		int x = 0;
 		int y = 0;
 
-		try {
-			File mapFile = new File("res/map/map.txt");
-			Scanner myReader = new Scanner(mapFile);
-			while (myReader.hasNextLine()) {
-				String data = myReader.nextLine();
+		InputStream in = getClass().getResourceAsStream(MAP_PATH); 
+		BufferedReader mapFile = new BufferedReader(new InputStreamReader(in));
 
-				String[] rowNumbers = data.split(" ");
-				for (String number : rowNumbers) {
-					Integer num = Integer.parseInt(number);
+		Scanner myReader = new Scanner(mapFile);
+		while (myReader.hasNextLine()) {
+			String data = myReader.nextLine();
 
-					switch (num) {
-					case 0:
-						mappa[x][y] = factory.getObstacleBlock(x, y);
-						break;
-					case 1:
-						mappa[x][y] = factory.getTerrainBlock(x, y);
-						break;
-					case 2:
-						mappa[x][y] = factory.getFieldBlock(x, y);
-						break;
-					case 3:
-						mappa[x][y] = factory.getLockedBlock(x, y);
-						break;
-					case 4:
-						mappa[x][y] = factory.getWaterBlock(x, y);
-						break;
+			String[] rowNumbers = data.split(" ");
+			for (String number : rowNumbers) {
+				Integer num = Integer.parseInt(number);
 
-					default:
-						break;
-					}
-					x++;
+				switch (num) {
+				case 0:
+					mappa[x][y] = factory.getObstacleBlock(x, y);
+					break;
+				case 1:
+					mappa[x][y] = factory.getTerrainBlock(x, y);
+					break;
+				case 2:
+					mappa[x][y] = factory.getFieldBlock(x, y);
+					break;
+				case 3:
+					mappa[x][y] = factory.getLockedBlock(x, y);
+					break;
+				case 4:
+					mappa[x][y] = factory.getWaterBlock(x, y);
+					break;
+
+				default:
+					break;
 				}
-				y++;
-				x = 0;
+				x++;
 			}
-			myReader.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("file map error");
-			e.printStackTrace();
+			y++;
+			x = 0;
 		}
+		myReader.close();
 	}
 
 	// return block in the position indicated
