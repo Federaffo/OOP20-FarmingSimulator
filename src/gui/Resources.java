@@ -55,7 +55,7 @@ public class Resources {
 			
 			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
 			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream("/tree.png")));
-			textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+			//textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
 
 			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream("/moneyIcon.png")));
 			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream("/pianta.png")));
