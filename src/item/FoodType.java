@@ -13,8 +13,8 @@ public enum FoodType implements Texturable,Items{
 	TOMATO(40,"Tomato"),
 	/* frutta */
 	APPLE(10,"Apple"),
-	ORANGE(12,"Orange"),
-	CHERRY(15,"Cherry");
+	ORANGE(50,"Orange"),
+	CHERRY(100,"Cherry");
 
 	private final double price;
 	private final String name;

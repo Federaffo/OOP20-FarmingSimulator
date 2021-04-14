@@ -48,6 +48,11 @@ public class FactoryBlock {
 		public void unlockBlock() {
 			this.locked=false;
 		}
+
+		@Override
+		public void lockBlock() {
+			this.locked=true;
+		}
 		
 	}
 	
