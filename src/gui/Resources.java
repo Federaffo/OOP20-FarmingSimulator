@@ -60,7 +60,8 @@ public class Resources {
 			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream("/water.png")));
 
 			
-			textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+			//textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
 			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream("/moneyIcon.png")));
 			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream("/pianta.png")));
 			textures.put(texture.TIME, ImageIO.read(getClass().getResourceAsStream("/timeIcon.png")));
@@ -141,7 +142,7 @@ public class Resources {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
 
-		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY;
+		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK;
 
 	}
 
