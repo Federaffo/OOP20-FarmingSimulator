@@ -38,6 +38,11 @@ public class GameSaver {
 
 	}
 
+	public boolean isSavingPresent() {
+		return new File(dot + File.separator + fileName).exists();
+	}
+	
+	
 	public Game load() {
 		try {
 			File myObj = new File(dot + File.separator + fileName);
@@ -56,7 +61,7 @@ public class GameSaver {
 		}
 	}
 
-	public class InterfaceAdapter<T> implements JsonDeserializer<T>, JsonSerializer<T> {
+	private class InterfaceAdapter<T> implements JsonDeserializer<T>, JsonSerializer<T> {
 
 		private static final String CLASSNAME = "CLASSNAME";
 		private static final String DATA = "DATA";
@@ -88,4 +93,5 @@ public class GameSaver {
 		}
 
 	}
+
 }
