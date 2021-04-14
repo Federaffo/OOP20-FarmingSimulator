@@ -1,17 +1,10 @@
 package gui;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 
 import entity.Direction;
@@ -31,25 +24,25 @@ public class Resources {
 	public void load() {
 		try {
 			//seed
-			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
 			textures.put(SeedType.WHEAT_SEED, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
-			textures.put(SeedType.POTATO_SEED, ImageIO.read(getClass().getResourceAsStream("/potato.png")));
-			textures.put(SeedType.TOMATO_SEED, ImageIO.read(getClass().getResourceAsStream("/tomato.png")));
-			textures.put(SeedType.APPLE_SEED, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
-			textures.put(SeedType.ORANGE_SEED, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
-			textures.put(SeedType.CHERRY_SEED, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
+			textures.put(SeedType.POTATO_SEED, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
+			textures.put(SeedType.TOMATO_SEED, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
+			textures.put(SeedType.ORANGE_SEED, ImageIO.read(getClass().getResourceAsStream("/orange.png")));
+			textures.put(SeedType.CHERRY_SEED, ImageIO.read(getClass().getResourceAsStream("/cherry.png")));
+			textures.put(SeedType.APPLE_SEED, ImageIO.read(getClass().getResourceAsStream("/apple.png")));
 			
 			//food
 			textures.put(Food.PORK_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
 			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
 			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
 			textures.put(Food.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato.png")));
-			textures.put(Food.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato.png")));
-			textures.put(Food.APPLE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.ORANGE, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.CHERRY, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(Food.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
+			textures.put(Food.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
+			textures.put(Food.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
+			textures.put(Food.APPLE, ImageIO.read(getClass().getResourceAsStream("/appletree.png")));
+			textures.put(Food.ORANGE, ImageIO.read(getClass().getResourceAsStream("/orangetree.png")));
+			textures.put(Food.CHERRY, ImageIO.read(getClass().getResourceAsStream("/cherrytree.png")));
 			textures.put(Food.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
 
 			//block
@@ -60,7 +53,10 @@ public class Resources {
 			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream("/water.png")));
 
 			
-			textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
+			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream("/tree.png")));
+			//textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+
 			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream("/moneyIcon.png")));
 			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream("/pianta.png")));
 			textures.put(texture.TIME, ImageIO.read(getClass().getResourceAsStream("/timeIcon.png")));
@@ -126,22 +122,12 @@ public class Resources {
 		return Resources.textures.get(item);
 	}
 
-//	public  <X> BufferedImage getSeedTextures(X x) {
-//		if (x instanceof SeedType) {
-//			SeedType new_name = (SeedType) x;
-//			
-//		}
-//	}
-
-//	public static BufferedImage getAtIndx(int indx) {
-//		return textures.get(indx);
-//	}
 
 	public static enum texture implements Texturable {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
 
-		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY;
+		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK, TREE;
 
 	}
 

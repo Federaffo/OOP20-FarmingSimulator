@@ -1,15 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
-import gui.JPanelHUD;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +29,8 @@ public class MainScreenDrawer extends GameDrawer {
 	private int BLOCK_SIZE;
 	private double resizer;
 	private Resources res = new Resources();
+	private Game gameInstance;
+	private int unlockPrice = 50;
 
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
@@ -41,15 +38,16 @@ public class MainScreenDrawer extends GameDrawer {
 		this.resizer = screenSize.getWidth() / (BASE_SIZE * 32);
 		GenerateHUD(game, screenSize);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
+		this.gameInstance = game;
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-
 		super.paintComponent(g);
 		drawMap(g);
 		drawPg(g);
 		setIcon();
+		revalidate();
 		repaint();
 	}
 
@@ -59,14 +57,13 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void GenerateHUD(Game g, Dimension screenSize) {
 		final int iconScaleDim = (int) (screenSize.width * 0.02);
-		
-		JPanel panelHUD = new JPanel() ;
-		JPanel panelHB=new JPanel();
-		JPanel tmpHUD=new JPanel();
-		JPanel tmpHB=new JPanel();
+
+		JPanel panelHUD = new JPanel();
+		JPanel panelHB = new JPanel();
+		JPanel tmpHUD = new JPanel();
+		JPanel tmpHB = new JPanel();
 
 		panelHUD.setOpaque(false);
-
 
 		/* Panel Money */
 		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "0", g);
@@ -80,19 +77,24 @@ public class MainScreenDrawer extends GameDrawer {
 		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info");
 		/* fine panel info */
 		
+		/* Panel UnlockPrice */
+		JPanel unlockPanel =new JPanelHUD(iconScaleDim, texture.LOCK,true,"0",g);
+		/* fine panel price*/
+
 		/* Add HUD compoments to a temporary Panel */
-		tmpHUD.add(moneyPanel);			//serve cos� possiamo 
-		tmpHUD.add(timePanel);			//settare l'opacit�
-		tmpHUD.add(infoPanel);			//e il colore su questo panel
+		tmpHUD.add(moneyPanel); // serve cos� possiamo
+		tmpHUD.add(unlockPanel);
+		tmpHUD.add(timePanel); // settare l'opacit�
+		tmpHUD.add(infoPanel); // e il colore su questo panel
 		tmpHUD.setOpaque(true);
-		tmpHUD.setBackground(new Color(204, 136, 0,180));
+		tmpHUD.setBackground(new Color(204, 136, 0, 180));
 		panelHUD.add(tmpHUD);
 		panelHUD.setVisible(true);
-		 
+
 		/* add HotBar components to a temporary Panel */
-		tmpHB.add(new PanelHB());
+		tmpHB.add(new JPanelHB());
 		tmpHB.setOpaque(true);
-		tmpHB.setBackground(new Color(255,200,200,180));
+		tmpHB.setBackground(new Color(255, 200, 200, 180));
 		panelHB.add(tmpHB);
 		panelHB.setOpaque(false);
 
@@ -116,15 +118,35 @@ public class MainScreenDrawer extends GameDrawer {
 					if (!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
-							g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-									BLOCK_SIZE, null);
+							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
+								g.drawImage(Resources.getTextures(texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}else {
+								g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(Resources.getTextures(seed.getSeedType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
 
 				}
+//				else {
+//					if (block.getType() == BlockType.LOCKED && !((UnlockableBlock) block).isLocked()) {
+//						if (gameInstance.getPlayer().getMoney() >= unlockPrice) {				
+//							JOptionPane.showMessageDialog(null,
+//									"You have just unlocked this block for " + unlockPrice + " money");
+//							Pair<Integer, Integer> blockPos = gameInstance.getMap().getBlockPosition(block);
+//							gameInstance.getMap().setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
+//							unlockPrice += 50;
+//						} else {
+//							JOptionPane.showMessageDialog(null, "You don't have enough money!");
+//							((UnlockableBlock) block).lockBlock();
+//						}
+//
+//					}
+//				}
 			}
 		}
 	}
@@ -141,13 +163,15 @@ public class MainScreenDrawer extends GameDrawer {
 
 		// g.drawRect(posX, posY, 50 * molt, 50 * molt);
 		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
-		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY - (int)(offsetY * resizer), (int) (40 * resizer), (int) (70 * resizer), null);
+		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY - (int) (offsetY * resizer), (int) (40 * resizer),
+				(int) (70 * resizer), null);
 	}
 
-	private class PanelHB extends JPanel {
+
+	private class JPanelHB extends JPanel {
 		private JLabel label = new JLabel();
 
-		public PanelHB() {
+		public JPanelHB() {
 			add(label, new BorderLayout().SOUTH);
 		}
 

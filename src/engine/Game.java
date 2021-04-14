@@ -19,7 +19,7 @@ public class Game {
 	private Map map = new Map();
 	private Shop shop = new Shop();
 	private GameState state = GameState.PLAY;
-	private double unlockPrice = 50;
+	private double unlockPrice = 50.0;
 
 	public void loadGame(Map map, Player player) {
 		this.pg = player;
@@ -67,32 +67,8 @@ public class Game {
 
 		Block temp = pg.blockPosition(map.getMapSet());
 		// controllo se il blocco è di tipo UnlockBlock
-		if (temp instanceof UnlockableBlock) {
-			// controllo se il blocco è bloccato
-
-			if (((UnlockableBlock) temp).isLocked()) {
-				// controllo se il Player ha abbastanza soldi per permettersi di sbloccare il
-				// blocco
-				int pay = JOptionPane.showConfirmDialog(null,
-						"Do you want to unlock this block for " + unlockPrice + " money ?", "Purchase Locked Block",
-						JOptionPane.YES_NO_OPTION);
-
-				// dopo aver pagato per lo sbloccaggio del blocco trasformo il blocco da
-				// UnlockBlock a FieldBlock
-				if (pay == JOptionPane.YES_OPTION) {
-					if (pg.getMoney() >= unlockPrice) {
-						((UnlockableBlock) temp).unlockBlock();
-						Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
-						map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
-
-						pg.decrease(unlockPrice); // decremento i soldi del Player
-						unlockPrice += 50; // aumento il prezzo del prossimo blocco
-					} else {
-						JOptionPane.showMessageDialog(null, "You don't have enough money!");
-					}
-				}
-			}
-		} else {
+		if (!(temp instanceof UnlockableBlock)) {		
+			
 			if (temp.getType() == BlockType.FIELD) {
 				FieldBlock myBlock = (FieldBlock) temp;
 				if (myBlock.isEmpty()) {
@@ -108,20 +84,30 @@ public class Game {
 					}
 				}
 			}
+		}else if(pg.getMoney()>=unlockPrice){	
+			((UnlockableBlock) temp).unlockBlock();	
+			Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
+			map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
+			pg.decrease(unlockPrice); // decremento i soldi del Player
+			unlockPrice += 25; // aumento il prezzo del prossimo blocco
 		}
+	}
+	
+	public double getUnlockPrice() {
+		return this.unlockPrice;
 	}
 
 	public void growAllSeed() {
 		for (Block block : map.getMapSet()) {
-			if(block instanceof FieldBlock) {
+			if (block instanceof FieldBlock) {
 				FieldBlock field = (FieldBlock) block;
-				if(!field.isEmpty()) {
+				if (!field.isEmpty()) {
 					field.getSeed().Grow();
 				}
 			}
 		}
 	}
-	
+
 	public void play() {
 		state = GameState.PLAY;
 	}

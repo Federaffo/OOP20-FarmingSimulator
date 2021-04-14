@@ -74,6 +74,8 @@ public class JPanelHUD extends JPanel {
 			String tmp=(new SimpleDateFormat("mm:ss")).format(new Date(elapsedTimeMillis));
 			myLabel.setText(tmp);
 
+		}else if(txt==texture.LOCK) {
+			myLabel.setText(Double.toString(game.getUnlockPrice()));
 		}
 	}
 }
