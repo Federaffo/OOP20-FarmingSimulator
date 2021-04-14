@@ -1,28 +1,19 @@
 package gui;
 
 import java.awt.BorderLayout;
-import gui.JPanelHUD;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import engine.Game;
 import entity.Direction;
-import entity.Pair;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
-import gameMap.Map;
-import gameMap.UnlockableBlock;
 import gui.Resources.texture;
 import item.Seed;
 import item.SeedState;
@@ -127,10 +118,15 @@ public class MainScreenDrawer extends GameDrawer {
 					if (!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
-							g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
-									BLOCK_SIZE, null);
+							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
+								g.drawImage(Resources.getTextures(texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}else {
+								g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+										BLOCK_SIZE, null);
+							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(Resources.getTextures(seed.getSeedType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
