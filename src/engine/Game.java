@@ -89,7 +89,7 @@ public class Game {
 			Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
 			map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
 			pg.decrease(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 50; // aumento il prezzo del prossimo blocco
+			unlockPrice += 25; // aumento il prezzo del prossimo blocco
 		}
 	}
 	
