@@ -46,8 +46,8 @@ public class Seed {
 		return this.growTime;
 	}
 
-	public String getFoodType() {
-		return this.ofWhichFood.getName();
+	public Food getFoodType() {
+		return this.ofWhichFood;
 	}
 
 	public SeedType getSeedType() {

@@ -117,21 +117,15 @@ public class MainScreenDrawer extends GameDrawer {
 					if (!fieldBlock.isEmpty()) {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
-							if(seed.getSeedType().equals(SeedType.APPLE_SEED)) {
-								g.drawImage(Resources.getTextures(texture.APPLE_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
-										BLOCK_SIZE, null);
-							}else if(seed.getSeedType().equals(SeedType.ORANGE_SEED)){
-								g.drawImage(Resources.getTextures(texture.ORANGE_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
-										BLOCK_SIZE, null);
-							}else if(seed.getSeedType().equals(SeedType.CHERRY_SEED)){
-								g.drawImage(Resources.getTextures(texture.CHERRY_TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
+								g.drawImage(Resources.getTextures(texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
 										BLOCK_SIZE, null);
 							}else {
 								g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
-										BLOCK_SIZE, null);								
+										BLOCK_SIZE, null);
 							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(Resources.getTextures(seed.getSeedType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
