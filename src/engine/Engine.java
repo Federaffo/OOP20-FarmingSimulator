@@ -25,7 +25,7 @@ public class Engine implements Observer<Boolean> {
 			this.game = gameSaver.load();
 			this.game.growAllSeed();
 		} else {
-			this.game = new Game();
+			this.game = new GameImpl();
 		}
 		this.start();
 	}
