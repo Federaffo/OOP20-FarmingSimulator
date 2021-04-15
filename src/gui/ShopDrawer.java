@@ -27,8 +27,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import engine.Game;
 import item.SeedType;
+import utils.Observer;
 
-public class ShopDrawer extends GameDrawer {
+public class ShopDrawer extends GameDrawer{
 	private static final long serialVersionUID = 5108963132975063659L;
 	private Game game;
 	private JTextArea invTAfood = new JTextArea();
@@ -45,9 +46,18 @@ public class ShopDrawer extends GameDrawer {
 		final int BOTTOMB = (int) (screenSize.height * 0.08);
 		final Color sfondo = new Color(17, 96, 98);
 		final int countSeed = g.getShop().getSeedItemList().size();
+		
+		final ObservableShopGUI obsShop= new ObservableShopGUI();
+		final Observer sellButton= new ObserverShop();
+		final Observer cmbox= new ObserverShop();
+		final Observer buyButton= new ObserverShop();
+		final Observer spinnerButton= new ObserverShop();
+		obsShop.addObserver(sellButton);
+		obsShop.addObserver(cmbox);
+		obsShop.addObserver(buyButton);
+		obsShop.addObserver(spinnerButton);	
 
 		setLayout(new GridLayout(2, 3, HGAP, VGAP));
-
 
 		/* Pannello Title */
 		JPanel titlePanel = new JPanel();
@@ -153,6 +163,7 @@ public class ShopDrawer extends GameDrawer {
 				prezzoTot.setText("TOT: "
 						+ Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
 								* ((Integer) quantity.getValue())));
+				obsShop.notifyObserver(true);
 			}
 		});
 		selectSeed.addActionListener(new ActionListener() {
@@ -161,6 +172,7 @@ public class ShopDrawer extends GameDrawer {
 				prezzoTot.setText("TOT: "
 						+ Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
 								* ((Integer) quantity.getValue())));
+				obsShop.notifyObserver(true);
 			}
 		});
 		buy.addActionListener(new ActionListener() {
@@ -171,7 +183,7 @@ public class ShopDrawer extends GameDrawer {
 				} else {
 					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
 				}
-				inventoryUpdate();
+				obsShop.notifyObserver(true);
 			}
 		});
 		/* Fine Pannello buy */
@@ -192,7 +204,7 @@ public class ShopDrawer extends GameDrawer {
 			public void actionPerformed(ActionEvent e) {
 				double money = g.sellAll();
 				JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
-				inventoryUpdate();
+				obsShop.notifyObserver(true);
 			}
 		});
 		/* Fine Pannello sell */
@@ -213,8 +225,18 @@ public class ShopDrawer extends GameDrawer {
 			invTAseed.append("[Seed]-> " + f.getKey() + "\t|  [Quantity]-> " + f.getValue() + "\n");
 		}
 	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		inventoryUpdate();
+	}	
+	
+	public class ObserverShop implements Observer<Boolean>{
+		@Override
+		public void update(Boolean notify) {
+			inventoryUpdate();
+			repaint();
+			revalidate();
+		}
 	}
 }
