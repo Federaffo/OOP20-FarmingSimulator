@@ -11,6 +11,7 @@ import com.google.gson.*;
 import entity.Player;
 import gameMap.Block;
 import gameMap.FactoryBlock;
+import gameShop.Shop;
 
 public class GameSaver {
 	private final String dot = ".";
@@ -18,23 +19,19 @@ public class GameSaver {
 	private Gson gson;
 
 	public GameSaver() {
-		gson = new GsonBuilder().registerTypeAdapter(Block.class, new InterfaceAdapter()).setPrettyPrinting().create();
+		InterfaceAdapter sus = new InterfaceAdapter();
+
+		gson = new GsonBuilder().registerTypeAdapter(Block.class, sus).registerTypeAdapter(Game.class, sus).registerTypeAdapter(Shop.class, sus).setPrettyPrinting().create();
 	}
 
 	public void save(Game game) {
 		String json = gson.toJson(game);
-
-		Game object = gson.fromJson(json, Game.class);
-		System.out.println(json);
 
 		try (FileWriter writer = new FileWriter(dot + File.separator + fileName)) {
 			gson.toJson(game, writer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println(object.getMap().getBlock(4, 10).getType());
-//		System.out.println(object.getPlayer());
 
 	}
 
@@ -43,7 +40,7 @@ public class GameSaver {
 	}
 	
 	
-	public Game load() {
+	public GameImpl load() {
 		try {
 			File myObj = new File(dot + File.separator + fileName);
 			String json = "";
@@ -53,7 +50,7 @@ public class GameSaver {
 			}
 			myReader.close();
 
-			return gson.fromJson(json, Game.class);
+			return gson.fromJson(json, GameImpl.class);
 
 		} catch (Exception e) {
 			e.printStackTrace();
