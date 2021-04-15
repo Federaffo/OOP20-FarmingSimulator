@@ -11,6 +11,7 @@ import gameMap.FieldBlock;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;
+import gameShop.ShopImpl;
 import item.FoodType;
 import item.SeedState;
 import item.SeedType;
@@ -18,7 +19,7 @@ import item.SeedType;
 public class GameImpl implements Game{
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
-	private Shop shop = new Shop();
+	private Shop shop = new ShopImpl();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
 
