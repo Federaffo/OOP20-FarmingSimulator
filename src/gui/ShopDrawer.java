@@ -43,7 +43,7 @@ public class ShopDrawer extends GameDrawer {
 		final int RIGHTB = (int) (screenSize.width * 0.08);
 		final int TOPB = (int) (screenSize.height * 0.08);
 		final int BOTTOMB = (int) (screenSize.height * 0.08);
-
+		final Color sfondo = new Color(17, 96, 98);
 		final int countSeed = g.getShop().getSeedItemList().size();
 
 		setLayout(new GridLayout(2, 3, HGAP, VGAP));
@@ -51,7 +51,7 @@ public class ShopDrawer extends GameDrawer {
 
 		/* Pannello Title */
 		JPanel titlePanel = new JPanel();
-		titlePanel.setBackground(new Color(17, 96, 98));
+		titlePanel.setBackground(sfondo);
 
 		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 		JTextArea title = new JTextArea();
@@ -101,13 +101,13 @@ public class ShopDrawer extends GameDrawer {
 		inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
 		scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
 		inventPanel.add(titleInv);
-		inventPanel.setBackground(new Color(17, 96, 98));
+		inventPanel.setBackground(sfondo);
 		
 		scrollPanel.add(jspF);
 		scrollPanel.add(jspS);
-		jspF.setBackground(new Color(17, 96, 98));
+		jspF.setBackground(sfondo);
 		jspF.setBorder(BorderFactory.createEmptyBorder(0, LEFTB/4, BOTTOMB/2, RIGHTB/4));
-		jspS.setBackground(new Color(17, 96, 98));
+		jspS.setBackground(sfondo);
 		jspS.setBorder(BorderFactory.createEmptyBorder(0, LEFTB/4, BOTTOMB/2, RIGHTB/4));
 		inventPanel.add(scrollPanel);
 		inventPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -124,7 +124,7 @@ public class ShopDrawer extends GameDrawer {
 			itemString[i++] = seed.getName();
 		}
 
-		buyPanel.setBackground(new Color(17, 96, 98));
+		buyPanel.setBackground(sfondo);
 		buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.PAGE_AXIS));
 		buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
 
@@ -180,7 +180,7 @@ public class ShopDrawer extends GameDrawer {
 		/* Pannello sell */
 		JPanel sellPanel = new JPanel();
 		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
-		sellPanel.setBackground(new Color(17, 96, 98));
+		sellPanel.setBackground(sfondo);
 		JButton sellAll = new JButton("SELL ALL YOUR ITEMS");
 		sellAll.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
 
@@ -207,10 +207,10 @@ public class ShopDrawer extends GameDrawer {
 		invTAfood.setText("");
 		invTAseed.setText("");
 		for (var f : game.getPlayer().getInventory().getFood().entrySet()) {
-			invTAfood.append("[Food Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+			invTAfood.append("[Food]-> " + f.getKey() + "\t|  [Quantity]-> " + f.getValue() + "\n");
 		}
 		for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {
-			invTAseed.append("[Seed Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
+			invTAseed.append("[Seed]-> " + f.getKey() + "\t|  [Quantity]-> " + f.getValue() + "\n");
 		}
 	}
 	public void paintComponent(Graphics g) {
