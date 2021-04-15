@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 import utils.Observable;
 import utils.Observer;
 
-public class GamePreloader implements Observable {
+public class GamePreloader implements Observable<Boolean> {
 	public Observer obs;
 
 	@Override
-	public void notifyObserver(boolean loadLastGame) {
+	public void notifyObserver(Boolean loadLastGame) {
 		this.obs.update(loadLastGame);
 	}
 

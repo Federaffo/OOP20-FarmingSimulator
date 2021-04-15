@@ -1,8 +1,8 @@
 package utils;
 
-public interface Observable {
+public interface Observable <X> {
 
-	void notifyObserver(boolean loadLastGame);
+	void notifyObserver(X notify);
 	void addObserver(Observer obs);
 	
 }

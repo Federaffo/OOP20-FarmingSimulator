@@ -8,8 +8,9 @@ import gui.GamePreloader;
 import gui.MusicPlayer;
 import gui.WindowManager;
 import item.SeedType;
+import utils.Observer;
 
-public class Engine implements utils.Observer {
+public class Engine implements Observer<Boolean> {
 
 	private MusicPlayer player;
 	private WindowManager window;
@@ -18,7 +19,7 @@ public class Engine implements utils.Observer {
 	private GameState gameState = GameState.PLAY;
 
 	@Override
-	public void update(boolean loadLastGame) {
+	public void update(Boolean loadLastGame) {
 		GameSaver gameSaver = new GameSaver();
 		if(gameSaver.isSavingPresent() && loadLastGame) {
 			this.game = gameSaver.load();

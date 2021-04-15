@@ -1,6 +1,6 @@
 package utils;
 
-public interface Observer {
+public interface Observer <X>{
 	
-	void update(boolean loadLastGame);
+	void update(X notify);
 }
