@@ -1,8 +1,5 @@
 package engine;
 
-import javax.swing.JOptionPane;
-
-import entity.Entity;
 import entity.Pair;
 import entity.Player;
 import gameMap.Block;
@@ -11,6 +8,7 @@ import gameMap.FieldBlock;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;
+import gameShop.ShopImpl;
 import item.FoodType;
 import item.SeedState;
 import item.SeedType;
@@ -18,9 +16,9 @@ import item.SeedType;
 public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
-	private Shop shop = new Shop();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
+	private Shop shop= new ShopImpl();
 
 	public void loadGame(Map map, Player player) {
 		this.pg = player;
@@ -40,8 +38,8 @@ public class Game {
 		return this.pg;
 	}
 
-	public Shop getShop() {
-		return this.shop;
+	public ShopImpl getShop() {
+		return (ShopImpl) this.shop;
 	}
 
 	public boolean buy(SeedType st, int quantity) {
@@ -55,7 +53,7 @@ public class Game {
 	}
 
 	public double sellAll() {
-		double money = shop.sellAll(((Player) pg).getInventory().getFood());
+		double money = shop.sellAll(pg.getInventory().getFood());
 		pg.incrementMoney(money);
 		pg.getInventory().removeAllFood();
 		return money;
@@ -68,7 +66,7 @@ public class Game {
 	public void interact() {
 
 		Block temp = pg.blockPosition(map.getMapSet());
-		// controllo se il blocco è di tipo UnlockBlock
+		// controllo se il blocco ï¿½ di tipo UnlockBlock
 
 		if (!(temp instanceof UnlockableBlock)) {		
 			if (temp.getType() == BlockType.FIELD) {
