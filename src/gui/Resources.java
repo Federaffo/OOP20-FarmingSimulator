@@ -75,7 +75,12 @@ public class Resources {
 			textures.put(texture.PLAYER_UP, ImageIO.read(getClass().getResourceAsStream("/up0.png")));
 			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream("/up1.png")));
 			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
-
+			
+			//keyboard commands
+			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream("/wasd.png")));
+			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream("/e.png")));
+			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream("/f.png")));
+			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream("/mouse.png")));
 			
 
 			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
@@ -127,6 +132,8 @@ public class Resources {
 	public static enum texture implements Texturable {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
+		
+		WASD, E_KEY,F_KEY, MOUSE_WHEEL,
 
 		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK, TREE;
 
