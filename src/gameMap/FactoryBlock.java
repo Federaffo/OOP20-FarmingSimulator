@@ -69,7 +69,7 @@ public class FactoryBlock {
 		}
 
 		public Pair<Food, Integer> harvest() {
-			Food food = myseed.get().Harvest();
+			Food food = myseed.get().harvest();
 			myseed = Optional.empty();
 			return new Pair<>(food, 3);
 		}

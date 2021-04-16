@@ -9,17 +9,18 @@ import java.io.InputStreamReader;
 
 import entity.Pair;
 
-public class Map {
+public class Map implements MapInterface {
 	private final static String MAP_PATH ="/map/map.txt";
 	
 	private Block[][] mappa;
 	private final static Integer ROW = 18;
 	private final static Integer COLUMN = 32;
-	private FactoryBlock factory = new FactoryBlock();
+	private FactoryBlock factory;
 
 	public Map() {
 		mappa = new Block[COLUMN][ROW];
-
+		factory = new FactoryBlock();
+		
 		int x = 0;
 		int y = 0;
 
@@ -62,12 +63,19 @@ public class Map {
 		myReader.close();
 	}
 
-	// return block in the position indicated
-	public Block getBlock(int x, int y) {
-		return mappa[x][y];
+	public Block getBlock(Pair<Integer, Integer> pos) {
+		return mappa[pos.getX()][pos.getY()];
 	}
 
-	// return set of the map
+	public void setBlock(Pair<Integer, Integer> pos, BlockType bt) {
+		Integer x = pos.getX();
+		Integer y = pos.getY();
+		
+		if (bt == BlockType.FIELD) {
+			mappa[x][y] = factory.getFieldBlock(x, y);
+		}
+	}
+	
 	public Set<Block> getMapSet() {
 		Set<Block> mapSet = new HashSet<>();
 
@@ -83,7 +91,7 @@ public class Map {
 		return mapSet;
 	}
 
-	public Pair<Integer, Integer> getBlockPosition(Block b) {
+	public Pair<Integer, Integer> getBlockCoordinates(Block b) {
 		for (int i = 0; i < COLUMN; i++) {
 			for (int j = 0; j < ROW; j++) {
 				if (mappa[i][j].equals(b))
@@ -91,11 +99,5 @@ public class Map {
 			}
 		}
 		return null;
-	}
-
-	public void setBlock(int x, int y, BlockType bt) {
-		if (bt == BlockType.FIELD) {
-			mappa[x][y] = factory.getFieldBlock(x, y);
-		}
 	}
 }

@@ -25,15 +25,15 @@ public class Seed {
 
 	protected TimerTask grower = new TimerTask() {
 		public void run() {
-			Grow();
+			grow();
 		}
 	};
 
-	public void Grow() {
+	public void grow() {
 		this.state = SeedState.GROWN;
 	}
 
-	public Food Harvest() {
+	public Food harvest() {
 		this.state = SeedState.HARVESTED;
 		return ofWhichFood;
 	}

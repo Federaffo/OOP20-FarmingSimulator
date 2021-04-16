@@ -88,7 +88,6 @@ public class Inventory {
 		moveTop(type); //set the activeSeed to the seed added to inventory	
 	}
 	
-	
 	//remove 1 seed of {type} type
 	public void removeSeed(SeedType type) {
 		seeds.put(type, seeds.get(type) - 1);
@@ -140,5 +139,4 @@ public class Inventory {
 			foods.put(food, 0);
 		}
 	}
-	
 }

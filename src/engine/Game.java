@@ -46,7 +46,7 @@ public class Game {
 	public boolean buy(SeedType st, int quantity) {
 		if (pg.getMoney() >= st.getPrice() * quantity) {
 			pg.getInventory().addSeeds(st, quantity);
-			pg.decrease(st.getPrice() * quantity);
+			pg.decreaseMoney(st.getPrice() * quantity);
 			return true;
 		}
 		return false;
@@ -66,7 +66,7 @@ public class Game {
 	public void interact() {
 
 		Block temp = pg.blockPosition(map.getMapSet());
-		// controllo se il blocco è di tipo UnlockBlock
+		// controllo se il blocco ï¿½ di tipo UnlockBlock
 		if (!(temp instanceof UnlockableBlock)) {		
 			
 			if (temp.getType() == BlockType.FIELD) {
@@ -88,7 +88,7 @@ public class Game {
 			((UnlockableBlock) temp).unlockBlock();	
 			Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
 			map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
-			pg.decrease(unlockPrice); // decremento i soldi del Player
+			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
 			unlockPrice += 25; // aumento il prezzo del prossimo blocco
 		}
 	}
@@ -102,7 +102,7 @@ public class Game {
 			if (block instanceof FieldBlock) {
 				FieldBlock field = (FieldBlock) block;
 				if (!field.isEmpty()) {
-					field.getSeed().Grow();
+					field.getSeed().grow();
 				}
 			}
 		}
