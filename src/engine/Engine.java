@@ -12,16 +12,17 @@ import utils.Observer;
 
 public class Engine implements Observer<Boolean> {
 
+	private static final int TICK_TIME = 20;
 	private MusicPlayer player;
 	private WindowManager window;
 	private Timer timer;
-	private Game game;
+	private Game game = new GameImpl();
 	private GameState gameState = GameState.PLAY;
+	GameSaver gameSaver = new GameSaver();
 
 	@Override
 	public void update(Boolean loadLastGame) {
-		GameSaver gameSaver = new GameSaver();
-		if(gameSaver.isSavingPresent() && loadLastGame) {
+		if(loadLastGame) {
 			this.game = gameSaver.load();
 			this.game.growAllSeed();
 		} else {
@@ -31,16 +32,21 @@ public class Engine implements Observer<Boolean> {
 	}
 
 	public void CreateGame() {
-		GamePreloader preloader = new GamePreloader();
-		preloader.addObserver(this);
-		preloader.askToLoad();
+		if(gameSaver.isSavingPresent()) {
+			GamePreloader preloader = new GamePreloader();
+			preloader.addObserver(this);
+			preloader.askToLoad();
+		}else {
+			this.start();
+		}
+		
 	}
 
 	public void start() {
 
 		player = new MusicPlayer();
 		window = new WindowManager(game);
-		timer = new Timer(16, new GameLoop());
+		timer = new Timer(TICK_TIME, new GameLoop());
 
 		player.run();
 		timer.start();
