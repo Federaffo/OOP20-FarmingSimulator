@@ -32,10 +32,6 @@ public class GameSaver {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println(object.getMap().getBlock(4, 10).getType());
-//		System.out.println(object.getPlayer());
-
 	}
 
 	public Game load() {

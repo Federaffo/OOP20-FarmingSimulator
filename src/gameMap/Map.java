@@ -23,7 +23,7 @@ public class Map implements MapInterface {
 		
 		int x = 0;
 		int y = 0;
-
+		
 		InputStream in = getClass().getResourceAsStream(MAP_PATH); 
 		BufferedReader mapFile = new BufferedReader(new InputStreamReader(in));
 

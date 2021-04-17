@@ -1,6 +1,8 @@
 package entity;
 
 import java.util.Set;
+import java.util.function.Predicate;
+
 import gameMap.Block;
 
 public interface EntityInterface {
@@ -9,7 +11,7 @@ public interface EntityInterface {
 	public void move();
 	//check if the entity is on a blocked block
 	//if it is, then this take the entity back to the walkable block
-	public void checkCollision(Set<Block> map);
+	public <Block> void checkCollision(Set<Block> map, Predicate<Block> filter);
 	
 	//set entity directions
 	public void setUp(boolean isMoving);

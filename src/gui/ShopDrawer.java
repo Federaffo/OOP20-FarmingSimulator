@@ -228,7 +228,7 @@ public class ShopDrawer extends GameDrawer {
 	private void inventoryUpdate() {
 		invTAfood.setText("");
 		invTAseed.setText("");
-		for (var f : game.getPlayer().getInventory().getFood().entrySet()) {
+		for (var f : game.getPlayer().getInventory().getFoods().entrySet()) {
 			invTAfood.append("[Food Item]-> " + f.getKey() + "\t|   [Quantity]-> " + f.getValue() + "\n");
 		}
 		for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {

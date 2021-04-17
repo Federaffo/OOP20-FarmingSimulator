@@ -2,12 +2,13 @@ package entity;
 
 import java.awt.Rectangle;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import gameMap.Block;
 
 public abstract class Entity extends Rectangle implements EntityInterface {
 	
-	private final static Integer SPEED = 5;
+	protected Integer SPEED;
 	private final static Integer SIZE = 50;
 	private Direction direction;
 	private boolean isMoving;
@@ -51,12 +52,12 @@ public abstract class Entity extends Rectangle implements EntityInterface {
 		if(direction.isRight()) super.x += SPEED;
 		
 	}
-	public void checkCollision(Set<Block> map) {
+	public <Block> void checkCollision(Set<Block> map, Predicate<Block> rightBlockFilter) {
 		for (Block block : map) {
 			Rectangle temp = this.intersection((Rectangle) block);
 			
 			if(temp.width>0 && temp.height>0) {
-				if(!block.isWalkable()) {
+				if(!rightBlockFilter.test(block)) {
 					if(temp.width >= temp.height) {
 						if(this.y < temp.y) {
 							this.y -= temp.height;  

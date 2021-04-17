@@ -16,7 +16,7 @@ import item.FoodType;
 import item.SeedType;
 import jdk.jfr.Category;
 
-public class Inventory {
+public class Inventory implements InventoryInterface {
 	private Map<SeedType, Integer> seeds;
 	private Map<Food, Integer> foods;
 	private Queue<SeedType> activeSeed;
@@ -123,7 +123,7 @@ public class Inventory {
 	}
 	
 	//restituisce tutto il cibo nell'inventario
-	public Map<Food, Integer> getFood(){
+	public Map<Food, Integer> getFoods(){
 		return this.foods;
 	}
 	
@@ -134,7 +134,7 @@ public class Inventory {
 	
 	
 	//rimuove tutto il cibo nell'inventario
-	public void  removeAllFood() {
+	public void removeAllFood() {
 		for (var food : foods.keySet()) {
 			foods.put(food, 0);
 		}

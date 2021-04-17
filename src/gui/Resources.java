@@ -12,6 +12,7 @@ import gameMap.BlockType;
 import item.Food;
 import item.Texturable;
 import item.SeedType;
+import entity.AnimalType;
 
 public class Resources {
 	private static final String RES_FOLDER = "res";
@@ -75,7 +76,7 @@ public class Resources {
 			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream("/up1.png")));
 			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
 
-			
+			//animals
 
 			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
 

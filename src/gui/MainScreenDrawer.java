@@ -9,7 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import engine.Game;
+import entity.Animal;
 import entity.Direction;
+import entity.Pair;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
@@ -46,9 +48,19 @@ public class MainScreenDrawer extends GameDrawer {
 		super.paintComponent(g);
 		drawMap(g);
 		drawPg(g);
+		drawAnimals(g);
 		setIcon();
 		revalidate();
 		repaint();
+	}
+	
+	private void drawAnimals(Graphics g) {
+		for (Animal a : game.getAllAnimals()) {
+			int posX = (int) (a.getPosX() * resizer);
+			int posY = (int) (a.getPosY() * resizer);
+
+			g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
+		}
 	}
 
 	private void setIcon() {
@@ -107,7 +119,7 @@ public class MainScreenDrawer extends GameDrawer {
 
 		for (int i = 0; i < 32; i++) {
 			for (int j = 0; j < 18; j++) {
-				Block block = game.getMap().getBlock(i, j);
+				Block block = game.getMap().getBlock(new Pair<Integer, Integer>(i, j));
 				Player pg = game.getPlayer();
 
 				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,

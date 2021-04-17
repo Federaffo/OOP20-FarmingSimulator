@@ -20,6 +20,7 @@ public class Animal extends Entity {
 	public Animal(Pair<Integer, Integer> position, AnimalType animalType) {
 		super(position);
 		type = animalType;
+		SPEED = type.getSpeed();
 		readyTime = type.readyTime();
 		
 		rnd = new Random();
@@ -50,16 +51,20 @@ public class Animal extends Entity {
 	}
 	
 	private void setRandomDirection() {
-		setUp(rnd.nextBoolean());
-		setDown(rnd.nextBoolean());
-		setLeft(rnd.nextBoolean());
-		setRight(rnd.nextBoolean());
+		int x = rnd.nextInt(100);
+		
+		if(x<=5 && x>=0) {
+			setUp(rnd.nextBoolean());
+			setDown(rnd.nextBoolean());
+			setLeft(rnd.nextBoolean());
+			setRight(rnd.nextBoolean());
+		}
 	}
 	
 	public void randomMove(Set<Block> map) {
 		setRandomDirection();
 		move();
-		checkCollision(map);
+		checkCollision(map, x-> x.isInteractable());
 	}
 	
 	public boolean isReady() {

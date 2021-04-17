@@ -1,7 +1,13 @@
 package engine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
+import entity.Animal;
+import entity.AnimalType;
+import entity.FactoryAnimal;
 import entity.Pair;
 import entity.Player;
 import gameMap.Block;
@@ -18,6 +24,8 @@ public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
 	private Shop shop = new Shop();
+	private List<Animal> animals = new ArrayList<Animal>();
+	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
 
@@ -28,7 +36,8 @@ public class Game {
 
 	public void loop() {
 		pg.move();
-		pg.checkCollision(map.getMapSet());
+		pg.checkCollision(map.getMapSet(), x-> x.isWalkable());
+		animals.forEach(x->x.randomMove(map.getMapSet()));
 	}
 
 	public Map getMap() {
@@ -53,7 +62,7 @@ public class Game {
 	}
 
 	public double sellAll() {
-		double money = shop.sellAll(pg.getInventory().getFood());
+		double money = shop.sellAll(pg.getInventory().getFoods());
 		pg.incrementMoney(money);
 		pg.getInventory().removeAllFood();
 		return money;
@@ -86,8 +95,9 @@ public class Game {
 			}
 		}else if(pg.getMoney()>=unlockPrice){	
 			((UnlockableBlock) temp).unlockBlock();	
-			Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
-			map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
+			Pair<Integer, Integer> blockPos = map.getBlockCoordinates(temp);
+			Pair blockCoordinates = new Pair<>(blockPos.getX(), blockPos.getY());
+			map.setBlock(blockCoordinates, BlockType.FIELD);
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
 			unlockPrice += 25; // aumento il prezzo del prossimo blocco
 		}
@@ -113,6 +123,10 @@ public class Game {
 	}
 
 	public void shop() {
+		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.PIG);
+		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.COW);
+		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.CHICKEN);
+		
 		if (state == GameState.SHOP) {
 			state = GameState.PLAY;
 		} else {
@@ -128,4 +142,11 @@ public class Game {
 		}
 	}
 
+	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
+		animals.add(factoryAnimal.generateAnimal(pos, type));
+	}
+	
+	public List<Animal> getAllAnimals() {
+		return animals;
+	}
 }
