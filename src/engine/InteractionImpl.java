@@ -33,10 +33,12 @@ public class InteractionImpl implements Interaction {
 	public void unlockBlock(Player pg, Map map, Block block) {
 		// TODO Auto-generated method stub
 		((UnlockableBlock) block).unlockBlock();
-		Pair<Integer, Integer> blockPos = new Pair<>((int)pg.getX(),(int) pg.getY());
-		map.setBlock(blockPos, BlockType.FIELD);
+		Pair<Integer, Integer> blockPos = map.getBlockCoordinates(block);
+        map.setBlock(blockPos, BlockType.FIELD);
+
 	}
 
+	
 	@Override
 	public boolean playerBuy(Player pg, SeedType st, int quantity) {
 		// TODO Auto-generated method stub
@@ -56,28 +58,20 @@ public class InteractionImpl implements Interaction {
 	}
 
 	@Override
-	public double checkInteraction(Player pg, Block block, double unlockPrice, Map map) {
+
+	public void fieldInteraction(Player pg, FieldBlock block) {
 		// TODO Auto-generated method stub
-		if (!(block instanceof UnlockableBlock)) {
 
-			if (block.getType() == BlockType.FIELD) {
-				FieldBlock myBlock = (FieldBlock) block;
-				if (myBlock.isEmpty()) {
-					if (pg.getInventory().getCurrentSeed().isPresent()) {
-						this.playerPlant(pg, myBlock);
-					}
-				} else {
-					if (myBlock.getSeed().getSeedState() == SeedState.GROWN) {
-						this.playerHarvest(pg, myBlock);
-					}
-				}
+		if (block.isEmpty()) {
+			if (pg.getInventory().getCurrentSeed().isPresent()) {
+				this.playerPlant(pg, block);
 			}
-		} else if (pg.getMoney() >= unlockPrice) {
-			unlockBlock(pg, map, block);
-			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 25; // aumento il prezzo del prossimo blocco
-		}
-		return unlockPrice;
-	}
+		} else {
+			if (block.getSeed().getSeedState() == SeedState.GROWN) {
+				this.playerHarvest(pg, block);
+			}
 
+		}
+
+	}
 }

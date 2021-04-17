@@ -37,8 +37,8 @@ public class Game {
 
 	public void loop() {
 		pg.move();
-		pg.checkCollision(map.getMapSet(), x-> x.isWalkable());
-		animals.forEach(x->x.randomMove(map.getMapSet()));
+		pg.checkCollision(map.getMapSet(), x -> x.isWalkable());
+		animals.forEach(x -> x.randomMove(map.getMapSet()));
 	}
 
 	public Map getMap() {
@@ -67,9 +67,20 @@ public class Game {
 
 	public void interact() {
 		Block temp = pg.blockPosition(map.getMapSet());
-		unlockPrice =interaction.checkInteraction(pg, temp, unlockPrice, map);
+		if (!(temp instanceof UnlockableBlock)) {
+
+			if (temp.getType() == BlockType.FIELD) {
+				FieldBlock myBlock = (FieldBlock) temp;
+				interaction.fieldInteraction(pg, myBlock);
+			}
+		} else if (pg.getMoney() >= unlockPrice) {
+			interaction.unlockBlock(pg, map, temp);
+			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
+			unlockPrice += 25; // aumento il prezzo del prossimo blocco
+		}
 	}
-	
+
+
 	public double getUnlockPrice() {
 		return this.unlockPrice;
 	}
@@ -93,7 +104,7 @@ public class Game {
 		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.PIG);
 		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.COW);
 		generateAnimal(new Pair<Integer, Integer>(3, 3), AnimalType.CHICKEN);
-		
+
 		if (state == GameState.SHOP) {
 			state = GameState.PLAY;
 		} else {
@@ -112,7 +123,7 @@ public class Game {
 	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
 		animals.add(factoryAnimal.generateAnimal(pos, type));
 	}
-	
+
 	public List<Animal> getAllAnimals() {
 		return animals;
 	}
