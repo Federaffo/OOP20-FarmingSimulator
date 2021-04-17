@@ -24,6 +24,7 @@ public class Game {
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
 	private Shop shop = new Shop();
+	private Interaction interaction = new InteractionImpl();
 	private List<Animal> animals = new ArrayList<Animal>();
 	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
@@ -53,19 +54,11 @@ public class Game {
 	}
 
 	public boolean buy(SeedType st, int quantity) {
-		if (pg.getMoney() >= st.getPrice() * quantity) {
-			pg.getInventory().addSeeds(st, quantity);
-			pg.decreaseMoney(st.getPrice() * quantity);
-			return true;
-		}
-		return false;
+		return interaction.playerBuy(pg, st, quantity);
 	}
 
 	public double sellAll() {
-		double money = shop.sellAll(pg.getInventory().getFoods());
-		pg.incrementMoney(money);
-		pg.getInventory().removeAllFood();
-		return money;
+		return interaction.playerSell(shop, pg);
 	}
 
 	public GameState getState() {
@@ -73,34 +66,8 @@ public class Game {
 	}
 
 	public void interact() {
-
 		Block temp = pg.blockPosition(map.getMapSet());
-		// controllo se il blocco � di tipo UnlockBlock
-		if (!(temp instanceof UnlockableBlock)) {		
-			
-			if (temp.getType() == BlockType.FIELD) {
-				FieldBlock myBlock = (FieldBlock) temp;
-				if (myBlock.isEmpty()) {
-					if (pg.getInventory().getCurrentSeed().isPresent()) {
-						SeedType st = pg.getInventory().getCurrentSeed().get().getX();
-						myBlock.plant(st);
-						pg.getInventory().removeSeed(st);
-					}
-				} else {
-					if (myBlock.getSeed().getSeedState() == SeedState.GROWN) {
-						Pair<Food, Integer> food = myBlock.harvest();
-						pg.getInventory().addFoods(food.getX(), food.getY());
-					}
-				}
-			}
-		}else if(pg.getMoney()>=unlockPrice){	
-			((UnlockableBlock) temp).unlockBlock();	
-			Pair<Integer, Integer> blockPos = map.getBlockCoordinates(temp);
-			Pair blockCoordinates = new Pair<>(blockPos.getX(), blockPos.getY());
-			map.setBlock(blockCoordinates, BlockType.FIELD);
-			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 25; // aumento il prezzo del prossimo blocco
-		}
+		unlockPrice =interaction.checkInteraction(pg, temp, unlockPrice, map);
 	}
 	
 	public double getUnlockPrice() {
