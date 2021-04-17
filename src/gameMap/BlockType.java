@@ -8,5 +8,6 @@ public enum BlockType implements Texturable{
 	FIELD(), /*BLOCCHI IN CUI SI PIANTA*/
 	WALL(),
 	LOCKED(),
-	WATER();
+	WATER(),
+	STALL();
 }
