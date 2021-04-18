@@ -79,7 +79,8 @@ public class Resources {
 
 			//animals
 			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream("/cow.png")));
-
+			textures.put(AnimalType.PIG, ImageIO.read(getClass().getResourceAsStream("/pig.png")));
+			textures.put(AnimalType.CHICKEN, ImageIO.read(getClass().getResourceAsStream("/chicken.png")));
 			
 			//keyboard commands
 			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream("/wasd.png")));
