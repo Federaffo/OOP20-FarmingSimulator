@@ -62,4 +62,8 @@ public class Engine implements Observer<Boolean> {
 			}
 		}
 	}
+	
+	public Game getGame() {
+		return this.game;
+	}
 }
