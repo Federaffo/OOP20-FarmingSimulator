@@ -36,11 +36,13 @@ public class Animal extends Entity {
 	
 	private void ready() {
 		readyState = true;
+		timer.cancel();
 	}
 
 	
 	public Pair<FoodType, Integer> collect(){
 		readyState = false;
+		reSchedule();
 		return new Pair<>( type.getReturnFood(),  type.getReturnFood().getQuantity());
 	}
 	
@@ -51,15 +53,29 @@ public class Animal extends Entity {
 		timer.schedule(this.grower, scheduler.getTime());
 	}
 	
+	private void setDirectionFalse() {
+		setUp(false);
+		setDown(false);
+		setLeft(false);
+		setRight(false);
+	}
+	
 	private void setRandomDirection() {
-		int x = rnd.nextInt(100);
 		
-		if(x<=5 && x>=0) {
-			setUp(rnd.nextBoolean());
-			setDown(rnd.nextBoolean());
-			setLeft(rnd.nextBoolean());
-			setRight(rnd.nextBoolean());
+		if(readyState) {
+			setDirectionFalse();
+		}else {
+			
+			int x = rnd.nextInt(100);
+			
+			if(x<=5 && x>=0) {
+				setUp(rnd.nextBoolean());
+				setDown(rnd.nextBoolean());
+				setLeft(rnd.nextBoolean());
+				setRight(rnd.nextBoolean());
+			}
 		}
+		
 	}
 	
 	public void randomMove(Set<Block> map) {

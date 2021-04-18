@@ -58,8 +58,12 @@ public class MainScreenDrawer extends GameDrawer {
 		for (Animal a : game.getAllAnimals()) {
 			int posX = (int) (a.getPosX() * resizer);
 			int posY = (int) (a.getPosY() * resizer);
-
-			g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
+			
+			if(a.isReady()) {
+				g.setColor(Color.YELLOW);
+				g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
+			}
+			
 			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (50 * resizer),
 					(int) (50 * resizer), null);
 		}
