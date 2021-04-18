@@ -52,7 +52,7 @@ public class Resources {
 			textures.put(BlockType.WALL, ImageIO.read(getClass().getResourceAsStream("/wall.png")));
 			textures.put(BlockType.LOCKED, ImageIO.read(getClass().getResourceAsStream("/lock3.png")));
 			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream("/water.png")));
-
+			textures.put(BlockType.STALL, ImageIO.read(getClass().getResourceAsStream("/stall.png")));
 			
 			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
 			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream("/tree.png")));
