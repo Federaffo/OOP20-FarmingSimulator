@@ -15,14 +15,13 @@ public class Animal extends Entity {
 	private final long readyTime;
 	private boolean readyState;
 	private Random rnd;
-	private transient Timer timer;
+	private transient Timer timer = new Timer();
 	
 	public Animal(Pair<Integer, Integer> position, AnimalType animalType) {
 		super(position);
 		type = animalType;
 		SPEED = type.getSpeed();
 		readyTime = type.readyTime();
-		
 		rnd = new Random();
 		readyState = false;
 		reSchedule();
@@ -30,27 +29,25 @@ public class Animal extends Entity {
 	
 	protected TimerTask grower = new TimerTask() {
 		public void run() {
+			System.out.println(type.name());
 			ready();
 		}
 	};
 	
 	private void ready() {
 		readyState = true;
-		timer.cancel();
 	}
 
 	
 	public Pair<FoodType, Integer> collect(){
 		readyState = false;
-		reSchedule();
 		return new Pair<>( type.getReturnFood(),  type.getReturnFood().getQuantity());
 	}
 	
 	public void reSchedule() {
 		Calendar scheduler = Calendar.getInstance();
 		scheduler.add(Calendar.MILLISECOND, (int) this.readyTime);
-		timer = new Timer();
-		timer.schedule(this.grower, scheduler.getTime());
+		timer.schedule(this.grower, type.readyTime(), type.readyTime());
 	}
 	
 	private void setDirectionFalse() {

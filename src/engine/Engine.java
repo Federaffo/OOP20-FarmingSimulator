@@ -28,6 +28,7 @@ public class Engine implements Observer<Boolean> {
 		} else {
 			this.game = new GameImpl();
 		}
+		
 		this.start();
 	}
 
@@ -51,10 +52,7 @@ public class Engine implements Observer<Boolean> {
 		player.run();
 		timer.start();
 
-		game.getPlayer().getInventory().addSeeds(SeedType.POTATO_SEED, 10);
-		game.getPlayer().getInventory().addSeeds(SeedType.CARROT_SEED, 10);
-		game.getPlayer().getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
-		game.getPlayer().getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
+
 
 	}
 

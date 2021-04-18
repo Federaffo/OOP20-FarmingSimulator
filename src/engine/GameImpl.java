@@ -26,6 +26,18 @@ public class GameImpl implements Game{
 	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
+	
+	public GameImpl() {
+		this.generateAnimal(new Pair<>(30, 16), AnimalType.CHICKEN);
+		this.generateAnimal(new Pair<>(30, 16), AnimalType.COW);
+		this.generateAnimal(new Pair<>(30, 16), AnimalType.PIG);
+		
+		
+		pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
+	}
 
 	public void loadGame(Map map, Player player) {
 		this.pg = player;
@@ -100,9 +112,6 @@ public class GameImpl implements Game{
 	}
 
 	public void shop() {
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.CHICKEN);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.COW);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.PIG);
 		if (state == GameState.SHOP) {
 			state = GameState.PLAY;
 		} else {
