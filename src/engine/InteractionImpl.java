@@ -1,5 +1,6 @@
 package engine;
 
+import entity.Animal;
 import entity.Pair;
 import entity.Player;
 import gameMap.Block;
@@ -73,5 +74,14 @@ public class InteractionImpl implements Interaction {
 
 		}
 
+	}
+
+	@Override
+	public void playerAnimal(Player pg, Animal animal) {
+		// TODO Auto-generated method stub
+		if(animal.isReady()) {
+			pg.getInventory().addFoods(animal.returnFood(), 1);
+		}
+		
 	}
 }

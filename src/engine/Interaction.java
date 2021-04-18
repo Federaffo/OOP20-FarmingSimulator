@@ -2,6 +2,7 @@ package engine;
 
 
 
+import entity.Animal;
 import entity.Player;
 import gameMap.Block;
 import gameMap.FieldBlock;
@@ -16,5 +17,6 @@ public interface Interaction {
 	public boolean playerBuy(Player pg, SeedType st, int quantity);
 	public double playerSell(Shop shop, Player pg);
 	void fieldInteraction(Player pg, FieldBlock block);
+	public void playerAnimal(Player pg, Animal animal);
 	
 }
