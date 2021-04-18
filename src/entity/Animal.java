@@ -70,4 +70,8 @@ public class Animal extends Entity {
 	public boolean isReady() {
 		return readyState;
 	}
+	
+	public AnimalType getType() {
+		return type;
+	}
 }

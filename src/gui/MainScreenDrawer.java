@@ -60,6 +60,8 @@ public class MainScreenDrawer extends GameDrawer {
 			int posY = (int) (a.getPosY() * resizer);
 
 			g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
+			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (50 * resizer),
+					(int) (50 * resizer), null);
 		}
 	}
 

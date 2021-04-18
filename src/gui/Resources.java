@@ -77,7 +77,8 @@ public class Resources {
 			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
 
 			//animals
-
+			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream("/cow.png")));
+			
 			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
 
 		} catch (IOException e) {
