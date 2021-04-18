@@ -78,6 +78,9 @@ public class Game {
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
 			unlockPrice += 25; // aumento il prezzo del prossimo blocco
 		}
+		if(pg.whichAnimalWithPlayer(animals).isPresent()) {
+			interaction.playerAnimal(pg, pg.whichAnimalWithPlayer(animals).get());
+		}
 	}
 
 
