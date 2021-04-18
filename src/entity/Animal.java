@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import gameMap.Block;
-import item.Food;
+import item.FoodType;
 
 public class Animal extends Entity {
 
@@ -38,7 +38,7 @@ public class Animal extends Entity {
 		readyState = true;
 	}
 
-	public Food returnFood() {
+	public FoodType returnFood() {
 		readyState = false;
 		return type.getReturnFood();
 	}
@@ -64,7 +64,7 @@ public class Animal extends Entity {
 	public void randomMove(Set<Block> map) {
 		setRandomDirection();
 		move();
-		checkCollision(map, x-> x.isInteractable());
+		checkCollision(map, x-> x.isStall());
 	}
 	
 	public boolean isReady() {

@@ -131,3 +131,4 @@ public abstract class Entity extends Rectangle implements EntityInterface {
 		return animalChoosen;
 	}
 }
+

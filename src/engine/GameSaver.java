@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.google.gson.*;
 
-import entity.Player;
-import gameMap.Block;
-import gameMap.FactoryBlock;
+import gameShop.Shop;
 
 public class GameSaver {
 	private final String dot = ".";
@@ -18,15 +22,28 @@ public class GameSaver {
 	private Gson gson;
 
 	public GameSaver() {
-		gson = new GsonBuilder().registerTypeAdapter(Block.class, new InterfaceAdapter()).setPrettyPrinting().create();
+		InterfaceAdapter interfaceAdapter = new InterfaceAdapter();
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		// gson = new GsonBuilder().registerTypeAdapter(Block.class,
+		// sus).registerTypeAdapter(Game.class, sus)
+//				.registerTypeAdapter(Shop.class, sus).setPrettyPrinting().create();
+		Stream.of(Package.getPackages()).forEach(x -> {
+			try {
+				InterfaceLoader.getInterfaces(x.getName())
+						.forEach(y -> gsonBuilder.registerTypeAdapter(y, interfaceAdapter));
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
+		});
+		gson = gsonBuilder.create();
+	}
+
+	public boolean isSavingPresent() {
+		return new File(dot + File.separator + fileName).exists();
 	}
 
 	public void save(Game game) {
 		String json = gson.toJson(game);
-
-		Game object = gson.fromJson(json, Game.class);
-		System.out.println(json);
-
 		try (FileWriter writer = new FileWriter(dot + File.separator + fileName)) {
 			gson.toJson(game, writer);
 		} catch (IOException e) {
@@ -34,7 +51,7 @@ public class GameSaver {
 		}
 	}
 
-	public Game load() {
+	public GameImpl load() {
 		try {
 			File myObj = new File(dot + File.separator + fileName);
 			String json = "";
@@ -44,7 +61,7 @@ public class GameSaver {
 			}
 			myReader.close();
 
-			return gson.fromJson(json, Game.class);
+			return gson.fromJson(json, GameImpl.class);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,7 +69,7 @@ public class GameSaver {
 		}
 	}
 
-	public class InterfaceAdapter<T> implements JsonDeserializer<T>, JsonSerializer<T> {
+	private class InterfaceAdapter<T> implements JsonDeserializer<T>, JsonSerializer<T> {
 
 		private static final String CLASSNAME = "CLASSNAME";
 		private static final String DATA = "DATA";
@@ -84,4 +101,5 @@ public class GameSaver {
 		}
 
 	}
+
 }

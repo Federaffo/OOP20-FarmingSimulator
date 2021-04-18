@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 import entity.Direction;
 import gameMap.BlockType;
-import item.Food;
+import item.FoodType;
 import item.Texturable;
 import item.SeedType;
 import entity.AnimalType;
@@ -34,17 +34,17 @@ public class Resources {
 			textures.put(SeedType.APPLE_SEED, ImageIO.read(getClass().getResourceAsStream("/apple.png")));
 			
 			//food
-			textures.put(Food.PORK_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(Food.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
-			textures.put(Food.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
-			textures.put(Food.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
-			textures.put(Food.APPLE, ImageIO.read(getClass().getResourceAsStream("/appletree.png")));
-			textures.put(Food.ORANGE, ImageIO.read(getClass().getResourceAsStream("/orangetree.png")));
-			textures.put(Food.CHERRY, ImageIO.read(getClass().getResourceAsStream("/cherrytree.png")));
-			textures.put(Food.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
+
+			textures.put(FoodType.PORK_MEAT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.EGG, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
+			textures.put(FoodType.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
+			textures.put(FoodType.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
+			textures.put(FoodType.APPLE, ImageIO.read(getClass().getResourceAsStream("/appletree.png")));
+			textures.put(FoodType.ORANGE, ImageIO.read(getClass().getResourceAsStream("/orangetree.png")));
+			textures.put(FoodType.CHERRY, ImageIO.read(getClass().getResourceAsStream("/cherrytree.png")));
+			textures.put(FoodType.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
 
 			//block
 			textures.put(BlockType.TERRAIN, ImageIO.read(getClass().getResourceAsStream("/grass.png")));
@@ -76,8 +76,17 @@ public class Resources {
 			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream("/up1.png")));
 			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
 
+
 			//animals
 			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream("/cow.png")));
+
+			
+			//keyboard commands
+			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream("/wasd.png")));
+			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream("/e.png")));
+			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream("/f.png")));
+			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream("/mouse.png")));
+
 			
 			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
 
@@ -128,6 +137,8 @@ public class Resources {
 	public static enum texture implements Texturable {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
+		
+		WASD, E_KEY,F_KEY, MOUSE_WHEEL,
 
 		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK, TREE;
 

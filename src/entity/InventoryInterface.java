@@ -3,7 +3,7 @@ package entity;
 import java.util.Map;
 import java.util.Optional;
 
-import item.Food;
+import item.FoodType;
 import item.SeedType;
 
 public interface InventoryInterface {
@@ -24,13 +24,13 @@ public interface InventoryInterface {
 	//MANAGE FOODS
 	
 	//add foods to inventory
-	public void addFoods(Food type, Integer number);
+	public void addFoods(FoodType type, Integer number);
 	//remove 1 food from inventory
-	public void removeFood(Food type);
+	public void removeFood(FoodType type);
 	//check if there's any food of the given type and number in the inventory
-	public boolean gotFoods(Food type, Integer number);
+	public boolean gotFoods(FoodType type, Integer number);
 	//return map of foods
-	public Map<Food, Integer> getFoods();
+	public Map<FoodType, Integer> getFoods();
 	//remove all the food from inventory
 	public void removeAllFood();
 }

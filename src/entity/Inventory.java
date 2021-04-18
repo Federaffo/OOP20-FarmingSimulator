@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,16 +8,12 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Stream;
 
-import com.google.gson.annotations.Expose;
-
-import item.Food;
 import item.FoodType;
 import item.SeedType;
-import jdk.jfr.Category;
 
 public class Inventory implements InventoryInterface {
 	private Map<SeedType, Integer> seeds;
-	private Map<Food, Integer> foods;
+	private Map<FoodType, Integer> foods;
 	private Queue<SeedType> activeSeed;
 	
 	
@@ -30,8 +25,8 @@ public class Inventory implements InventoryInterface {
 		for(SeedType s : SeedType.values()) {
 			seeds.put(s, 0);
 		}
-		for(Food s : Food.values()) {
-			foods.put(s, 0);
+		for(FoodType f : FoodType.values()) {
+			foods.put(f, 0);
 		}
 		
 		activeSeed = new LinkedBlockingDeque<SeedType>();
@@ -77,7 +72,7 @@ public class Inventory implements InventoryInterface {
 	private void moveTop(SeedType type) {
 		for (SeedType seedType : List.copyOf(activeSeed)) {
 			if(!seedType.equals(type)) {
-				moveBottom(seedType);
+				moveBottom((SeedType)seedType);
 			}
 		}
 	}
@@ -105,17 +100,17 @@ public class Inventory implements InventoryInterface {
 	}
 	
 	//add {number} foods of {type} type to inventory
-	public void addFoods(Food type, Integer number) {
+	public void addFoods(FoodType type, Integer number) {
 		foods.put(type, foods.get(type) + number);
 	}
 	
 	//remove 1 food of {type} type
-	public void removeFood(Food type) {
+	public void removeFood(FoodType type) {
 		foods.put(type, foods.get(type) - 1);
 	}
 	
 	//check if there are {number} foods of {type} type inside inventory
-	public boolean gotFoods(Food type, Integer number) {
+	public boolean gotFoods(FoodType type, Integer number) {
 		if(foods.get(type) >= number)
 			return true;
 		else
@@ -123,7 +118,8 @@ public class Inventory implements InventoryInterface {
 	}
 	
 	//restituisce tutto il cibo nell'inventario
-	public Map<Food, Integer> getFoods(){
+
+	public Map<FoodType, Integer> getFoods(){
 		return this.foods;
 	}
 	
@@ -136,7 +132,9 @@ public class Inventory implements InventoryInterface {
 	//rimuove tutto il cibo nell'inventario
 	public void removeAllFood() {
 		for (var food : foods.keySet()) {
-			foods.put(food, 0);
+			if(food instanceof FoodType) {
+				foods.put(food, 0);				
+			}
 		}
 	}
 }

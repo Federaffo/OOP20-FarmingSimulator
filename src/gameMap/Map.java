@@ -51,7 +51,9 @@ public class Map implements MapInterface {
 				case 4:
 					mappa[x][y] = factory.getWaterBlock(x, y);
 					break;
-
+				case 5:
+					mappa[x][y] = factory.getStallBlock(x, y);
+					break;
 				default:
 					break;
 				}

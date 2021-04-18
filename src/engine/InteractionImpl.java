@@ -9,7 +9,7 @@ import gameMap.FieldBlock;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;
-import item.Food;
+import item.FoodType;
 import item.SeedState;
 import item.SeedType;
 
@@ -26,7 +26,7 @@ public class InteractionImpl implements Interaction {
 	@Override
 	public void playerHarvest(Player pg, FieldBlock block) {
 		// TODO Auto-generated method stub
-		Pair<Food, Integer> food = block.harvest();
+		Pair<FoodType, Integer> food = block.harvest();
 		pg.getInventory().addFoods(food.getX(), food.getY());
 	}
 
