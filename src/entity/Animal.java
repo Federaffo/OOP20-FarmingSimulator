@@ -38,9 +38,10 @@ public class Animal extends Entity {
 		readyState = true;
 	}
 
-	public FoodType returnFood() {
+	
+	public Pair<FoodType, Integer> collect(){
 		readyState = false;
-		return type.getReturnFood();
+		return new Pair<>( type.getReturnFood(),  type.getReturnFood().getQuantity());
 	}
 	
 	public void reSchedule() {

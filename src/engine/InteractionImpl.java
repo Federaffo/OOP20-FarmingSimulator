@@ -80,7 +80,8 @@ public class InteractionImpl implements Interaction {
 	public void playerAnimal(Player pg, Animal animal) {
 		// TODO Auto-generated method stub
 		if(animal.isReady()) {
-			pg.getInventory().addFoods(animal.returnFood(), 1);
+			Pair<FoodType, Integer> temp = animal.collect();
+			pg.getInventory().addFoods(temp.getX(), temp.getY());
 		}
 		
 	}

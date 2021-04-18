@@ -75,7 +75,7 @@ public class FactoryBlock {
 		public Pair<FoodType, Integer> harvest() {
 			FoodType food = myseed.get().harvest();
 			myseed = Optional.empty();
-			return new Pair<>(food, 3);
+			return new Pair<>(food, food.getQuantity());
 		}
 
 		public boolean isEmpty() {
