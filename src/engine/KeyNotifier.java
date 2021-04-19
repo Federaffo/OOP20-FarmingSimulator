@@ -68,9 +68,5 @@ public class KeyNotifier {
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		pg.getInventory().nextSeed();
-//		if(e.getWheelRotation() == 1) {
-//		}else {
-//			System.out.println("su");
-//		}
 	}
 }

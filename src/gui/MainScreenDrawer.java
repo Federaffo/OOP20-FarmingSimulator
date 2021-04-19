@@ -9,12 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import engine.Game;
-import entity.AnimalImpl;
 import entity.Animal;
 import entity.Direction;
 import entity.Pair;
-import entity.PlayerImpl;
-import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
@@ -28,21 +25,16 @@ public class MainScreenDrawer extends GameDrawer {
 	private static final int BASE_SIZE = 50;
 	private static final int ANIMATION_SPEED = 20;
 	private static final long serialVersionUID = -8051528011999726915L;
-	private int animationDelay = 0;
-	private int frame = 0;
 	private int BLOCK_SIZE;
 	private double resizer;
 	private Resources res = new Resources();
-	private Game gameInstance;
-	private int unlockPrice = 50;
-
+	
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
 		res.load();
 		this.resizer = screenSize.getWidth() / (BASE_SIZE * 32);
 		GenerateHUD(game, screenSize);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
-		this.gameInstance = game;
 	}
 
 	@Override
@@ -128,7 +120,7 @@ public class MainScreenDrawer extends GameDrawer {
 		for (int i = 0; i < 32; i++) {
 			for (int j = 0; j < 18; j++) {
 				Block block = game.getMap().getBlock(new Pair<Integer, Integer>(i, j));
-				Player pg = game.getPlayer();
+				game.getPlayer();
 
 				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 						BLOCK_SIZE, null);
@@ -158,10 +150,6 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void drawPg(Graphics g) {
 		int offsetY = 20;
-		animationDelay += 1;
-		animationDelay %= ANIMATION_SPEED;
-		frame = (int) animationDelay / (ANIMATION_SPEED / 2);
-
 		Direction dir = game.getPlayer().getDirection();
 		int posX = (int) (game.getPlayer().getPosX() * resizer);
 		int posY = (int) (game.getPlayer().getPosY() * resizer);

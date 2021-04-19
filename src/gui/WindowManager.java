@@ -68,24 +68,21 @@ public class WindowManager extends JFrame {
 		double quitPanelBounds = 0.06;
 
 		shopPanel = new ShopDrawer(game, windowSize);
-		shopPanel.setBackground(shopPanel.getBackground());
+//		shopPanel.setBackground(shopPanel.getBackground());
 		shopPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		shopPanel.setPreferredSize(windowSize);
 
 		mainPanel = new MainScreenDrawer(game, windowSize);
-		mainPanel.setBackground(Color.green);
 		mainPanel.setSize(windowSize);
 		mainPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		mainPanel.setPreferredSize(windowSize);
 
 		infoPanel = new InfoDrawer(game, windowSize);
-		// infoPanel.setBackground(new Color(255,255,255,100));
 		infoPanel.setSize(windowSize);
 		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		infoPanel.setPreferredSize(windowSize);
 
 		quitPanel = new QuitDrawer(game, windowSize);
-		quitPanel.setBackground(Color.black);
 		quitPanel.setSize(windowSize);
 		quitPanel.setBounds(0, 0, windowSize.width, (int) (windowSize.height * quitPanelBounds));
 		quitPanel.setPreferredSize(windowSize);
