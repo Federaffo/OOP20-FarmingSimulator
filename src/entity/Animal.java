@@ -43,7 +43,7 @@ public class Animal extends Entity {
 		return new Pair<>( type.getReturnFood(),  type.getReturnFood().getQuantity());
 	}
 	
-	public void reSchedule() {
+	private void reSchedule() {
 		Calendar scheduler = Calendar.getInstance();
 		scheduler.add(Calendar.MILLISECOND, (int) this.readyTime);
 		timer.schedule(this.grower, type.readyTime(), type.readyTime());
