@@ -110,6 +110,7 @@ public class FarmingSimulatorTestClass {
 		assertEquals(map.getBlock(new Pair<>(10, 2)).getType(),BlockType.FIELD);
 	}
 	
+	
 	public void testPlayerAnimalInteraction() {
 
 	}

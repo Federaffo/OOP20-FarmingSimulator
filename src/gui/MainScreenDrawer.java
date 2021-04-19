@@ -17,7 +17,7 @@ import entity.Animal;
 import entity.Direction;
 import entity.Pair;
 import gui.Resources.texture;
-import item.Seed;
+import item.SeedImpl;
 import item.SeedState;
 import item.SeedType;
 import item.Texturable;
@@ -129,7 +129,7 @@ public class MainScreenDrawer extends GameDrawer {
 				if (block.getType() == BlockType.FIELD) {
 					FieldBlock fieldBlock = (FieldBlock) block;
 					if (!fieldBlock.isEmpty()) {
-						Seed seed = fieldBlock.getSeed();
+						SeedImpl seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
 							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
 								g.drawImage(Resources.getTextures(texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								

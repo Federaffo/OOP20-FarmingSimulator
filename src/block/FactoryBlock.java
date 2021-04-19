@@ -6,7 +6,7 @@ import java.util.*;
 
 import entity.Pair;
 import item.FoodType;
-import item.Seed;
+import item.SeedImpl;
 import item.SeedType;
 
 public class FactoryBlock {
@@ -61,14 +61,14 @@ public class FactoryBlock {
 	
 	private class BlockFieldImpl extends BlockImpl implements FieldBlock {
 		private static final long serialVersionUID = 1L;
-		private Optional<Seed> myseed = Optional.empty();
+		private Optional<SeedImpl> myseed = Optional.empty();
 
 		public BlockFieldImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
 			super(bt, isWalkable, isInteractable, posx, posy);
 		}
 
 		public void plant(SeedType st) {
-			myseed = Optional.of(new Seed(st));
+			myseed = Optional.of(new SeedImpl(st));
 		}
 
 
@@ -82,7 +82,7 @@ public class FactoryBlock {
 			return myseed.isEmpty();
 		}
 
-		public Seed getSeed() {
+		public SeedImpl getSeed() {
 			return myseed.get();
 		}
 
