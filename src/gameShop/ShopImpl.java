@@ -3,7 +3,7 @@ package gameShop;
 import java.util.*;
 
 import item.FoodType;
-import item.Seed;
+import item.SeedImpl;
 import item.SeedType;
 
 public class ShopImpl implements Shop{
@@ -47,7 +47,7 @@ public class ShopImpl implements Shop{
 		return somma;
 	}
 
-	public Seed buy(SeedType st) {
-		return new Seed((SeedType) st);
+	public SeedImpl buy(SeedType st) {
+		return new SeedImpl((SeedType) st);
 	}
 }
