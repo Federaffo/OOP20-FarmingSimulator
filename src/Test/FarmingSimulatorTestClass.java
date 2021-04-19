@@ -16,9 +16,9 @@ import entity.Player;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
 import gameMap.Map;
+import gameMap.UnlockableBlock;
 
 public class FarmingSimulatorTestClass {
-	private final int BLOCKSIZE=50;
 	private Game g = null;
 	private Player pg = null;
 	private Map map= null;
@@ -77,12 +77,29 @@ public class FarmingSimulatorTestClass {
 		//Controllo che il blocco abbia il seme dopo averci interagito e aver inserito un seme
 		assertFalse(((FieldBlock)map.getBlock(2,2)).isEmpty());
 	}
-
+	
+	@Test
+	public void testUnlockBlock() {
+		//muovo il player verso il blocco da sbloccare
+		pg.setRight(true);
+		IntStream.range(0,90).forEach(i->g.loop());
+		pg.setRight(false);
+		pg.setDown(true);
+		IntStream.range(0,10).forEach(i->g.loop());
+		//controllo che il Player sia nel blocco (10,2)
+		assertEquals(map.getBlock(10, 2),pg.blockPosition(map.getMapSet()));
+		//controllo che il blocco sia effettivamente di tipo LOCKED
+		assertEquals(map.getBlock(10, 2).getType(),BlockType.LOCKED);
+		//controllo se di default il blocco LOCKED è bloccato
+		assertTrue(((UnlockableBlock)map.getBlock(10,2)).isLocked());
+		//interagisco per sbloccare il blocco
+		g.interact();
+		//dopo aver interagito controllo che venga sbloccato e diventi di tipo FIELD
+		assertEquals(map.getBlock(10, 2).getType(),BlockType.FIELD);
+	}
+	
 	public void testPlayerAnimalInteraction() {
 
 	}
 	
-	public void testUnlockBlock() {
-		
-	}
 }
