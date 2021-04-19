@@ -109,7 +109,7 @@ public class Map implements MapInterface {
 		Random rnd = new Random();
 		Block b;
 		do {
-			b =  mappa[rnd.nextInt(ROW)][rnd.nextInt(COLUMN)];
+			b =  mappa[rnd.nextInt(COLUMN)][rnd.nextInt(ROW)];
 		}while(blockFilter.test(b));
 		
 		return b;
