@@ -16,7 +16,7 @@ public class Engine implements Observer<Boolean> {
 	private MusicPlayer player;
 	private WindowManager window;
 	private Timer timer;
-	private Game game = new GameImpl();
+	private Game game;
 	private GameState gameState = GameState.PLAY;
 	GameSaver gameSaver = new GameSaver();
 
@@ -25,10 +25,10 @@ public class Engine implements Observer<Boolean> {
 		if(loadLastGame) {
 			this.game = gameSaver.load();
 			this.game.growAllSeed();
+			this.game.resetAnimals();
 		} else {
 			this.game = new GameImpl();
 		}
-		
 		this.start();
 	}
 
@@ -51,9 +51,6 @@ public class Engine implements Observer<Boolean> {
 
 		player.run();
 		timer.start();
-
-
-
 	}
 
 	private class GameLoop implements ActionListener {

@@ -18,6 +18,7 @@ import gameShop.ShopImpl;
 import item.SeedType;
 
 public class GameImpl implements Game{
+	private static final int UNLOCK_STEP = 50;
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
 	private Shop shop = new ShopImpl();
@@ -28,16 +29,14 @@ public class GameImpl implements Game{
 	private double unlockPrice = 50.0;
 	
 	public GameImpl() {
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.CHICKEN);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.COW);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.PIG);
-		
+		generateAnimals();
 		
 		pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
 	}
+
 
 	public void loadGame(Map map, Player player) {
 		this.pg = player;
@@ -85,7 +84,7 @@ public class GameImpl implements Game{
 		} else if (pg.getMoney() >= unlockPrice) {
 			interaction.unlockBlock(pg, map, temp);
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 25; // aumento il prezzo del prossimo blocco
+			unlockPrice += UNLOCK_STEP; // aumento il prezzo del prossimo blocco
 		}
 		if(pg.whichAnimalWithPlayer(animals).isPresent()) {
 			interaction.playerAnimal(pg, pg.whichAnimalWithPlayer(animals).get());
@@ -106,6 +105,7 @@ public class GameImpl implements Game{
 			}
 		}
 	}
+
 
 	public void play() {
 		state = GameState.PLAY;
@@ -129,12 +129,22 @@ public class GameImpl implements Game{
 
 	@Override
 	public List<Animal> getAllAnimals() {
-		// TODO Auto-generated method stub
 		return this.animals;
 	}
 	
 	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
         animals.add(factoryAnimal.generateAnimal(pos, type));
     }
+	
+	public void resetAnimals() {
+		animals.clear();
+		generateAnimals();
+	}
+	
+	private void generateAnimals() {
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.CHICKEN);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.COW);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.PIG);
+	}
 
 }

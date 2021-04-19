@@ -19,7 +19,7 @@ public class MusicPlayer implements Runnable{
 	public void run() {
 		AudioInputStream audioIn;
 		try {
-			audioIn = AudioSystem.getAudioInputStream(Resources.getMainTheme().toURI().toURL());
+			audioIn = AudioSystem.getAudioInputStream(Resources.getMainTheme());
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioIn);
 			clip.loop(clip.LOOP_CONTINUOUSLY);

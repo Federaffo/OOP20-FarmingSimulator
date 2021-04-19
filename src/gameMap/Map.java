@@ -1,8 +1,10 @@
 package gameMap;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -101,5 +103,15 @@ public class Map implements MapInterface {
 			}
 		}
 		return null;
+	}
+	
+	public Block getRandomFilterBlock(Predicate<Block> blockFilter) {
+		Random rnd = new Random();
+		Block b;
+		do {
+			b =  mappa[rnd.nextInt(COLUMN)][rnd.nextInt(ROW)];
+		}while(!blockFilter.test(b));
+		
+		return b;
 	}
 }
