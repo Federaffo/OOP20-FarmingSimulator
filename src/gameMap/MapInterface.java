@@ -1,6 +1,7 @@
 package gameMap;
 
 import java.util.Set;
+import java.util.function.Predicate;
 
 import entity.Pair;
 
@@ -14,4 +15,6 @@ public interface MapInterface {
 	public void setBlock(Pair<Integer, Integer> pos, BlockType bt);
 	//get coordinates of the given block
 	public Pair<Integer, Integer> getBlockCoordinates(Block b);
+	//get a random block of the given type
+	public Block getRandomFilterBlock(Predicate<Block> blockFilter);
 }
