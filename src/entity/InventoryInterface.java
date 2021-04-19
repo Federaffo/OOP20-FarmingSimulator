@@ -20,6 +20,8 @@ public interface InventoryInterface {
 	public boolean gotSeeds(SeedType type, Integer number);
 	//return map of seeds
 	public Map<SeedType, Integer> getSeeds();
+	//return current seed
+	public Optional<Pair<SeedType, Integer>> getCurrentSeed();
 	
 	//MANAGE FOODS
 	
