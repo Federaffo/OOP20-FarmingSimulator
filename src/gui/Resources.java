@@ -3,6 +3,7 @@ package gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
@@ -15,10 +16,10 @@ import item.SeedType;
 import entity.AnimalType;
 
 public class Resources {
-	private static final String RES_FOLDER = "res";
+	private static final String FILE_SEPARATOR = File.separator;
 
 	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
-	private static File mainTheme;
+	private static InputStream mainTheme;
 	private static int animationDelay = 0;
 	private static final int ANIMATION_SPEED = 500;
 
@@ -87,9 +88,8 @@ public class Resources {
 			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream("/e.png")));
 			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream("/f.png")));
 			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream("/mouse.png")));
-
 			
-			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
+			mainTheme = getClass().getResourceAsStream("/hd.wav"); 
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class Resources {
 
 	}
 
-	public static File getMainTheme() {
+	public static InputStream getMainTheme() {
 		return mainTheme;
 	}
 }
