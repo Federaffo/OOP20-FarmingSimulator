@@ -28,7 +28,6 @@ public class Engine implements Observer<Boolean> {
 		} else {
 			this.game = new GameImpl();
 		}
-		
 		this.start();
 	}
 
@@ -51,9 +50,6 @@ public class Engine implements Observer<Boolean> {
 
 		player.run();
 		timer.start();
-
-
-
 	}
 
 	private class GameLoop implements ActionListener {

@@ -29,7 +29,6 @@ public class Animal extends Entity {
 	
 	protected TimerTask grower = new TimerTask() {
 		public void run() {
-			System.out.println(type.name());
 			ready();
 		}
 	};

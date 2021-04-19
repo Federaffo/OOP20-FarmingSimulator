@@ -18,6 +18,7 @@ import gameShop.ShopImpl;
 import item.SeedType;
 
 public class GameImpl implements Game{
+	private static final int UNLOCK_STEP = 50;
 	private Player pg = new Player(new Pair<>(1, 1));
 	private Map map = new Map();
 	private Shop shop = new ShopImpl();
@@ -85,7 +86,7 @@ public class GameImpl implements Game{
 		} else if (pg.getMoney() >= unlockPrice) {
 			interaction.unlockBlock(pg, map, temp);
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 25; // aumento il prezzo del prossimo blocco
+			unlockPrice += UNLOCK_STEP; // aumento il prezzo del prossimo blocco
 		}
 		if(pg.whichAnimalWithPlayer(animals).isPresent()) {
 			interaction.playerAnimal(pg, pg.whichAnimalWithPlayer(animals).get());
