@@ -7,7 +7,6 @@ import javax.swing.Timer;
 import gui.GamePreloader;
 import gui.MusicPlayer;
 import gui.WindowManager;
-import item.SeedType;
 import utils.Observer;
 
 public class Engine implements Observer<Boolean> {

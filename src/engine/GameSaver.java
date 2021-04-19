@@ -3,6 +3,7 @@ package engine;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,7 +15,12 @@ import java.util.stream.Stream;
 
 import com.google.gson.*;
 
+import entity.Animal;
+import entity.Entity;
+import entity.Inventory;
+import entity.Player;
 import gameMap.Block;
+import gameMap.Map;
 import gameShop.Shop;
 
 public class GameSaver {
@@ -29,9 +35,13 @@ public class GameSaver {
 //		 gson = new GsonBuilder().registerTypeAdapter(Block.class,
 //				 interfaceAdapter).registerTypeAdapter(Game.class, interfaceAdapter)
 //				 .registerTypeAdapter(Interaction.class, interfaceAdapter)
-//				.registerTypeAdapter(Shop.class, interfaceAdapter).setPrettyPrinting().create();
+//				 .registerTypeAdapter(Player.class,	interfaceAdapter)
+//				 .registerTypeAdapter(Inventory.class, interfaceAdapter)
+//				 .registerTypeAdapter(Map.class, interfaceAdapter)
+//				 .registerTypeAdapter(Animal.class, interfaceAdapter)
+//				 .registerTypeAdapter(Shop.class, interfaceAdapter).setPrettyPrinting().create();
+//
 //		
-		
 		
 		Stream.of(Package.getPackages()).forEach(x -> {
 			try {

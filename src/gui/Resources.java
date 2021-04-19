@@ -17,6 +17,7 @@ import entity.AnimalType;
 
 public class Resources {
 	private static final String FILE_SEPARATOR = File.separator;
+	private static final String TEXTURE_FOLDER = "/texture";
 
 	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
 	private static InputStream mainTheme;
@@ -26,68 +27,68 @@ public class Resources {
 	public void load() {
 		try {
 			//seed
-			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
-			textures.put(SeedType.WHEAT_SEED, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
-			textures.put(SeedType.POTATO_SEED, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
-			textures.put(SeedType.TOMATO_SEED, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
-			textures.put(SeedType.ORANGE_SEED, ImageIO.read(getClass().getResourceAsStream("/orange.png")));
-			textures.put(SeedType.CHERRY_SEED, ImageIO.read(getClass().getResourceAsStream("/cherry.png")));
-			textures.put(SeedType.APPLE_SEED, ImageIO.read(getClass().getResourceAsStream("/apple.png")));
+			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot2.png")));
+			textures.put(SeedType.WHEAT_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/weat.png")));
+			textures.put(SeedType.POTATO_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/potato2.png")));
+			textures.put(SeedType.TOMATO_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/tomato2.png")));
+			textures.put(SeedType.ORANGE_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/orange.png")));
+			textures.put(SeedType.CHERRY_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/cherry.png")));
+			textures.put(SeedType.APPLE_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/apple.png")));
 			
 			//food
 
-			textures.put(FoodType.PORK_MEAT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(FoodType.EGG, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(FoodType.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
-			textures.put(FoodType.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
-			textures.put(FoodType.TOMATO, ImageIO.read(getClass().getResourceAsStream("/tomato2.png")));
-			textures.put(FoodType.APPLE, ImageIO.read(getClass().getResourceAsStream("/appletree.png")));
-			textures.put(FoodType.ORANGE, ImageIO.read(getClass().getResourceAsStream("/orangetree.png")));
-			textures.put(FoodType.CHERRY, ImageIO.read(getClass().getResourceAsStream("/cherrytree.png")));
-			textures.put(FoodType.WHEAT, ImageIO.read(getClass().getResourceAsStream("/weat.png")));
+			textures.put(FoodType.PORK_MEAT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot.png")));
+			textures.put(FoodType.EGG, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot.png")));
+			textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot.png")));
+			textures.put(FoodType.CARROT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot2.png")));
+			textures.put(FoodType.POTATO, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/potato2.png")));
+			textures.put(FoodType.TOMATO, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/tomato2.png")));
+			textures.put(FoodType.APPLE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/appletree.png")));
+			textures.put(FoodType.ORANGE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/orangetree.png")));
+			textures.put(FoodType.CHERRY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/cherrytree.png")));
+			textures.put(FoodType.WHEAT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/weat.png")));
 
 			//block
-			textures.put(BlockType.TERRAIN, ImageIO.read(getClass().getResourceAsStream("/grass.png")));
-			textures.put(BlockType.FIELD, ImageIO.read(getClass().getResourceAsStream("/farmland.png")));
-			textures.put(BlockType.WALL, ImageIO.read(getClass().getResourceAsStream("/wall.png")));
-			textures.put(BlockType.LOCKED, ImageIO.read(getClass().getResourceAsStream("/lock3.png")));
-			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream("/water.png")));
-			textures.put(BlockType.STALL, ImageIO.read(getClass().getResourceAsStream("/stall.png")));
+			textures.put(BlockType.TERRAIN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/grass.png")));
+			textures.put(BlockType.FIELD, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/farmland.png")));
+			textures.put(BlockType.WALL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/wall.png")));
+			textures.put(BlockType.LOCKED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/lock3.png")));
+			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/water.png")));
+			textures.put(BlockType.STALL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/stall.png")));
 			
-			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
-			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream("/tree.png")));
+			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/lucchetto.png")));
+			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/tree.png")));
 			//textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
 
-			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream("/moneyIcon.png")));
-			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream("/pianta.png")));
-			textures.put(texture.TIME, ImageIO.read(getClass().getResourceAsStream("/timeIcon.png")));
-			textures.put(texture.INFO, ImageIO.read(getClass().getResourceAsStream("/infoIcon.png")));
-			textures.put(texture.EMPTY, ImageIO.read(getClass().getResourceAsStream("/empty.png")));
+			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/moneyIcon.png")));
+			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/pianta.png")));
+			textures.put(texture.TIME, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/timeIcon.png")));
+			textures.put(texture.INFO, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/infoIcon.png")));
+			textures.put(texture.EMPTY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/empty.png")));
 
 			
 			//player
-			textures.put(texture.PLAYER_RIGHT, ImageIO.read(getClass().getResourceAsStream("/right0.png")));
-			textures.put(texture.PLAYER_RIGHT2, ImageIO.read(getClass().getResourceAsStream("/right1.png")));
-			textures.put(texture.PLAYER_LEFT, ImageIO.read(getClass().getResourceAsStream("/left0.png")));
-			textures.put(texture.PLAYER_LEFT2, ImageIO.read(getClass().getResourceAsStream("/left1.png")));
-			textures.put(texture.PLAYER_DOWN, ImageIO.read(getClass().getResourceAsStream("/down0.png")));
-			textures.put(texture.PLAYER_DOWN2, ImageIO.read(getClass().getResourceAsStream("/down1.png")));
-			textures.put(texture.PLAYER_UP, ImageIO.read(getClass().getResourceAsStream("/up0.png")));
-			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream("/up1.png")));
-			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
+			textures.put(texture.PLAYER_RIGHT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right0.png")));
+			textures.put(texture.PLAYER_RIGHT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right1.png")));
+			textures.put(texture.PLAYER_LEFT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left0.png")));
+			textures.put(texture.PLAYER_LEFT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left1.png")));
+			textures.put(texture.PLAYER_DOWN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down0.png")));
+			textures.put(texture.PLAYER_DOWN2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down1.png")));
+			textures.put(texture.PLAYER_UP, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up0.png")));
+			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up1.png")));
+			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/stop.png")));
 
 
 			//animals
-			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream("/cow.png")));
-			textures.put(AnimalType.PIG, ImageIO.read(getClass().getResourceAsStream("/pig.png")));
-			textures.put(AnimalType.CHICKEN, ImageIO.read(getClass().getResourceAsStream("/chicken.png")));
+			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/cow.png")));
+			textures.put(AnimalType.PIG, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/pig.png")));
+			textures.put(AnimalType.CHICKEN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/chicken.png")));
 			
 			//keyboard commands
-			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream("/wasd.png")));
-			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream("/e.png")));
-			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream("/f.png")));
-			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream("/mouse.png")));
+			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/wasd.png")));
+			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/e.png")));
+			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/f.png")));
+			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/mouse.png")));
 			
 			mainTheme = getClass().getResourceAsStream("/hd.wav"); 
 
