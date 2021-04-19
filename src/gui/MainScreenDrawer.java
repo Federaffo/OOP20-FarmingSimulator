@@ -8,13 +8,14 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import engine.Game;
+
+import block.Block;
+import block.BlockType;
+import block.FieldBlock;
+import control.Game;
 import entity.Animal;
 import entity.Direction;
 import entity.Pair;
-import gameMap.Block;
-import gameMap.BlockType;
-import gameMap.FieldBlock;
 import gui.Resources.texture;
 import item.Seed;
 import item.SeedState;

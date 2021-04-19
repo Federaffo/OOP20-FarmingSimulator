@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import gameMap.Block;
+import block.Block;
 
 public abstract class EntityImpl extends Rectangle implements Entity {
 	

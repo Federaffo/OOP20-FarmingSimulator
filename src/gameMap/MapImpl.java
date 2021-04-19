@@ -5,6 +5,11 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Predicate;
+
+import block.Block;
+import block.BlockType;
+import block.FactoryBlock;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

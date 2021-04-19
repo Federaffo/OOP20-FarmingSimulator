@@ -6,7 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import engine.Game;
+import control.Game;
 import gui.Resources.texture;
 
 public class InfoDrawer extends GameDrawer {

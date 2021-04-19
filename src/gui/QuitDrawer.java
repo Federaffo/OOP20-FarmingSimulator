@@ -8,7 +8,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import engine.Game;
+
+import control.Game;
 
 public class QuitDrawer extends GameDrawer {
 	private Resources res = new Resources();

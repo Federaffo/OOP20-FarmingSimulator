@@ -3,6 +3,8 @@ package gameMap;
 import java.util.Set;
 import java.util.function.Predicate;
 
+import block.Block;
+import block.BlockType;
 import entity.Pair;
 
 public interface Map {

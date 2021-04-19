@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import engine.Game;
+import control.Game;
 import gui.Resources.texture;
 
 public class JPanelHUD extends JPanel {

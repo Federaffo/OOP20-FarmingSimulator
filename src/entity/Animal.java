@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Set;
 
-import gameMap.Block;
+import block.Block;
 import item.FoodType;
 
 public interface Animal extends Entity {

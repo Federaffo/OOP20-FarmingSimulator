@@ -1,11 +1,14 @@
-package entity;
+package entity.player;
 
 import java.awt.Rectangle;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import gameMap.Block;
+import block.Block;
+import entity.Animal;
+import entity.EntityImpl;
+import entity.Pair;
 
 public class PlayerImpl extends EntityImpl implements Player {
 

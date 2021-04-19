@@ -9,14 +9,14 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import block.BlockType;
+import block.FieldBlock;
+import block.UnlockableBlock;
+import control.Game;
 import engine.Engine;
-import engine.Game;
 import entity.Pair;
-import entity.Player;
-import gameMap.BlockType;
-import gameMap.FieldBlock;
+import entity.player.Player;
 import gameMap.Map;
-import gameMap.UnlockableBlock;
 
 public class FarmingSimulatorTestClass {
 	private Game g = null;

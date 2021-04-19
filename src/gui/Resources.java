@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 
+import block.BlockType;
 import entity.Direction;
-import gameMap.BlockType;
 import item.FoodType;
 import item.Texturable;
 import item.SeedType;

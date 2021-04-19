@@ -1,4 +1,4 @@
-package gameMap;
+package block;
 
 public interface UnlockableBlock extends FieldBlock{
 	public boolean isLocked();
