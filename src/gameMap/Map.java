@@ -110,7 +110,7 @@ public class Map implements MapInterface {
 		Block b;
 		do {
 			b =  mappa[rnd.nextInt(COLUMN)][rnd.nextInt(ROW)];
-		}while(blockFilter.test(b));
+		}while(!blockFilter.test(b));
 		
 		return b;
 	}
