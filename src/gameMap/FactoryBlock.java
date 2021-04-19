@@ -3,7 +3,6 @@ package gameMap;
 import java.awt.Rectangle;
 import java.util.*;
 
-import com.google.gson.annotations.Expose;
 
 import entity.Pair;
 import item.FoodType;
@@ -30,6 +29,10 @@ public class FactoryBlock {
 	
 	public BlockImpl getWaterBlock(int posx, int posy) {
 		return new BlockImpl(BlockType.WATER, true, false, posx, posy);
+	}
+	
+	public BlockImpl getStallBlock(int posx, int posy) {
+		return new BlockImpl(BlockType.STALL, true, false, posx, posy);
 	}
 	
 	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
@@ -68,10 +71,11 @@ public class FactoryBlock {
 			myseed = Optional.of(new Seed(st));
 		}
 
+
 		public Pair<FoodType, Integer> harvest() {
-			FoodType food = myseed.get().Harvest();
+			FoodType food = myseed.get().harvest();
 			myseed = Optional.empty();
-			return new Pair<>(food, 3);
+			return new Pair<>(food, food.getQuantity());
 		}
 
 		public boolean isEmpty() {
@@ -113,6 +117,13 @@ public class FactoryBlock {
 
 		public BlockType getType() {
 			return this.blockType;
+		}
+		
+		public boolean isStall() {
+			if(this.blockType==BlockType.STALL) {
+				return true;
+			}
+			return false;
 		}
 
 	}

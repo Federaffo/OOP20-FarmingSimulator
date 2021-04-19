@@ -3,6 +3,7 @@ package gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
@@ -12,12 +13,13 @@ import gameMap.BlockType;
 import item.FoodType;
 import item.Texturable;
 import item.SeedType;
+import entity.AnimalType;
 
 public class Resources {
-	private static final String RES_FOLDER = "res";
+	private static final String FILE_SEPARATOR = File.separator;
 
 	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
-	private static File mainTheme;
+	private static InputStream mainTheme;
 	private static int animationDelay = 0;
 	private static final int ANIMATION_SPEED = 500;
 
@@ -34,9 +36,8 @@ public class Resources {
 			
 			//food
 
-			textures.put(FoodType.PORK_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(FoodType.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
-			textures.put(FoodType.COW_MEET, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.PORK_MEAT, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
+			textures.put(FoodType.EGG, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
 			textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream("/carrot.png")));
 			textures.put(FoodType.CARROT, ImageIO.read(getClass().getResourceAsStream("/carrot2.png")));
 			textures.put(FoodType.POTATO, ImageIO.read(getClass().getResourceAsStream("/potato2.png")));
@@ -52,7 +53,7 @@ public class Resources {
 			textures.put(BlockType.WALL, ImageIO.read(getClass().getResourceAsStream("/wall.png")));
 			textures.put(BlockType.LOCKED, ImageIO.read(getClass().getResourceAsStream("/lock3.png")));
 			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream("/water.png")));
-
+			textures.put(BlockType.STALL, ImageIO.read(getClass().getResourceAsStream("/stall.png")));
 			
 			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream("/lucchetto.png")));
 			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream("/tree.png")));
@@ -76,9 +77,19 @@ public class Resources {
 			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream("/up1.png")));
 			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream("/stop.png")));
 
-			
 
-			mainTheme = new File(RES_FOLDER + File.separator + "hd.wav");
+			//animals
+			textures.put(AnimalType.COW, ImageIO.read(getClass().getResourceAsStream("/cow.png")));
+			textures.put(AnimalType.PIG, ImageIO.read(getClass().getResourceAsStream("/pig.png")));
+			textures.put(AnimalType.CHICKEN, ImageIO.read(getClass().getResourceAsStream("/chicken.png")));
+			
+			//keyboard commands
+			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream("/wasd.png")));
+			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream("/e.png")));
+			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream("/f.png")));
+			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream("/mouse.png")));
+			
+			mainTheme = getClass().getResourceAsStream("/hd.wav"); 
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -127,12 +138,14 @@ public class Resources {
 	public static enum texture implements Texturable {
 		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
 		PLAYER_DOWN2,
+		
+		WASD, E_KEY,F_KEY, MOUSE_WHEEL,
 
 		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK, TREE;
 
 	}
 
-	public static File getMainTheme() {
+	public static InputStream getMainTheme() {
 		return mainTheme;
 	}
 }

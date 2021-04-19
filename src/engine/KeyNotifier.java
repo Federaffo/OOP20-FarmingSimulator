@@ -3,6 +3,7 @@ package engine;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseWheelEvent;
 
+import entity.PlayerImpl;
 import entity.Player;
 
 public class KeyNotifier {

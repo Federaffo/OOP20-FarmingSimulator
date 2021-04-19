@@ -1,36 +1,55 @@
 package engine;
 
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 
-import entity.Entity;
+import entity.AnimalImpl;
+import entity.Animal;
+import entity.AnimalType;
+import entity.FactoryAnimal;
 import entity.Pair;
+import entity.PlayerImpl;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
+import gameMap.MapImpl;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;
 import gameShop.ShopImpl;
-import item.FoodType;
-import item.SeedState;
 import item.SeedType;
 
 public class GameImpl implements Game{
-	private Player pg = new Player(new Pair<>(1, 1));
-	private Map map = new Map();
+	private static final int UNLOCK_STEP = 50;
+	private Player pg = new PlayerImpl(new Pair<>(1, 1));
+	private Map map = new MapImpl();
 	private Shop shop = new ShopImpl();
+	private Interaction interaction = new InteractionImpl();
+	private List<Animal> animals = new ArrayList<>();
+	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
+	
+	public GameImpl() {
+		generateAnimals();
+		
+		pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
+	}
 
-	public void loadGame(Map map, Player player) {
+
+	public void loadGame(MapImpl map, PlayerImpl player) {
 		this.pg = player;
 		this.map = map;
 	}
 
 	public void loop() {
 		pg.move();
-		pg.checkCollision(map.getMapSet());
+		pg.checkCollision(map.getMapSet(), x -> x.isWalkable());
+		animals.forEach(x -> x.randomMove(map.getMapSet()));
 	}
 
 	public Map getMap() {
@@ -46,20 +65,11 @@ public class GameImpl implements Game{
 	}
 
 	public boolean buy(SeedType st, int quantity) {
-		
-		if (pg.getMoney() >= st.getPrice() * quantity) {
-			pg.getInventory().addSeeds(st, quantity);
-			pg.decrease(st.getPrice() * quantity);
-			return true;
-		}
-		return false;
+		return interaction.playerBuy(pg, st, quantity);
 	}
 
 	public double sellAll() {
-		double money = shop.sellAll(((Player) pg).getInventory().getFood());
-		pg.incrementMoney(money);
-		pg.getInventory().removeAllFood();
-		return money;
+		return interaction.playerSell(shop, pg);
 	}
 
 	public GameState getState() {
@@ -67,32 +77,20 @@ public class GameImpl implements Game{
 	}
 
 	public void interact() {
-
 		Block temp = pg.blockPosition(map.getMapSet());
-		// controllo se il blocco � di tipo UnlockBlock
+		if (!(temp instanceof UnlockableBlock)) {
 
-		if (!(temp instanceof UnlockableBlock)) {		
 			if (temp.getType() == BlockType.FIELD) {
 				FieldBlock myBlock = (FieldBlock) temp;
-				if (myBlock.isEmpty()) {
-					if (pg.getInventory().getCurrentSeed().isPresent()) {
-						SeedType st = pg.getInventory().getCurrentSeed().get().getX();
-						myBlock.plant(st);
-						pg.getInventory().removeSeed(st);
-					}
-				} else {
-					if (myBlock.getSeed().getSeedState() == SeedState.GROWN) {
-						Pair<FoodType, Integer> food = myBlock.harvest();
-						pg.getInventory().addFoods(food.getX(), food.getY());
-					}
-				}
+				interaction.fieldInteraction(pg, myBlock);
 			}
-		}else if(pg.getMoney()>=unlockPrice){	
-			((UnlockableBlock) temp).unlockBlock();	
-			Pair<Integer, Integer> blockPos = map.getBlockPosition(temp);
-			map.setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
-			pg.decrease(unlockPrice); // decremento i soldi del Player
-			unlockPrice += 25; // aumento il prezzo del prossimo blocco
+		} else if (pg.getMoney() >= unlockPrice) {
+			interaction.unlockBlock(pg, map, temp);
+			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
+			unlockPrice += UNLOCK_STEP; // aumento il prezzo del prossimo blocco
+		}
+		if(pg.nearestAnimal(animals).isPresent()) {
+			interaction.playerAnimal(pg, pg.nearestAnimal(animals).get());
 		}
 	}
 	
@@ -105,11 +103,12 @@ public class GameImpl implements Game{
 			if (block instanceof FieldBlock) {
 				FieldBlock field = (FieldBlock) block;
 				if (!field.isEmpty()) {
-					field.getSeed().Grow();
+					field.getSeed().grow();
 				}
 			}
 		}
 	}
+
 
 	public void play() {
 		state = GameState.PLAY;
@@ -129,6 +128,26 @@ public class GameImpl implements Game{
 		} else {
 			state = GameState.INFO;
 		}
+	}
+
+	@Override
+	public List<Animal> getAllAnimals() {
+		return this.animals;
+	}
+	
+	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
+        animals.add(factoryAnimal.generateAnimal(pos, type));
+    }
+	
+	public void resetAnimals() {
+		animals.clear();
+		generateAnimals();
+	}
+	
+	private void generateAnimals() {
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.CHICKEN);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.COW);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.PIG);
 	}
 
 }

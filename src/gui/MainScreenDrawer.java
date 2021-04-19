@@ -9,7 +9,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import engine.Game;
+import entity.AnimalImpl;
+import entity.Animal;
 import entity.Direction;
+import entity.Pair;
+import entity.PlayerImpl;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
@@ -46,9 +50,25 @@ public class MainScreenDrawer extends GameDrawer {
 		super.paintComponent(g);
 		drawMap(g);
 		drawPg(g);
+		drawAnimals(g);
 		setIcon();
 		revalidate();
 		repaint();
+	}
+	
+	private void drawAnimals(Graphics g) {
+		for (Animal a : game.getAllAnimals()) {
+			int posX = (int) (a.getPosX() * resizer);
+			int posY = (int) (a.getPosY() * resizer);
+			
+			if(a.isReady()) {
+				g.setColor(Color.YELLOW);
+				g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
+			}
+			
+			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (50 * resizer),
+					(int) (50 * resizer), null);
+		}
 	}
 
 	private void setIcon() {
@@ -82,9 +102,9 @@ public class MainScreenDrawer extends GameDrawer {
 		/* fine panel price*/
 
 		/* Add HUD compoments to a temporary Panel */
-		tmpHUD.add(moneyPanel); // serve cos� possiamo
+		tmpHUD.add(moneyPanel); // serve così possiamo
 		tmpHUD.add(unlockPanel);
-		tmpHUD.add(timePanel); // settare l'opacit�
+		tmpHUD.add(timePanel); // settare l'opacità
 		tmpHUD.add(infoPanel); // e il colore su questo panel
 		tmpHUD.setOpaque(true);
 		tmpHUD.setBackground(new Color(204, 136, 0, 180));
@@ -107,7 +127,7 @@ public class MainScreenDrawer extends GameDrawer {
 
 		for (int i = 0; i < 32; i++) {
 			for (int j = 0; j < 18; j++) {
-				Block block = game.getMap().getBlock(i, j);
+				Block block = game.getMap().getBlock(new Pair<Integer, Integer>(i, j));
 				Player pg = game.getPlayer();
 
 				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
@@ -132,21 +152,6 @@ public class MainScreenDrawer extends GameDrawer {
 					}
 
 				}
-//				else {
-//					if (block.getType() == BlockType.LOCKED && !((UnlockableBlock) block).isLocked()) {
-//						if (gameInstance.getPlayer().getMoney() >= unlockPrice) {				
-//							JOptionPane.showMessageDialog(null,
-//									"You have just unlocked this block for " + unlockPrice + " money");
-//							Pair<Integer, Integer> blockPos = gameInstance.getMap().getBlockPosition(block);
-//							gameInstance.getMap().setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
-//							unlockPrice += 50;
-//						} else {
-//							JOptionPane.showMessageDialog(null, "You don't have enough money!");
-//							((UnlockableBlock) block).lockBlock();
-//						}
-//
-//					}
-//				}
 			}
 		}
 	}

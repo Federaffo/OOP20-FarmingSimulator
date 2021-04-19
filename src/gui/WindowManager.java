@@ -19,6 +19,9 @@ import engine.GameSaver;
 import engine.GameState;
 
 public class WindowManager extends JFrame {
+	private static final double SCREEN_RESIZER = 0.8;
+	private static final double ASPECT_RATIO = 0.5625;
+
 	private static final long serialVersionUID = -5704310736291818589L;
 
 	// private JFrame frame = new JFrame();
@@ -32,7 +35,7 @@ public class WindowManager extends JFrame {
 
 	public WindowManager(Game game) {
 		Dimension screenSize = getToolkit().getScreenSize();
-		windowSize = new Dimension((int) (screenSize.width * 0.8), (int) ((screenSize.width * 0.8) * (0.5625)));
+		windowSize = new Dimension((int) (screenSize.width * SCREEN_RESIZER), (int) ((screenSize.width * SCREEN_RESIZER) * ASPECT_RATIO));
 		this.game = game;
 
 		setBounds(0, 0, windowSize.width, windowSize.height);
@@ -62,6 +65,7 @@ public class WindowManager extends JFrame {
 
 	public void createPanel() {
 		lpanel = new JLayeredPane();
+		double quitPanelBounds = 0.06;
 
 		shopPanel = new ShopDrawer(game, windowSize);
 		shopPanel.setBackground(shopPanel.getBackground());
@@ -83,7 +87,7 @@ public class WindowManager extends JFrame {
 		quitPanel = new QuitDrawer(game, windowSize);
 		quitPanel.setBackground(Color.black);
 		quitPanel.setSize(windowSize);
-		quitPanel.setBounds(0, 0, windowSize.width, (int) (windowSize.height * 0.06));
+		quitPanel.setBounds(0, 0, windowSize.width, (int) (windowSize.height * quitPanelBounds));
 		quitPanel.setPreferredSize(windowSize);
 
 		lpanel.setBounds(0, 0, windowSize.width, windowSize.height);
@@ -130,7 +134,6 @@ public class WindowManager extends JFrame {
 	}
 
 	public void showQuitScreen() {
-		// disableAllPanel();
 		quitPanel.setVisible(true);
 		quitPanel.requestFocus();
 	}

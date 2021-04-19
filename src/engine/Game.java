@@ -1,12 +1,22 @@
 package engine;
 
+
+import java.util.List;
+
+import entity.AnimalImpl;
+import entity.Animal;
+import entity.AnimalType;
+import entity.Pair;
+import entity.PlayerImpl;
 import entity.Player;
+import gameMap.MapImpl;
 import gameMap.Map;
 import gameShop.Shop;
 import item.SeedType;
 
+
 public interface Game {
-	public void loadGame(Map map, Player player);
+	public void loadGame(MapImpl map, PlayerImpl player);
 	public void loop();
 	public Map getMap();
 	public Player getPlayer();
@@ -20,5 +30,8 @@ public interface Game {
 	public void play();
 	public void shop();
 	public void info();
+	public List<Animal> getAllAnimals();
+	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type);
+	public void resetAnimals();
 }
 	
