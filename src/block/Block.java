@@ -1,4 +1,4 @@
-package gameMap;
+package block;
 
 public interface Block {
 	public boolean isWalkable();

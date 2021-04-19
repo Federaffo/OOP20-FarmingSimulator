@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import control.Game;
+import control.GameImpl;
 import gui.GamePreloader;
 import gui.MusicPlayer;
 import gui.WindowManager;

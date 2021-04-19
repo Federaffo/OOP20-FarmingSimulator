@@ -10,8 +10,8 @@ import java.awt.event.MouseWheelListener;
 
 import javax.swing.JPanel;
 
-import engine.Game;
-import engine.KeyNotifier;
+import control.Game;
+import control.KeyNotifier;
 
 public abstract class GameDrawer extends JPanel {
 

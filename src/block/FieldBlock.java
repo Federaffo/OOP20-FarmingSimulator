@@ -1,4 +1,4 @@
-package gameMap;
+package block;
 
 import entity.Pair;
 import item.FoodType;

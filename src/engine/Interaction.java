@@ -3,10 +3,10 @@ package engine;
 
 
 import entity.AnimalImpl;
+import entity.player.Player;
+import block.Block;
+import block.FieldBlock;
 import entity.Animal;
-import entity.Player;
-import gameMap.Block;
-import gameMap.FieldBlock;
 import gameMap.Map;
 import gameShop.Shop;
 import item.SeedType;

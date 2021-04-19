@@ -1,10 +1,10 @@
-package engine;
+package control;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseWheelEvent;
 
-import entity.PlayerImpl;
-import entity.Player;
+import entity.player.Player;
+import entity.player.PlayerImpl;
 
 public class KeyNotifier {
 

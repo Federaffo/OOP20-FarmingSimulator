@@ -3,7 +3,7 @@ package entity;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import gameMap.Block;
+import block.Block;
 
 public interface Entity {
 	

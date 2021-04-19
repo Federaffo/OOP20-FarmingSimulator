@@ -1,14 +1,15 @@
-package engine;
+package control;
 
 
 import java.util.List;
 
+import engine.GameState;
 import entity.AnimalImpl;
 import entity.Animal;
 import entity.AnimalType;
 import entity.Pair;
-import entity.PlayerImpl;
-import entity.Player;
+import entity.player.Player;
+import entity.player.PlayerImpl;
 import gameMap.MapImpl;
 import gameMap.Map;
 import gameShop.Shop;

@@ -25,7 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import engine.Game;
+
+import control.Game;
 import item.SeedType;
 import utils.Observer;
 

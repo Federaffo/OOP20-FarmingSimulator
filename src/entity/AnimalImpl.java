@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import gameMap.Block;
+import block.Block;
 import item.FoodType;
 
 public class AnimalImpl extends EntityImpl implements Animal {

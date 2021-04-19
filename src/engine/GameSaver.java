@@ -1,25 +1,21 @@
 package engine;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.instrument.Instrumentation;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.google.gson.*;
 
+import block.Block;
+import control.Game;
+import control.GameImpl;
 import entity.Animal;
-import entity.Entity;
-import entity.Inventory;
-import entity.Player;
-import gameMap.Block;
+import entity.player.Inventory;
+import entity.player.Player;
 import gameMap.Map;
 import gameShop.Shop;
 
@@ -32,26 +28,26 @@ public class GameSaver {
 		InterfaceAdapter interfaceAdapter = new InterfaceAdapter();
 		
 		GsonBuilder gsonBuilder = new GsonBuilder();
-//		 gson = new GsonBuilder().registerTypeAdapter(Block.class,
-//				 interfaceAdapter).registerTypeAdapter(Game.class, interfaceAdapter)
-//				 .registerTypeAdapter(Interaction.class, interfaceAdapter)
-//				 .registerTypeAdapter(Player.class,	interfaceAdapter)
-//				 .registerTypeAdapter(Inventory.class, interfaceAdapter)
-//				 .registerTypeAdapter(Map.class, interfaceAdapter)
-//				 .registerTypeAdapter(Animal.class, interfaceAdapter)
-//				 .registerTypeAdapter(Shop.class, interfaceAdapter).setPrettyPrinting().create();
-//
-//		
+		 gson = new GsonBuilder().registerTypeAdapter(Block.class,
+				 interfaceAdapter).registerTypeAdapter(Game.class, interfaceAdapter)
+				 .registerTypeAdapter(Interaction.class, interfaceAdapter)
+				 .registerTypeAdapter(Player.class,	interfaceAdapter)
+				 .registerTypeAdapter(Inventory.class, interfaceAdapter)
+				 .registerTypeAdapter(Map.class, interfaceAdapter)
+				 .registerTypeAdapter(Animal.class, interfaceAdapter)
+				 .registerTypeAdapter(Shop.class, interfaceAdapter).setPrettyPrinting().create();
+
 		
-		Stream.of(Package.getPackages()).forEach(x -> {
-			try {
-				InterfaceLoader.getInterfaces(x.getName())
-						.forEach(y -> gsonBuilder.registerTypeAdapter(y, interfaceAdapter));
-			} catch (ClassNotFoundException | IOException e) {
-				e.printStackTrace();
-			}
-		});
-		gson = gsonBuilder.create();
+		
+//		Stream.of(Package.getPackages()).forEach(x -> {
+//			try {
+//				InterfaceLoader.getInterfaces(x.getName())
+//						.forEach(y -> gsonBuilder.registerTypeAdapter(y, interfaceAdapter));
+//			} catch (ClassNotFoundException | IOException e) {
+//				e.printStackTrace();
+//			}
+//		});
+//		gson = gsonBuilder.create();
 	}
 
 	public boolean isSavingPresent() {
@@ -70,8 +66,13 @@ public class GameSaver {
 	public GameImpl load() {
 		try {
 			File myObj = new File(dot + File.separator + fileName);
+			
+			InputStream in = getClass().getResourceAsStream("/saves.txt"); 
+			BufferedReader saves = new BufferedReader(new InputStreamReader(in));
+
+			
 			String json = "";
-			Scanner myReader = new Scanner(myObj);
+			Scanner myReader = new Scanner(saves);
 			while (myReader.hasNextLine()) {
 				json += myReader.nextLine();
 			}

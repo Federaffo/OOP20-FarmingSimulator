@@ -14,7 +14,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import engine.Game;
+import control.Game;
 import engine.GameSaver;
 import engine.GameState;
 

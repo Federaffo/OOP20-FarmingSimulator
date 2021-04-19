@@ -8,6 +8,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/feder/Downloads/gson-2.8.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,21 +1,24 @@
-package engine;
+package control;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import block.Block;
+import block.BlockType;
+import block.FieldBlock;
+import block.UnlockableBlock;
+import engine.GameState;
+import engine.Interaction;
+import engine.InteractionImpl;
 import entity.AnimalImpl;
 import entity.Animal;
 import entity.AnimalType;
 import entity.FactoryAnimal;
 import entity.Pair;
-import entity.PlayerImpl;
-import entity.Player;
-import gameMap.Block;
-import gameMap.BlockType;
-import gameMap.FieldBlock;
+import entity.player.Player;
+import entity.player.PlayerImpl;
 import gameMap.MapImpl;
 import gameMap.Map;
-import gameMap.UnlockableBlock;
 import gameShop.Shop;
 import gameShop.ShopImpl;
 import item.SeedType;

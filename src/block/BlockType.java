@@ -1,4 +1,4 @@
-package gameMap;
+package block;
 
 import item.Texturable;
 

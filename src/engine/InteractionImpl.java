@@ -1,13 +1,13 @@
 package engine;
 
+import block.Block;
+import block.BlockType;
+import block.FieldBlock;
+import block.UnlockableBlock;
 import entity.Animal;
 import entity.Pair;
-import entity.Player;
-import gameMap.Block;
-import gameMap.BlockType;
-import gameMap.FieldBlock;
+import entity.player.Player;
 import gameMap.Map;
-import gameMap.UnlockableBlock;
 import gameShop.Shop;
 import item.FoodType;
 import item.SeedState;
