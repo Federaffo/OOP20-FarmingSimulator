@@ -4,10 +4,10 @@ import java.util.Set;
 
 import gameMap.Block;
 
-public class Player extends Entity {
+public class Player extends Entity implements PlayerInterface {
 	
 	private double money;
-	private Inventory bag;
+	private InventoryInterface bag;
 	
 	{SPEED = 5;}
 	//create a new player in the indicated position
@@ -18,7 +18,6 @@ public class Player extends Entity {
 		money = 100;
 	}
 	
-	//manage player money
 	public void incrementMoney(double moneyToAdd) {
 		money += moneyToAdd;
 	}
@@ -26,13 +25,11 @@ public class Player extends Entity {
 		money -= moneyToRemove;
 	}
 	
-	//getter money
 	public double getMoney() {
 		return money;
 	}
 	
-	//getter inventory
-	public Inventory getInventory() {
+	public InventoryInterface getInventory() {
 		return this.bag;
 	}
 }
