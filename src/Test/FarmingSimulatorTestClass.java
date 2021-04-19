@@ -66,14 +66,21 @@ public class FarmingSimulatorTestClass {
 		pg.setDown(true);
 		pg.setRight(true);
 		IntStream.range(0,10).forEach(i->g.loop());
+		pg.setDown(false);
+		pg.setRight(false);
+		
 		//Controllo che il player sia sul blocco (2,2)
 		assertEquals(map.getBlock(2, 2),pg.blockPosition(map.getMapSet()));
+		
 		//Controllo che il blocco (2,2) sia di tipo FIELD
 		assertEquals(map.getBlock(2, 2).getType(),BlockType.FIELD);
+		
 		//Controllo che il blocco sia vuoto, cioè non ha nessun seme piantato
 		assertTrue(((FieldBlock)map.getBlock(2,2)).isEmpty());
+		
 		//Pianto un seme nel blocco (2,2)
 		g.interact();
+		
 		//Controllo che il blocco abbia il seme dopo averci interagito e aver inserito un seme
 		assertFalse(((FieldBlock)map.getBlock(2,2)).isEmpty());
 	}
@@ -86,14 +93,19 @@ public class FarmingSimulatorTestClass {
 		pg.setRight(false);
 		pg.setDown(true);
 		IntStream.range(0,10).forEach(i->g.loop());
+		
 		//controllo che il Player sia nel blocco (10,2)
 		assertEquals(map.getBlock(10, 2),pg.blockPosition(map.getMapSet()));
+		
 		//controllo che il blocco sia effettivamente di tipo LOCKED
 		assertEquals(map.getBlock(10, 2).getType(),BlockType.LOCKED);
+		
 		//controllo se di default il blocco LOCKED è bloccato
 		assertTrue(((UnlockableBlock)map.getBlock(10,2)).isLocked());
+		
 		//interagisco per sbloccare il blocco
 		g.interact();
+		
 		//dopo aver interagito controllo che venga sbloccato e diventi di tipo FIELD
 		assertEquals(map.getBlock(10, 2).getType(),BlockType.FIELD);
 	}
