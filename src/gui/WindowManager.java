@@ -99,11 +99,6 @@ public class WindowManager extends JFrame {
 		showMainScreen();
 	}
 
-	public void addKeyListener(KeyListener k) {
-		System.out.println("listener added");
-		this.mainPanel.addKeyListener(k);
-	}
-
 	private void disableAllPanel() {
 		for (var jPan : lpanel.getComponents()) {
 			jPan.setVisible(false);
@@ -118,7 +113,6 @@ public class WindowManager extends JFrame {
 	}
 
 	public void showInfo() {
-		// disableAllPanel();
 		infoPanel.setVisible(true);
 		infoPanel.requestFocus();
 		showQuitScreen();
