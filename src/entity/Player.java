@@ -1,35 +1,21 @@
 package entity;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import gameMap.Block;
 
-public class Player extends Entity implements PlayerInterface {
-	
-	private double money;
-	private InventoryInterface bag;
-	
-	{SPEED = 5;}
-	//create a new player in the indicated position
-	public Player(Pair<Integer, Integer> position) {
-		super(position);
+public interface Player extends Entity{
 
-		bag = new Inventory();
-		money = 100;
-	}
+	//manage money
+	public void incrementMoney(double moneyToAdd);
+	public void decreaseMoney(double moneyToRemove);
+	public double getMoney();
 	
-	public void incrementMoney(double moneyToAdd) {
-		money += moneyToAdd;
-	}
-	public void decreaseMoney(double moneyToRemove) {
-		money -= moneyToRemove;
-	}
+	//get inventory
+	public Inventory getInventory();
 	
-	public double getMoney() {
-		return money;
-	}
-	
-	public InventoryInterface getInventory() {
-		return this.bag;
-	}
+	//get animal
+	public Optional<Animal> nearestAnimal(List<Animal> animals);
 }

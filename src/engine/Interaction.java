@@ -2,6 +2,7 @@ package engine;
 
 
 
+import entity.AnimalImpl;
 import entity.Animal;
 import entity.Player;
 import gameMap.Block;

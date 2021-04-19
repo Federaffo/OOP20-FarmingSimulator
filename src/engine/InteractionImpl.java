@@ -1,11 +1,14 @@
 package engine;
 
+import entity.AnimalImpl;
 import entity.Animal;
 import entity.Pair;
+import entity.PlayerImpl;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
+import gameMap.MapImpl;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;

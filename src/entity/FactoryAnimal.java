@@ -2,19 +2,19 @@ package entity;
 
 public class FactoryAnimal {
 
-	public Animal getChicken(Pair<Integer, Integer> position) {
-		return new Animal(position, AnimalType.CHICKEN);
+	public AnimalImpl getChicken(Pair<Integer, Integer> position) {
+		return new AnimalImpl(position, AnimalType.CHICKEN);
 	}
 	
-	public Animal getCow(Pair<Integer, Integer> position) {
-		return new Animal(position, AnimalType.COW);
+	public AnimalImpl getCow(Pair<Integer, Integer> position) {
+		return new AnimalImpl(position, AnimalType.COW);
 	}
 	
-	public Animal getPig(Pair<Integer, Integer> position) {
-		return new Animal(position, AnimalType.PIG);
+	public AnimalImpl getPig(Pair<Integer, Integer> position) {
+		return new AnimalImpl(position, AnimalType.PIG);
 	}
 	
-	public Animal generateAnimal(Pair<Integer, Integer> position, AnimalType type) {
-		return new Animal(position, type);
+	public AnimalImpl generateAnimal(Pair<Integer, Integer> position, AnimalType type) {
+		return new AnimalImpl(position, type);
 	}
 }

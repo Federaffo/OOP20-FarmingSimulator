@@ -3,14 +3,17 @@ package engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.AnimalImpl;
 import entity.Animal;
 import entity.AnimalType;
 import entity.FactoryAnimal;
 import entity.Pair;
+import entity.PlayerImpl;
 import entity.Player;
 import gameMap.Block;
 import gameMap.BlockType;
 import gameMap.FieldBlock;
+import gameMap.MapImpl;
 import gameMap.Map;
 import gameMap.UnlockableBlock;
 import gameShop.Shop;
@@ -19,11 +22,11 @@ import item.SeedType;
 
 public class GameImpl implements Game{
 	private static final int UNLOCK_STEP = 50;
-	private Player pg = new Player(new Pair<>(1, 1));
-	private Map map = new Map();
+	private Player pg = new PlayerImpl(new Pair<>(1, 1));
+	private Map map = new MapImpl();
 	private Shop shop = new ShopImpl();
 	private Interaction interaction = new InteractionImpl();
-	private List<Animal> animals = new ArrayList<Animal>();
+	private List<Animal> animals = new ArrayList<>();
 	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
 	private double unlockPrice = 50.0;
@@ -38,7 +41,7 @@ public class GameImpl implements Game{
 	}
 
 
-	public void loadGame(Map map, Player player) {
+	public void loadGame(MapImpl map, PlayerImpl player) {
 		this.pg = player;
 		this.map = map;
 	}
@@ -86,8 +89,8 @@ public class GameImpl implements Game{
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
 			unlockPrice += UNLOCK_STEP; // aumento il prezzo del prossimo blocco
 		}
-		if(pg.whichAnimalWithPlayer(animals).isPresent()) {
-			interaction.playerAnimal(pg, pg.whichAnimalWithPlayer(animals).get());
+		if(pg.nearestAnimal(animals).isPresent()) {
+			interaction.playerAnimal(pg, pg.nearestAnimal(animals).get());
 		}
 	}
 	
