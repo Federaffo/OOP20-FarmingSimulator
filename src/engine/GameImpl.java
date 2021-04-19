@@ -29,16 +29,14 @@ public class GameImpl implements Game{
 	private double unlockPrice = 50.0;
 	
 	public GameImpl() {
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.CHICKEN);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.COW);
-		this.generateAnimal(new Pair<>(30, 16), AnimalType.PIG);
-		
+		generateAnimals();
 		
 		pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
 		pg.getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
 	}
+
 
 	public void loadGame(Map map, Player player) {
 		this.pg = player;
@@ -108,6 +106,7 @@ public class GameImpl implements Game{
 		}
 	}
 
+
 	public void play() {
 		state = GameState.PLAY;
 	}
@@ -130,12 +129,22 @@ public class GameImpl implements Game{
 
 	@Override
 	public List<Animal> getAllAnimals() {
-		// TODO Auto-generated method stub
 		return this.animals;
 	}
 	
 	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
         animals.add(factoryAnimal.generateAnimal(pos, type));
     }
+	
+	public void resetAnimals() {
+		animals.clear();
+		generateAnimals();
+	}
+	
+	private void generateAnimals() {
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.CHICKEN);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.COW);
+		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.PIG);
+	}
 
 }

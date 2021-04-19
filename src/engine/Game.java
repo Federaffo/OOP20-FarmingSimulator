@@ -29,5 +29,6 @@ public interface Game {
 	public void info();
 	public List<Animal> getAllAnimals();
 	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type);
+	public void resetAnimals();
 }
 	

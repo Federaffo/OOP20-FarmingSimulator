@@ -17,11 +17,13 @@ public class JPanelINFO extends JPanel {
 	private String descr;
 	private final int height;
 	private final int width;
+	private final int imageDim;
 
 	public JPanelINFO(final String title, final int h, final int w) {
 		this.title = title;
 		this.height = h;
 		this.width = w;
+		this.imageDim = (int) (this.width*0.07);
 
 		createTitle();
 	}
@@ -32,6 +34,7 @@ public class JPanelINFO extends JPanel {
 		this.descr = descr;
 		this.height = h;
 		this.width = w;
+		this.imageDim = (int) (this.width*0.07);
 
 		createDescr();
 	}
@@ -56,7 +59,7 @@ public class JPanelINFO extends JPanel {
 
 		JLabel titleLabel = new JLabel();
 		ImageIcon imageIcon = new ImageIcon(
-				new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+				new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
 		titleLabel.setIcon(imageIcon);
 		titleLabel.setText(title);
 		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, 30));

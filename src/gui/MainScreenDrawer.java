@@ -100,9 +100,9 @@ public class MainScreenDrawer extends GameDrawer {
 		/* fine panel price*/
 
 		/* Add HUD compoments to a temporary Panel */
-		tmpHUD.add(moneyPanel); // serve cos� possiamo
+		tmpHUD.add(moneyPanel); // serve così possiamo
 		tmpHUD.add(unlockPanel);
-		tmpHUD.add(timePanel); // settare l'opacit�
+		tmpHUD.add(timePanel); // settare l'opacità
 		tmpHUD.add(infoPanel); // e il colore su questo panel
 		tmpHUD.setOpaque(true);
 		tmpHUD.setBackground(new Color(204, 136, 0, 180));
@@ -150,21 +150,6 @@ public class MainScreenDrawer extends GameDrawer {
 					}
 
 				}
-//				else {
-//					if (block.getType() == BlockType.LOCKED && !((UnlockableBlock) block).isLocked()) {
-//						if (gameInstance.getPlayer().getMoney() >= unlockPrice) {				
-//							JOptionPane.showMessageDialog(null,
-//									"You have just unlocked this block for " + unlockPrice + " money");
-//							Pair<Integer, Integer> blockPos = gameInstance.getMap().getBlockPosition(block);
-//							gameInstance.getMap().setBlock(blockPos.getX(), blockPos.getY(), BlockType.FIELD);
-//							unlockPrice += 50;
-//						} else {
-//							JOptionPane.showMessageDialog(null, "You don't have enough money!");
-//							((UnlockableBlock) block).lockBlock();
-//						}
-//
-//					}
-//				}
 			}
 		}
 	}
