@@ -8,6 +8,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Graphics2D;
 
 import block.Block;
 import block.BlockType;
@@ -18,7 +19,6 @@ import entity.Direction;
 import entity.Pair;
 import gui.Resources.texture;
 import item.Seed;
-import item.SeedImpl;
 import item.SeedState;
 import item.SeedType;
 import item.Texturable;
@@ -57,11 +57,12 @@ public class MainScreenDrawer extends GameDrawer {
 			
 			if(a.isReady()) {
 				g.setColor(Color.YELLOW);
+				((Graphics2D) g).setStroke(new java.awt.BasicStroke(3));
 				g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
 			}
 			
-			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (50 * resizer),
-					(int) (50 * resizer), null);
+			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (BASE_SIZE * resizer),
+					(int) (BASE_SIZE * resizer), null);
 		}
 	}
 

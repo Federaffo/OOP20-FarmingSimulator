@@ -39,10 +39,10 @@ public class InfoDrawer extends GameDrawer {
 		infoPanel.setBorder(BorderFactory.createEmptyBorder(UPPB, LFTB, BTMB, RGTB));
 
 		infoPanel.add(new JPanelINFO("General Commands", titleHeight, titleWidth));
-		infoPanel.add(new JPanelINFO(height, width, texture.WASD, "MOVEMENT ", "[W-A-S-D] type this button to move"));
-		infoPanel.add(new JPanelINFO(height, width, texture.F_KEY, "INTERACT", "[F] press this to plant and harvest"));
-		infoPanel.add(new JPanelINFO(height, width, texture.E_KEY, "MARKET", "[E] press to enter the shop menu view"));
-		infoPanel.add(new JPanelINFO(height, width, texture.MOUSE_WHEEL, "HOTBAR", "[MOUSE_WHEEL] change hotbar selection"));
+		infoPanel.add(new JPanelINFO(height, width, texture.WASD, "MOVEMENT [W-A-S-D]", " type this button to move"));
+		infoPanel.add(new JPanelINFO(height, width, texture.F_KEY, "INTERACT [F]", " press this to interact with plant and animals"));
+		infoPanel.add(new JPanelINFO(height, width, texture.E_KEY, "MARKET [E]", " press to enter the shop menu view"));
+		infoPanel.add(new JPanelINFO(height, width, texture.MOUSE_WHEEL, "HOTBAR [MOUSE_WHEEL]", " change hotbar selection"));
 
 		infoPanel.add(new JPanelINFO("Game HUD Info", titleHeight, titleWidth));
 		infoPanel.add(new JPanelINFO(height, width, texture.MONEY, "MONEY",

@@ -1,19 +1,12 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 import control.Game;
 import engine.GameSaver;
 import engine.GameState;

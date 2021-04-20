@@ -40,12 +40,13 @@ public class JPanelINFO extends JPanel {
 	}
 
 	private void createTitle() {
+		int titleDim = this.height/2;
 		JPanel myPanel = new JPanel();
 		myPanel.setPreferredSize(new Dimension(width, height));
 		JLabel titleLabel = new JLabel();
 		titleLabel.setText(title);
-		titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
-
+		titleLabel.setFont(new Font("Arial", Font.BOLD, titleDim));
+		
 		myPanel.add(titleLabel);
 		myPanel.setOpaque(true);
 		myPanel.setBackground(Color.cyan);
@@ -54,6 +55,8 @@ public class JPanelINFO extends JPanel {
 	}
 
 	private void createDescr() {
+		int titleDim = this.height/2;
+		int descrDim = this.height/3;
 		JPanel myPanel = new JPanel();
 		myPanel.setPreferredSize(new Dimension(width, height));
 
@@ -62,11 +65,11 @@ public class JPanelINFO extends JPanel {
 				new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
 		titleLabel.setIcon(imageIcon);
 		titleLabel.setText(title);
-		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, 30));
+		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, titleDim));
 
 		JLabel descrLabel = new JLabel();
 		descrLabel.setText(descr);
-		descrLabel.setFont(new Font("Arial", Font.ITALIC, 20));
+		descrLabel.setFont(new Font("Arial", Font.ITALIC, descrDim));
 
 		myPanel.add(titleLabel);
 		myPanel.add(descrLabel);

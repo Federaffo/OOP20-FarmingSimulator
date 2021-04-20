@@ -21,7 +21,6 @@ public class PlayerImpl extends EntityImpl implements Player {
 		super(position);
 
 		bag = new InventoryImpl();
-		money = 100;
 	}
 
 	public void incrementMoney(double moneyToAdd) {
