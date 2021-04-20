@@ -46,6 +46,11 @@ public abstract class EntityImpl extends Rectangle implements Entity {
 		direction.setRight(isMoving);
 		updateIsMoving();
 	}
+	
+	public void moveTo(Pair<Integer, Integer> pos) {
+		super.x = pos.getX() * SIZE;
+		super.y = pos.getY() * SIZE;
+	}
 
 	public void move() {
 		if(direction.isUp()) super.y -= SPEED;

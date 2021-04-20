@@ -24,6 +24,9 @@ public interface Entity {
 	//getter isMoving
 	public boolean isMoving();
 	
+	//move entity to that position
+	public void moveTo(Pair<Integer, Integer> pos);
+	
 	//getter entity coordinates
 	public int getPosX();
 	public int getPosY();
