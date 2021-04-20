@@ -45,7 +45,6 @@ public class GameSaver {
 	}
 
 	public void save(Game game) {
-		System.out.println(filePath);
 		String json = gson.toJson(game);
 		try (FileWriter writer = new FileWriter(filePath)) {
 			gson.toJson(game, writer);

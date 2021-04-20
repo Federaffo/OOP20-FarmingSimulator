@@ -8,7 +8,7 @@ import item.Texturable;
 public enum AnimalType implements Texturable {
 	
 	COW(FoodType.MILK, ItemConstants.HYPER_LONG_GROW_TIME, 2, "Cow"),
-	CHICKEN(FoodType.EGG, ItemConstants.VERY_LONG_GROW_TIME, 4, "Chicken"),
+	CHICKEN(FoodType.EGG, ItemConstants.MEDIUM_GROW_TIME, 4, "Chicken"),
 	PIG(FoodType.PORK_MEAT, ItemConstants.VERY_LONG_GROW_TIME, 2, "Pig");
 	
 	private final long readyTime; 

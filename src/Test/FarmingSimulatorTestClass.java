@@ -3,6 +3,7 @@ package Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.stream.IntStream;
 
@@ -17,102 +18,173 @@ import engine.Engine;
 import entity.Pair;
 import entity.Player;
 import gameMap.Map;
+import item.FoodType;
+import item.SeedState;
+import item.SeedType;
 
 public class FarmingSimulatorTestClass {
 	private Game g = null;
 	private Player pg = null;
-	private Map map= null;
-	
+	private Map map = null;
+
 	@BeforeEach
 	public void initGame() {
 		Engine engine = new Engine();
-        engine.update(false);
-		g=engine.getGame();
-		pg=g.getPlayer();
-		map=g.getMap();	
+		engine.update(false);
+		g = engine.getGame();
+		pg = g.getPlayer();
+		map = g.getMap();
 	}
-	
+
 	@Test
 	public void testPlayerMovement() {
-		//Muovo il personaggio verso l'alto e controllo la sua posizione
+		// Muovo il personaggio verso l'alto e controllo la sua posizione
 		pg.setUp(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		assertEquals(new Pair<>(50,50),new Pair<>(pg.getPosX(),pg.getPosY()));
+		IntStream.range(0, 10).forEach(i -> g.loop());
+		assertEquals(new Pair<>(50, 50), new Pair<>(pg.getPosX(), pg.getPosY()));
 		pg.setUp(false);
-		
-		//Muovo il personaggio verso sinistra e controllo la sua posizione
+
+		// Muovo il personaggio verso sinistra e controllo la sua posizione
 		pg.setLeft(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		assertEquals(new Pair<>(50,50),new Pair<>(pg.getPosX(),pg.getPosY()));
+		IntStream.range(0, 10).forEach(i -> g.loop());
+		assertEquals(new Pair<>(50, 50), new Pair<>(pg.getPosX(), pg.getPosY()));
 		pg.setLeft(false);
-		
-		//Muovo il personaggio verso il basso e controllo la sua posizione
+
+		// Muovo il personaggio verso il basso e controllo la sua posizione
 		pg.setDown(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		assertEquals(new Pair<>(50,100),new Pair<>(pg.getPosX(),pg.getPosY()));
+		IntStream.range(0, 10).forEach(i -> g.loop());
+		assertEquals(new Pair<>(50, 100), new Pair<>(pg.getPosX(), pg.getPosY()));
 		pg.setDown(false);
-		
-		//Muovo il personaggio verso destra e controllo la sua posizione
+
+		// Muovo il personaggio verso destra e controllo la sua posizione
 		pg.setRight(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		assertEquals(new Pair<>(100,100),new Pair<>(pg.getPosX(),pg.getPosY()));
+		IntStream.range(0, 10).forEach(i -> g.loop());
+		assertEquals(new Pair<>(100, 100), new Pair<>(pg.getPosX(), pg.getPosY()));
 		pg.setRight(false);
-		
+
 	}
 
 	@Test
-	public void testPlayerPlant() {	
-		//muovo il personaggio in diagonale verso il blocco (2,2)
-		pg.setDown(true);
-		pg.setRight(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		pg.setDown(false);
-		pg.setRight(false);
-		
-		//Controllo che il player sia sul blocco (2,2)
-		assertEquals(map.getBlock(new Pair<>(2, 2)),pg.blockPosition(map.getMapSet()));
-		
-		//Controllo che il blocco (2,2) sia di tipo FIELD
-		assertEquals(map.getBlock(new Pair<>(2, 2)).getType(),BlockType.FIELD);
-		
-		//Controllo che il blocco sia vuoto, cioè non ha nessun seme piantato
-		assertTrue(((FieldBlock)map.getBlock(new Pair<>(2, 2))).isEmpty());
-		
-		//Pianto un seme nel blocco (2,2)
+	public void testPlayerPlant() {
+		Pair<Integer, Integer> b = map
+				.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.FIELD));
+		pg.moveTo(b);
+
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+
+		// Controllo che il blocco sia vuoto, cioè non ha nessun seme piantato
+		assertTrue(((FieldBlock) (pg.blockPosition(map.getMapSet()))).isEmpty());
+
+		// Pianto un seme nel blocco in posizione b
 		g.interact();
-		
-		//Controllo che il blocco abbia il seme dopo averci interagito e aver inserito un seme
-		assertFalse(((FieldBlock)map.getBlock(new Pair<>(2, 2))).isEmpty());
+
+		// Controllo che il blocco abbia il seme dopo averci interagito e aver inserito
+		// un seme
+		assertFalse(((FieldBlock) pg.blockPosition(map.getMapSet())).isEmpty());
 	}
-	
+
 	@Test
 	public void testUnlockBlock() {
-		//muovo il player verso il blocco da sbloccare
-		pg.setRight(true);
-		IntStream.range(0,90).forEach(i->g.loop());
-		pg.setRight(false);
-		pg.setDown(true);
-		IntStream.range(0,10).forEach(i->g.loop());
-		
-		//controllo che il Player sia nel blocco (10,2)
-		assertEquals(map.getBlock(new Pair<>(10, 2)),pg.blockPosition(map.getMapSet()));
-		
-		//controllo che il blocco sia effettivamente di tipo LOCKED
-		assertEquals(map.getBlock(new Pair<>(10, 2)).getType(),BlockType.LOCKED);
-		
-		//controllo se di default il blocco LOCKED è bloccato
-		assertTrue(((UnlockableBlock)map.getBlock(new Pair<>(10, 2))).isLocked());
-		
-		//interagisco per sbloccare il blocco
+		// muovo il player verso il blocco da sbloccare
+		Pair<Integer, Integer> b = map
+				.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.LOCKED));
+		pg.moveTo(b);
+
+		// controllo che il blocco sia effettivamente di tipo LOCKED
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+
+		// controllo se di default il blocco LOCKED è bloccato
+		assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+
+		// interagisco per sbloccare il blocco
+		g.interact();
+
+		// dopo aver interagito controllo che venga sbloccato e diventi di tipo FIELD
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+	}
+
+	@Test
+	public void testUnlockBlockWithoutMoney() {
+		// gli prosciugo il portafoglio
+		pg.decreaseMoney(pg.getMoney());
+
+		// muovo il player verso il blocco da sbloccare
+		Pair<Integer, Integer> b = map
+				.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.LOCKED));
+		pg.moveTo(b);
+
+		// controllo che il blocco sia effettivamente di tipo LOCKED
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+
+		// controllo se di default il blocco LOCKED è bloccato
+		assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+
+		// interagisco per sbloccare il blocco
+		g.interact();
+
+		// dopo aver interagito controllo che non venga sbloccato perché non ho abbastanza soldi per farlo
+		assertNotEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+
+		// quindi controllo che il blocco sia rimasto di tipo LOCKED
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+
+		// e che sia ancora Bloccato
+		assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+	}
+	
+	@Test
+	public void testPlayerAnimalInteraction() {
+		Pair<Integer,Integer> b;
+		//vado su un blocco stalla e aspetto di poter raccogliere materiale da un animale
+		do {
+			do {
+				b=map.getBlockCoordinates(map.getRandomFilterBlock(x->x.getType()==BlockType.STALL));
+				pg.moveTo(b);
+			}while(pg.nearestAnimal(g.getAllAnimals()).isEmpty());
+		}while(!pg.nearestAnimal(g.getAllAnimals()).get().isReady());
 		g.interact();
 		
-		//dopo aver interagito controllo che venga sbloccato e diventi di tipo FIELD
-		assertEquals(map.getBlock(new Pair<>(10, 2)).getType(),BlockType.FIELD);
+		//controllo di essere su una stalla
+		assertEquals(pg.blockPosition(map.getMapSet()).getType(),BlockType.STALL);
+		
+		//controllo di avere nell'inventario un Prodotto di origine animale (EGG, PORK_MEAT, MILK) dopo aver interagito
+		assertTrue(pg.getInventory().getFoods().get(FoodType.EGG)>0 || 
+				pg.getInventory().getFoods().get(FoodType.PORK_MEAT)>0 ||
+				pg.getInventory().getFoods().get(FoodType.MILK)>0);
 	}
 	
-	
-	public void testPlayerAnimalInteraction() {
+	@Test
+	public void testBuy() {
+		pg.decreaseMoney(pg.getMoney());
+		g.buy(SeedType.CHERRY_SEED, 1);
+		//dopo aver settato i soldi a 0 provo a comprare, poi controllo che nell'inventario io non abbia alcun seme poiché non posso permettermelo
+		assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 0);
+		
+		pg.incrementMoney(Double.MAX_VALUE);
+		g.buy(SeedType.CHERRY_SEED, 1);
+		//dopo aver riempito i soldi del Player provo a comprare un seme, poi controllo che nell'inventario esso sia presente poiché ho abbastanza soldi
+		assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 1);
+	}
 
+	@Test
+	public void testSell() throws InterruptedException {
+		Pair<Integer, Integer> b = map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.FIELD));
+		pg.moveTo(b);
+		if(pg.getInventory().getSeeds().get(SeedType.WHEAT_SEED) ==0) {			
+			pg.incrementMoney(Double.MAX_VALUE);
+			g.buy(SeedType.WHEAT_SEED, 1);
+		}
+		
+		g.interact();
+		//aspetto che il grano cresca
+		do {
+			Thread.sleep(1000);
+		}while(!(((FieldBlock) pg.blockPosition(map.getMapSet())).getSeed().getSeedState()==SeedState.GROWN));
+		
+		g.interact();
+		pg.decreaseMoney(pg.getMoney());
+		g.sellAll();
+		//setto i soldi a 0 poi vendo il ricavato del raccolto, controllo di avere soldi > 0
+		assertTrue(pg.getMoney()>0);
 	}
-	
 }
