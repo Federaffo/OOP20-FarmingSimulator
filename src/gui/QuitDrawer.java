@@ -25,9 +25,10 @@ public class QuitDrawer extends GameDrawer {
 		final int RIGHTB=(int) -(screenSize.width*0.90);
 		
 		JButton quit=new JButton();
+		Font f=new Font("Arial", Font.BOLD, 30);
 		quit.setText("X");
 		quit.setBackground(Color.red);
-		quit.setFont(new Font("Arial", Font.BOLD, 30));
+		quit.setFont(f);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				g.play();
