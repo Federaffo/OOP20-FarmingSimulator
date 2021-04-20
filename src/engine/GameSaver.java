@@ -18,6 +18,7 @@ import entity.Inventory;
 import entity.Player;
 import gameMap.Map;
 import gameShop.Shop;
+import item.Seed;
 
 public class GameSaver {
 	private final String dot = ".";
@@ -35,6 +36,7 @@ public class GameSaver {
 				 .registerTypeAdapter(Inventory.class, interfaceAdapter)
 				 .registerTypeAdapter(Map.class, interfaceAdapter)
 				 .registerTypeAdapter(Animal.class, interfaceAdapter)
+				 .registerTypeAdapter(Seed.class, interfaceAdapter)
 				 .registerTypeAdapter(Shop.class, interfaceAdapter).setPrettyPrinting().create();
 
 		
