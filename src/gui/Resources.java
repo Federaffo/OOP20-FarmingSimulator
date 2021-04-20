@@ -16,15 +16,15 @@ import item.SeedType;
 import entity.AnimalType;
 
 public class Resources {
-	private static final String FILE_SEPARATOR = File.separator;
-	private static final String TEXTURE_FOLDER = "/texture";
+	private  final String FILE_SEPARATOR = File.separator;
+	private  final String TEXTURE_FOLDER = "/texture";
 
-	private static Map<Texturable, BufferedImage> textures = new HashMap<>();
-	private static InputStream mainTheme;
-	private static int animationDelay = 0;
-	private static final int ANIMATION_SPEED = 500;
+	private  final Map<Texturable, BufferedImage> textures = new HashMap<>();
+	private  InputStream mainTheme;
+	private  int animationDelay = 0;
+	private  final int ANIMATION_SPEED = 500;
 
-	public void load() {
+	public Resources() {
 		try {
 			//seed
 			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot2.png")));
@@ -56,27 +56,27 @@ public class Resources {
 			textures.put(BlockType.WATER, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/water.png")));
 			textures.put(BlockType.STALL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/stall.png")));
 			
-			textures.put(texture.LOCK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/lucchetto.png")));
-			textures.put(texture.TREE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/tree.png")));
+			textures.put(Texture.LOCK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/lucchetto.png")));
+			textures.put(Texture.TREE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/tree.png")));
 			//textures.put(texture.LABELHUD, ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
 
-			textures.put(texture.MONEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/moneyIcon.png")));
-			textures.put(texture.SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/pianta.png")));
-			textures.put(texture.TIME, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/timeIcon.png")));
-			textures.put(texture.INFO, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/infoIcon.png")));
-			textures.put(texture.EMPTY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/empty.png")));
+			textures.put(Texture.MONEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/moneyIcon.png")));
+			textures.put(Texture.SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/pianta.png")));
+			textures.put(Texture.TIME, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/timeIcon.png")));
+			textures.put(Texture.INFO, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/infoIcon.png")));
+			textures.put(Texture.EMPTY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/empty.png")));
 
 			
 			//player
-			textures.put(texture.PLAYER_RIGHT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right0.png")));
-			textures.put(texture.PLAYER_RIGHT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right1.png")));
-			textures.put(texture.PLAYER_LEFT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left0.png")));
-			textures.put(texture.PLAYER_LEFT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left1.png")));
-			textures.put(texture.PLAYER_DOWN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down0.png")));
-			textures.put(texture.PLAYER_DOWN2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down1.png")));
-			textures.put(texture.PLAYER_UP, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up0.png")));
-			textures.put(texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up1.png")));
-			textures.put(texture.PLAYER, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/stop.png")));
+			textures.put(Texture.PLAYER_RIGHT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right0.png")));
+			textures.put(Texture.PLAYER_RIGHT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/right1.png")));
+			textures.put(Texture.PLAYER_LEFT, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left0.png")));
+			textures.put(Texture.PLAYER_LEFT2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/left1.png")));
+			textures.put(Texture.PLAYER_DOWN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down0.png")));
+			textures.put(Texture.PLAYER_DOWN2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/down1.png")));
+			textures.put(Texture.PLAYER_UP, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up0.png")));
+			textures.put(Texture.PLAYER_UP2, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/up1.png")));
+			textures.put(Texture.PLAYER, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/stop.png")));
 
 
 			//animals
@@ -85,10 +85,10 @@ public class Resources {
 			textures.put(AnimalType.CHICKEN, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/chicken.png")));
 			
 			//keyboard commands
-			textures.put(texture.WASD, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/wasd.png")));
-			textures.put(texture.E_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/e.png")));
-			textures.put(texture.F_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/f.png")));
-			textures.put(texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/mouse.png")));
+			textures.put(Texture.WASD, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/wasd.png")));
+			textures.put(Texture.E_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/e.png")));
+			textures.put(Texture.F_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/f.png")));
+			textures.put(Texture.MOUSE_WHEEL, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/mouse.png")));
 			
 			mainTheme = getClass().getResourceAsStream("/hd.wav"); 
 
@@ -97,56 +97,46 @@ public class Resources {
 		}
 	}
 
-	public static BufferedImage getPlayerInDirection(Direction dir) {
+	public  BufferedImage getPlayerInDirection(Direction dir) {
 		animationDelay++;
 		animationDelay %= ANIMATION_SPEED;
 		boolean isFirstFrame = animationDelay > (ANIMATION_SPEED / 2);
 
 		if (dir.isRight()) {
 			if (isFirstFrame) {
-				return textures.get(texture.PLAYER_RIGHT);
+				return textures.get(Texture.PLAYER_RIGHT);
 			} else {
-				return textures.get(texture.PLAYER_RIGHT2);
+				return textures.get(Texture.PLAYER_RIGHT2);
 			}
 		} else if (dir.isLeft()) {
 			if (isFirstFrame) {
-				return textures.get(texture.PLAYER_LEFT);
+				return textures.get(Texture.PLAYER_LEFT);
 			} else {
-				return textures.get(texture.PLAYER_LEFT2);
+				return textures.get(Texture.PLAYER_LEFT2);
 			}
 		} else if (dir.isDown()) {
 			if (isFirstFrame) {
-				return textures.get(texture.PLAYER_DOWN);
+				return textures.get(Texture.PLAYER_DOWN);
 			} else {
-				return textures.get(texture.PLAYER_DOWN2);
+				return textures.get(Texture.PLAYER_DOWN2);
 			}
 		} else if (dir.isUp()) {
 			if (isFirstFrame) {
-				return textures.get(texture.PLAYER_UP);
+				return textures.get(Texture.PLAYER_UP);
 			} else {
-				return textures.get(texture.PLAYER_UP2);
+				return textures.get(Texture.PLAYER_UP2);
 			}
 		} else {
-			return textures.get(texture.PLAYER);
+			return textures.get(Texture.PLAYER);
 		}
 	}
 
-	public static BufferedImage getTextures(Texturable item) {
-		return Resources.textures.get(item);
+	public BufferedImage getTextures(Texturable item) {
+		return textures.get(item);
 	}
 
 
-	public static enum texture implements Texturable {
-		PLAYER, PLAYER_LEFT, PLAYER_LEFT2, PLAYER_RIGHT, PLAYER_RIGHT2, PLAYER_UP, PLAYER_UP2, PLAYER_DOWN,
-		PLAYER_DOWN2,
-		
-		WASD, E_KEY,F_KEY, MOUSE_WHEEL,
-
-		LABELHUD, MONEY, SEED, TIME, INFO, EMPTY, LOCK, TREE;
-
-	}
-
-	public static InputStream getMainTheme() {
+	public InputStream getMainTheme() {
 		return mainTheme;
 	}
 }

@@ -7,14 +7,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import control.Game;
-import gui.Resources.texture;
 
 public class InfoDrawer extends GameDrawer {
-	private Resources res = new Resources();
 
 	public InfoDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
-		res.load();
 		generateInfoPanel(game, screenSize);
 		setOpaque(false);
 	}
@@ -39,17 +36,17 @@ public class InfoDrawer extends GameDrawer {
 		infoPanel.setBorder(BorderFactory.createEmptyBorder(UPPB, LFTB, BTMB, RGTB));
 
 		infoPanel.add(new JPanelINFO("General Commands", titleHeight, titleWidth));
-		infoPanel.add(new JPanelINFO(height, width, texture.WASD, "MOVEMENT [W-A-S-D]", " type this button to move"));
-		infoPanel.add(new JPanelINFO(height, width, texture.F_KEY, "INTERACT [F]", " press this to interact with plant and animals"));
-		infoPanel.add(new JPanelINFO(height, width, texture.E_KEY, "MARKET [E]", " press to enter the shop menu view"));
-		infoPanel.add(new JPanelINFO(height, width, texture.MOUSE_WHEEL, "HOTBAR [MOUSE_WHEEL]", " change hotbar selection"));
+		infoPanel.add(new JPanelINFO(height, width, Texture.WASD, "MOVEMENT [W-A-S-D]", " type this button to move"));
+		infoPanel.add(new JPanelINFO(height, width, Texture.F_KEY, "INTERACT [F]", " press this to interact with plant and animals"));
+		infoPanel.add(new JPanelINFO(height, width, Texture.E_KEY, "MARKET [E]", " press to enter the shop menu view"));
+		infoPanel.add(new JPanelINFO(height, width, Texture.MOUSE_WHEEL, "HOTBAR [MOUSE_WHEEL]", " change hotbar selection"));
 
 		infoPanel.add(new JPanelINFO("Game HUD Info", titleHeight, titleWidth));
-		infoPanel.add(new JPanelINFO(height, width, texture.MONEY, "MONEY",
+		infoPanel.add(new JPanelINFO(height, width, Texture.MONEY, "MONEY",
 				"show the current amount of money the player have"));
-		infoPanel.add(new JPanelINFO(height, width, texture.LOCK, "LOCK",
+		infoPanel.add(new JPanelINFO(height, width, Texture.LOCK, "LOCK",
 				"show the current unlock price of the Locked Field Block"));
-		infoPanel.add(new JPanelINFO(height, width, texture.TIME, "CLOCK", "show time elapsed from the beginning"));
+		infoPanel.add(new JPanelINFO(height, width, Texture.TIME, "CLOCK", "show time elapsed from the beginning"));
 		// setOpaque(false);
 		add(infoPanel);
 

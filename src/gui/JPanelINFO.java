@@ -8,11 +8,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gui.Resources.texture;
-
 public class JPanelINFO extends JPanel {
 
-	private texture txt;
+	private Texture txt;
 	private String title;
 	private String descr;
 	private final int height;
@@ -28,7 +26,7 @@ public class JPanelINFO extends JPanel {
 		createTitle();
 	}
 
-	public JPanelINFO(final int h, final int w, final texture txt, final String title, final String descr) {
+	public JPanelINFO(final int h, final int w, final Texture txt, final String title, final String descr) {
 		this.txt = txt;
 		this.title = title;
 		this.descr = descr;
@@ -62,7 +60,7 @@ public class JPanelINFO extends JPanel {
 
 		JLabel titleLabel = new JLabel();
 		ImageIcon imageIcon = new ImageIcon(
-				new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
+				new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
 		titleLabel.setIcon(imageIcon);
 		titleLabel.setText(title);
 		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, titleDim));

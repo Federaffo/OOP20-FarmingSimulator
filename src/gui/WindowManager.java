@@ -27,6 +27,7 @@ public class WindowManager extends JFrame {
 	private Dimension windowSize;
 
 	public WindowManager(Game game) {
+	
 		Dimension screenSize = getToolkit().getScreenSize();
 		windowSize = new Dimension((int) (screenSize.width * SCREEN_RESIZER), (int) ((screenSize.width * SCREEN_RESIZER) * ASPECT_RATIO));
 		this.game = game;

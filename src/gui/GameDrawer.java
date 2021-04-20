@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
+import javax.sound.midi.ControllerEventListener;
 import javax.swing.JPanel;
 
 import control.Game;
@@ -45,7 +46,7 @@ public abstract class GameDrawer extends JPanel {
 			notifier.mouseWheelMoved(e);
 		}
 	}
-
+	
 	private class MyKeyListener implements KeyListener {
 
 		@Override

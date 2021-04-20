@@ -17,7 +17,6 @@ import control.Game;
 import entity.Animal;
 import entity.Direction;
 import entity.Pair;
-import gui.Resources.texture;
 import item.Seed;
 import item.SeedState;
 import item.SeedType;
@@ -29,14 +28,13 @@ public class MainScreenDrawer extends GameDrawer {
 	private static final long serialVersionUID = -8051528011999726915L;
 	private int BLOCK_SIZE;
 	private double resizer;
-	private Resources res = new Resources();
 	
 	public MainScreenDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
-		res.load();
 		this.resizer = screenSize.getWidth() / (BASE_SIZE * 32);
 		GenerateHUD(game, screenSize);
 		BLOCK_SIZE = (int) (BASE_SIZE * resizer);
+		
 	}
 
 	@Override
@@ -45,7 +43,6 @@ public class MainScreenDrawer extends GameDrawer {
 		drawMap(g);
 		drawPg(g);
 		drawAnimals(g);
-		setIcon();
 		revalidate();
 		repaint();
 	}
@@ -61,13 +58,9 @@ public class MainScreenDrawer extends GameDrawer {
 				g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
 			}
 			
-			g.drawImage(Resources.getTextures(a.getType()), posX, posY, (int) (BASE_SIZE * resizer),
+			g.drawImage(ResourcesLazy.getRes().getTextures(a.getType()), posX, posY, (int) (BASE_SIZE * resizer),
 					(int) (BASE_SIZE * resizer), null);
 		}
-	}
-
-	private void setIcon() {
-
 	}
 
 	private void GenerateHUD(Game g, Dimension screenSize) {
@@ -81,19 +74,19 @@ public class MainScreenDrawer extends GameDrawer {
 		panelHUD.setOpaque(false);
 
 		/* Panel Money */
-		JPanel moneyPanel = new JPanelHUD(iconScaleDim, texture.MONEY, true, "0", g);
+		JPanel moneyPanel = new JPanelHUD(iconScaleDim, Texture.MONEY, true, "0", g);
 		/* fine */
 
 		/* Panel Time */
-		JPanel timePanel = new JPanelHUD(iconScaleDim, texture.TIME, true, "00:00");
+		JPanel timePanel = new JPanelHUD(iconScaleDim, Texture.TIME, true, "00:00");
 		/* Fine */
 
 		/* Panel info */
-		JPanel infoPanel = new JPanelHUD(iconScaleDim, texture.INFO, true, "Press X for info");
+		JPanel infoPanel = new JPanelHUD(iconScaleDim, Texture.INFO, true, "Press X for info");
 		/* fine panel info */
 		
 		/* Panel UnlockPrice */
-		JPanel unlockPanel =new JPanelHUD(iconScaleDim, texture.LOCK,true,"0",g);
+		JPanel unlockPanel =new JPanelHUD(iconScaleDim, Texture.LOCK,true,"0",g);
 		/* fine panel price*/
 
 		/* Add HUD compoments to a temporary Panel */
@@ -125,7 +118,7 @@ public class MainScreenDrawer extends GameDrawer {
 				Block block = game.getMap().getBlock(new Pair<Integer, Integer>(i, j));
 				game.getPlayer();
 
-				g.drawImage(Resources.getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
+				g.drawImage(ResourcesLazy.getRes().getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 						BLOCK_SIZE, null);
 
 				if (block.getType() == BlockType.FIELD) {
@@ -134,14 +127,14 @@ public class MainScreenDrawer extends GameDrawer {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
 							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
-								g.drawImage(Resources.getTextures(texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+								g.drawImage(ResourcesLazy.getRes().getTextures(Texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
 										BLOCK_SIZE, null);
 							}else {
-								g.drawImage(Resources.getTextures(texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+								g.drawImage(ResourcesLazy.getRes().getTextures(Texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
 										BLOCK_SIZE, null);
 							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(Resources.getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(ResourcesLazy.getRes().getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
@@ -153,14 +146,14 @@ public class MainScreenDrawer extends GameDrawer {
 
 	private void drawPg(Graphics g) {
 		int offsetY = 20;
+		int playerXSize = 40;
+		int playerYSize = 70;
 		Direction dir = game.getPlayer().getDirection();
 		int posX = (int) (game.getPlayer().getPosX() * resizer);
 		int posY = (int) (game.getPlayer().getPosY() * resizer);
 
-		// g.drawRect(posX, posY, 50 * molt, 50 * molt);
-		g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
-		g.drawImage(Resources.getPlayerInDirection(dir), posX, posY - (int) (offsetY * resizer), (int) (40 * resizer),
-				(int) (70 * resizer), null);
+		g.drawImage(ResourcesLazy.getRes().getPlayerInDirection(dir), posX, posY - (int) (offsetY * resizer), (int) (playerXSize * resizer),
+				(int) (playerYSize * resizer), null);
 	}
 
 
@@ -184,13 +177,13 @@ public class MainScreenDrawer extends GameDrawer {
 					currSeed = game.getPlayer().getInventory().getCurrentSeed().get().getX();
 					label.setText(game.getPlayer().getInventory().getCurrentSeed().get().getY().toString());
 				} else {
-					currSeed = Resources.texture.EMPTY;
+					currSeed = Texture.EMPTY;
 					label.setText(Integer.toString(0));
 
 				}
 			}
 
-			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getTextures(currSeed)).getImage()
+			ImageIcon boxIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
 			label.setBackground(new Color(255, 255, 255, 50));

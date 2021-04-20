@@ -12,11 +12,9 @@ import javax.swing.JButton;
 import control.Game;
 
 public class QuitDrawer extends GameDrawer {
-	private Resources res = new Resources();
 
 	public QuitDrawer(Game game, Dimension screenSize) {
 		super(game, screenSize);
-		res.load();
 		generateQuitPanel(game,screenSize);
 	
 	}

@@ -14,13 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import control.Game;
-import gui.Resources.texture;
 
 public class JPanelHUD extends JPanel {
 
 	private static final long serialVersionUID = -3672046053597996762L;
 	private final int scaleDim;
-	private final texture txt;
+	private final Texture txt;
 	private final boolean changeFont;
 	private String defaultText;
 	private Game game;
@@ -29,13 +28,13 @@ public class JPanelHUD extends JPanel {
 	private ImageIcon imageIcon;
 	private final long start;
 
-	public JPanelHUD(final int scaleDim, final texture txt, final boolean changeFont, final String defaultText) {
+	public JPanelHUD(final int scaleDim, final Texture txt, final boolean changeFont, final String defaultText) {
 		this.scaleDim = scaleDim;
 		this.txt = txt;
 		this.changeFont = changeFont;
 		this.defaultText = defaultText;
 		myLabel = new JLabel();
-		imageIcon = new ImageIcon(new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(scaleDim,
+		imageIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
 				scaleDim, Image.SCALE_DEFAULT));
 		myLabel.setIcon(imageIcon);
 		myLabel.setText(defaultText);
@@ -46,7 +45,7 @@ public class JPanelHUD extends JPanel {
 		this. start = System.currentTimeMillis();
 	}
 
-	public JPanelHUD(final int scaleDim, final texture txt, final boolean changeFont, final String defaultText,
+	public JPanelHUD(final int scaleDim, final Texture txt, final boolean changeFont, final String defaultText,
 			Game game) {
 		this.scaleDim = scaleDim;
 		this.txt = txt;
@@ -54,7 +53,7 @@ public class JPanelHUD extends JPanel {
 		this.defaultText = defaultText;
 		this.game = game;
 		myLabel = new JLabel();
-		imageIcon = new ImageIcon(new ImageIcon(Resources.getTextures(txt)).getImage().getScaledInstance(scaleDim,
+		imageIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
 				scaleDim, Image.SCALE_DEFAULT));
 		myLabel.setIcon(imageIcon);
 		myLabel.setText(defaultText);
@@ -67,14 +66,14 @@ public class JPanelHUD extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
-		if (txt == texture.MONEY) {
+		if (txt == Texture.MONEY) {
 			myLabel.setText(Double.toString(game.getPlayer().getMoney()));
-		} else if (txt == texture.TIME) {
+		} else if (txt == Texture.TIME) {
 			long elapsedTimeMillis = System.currentTimeMillis() - start;
 			String tmp=(new SimpleDateFormat("mm:ss")).format(new Date(elapsedTimeMillis));
 			myLabel.setText(tmp);
 
-		}else if(txt==texture.LOCK) {
+		}else if(txt==Texture.LOCK) {
 			myLabel.setText(Double.toString(game.getUnlockPrice()));
 		}
 	}
