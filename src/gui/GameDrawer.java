@@ -24,6 +24,11 @@ public abstract class GameDrawer extends JPanel {
 	public GameDrawer(Game game, Dimension screenSize) {
 		this.game = game;
 		notifier = new KeyNotifier(game);
+		
+		setPreferredSize(screenSize);
+		setSize(screenSize);
+		setBounds(0, 0, screenSize.width, screenSize.height);
+		
 		addKeyListener(new MyKeyListener());
 		addMouseWheelListener(new MyMouseListener());
 		this.screenSize = screenSize;
@@ -34,28 +39,28 @@ public abstract class GameDrawer extends JPanel {
 		super.paintComponents(g);
 	}
 
-
 	private class MyMouseListener implements MouseWheelListener {
 		@Override
 		public void mouseWheelMoved(MouseWheelEvent e) {
 			notifier.mouseWheelMoved(e);
 		}
 	}
-	
+
 	private class MyKeyListener implements KeyListener {
-		
+
 		@Override
 		public void keyTyped(KeyEvent e) {
 		}
-		
+
 		@Override
 		public void keyPressed(KeyEvent e) {
 			notifier.keyPressed(e);
 		}
-		
+
 		@Override
 		public void keyReleased(KeyEvent e) {
 			notifier.keyReleased(e);
 		}
 	}
+
 }

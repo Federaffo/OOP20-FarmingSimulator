@@ -23,7 +23,7 @@ import item.Seed;
 
 public class GameSaver {
 	private final String dot = ".";
-	private final String filePath = System.getProperty("user.home") + File.separator + "farmingSimulator.txt";
+	private final String filePath = System.getProperty("user.home") + File.separator + ".farmingSimulator_Save.json";
 	private Gson gson;
 
 	public GameSaver() {

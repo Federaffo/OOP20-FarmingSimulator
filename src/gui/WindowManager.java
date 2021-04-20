@@ -65,27 +65,16 @@ public class WindowManager extends JFrame {
 
 	public void createPanel() {
 		lpanel = new JLayeredPane();
-		double quitPanelBounds = 0.06;
 
 		shopPanel = new ShopDrawer(game, windowSize);
-//		shopPanel.setBackground(shopPanel.getBackground());
-		shopPanel.setBounds(0, 0, windowSize.width, windowSize.height);
-		shopPanel.setPreferredSize(windowSize);
 
 		mainPanel = new MainScreenDrawer(game, windowSize);
-		mainPanel.setSize(windowSize);
-		mainPanel.setBounds(0, 0, windowSize.width, windowSize.height);
-		mainPanel.setPreferredSize(windowSize);
-
+		
 		infoPanel = new InfoDrawer(game, windowSize);
-		infoPanel.setSize(windowSize);
-		infoPanel.setBounds(0, 0, windowSize.width, windowSize.height);
-		infoPanel.setPreferredSize(windowSize);
 
+		double quitPanelBounds = 0.06;
 		quitPanel = new QuitDrawer(game, windowSize);
-		quitPanel.setSize(windowSize);
 		quitPanel.setBounds(0, 0, windowSize.width, (int) (windowSize.height * quitPanelBounds));
-		quitPanel.setPreferredSize(windowSize);
 
 		lpanel.setBounds(0, 0, windowSize.width, windowSize.height);
 		lpanel.add(mainPanel, 0, 0);
