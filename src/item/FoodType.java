@@ -6,14 +6,14 @@ public enum FoodType implements Texturable{
 	EGG(5,"Egg", 1),
 	MILK(8,"Milk", 1),
 	/* ortaggi e verdura */
-	WHEAT(5,"Wheat", 3),
-	CARROT(10,"Carrot", 3),
+	WHEAT(4,"Wheat", 3),
+	CARROT(13,"Carrot", 3),
 	POTATO(22,"Potato", 3),
 	TOMATO(40,"Tomato", 3),
 	/* frutta */
-	APPLE(10,"Apple", 4),
-	ORANGE(50,"Orange", 4),
-	CHERRY(100,"Cherry", 4);
+	APPLE(100,"Apple", 4),
+	ORANGE(200,"Orange", 4),
+	CHERRY(500,"Cherry", 4);
 
 	private final double price;
 	private final String name;

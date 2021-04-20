@@ -36,11 +36,9 @@ public class GameImpl implements Game{
 	
 	public GameImpl() {
 		generateAnimals();
-		
-		pg.getInventory().addSeeds(SeedType.POTATO_SEED, 10);
-		pg.getInventory().addSeeds(SeedType.CARROT_SEED, 10);
-		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
-		pg.getInventory().addSeeds(SeedType.TOMATO_SEED, 10);
+		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 5);
+		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 5);
+
 	}
 
 
