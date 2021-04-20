@@ -1,4 +1,4 @@
-package entity.player;
+package entity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Stream;
 
-import entity.Pair;
 import item.FoodType;
 import item.SeedType;
 

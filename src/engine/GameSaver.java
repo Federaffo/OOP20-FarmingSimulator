@@ -14,8 +14,8 @@ import block.Block;
 import control.Game;
 import control.GameImpl;
 import entity.Animal;
-import entity.player.Inventory;
-import entity.player.Player;
+import entity.Inventory;
+import entity.Player;
 import gameMap.Map;
 import gameShop.Shop;
 

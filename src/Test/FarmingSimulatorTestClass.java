@@ -15,7 +15,7 @@ import block.UnlockableBlock;
 import control.Game;
 import engine.Engine;
 import entity.Pair;
-import entity.player.Player;
+import entity.Player;
 import gameMap.Map;
 
 public class FarmingSimulatorTestClass {

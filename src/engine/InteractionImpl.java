@@ -6,7 +6,7 @@ import block.FieldBlock;
 import block.UnlockableBlock;
 import entity.Animal;
 import entity.Pair;
-import entity.player.Player;
+import entity.Player;
 import gameMap.Map;
 import gameShop.Shop;
 import item.FoodType;

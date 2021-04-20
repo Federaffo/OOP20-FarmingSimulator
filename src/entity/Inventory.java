@@ -1,9 +1,8 @@
-package entity.player;
+package entity;
 
 import java.util.Map;
 import java.util.Optional;
 
-import entity.Pair;
 import item.FoodType;
 import item.SeedType;
 

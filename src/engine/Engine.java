@@ -17,7 +17,7 @@ public class Engine implements Observer<Boolean> {
 	private MusicPlayer player;
 	private WindowManager window;
 	private Timer timer;
-	private Game game = new GameImpl();
+	private Game game; // = new GameImpl();
 	private GameState gameState = GameState.PLAY;
 	GameSaver gameSaver = new GameSaver();
 

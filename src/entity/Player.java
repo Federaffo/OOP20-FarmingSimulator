@@ -1,12 +1,10 @@
-package entity.player;
+package entity;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 import block.Block;
-import entity.Animal;
-import entity.Entity;
 
 public interface Player extends Entity{
 

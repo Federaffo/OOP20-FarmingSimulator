@@ -3,7 +3,7 @@ package engine;
 
 
 import entity.AnimalImpl;
-import entity.player.Player;
+import entity.Player;
 import block.Block;
 import block.FieldBlock;
 import entity.Animal;
