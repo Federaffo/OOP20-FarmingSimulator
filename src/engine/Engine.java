@@ -39,6 +39,7 @@ public class Engine implements Observer<Boolean> {
 			preloader.addObserver(this);
 			preloader.askToLoad();
 		}else {
+			this.game = new GameImpl();
 			this.start();
 		}
 		
