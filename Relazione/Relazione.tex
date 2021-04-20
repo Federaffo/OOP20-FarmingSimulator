@@ -28,7 +28,7 @@
 \section{Requisiti}
 
 
-Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco Hay Day''\footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell. 
+Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell. 
 Il progetto mira alla realizzazione di un ambiente agricolo in 2D, in cui il giocatore interagisce con le colture e gestisce le proprie finanze.
 Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli appezzamenti di terra e coltivando la maggior varietà di semi possibili.
 
@@ -41,6 +41,7 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 	\item Farming Simulator mette a disposizione un negozio in cui è possibile vedere il proprio inventario, vendere i prodotti agricoli raccolti in cambio di monete virtuali e comprare nuovi semi da coltivare.
 	\item Per aumentare la difficoltà di gioco vengono messi a disposizione appezzamenti di terreno coltivabili inizialmente bloccati, che si possono sbloccare tramite l'utilizzo delle monete virtuali.
 \end{itemize}
+
 
 \subsubsection{Requisiti non funzionali}
 \begin{itemize}
@@ -59,97 +60,36 @@ Questi ultimi possono essere comprati nel negozio (Shop) del videogioco, dentro 
 
 Il personaggio può interaggire con blocchi e animali (Animals), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (FieldBlock), sbloccare i blocchi non ancora accessibili (UnlockableBlock) e raccogliere i prodotti animali.
 
-\begin{figure}[t]
-\centerline{\includegraphics[scale=.6]{img/UML_1-1.png}}
+\begin{figure}[h]
+\centering{\includegraphics[width=12cm]{img/UML_1-1.png}}
 \caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro}
 \label{img:analysis}
 \end{figure}
 
 \chapter{Design}
 
-In questo capitolo si spiegano le strategie messe in campo per realizzare la soluzione ai problemi identificati nell'analisi.
-
-Si parte da una visione architetturale, il cui scopo è informare il lettore di quale sia il funzionamento dell'applicativo realizzato ad alto livello.
-%
-In particolare, è necessario descrivere accuratamente in che modo i componenti principali del sistema si coordinano fra loro.
-%
-A seguire, si dettagliano alcune parti del design, quelle maggiormente rilevanti al fine di chiarificare la logica con cui sono stati risolti i problemi dell'applicazione.
-
 \section{Architettura}
 
-Questa sezione spiega come le componenti principali del software interagiscono fra loro.
-%
-In particolare, qui va spiegato \textbf{se} e \textbf{come} è stato utilizzato il pattern
-architetturale model-view-controller (e/o alcune sue declinazioni specifiche, come entity-control-boundary).
+L’architettura di Farming Simulator è di tipo MVC. In particolare è stata sviluppata l’interfaccia Game che funge da controller e si posiziona tra view e model e gestisce eventuali interazioni tra componenti. All’arrivo di un input, game, si occupa di ordinare al Model il cambio di stato.
 
-Se non è stato utilizzato MVC, va spiegata in maniera molto accurata l'architettura scelta, giustificandola in modo appropriato.
+\hfill\break
+Gli input da tastiera provenienti dall’utente passano attraverso la classe KeyNotifier, la quale si occupa di informare il game dell’avvenuto input. 
 
-Se è stato scelto MVC, vanno identificate con precisione le interfacce e classi che rappresentano i punti d'ingresso per modello, view, e controller.
-Raccomandiamo di sfruttare la definizione del dominio fatta in fase di analisi per capire quale sia l'entry point del model, e di non realizzare un'unica macro-interfaccia che, spesso, finisce con l'essere il prodromo ad una ``God class''.
-%
-Consigliamo anche di separare bene controller e model, facendo attenzione a non includere nel secondo strategie d'uso che appartengono al primo.
+\hfill\break
+La parte di View è formata da diversi GameDrawer, i quali si occupano di interrogare il game e mostrare a video il gioco.
 
-In questa sezione vanno descritte, per ciascun componente architetturale che ruoli ricopre (due o tre ruoli al massimo), ed in che modo interagisce (ossia, scambia informazioni) con gli altri componenti dell'architettura.
-%
-Raccomandiamo di porre particolare attenzione al design dell'interazione fra view e controller: se ben progettato, sostituire in blocco la view non dovrebbe causare alcuna modifica nel controller (tantomeno nel model).
+ Quando viene catturato un input da tastiera, il GameDrawer avvisa il keyNotifier dell’avvenuta pressione, così facendo il KeyNotifier è un observable per GameDrawer. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione ci permette di non dipendere dall'implementazione e poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
 
-\subsection*{Elementi positivi}
-\begin{itemize}
- \item Si mostrano pochi, mirati schemi UML dai quali si deduce con chiarezza quali sono le parti principali del software e come interagiscono fra loro.
- \item Si mette in evidenza se e come il pattern architetturale model-view-controller è stato applicato, anche con l'uso di un UML che mostri le interfacce principali ed i rapporti fra loro.
- \item Si discute se sia semplice o meno, con l'architettura scelta, sostituire in blocco la view: in un MVC ben fatto, controller e modello non dovrebbero in alcun modo cambiare se si transitasse da una libreria grafica ad un'altra (ad esempio, da Swing a JavaFX, o viceversa).
-\end{itemize}
-
-\subsection*{Elementi negativi}
-\begin{itemize}
- \item L'architettura è fatta in modo che sia impossibile riusare il modello per un software diverso che affronta lo stesso problema.
- \item L'architettura è tale che l'aggiunta di una funzionalità sul controller impatta pesantemente su view e/o modello.
- \item L'architettura è tale che la sostituzione in blocco della view impatta sul controller o, peggio ancora, sul modello.
- \item Si presentano UML caotici, difficili da leggere.
- \item Si presentano UML in cui sono mostrati elementi di dettaglio non appartenenti all'architettura, ad esempio includenti campi o con metodi che non interessano la parte di interazione fra le componenti principali del software.
- \item Si presentano schemi UML con classi (nel senso UML del termine) che ``galleggiano'' nello schema, non connesse, ossia senza relazioni con il resto degli elementi inseriti.
- \item Si presentano elementi di design di dettaglio, ad esempio tutte le classi e interfacce del modello o della view.
- \item Si discutono aspetti implementativi, ad esempio eventuali librerie usate oppure dettagli di codice.
-\end{itemize}
-
-\subsection*{Esempio}
-
-L'architettura di GLaDOS segue il pattern architetturale MVC.
-%
-Più nello specifico, a livello architetturale, si è scelto di utilizzare MVC in forma ``ECB'', ossia ``entity-control-boundary''\footnote{
-Si fa presente che il pattern ECB effettivamente esiste in letteratura come ``istanza'' di MVC, e chi volesse può utilizzarlo come reificazione di MVC.
-}.
-%
-GLaDOS implementa l'interfaccia AI, ed è il controller del sistema.
-Essendo una intelligenza artificiale, è una classe attiva.
-%
-GLaDOS accetta la registrazione di Input ed Output, che fanno parte della ``view'' di MVC, e sono il ``boundary'' di ECB.
-Gli Input rappresentano delle nuove informazioni che vengono fornite all'IA, ad esempio delle modifiche nel valore di un sensore, oppure un comando da parte dell'operatore.
-Questi input infatti forniscono eventi.
-Ottenere un evento è un'operazione bloccante: chi la esegue resta in attesa di un effettivo evento.
-Di fatto, quindi, GLaDOS si configura come entità \textit{reattiva}.
-Ogni volta che c'è un cambio alla situazione del soggetto, GLaDOS notifica i suoi Output,
-informandoli su quale sia la situazione corrente.
-%
-Conseguentemente, GLaDOS è un ``observable'' per Output.
 
 \begin{figure}[h]
 \centering{}
-%\includegraphics[width=\textwidth]{img/arch}
-\caption{Schema UML architetturale di GLaDOS. L'interfaccia \texttt{GLaDOS} è il controller del sistema, mentre \texttt{Input} ed \texttt{Output} sono le interfacce che mappano la view (o, più correttamente in questo specifico esempio, il boundary). Un'eventuale interfaccia grafica interattiva dovrà implementarle entrambe.}
-\label{img:goodarch}
+\includegraphics[width=\textwidth]{img/UML_2-1.png}
+\caption{Schema UML architetturale di Farming Simulator, MVC.}
+\label{img:MVC}
 \end{figure}
 
-Con questa architettura, possono essere aggiunti un numero arbitrario di input ed output
-all'intelligenza artificiale.
-%
-Ovviamente, mentre l'aggiunta di output è semplice e non richiede alcuna modifica all'IA, la
-presenza di nuovi tipi di evento richiede invece in potenza aggiunte o rifiniture a GLaDOS.
-%
-Questo è dovuto al fatto che nuovi Input rappresentano di fatto nuovi elementi della business
-logic, la cui alterazione od espansione inevitabilmente impatta il controller del progetto.
 
-In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
+In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura MVC del progetto.
 
 
 \section{Design dettagliato}
@@ -292,29 +232,27 @@ Questo schema è fatto male perché:
 \chapter{Sviluppo}
 \section{Testing automatizzato}
 
-Il testing automatizzato è un requisito di qualunque progetto software che si rispetti, e consente di verificare che non vi siano regressioni nelle funzionalità a fronte di aggiornamenti.
-%
-Per quanto riguarda questo progetto è considerato sufficiente un test minimale, a patto che sia completamente automatico.
-%
-Test che richiedono l'intervento da parte dell'utente sono considerati \textit{negativamente} nel computo del punteggio finale.
 
-\subsection*{Elementi positivi}
+In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug. 
 
+Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
+
+Le classi che sono state testate sono:
 \begin{itemize}
- \item Si descrivono molto brevemente i componenti che si è deciso di sottoporre a test automatizzato.
- \item Si utilizzano suite specifiche (e.g. JUnit) per il testing automatico.
- \item Se sono stati eseguiti test manuali di rilievo, si elencano descrivendo brevemente la ragione per cui non sono stati automatizzati. Ad esempio, se tutto il team sviluppa e testa su uno stesso sistema operativo e si sono svolti test manuali per verificare, ad esempio, il corretto funzionamento dell'interfaccia grafica o di librerie native su altri sistemi operativi, può avere senso menzionare la cosa.
+	\item \textbf{Player:} sulla classe Player sono state testate movimento all'interno della mappa, le relative collisioni; aumento e diminuzione dei soldi.
+	\item \textbf{Shop:} sono state testate le funzionalità di Buy e Sell, controllando inventario e soldi del Player
+	\item \textbf{Saver:} è stata testata la funzionalità di salvataggio della partita controllando lo stato di Player e Map 
+	\item \textbf{Interaction:} sono state testate le interazioni con:
+	
+	\begin{itemize}
+		\item Piante (plant\footnote[1]{Plant = piantare il seme nel FieldBlock} e harvest\footnote[2]{Harvest = raccogliere l'elemento Food dal FieldBlock})
+		\item Animali (raccolta dei prodotti animali))
+		\item UnlockableBlock (sbloccaggio del blocco con e senza soldi)
+	\end{itemize}
 \end{itemize}
 
-\subsection*{Elementi negativi}
-\begin{itemize}
- \item Non si realizza alcun test automatico.
- \item La non presenza di testing viene aggravata dall'adduzione di motivazioni non valide. Ad esempio, si scrive che l'interfaccia grafica non è testata automaticamente perché è \emph{impossibile} farlo\footnote{Testare in modo automatico le interfacce grafiche è possibile (si veda, come esempio, \url{https://github.com/TestFX/TestFX}), semplicemente nel corso non c'è modo e tempo di introdurvi questo livello di complessità. Il fatto che non vi sia stato insegnato come farlo non implica che sia impossibile!}.
- \item Si descrive un testing di tipo manuale in maniera prolissa.
- \item Si descrivono test effettuati manualmente che sarebbero potuti essere automatizzati, ad esempio scrivendo che si è usata l'applicazione manualmente.
- \item Si descrivono test non presenti nei sorgenti del progetto.
- \item I test, quando eseguiti, falliscono.
-\end{itemize}
+
+
 
 \section{Metodologia di lavoro}
 
