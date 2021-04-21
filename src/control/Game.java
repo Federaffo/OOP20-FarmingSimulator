@@ -4,8 +4,6 @@ import java.util.List;
 
 import engine.GameState;
 import entity.Animal;
-import entity.AnimalType;
-import entity.Pair;
 import entity.Player;
 import entity.PlayerImpl;
 import gameMap.MapImpl;
