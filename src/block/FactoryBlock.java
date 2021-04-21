@@ -12,6 +12,22 @@ import item.SeedType;
 
 public class FactoryBlock {
 
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		return true;
+	}
+
 	public BlockImpl getTerrainBlock(int posx, int posy) {
 		return new BlockImpl(BlockType.TERRAIN, true, false, posx, posy);
 	}
@@ -37,6 +53,8 @@ public class FactoryBlock {
 	}
 	
 	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
+	
+
 		private boolean locked=true;
 
 		public UnlockableBlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
@@ -57,10 +75,15 @@ public class FactoryBlock {
 		public void lockBlock() {
 			this.locked=true;
 		}
+
+		private FactoryBlock getEnclosingInstance() {
+			return FactoryBlock.this;
+		}
 		
 	}
 	
 	private class BlockFieldImpl extends BlockImpl implements FieldBlock {
+
 		private static final long serialVersionUID = 1L;
 		private Optional<Seed> myseed = Optional.empty();
 
@@ -87,9 +110,49 @@ public class FactoryBlock {
 			return myseed.get();
 		}
 
+		private FactoryBlock getEnclosingInstance() {
+			return FactoryBlock.this;
+		}
+
 	}
 
 	private class BlockImpl extends Rectangle implements Block {
+
+		
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = super.hashCode();
+			result = prime * result + ((blockType == null) ? 0 : blockType.hashCode());
+			result = prime * result + (isInteractable ? 1231 : 1237);
+			result = prime * result + (isWalkable ? 1231 : 1237);
+			result = prime * result + posx;
+			result = prime * result + posy;
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (!super.equals(obj))
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			BlockImpl other = (BlockImpl) obj;
+			if (blockType != other.blockType)
+				return false;
+			if (isInteractable != other.isInteractable)
+				return false;
+			if (isWalkable != other.isWalkable)
+				return false;
+			if (posx != other.posx)
+				return false;
+			if (posy != other.posy)
+				return false;
+			return true;
+		}
 
 		public final static int SIZE = 50;
 		private final BlockType blockType;
@@ -125,6 +188,10 @@ public class FactoryBlock {
 				return true;
 			}
 			return false;
+		}
+
+		private FactoryBlock getEnclosingInstance() {
+			return FactoryBlock.this;
 		}
 
 	}

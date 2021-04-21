@@ -14,7 +14,9 @@ import block.BlockType;
 import block.FieldBlock;
 import block.UnlockableBlock;
 import control.Game;
+import control.GameImpl;
 import engine.Engine;
+import engine.GameSaver;
 import entity.Pair;
 import entity.Player;
 import gameMap.Map;
@@ -26,10 +28,11 @@ public class FarmingSimulatorTestClass {
 	private Game g = null;
 	private Player pg = null;
 	private Map map = null;
+	private Engine engine= null;
 
 	@BeforeEach
 	public void initGame() {
-		Engine engine = new Engine();
+		engine = new Engine();
 		engine.update(false);
 		g = engine.getGame();
 		pg = g.getPlayer();
@@ -186,5 +189,38 @@ public class FarmingSimulatorTestClass {
 		g.sellAll();
 		//setto i soldi a 0 poi vendo il ricavato del raccolto, controllo di avere soldi > 0
 		assertTrue(pg.getMoney()>0);
+	}
+	
+	@Test
+	public void testSaver() {
+		//g=new GameImpl();
+		GameSaver gs=new GameSaver();
+		gs.save(g);
+		
+		Engine eng = new Engine();
+		eng.update(true);
+		Game newGame=eng.getGame();
+		
+		assertTrue(newGame.getPlayer().equals(pg));
+
+		assertTrue(newGame.getMap().equals(map));
+		
+	}
+	
+	@Test
+	public void testSaverPlayer() {
+		//g=new GameImpl();
+		GameSaver gs=new GameSaver();
+		gs.save(g);
+		
+		Pair<Integer, Integer> b = map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.FIELD));
+		pg.moveTo(b);
+		
+		Engine eng = new Engine();
+		eng.update(true);
+		Game newGame=eng.getGame();
+		
+		assertFalse(newGame.getPlayer().equals(pg));
+		
 	}
 }
