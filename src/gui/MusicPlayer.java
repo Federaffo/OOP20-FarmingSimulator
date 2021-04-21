@@ -11,42 +11,31 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class MusicPlayer implements Runnable{
-	
-	public MusicPlayer() {
-		
-	}
+public class MusicPlayer implements Runnable {
 
-	@Override
-	public void run() {
-//		AudioInputStream audioIn;
-//		try {
-//			audioIn = AudioSystem.getAudioInputStream(Resources.getMainTheme());
-//			Clip clip = AudioSystem.getClip();
-//			clip.open(audioIn);
-//			clip.loop(clip.LOOP_CONTINUOUSLY);
-//			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-//			gainControl.setValue(-25.0f); // Reduce volume by 10 decibels.
-//			clip.start();
-//		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-//			e.printStackTrace();
-//		}  
-		
-		
-		try (InputStream in = getClass().getResourceAsStream("/hd.wav")) {
-            InputStream bufferedIn = new BufferedInputStream(in);
+    private static final float REDUCER = -30.0f;
+
+    public MusicPlayer() {
+
+    }
+
+    /**
+     * Start the music when called.
+     */
+    public void run() {
+        try 
+        {
+            InputStream bufferedIn = new BufferedInputStream(Resources.getRes().getMainTheme());
             try (AudioInputStream audioIn = AudioSystem.getAudioInputStream(bufferedIn)) {
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioIn);
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-    			gainControl.setValue(-25.0f); // Reduce volume by 10 decibels.
+                gainControl.setValue(REDUCER); // Reduce volume by {REDUCER} decibels.
                 clip.start();
             }
         } catch (Exception e) {
-           e.printStackTrace();
-       }
-	}
-
-
+            e.printStackTrace();
+        }
+    }
 
 }

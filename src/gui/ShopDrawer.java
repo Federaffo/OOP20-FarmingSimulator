@@ -30,238 +30,237 @@ import control.Game;
 import item.SeedType;
 import utils.Observer;
 
-public class ShopDrawer extends GameDrawer{
-	private static final long serialVersionUID = 5108963132975063659L;
-	private Game game;
-	private JTextArea invTAfood = new JTextArea();
-	private JTextArea invTAseed = new JTextArea();
+public class ShopDrawer extends GameDrawer {
+    private static final long serialVersionUID = 5108963132975063659L;
+    private Game game;
+    private JTextArea invTAfood = new JTextArea();
+    private JTextArea invTAseed = new JTextArea();
 
-	public ShopDrawer(Game g, Dimension screenSize) {
-		super(g, screenSize);
-		this.game = g;
-		final int HGAP = (int) (screenSize.width * 0.005);
-		final int VGAP = (int) (screenSize.height * 0.01);
-		final int LEFTB = (int) (screenSize.width * 0.08);
-		final int RIGHTB = (int) (screenSize.width * 0.08);
-		final int TOPB = (int) (screenSize.height * 0.08);
-		final int BOTTOMB = (int) (screenSize.height * 0.08);
-		final int LEFTB_SCROLL = LEFTB/4;
-		final int RIGHTB_SCROLL = RIGHTB/4;
-		final int BOTTOMB_SCROLL = BOTTOMB/2;
-		
-		final Color sfondo = new Color(17, 96, 98);
-		final int countSeed = g.getShop().getSeedItemList().size();
-		
-		final ObservableShopGUI obsShop= new ObservableShopGUI();
-		final Observer sellButton= new ObserverShop();
-		final Observer cmbox= new ObserverShop();
-		final Observer buyButton= new ObserverShop();
-		final Observer spinnerButton= new ObserverShop();
-		obsShop.addObserver(sellButton);
-		obsShop.addObserver(cmbox);
-		obsShop.addObserver(buyButton);
-		obsShop.addObserver(spinnerButton);	
+    public ShopDrawer(Game g, Dimension screenSize) {
+        super(g, screenSize);
+        this.game = g;
+        final int HGAP = (int) (screenSize.width * 0.005);
+        final int VGAP = (int) (screenSize.height * 0.01);
+        final int LEFTB = (int) (screenSize.width * 0.08);
+        final int RIGHTB = (int) (screenSize.width * 0.08);
+        final int TOPB = (int) (screenSize.height * 0.08);
+        final int BOTTOMB = (int) (screenSize.height * 0.08);
+        final int LEFTB_SCROLL = LEFTB / 4;
+        final int RIGHTB_SCROLL = RIGHTB / 4;
+        final int BOTTOMB_SCROLL = BOTTOMB / 2;
 
-		setLayout(new GridLayout(2, 3, HGAP, VGAP));
+        final Color sfondo = new Color(17, 96, 98);
+        final int countSeed = g.getShop().getSeedItemList().size();
 
-		/* Pannello Title */
-		JPanel titlePanel = new JPanel();
-		titlePanel.setBackground(sfondo);
+        final ObservableShopGUI obsShop = new ObservableShopGUI();
+        final Observer sellButton = new ObserverShop();
+        final Observer cmbox = new ObserverShop();
+        final Observer buyButton = new ObserverShop();
+        final Observer spinnerButton = new ObserverShop();
+        obsShop.addObserver(sellButton);
+        obsShop.addObserver(cmbox);
+        obsShop.addObserver(buyButton);
+        obsShop.addObserver(spinnerButton);
 
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
-		JTextArea title = new JTextArea();
-		Font font = new Font("Garamond", Font.BOLD, 50);
-		List<String> titleContent = List.of("Welcome", "to", "the", "Shop!");
-		for (String s : titleContent) {
-			title.append(s + " ");
-		}
-		title.setForeground(Color.WHITE);
-		title.setFont(font);
-		title.setLineWrap(true);
-		title.setEditable(false);
-		title.setFocusable(false);
+        setLayout(new GridLayout(2, 3, HGAP, VGAP));
 
-		JTextArea descr = new JTextArea();
-		Font font2 = new Font("Segoe Script", Font.BOLD, 20);
-		List<String> descrContent = List.of("Here", "you", "can", "buy", "and", "sell", "your", "items");
-		for (String s : descrContent) {
-			descr.append(s + " ");
-		}
-		descr.setForeground(Color.WHITE);
-		descr.setFont(font2);
-		descr.setLineWrap(true);
-		descr.setEditable(false);
-		descr.setFocusable(false);
+        /* Pannello Title */
+        JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(sfondo);
 
-		title.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, 0, RIGHTB));
-		title.setBackground(titlePanel.getBackground());
-		descr.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
-		descr.setBackground(titlePanel.getBackground());
+        titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
+        JTextArea title = new JTextArea();
+        Font font = new Font("Garamond", Font.BOLD, 50);
+        List<String> titleContent = List.of("Welcome", "to", "the", "Shop!");
+        for (String s : titleContent) {
+            title.append(s + " ");
+        }
+        title.setForeground(Color.WHITE);
+        title.setFont(font);
+        title.setLineWrap(true);
+        title.setEditable(false);
+        title.setFocusable(false);
 
-		titlePanel.add(title);
-		titlePanel.add(descr);
-		/* Fine Pannello Title */
+        JTextArea descr = new JTextArea();
+        Font font2 = new Font("Segoe Script", Font.BOLD, 20);
+        List<String> descrContent = List.of("Here", "you", "can", "buy", "and", "sell", "your", "items");
+        for (String s : descrContent) {
+            descr.append(s + " ");
+        }
+        descr.setForeground(Color.WHITE);
+        descr.setFont(font2);
+        descr.setLineWrap(true);
+        descr.setEditable(false);
+        descr.setFocusable(false);
 
-		
-		/* Pannello Invetario */
-		JPanel inventPanel = new JPanel();
-		JPanel scrollPanel = new JPanel();
-		Font font3 = new Font("Garamond", Font.BOLD, 40);
-		JLabel titleInv = new JLabel("Inventario");
-		JScrollPane jspF = new JScrollPane(invTAfood);
-		JScrollPane jspS = new JScrollPane(invTAseed);
-		
-		titleInv.setForeground(Color.white);
-		titleInv.setFont(font3);
-		titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB_SCROLL, RIGHTB));
+        title.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, 0, RIGHTB));
+        title.setBackground(titlePanel.getBackground());
+        descr.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
+        descr.setBackground(titlePanel.getBackground());
 
-		inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
-		scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
-		inventPanel.add(titleInv);
-		inventPanel.setBackground(sfondo);
-		
-		invTAfood.setEditable(false);
-		invTAfood.setFocusable(false);
-		invTAseed.setEditable(false);
-		invTAseed.setFocusable(false);
-		
-		jspF.setBackground(sfondo);
-		jspF.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL,BOTTOMB_SCROLL, RIGHTB_SCROLL));
-		
-		jspS.setBackground(sfondo);
-		jspS.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL, BOTTOMB_SCROLL, RIGHTB_SCROLL));
-		
-		scrollPanel.add(jspF);
-		scrollPanel.add(jspS);
-		inventPanel.add(scrollPanel);
-		inventPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		inventoryUpdate();
-		/* Fine Pannello Inventario */
+        titlePanel.add(title);
+        titlePanel.add(descr);
+        /* Fine Pannello Title */
 
-		
-		/* Pannello buy */
-		final int hBuy= screenSize.height;
-		final int wBuy= screenSize.width;
-		JPanel buyPanel = new JPanel();
-		buyPanel.add(Box.createRigidArea(new Dimension(0, HGAP)));
-		Font buyFont=new Font("Arial", Font.BOLD, 20);
-		String[] itemString = new String[countSeed];
-		int i = 0;
-		for (SeedType seed : g.getShop().getSeedItemList()) {
-			itemString[i++] = seed.getName();
-		}
+        /* Pannello Invetario */
+        JPanel inventPanel = new JPanel();
+        JPanel scrollPanel = new JPanel();
+        Font font3 = new Font("Garamond", Font.BOLD, 40);
+        JLabel titleInv = new JLabel("Inventario");
+        JScrollPane jspF = new JScrollPane(invTAfood);
+        JScrollPane jspS = new JScrollPane(invTAseed);
 
-		buyPanel.setBackground(sfondo);
-		buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.PAGE_AXIS));
-		buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+        titleInv.setForeground(Color.white);
+        titleInv.setFont(font3);
+        titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB_SCROLL, RIGHTB));
 
-		JComboBox<Object> selectSeed = new JComboBox<>(itemString);
-		selectSeed.setFont(buyFont);
-		
-		int startValue = 0, minValue = 0, maxValue = 1000, step = 1;
-		JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue, minValue, maxValue, step));
-		//quantity.setBorder(BorderFactory.createEmptyBorder(TOPB/4, LEFTB/4, BOTTOMB/4, RIGHTB/4));
-		quantity.setFont(buyFont);
-		quantity.setBackground(Color.WHITE);
-		buyPanel.add(selectSeed);
-		buyPanel.add(quantity);
+        inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
+        scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
+        inventPanel.add(titleInv);
+        inventPanel.setBackground(sfondo);
 
-		JTextField prezzoTot = new JTextField(
-				"TOT: " + (SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
-						* ((Integer) quantity.getValue()));
-		prezzoTot.setEditable(false);
-		prezzoTot.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		prezzoTot.setMaximumSize(new Dimension(wBuy,hBuy));
-		buyPanel.add(prezzoTot);
-		buyPanel.add(Box.createRigidArea(new Dimension(0, 80)));
-		JButton buy = new JButton("COMPRA");
-		buy.setFont(buyFont);
-		buy.setBorder(BorderFactory.createEmptyBorder(0,LEFTB, 0,RIGHTB));
-		buyPanel.add(buy);
+        invTAfood.setEditable(false);
+        invTAfood.setFocusable(false);
+        invTAseed.setEditable(false);
+        invTAseed.setFocusable(false);
 
-		quantity.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				// TODO Auto-generated method stub
-				prezzoTot.setText("TOT: "
-						+ Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
-								* ((Integer) quantity.getValue())));
-				obsShop.notifyObserver(true);
-			}
-		});
-		selectSeed.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				prezzoTot.setText("TOT: "
-						+ Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
-								* ((Integer) quantity.getValue())));
-				obsShop.notifyObserver(true);
-			}
-		});
-		buy.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()),
-						(Integer) quantity.getValue())) {
-					JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
-				} else {
-					JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
-				}
-				obsShop.notifyObserver(true);
-			}
-		});
-		/* Fine Pannello buy */
+        jspF.setBackground(sfondo);
+        jspF.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL, BOTTOMB_SCROLL, RIGHTB_SCROLL));
 
-		
-		/* Pannello sell */
-		JPanel sellPanel = new JPanel();
-		sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
-		sellPanel.setBackground(sfondo);
-		JButton sellAll = new JButton("SELL ALL YOUR ITEMS");
-		sellAll.setFont(buyFont);
-		sellAll.setBorder(BorderFactory.createEmptyBorder((int) (TOPB*1.1), LEFTB, BOTTOMB, RIGHTB));
+        jspS.setBackground(sfondo);
+        jspS.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL, BOTTOMB_SCROLL, RIGHTB_SCROLL));
 
-		sellPanel.add(sellAll, BorderLayout.CENTER);
+        scrollPanel.add(jspF);
+        scrollPanel.add(jspS);
+        inventPanel.add(scrollPanel);
+        inventPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        inventoryUpdate();
+        /* Fine Pannello Inventario */
 
-		sellAll.addActionListener(new ActionListener() {
+        /* Pannello buy */
+        final int hBuy = screenSize.height;
+        final int wBuy = screenSize.width;
+        JPanel buyPanel = new JPanel();
+        buyPanel.add(Box.createRigidArea(new Dimension(0, HGAP)));
+        Font buyFont = new Font("Arial", Font.BOLD, 20);
+        String[] itemString = new String[countSeed];
+        int i = 0;
+        for (SeedType seed : g.getShop().getSeedItemList()) {
+            itemString[i++] = seed.getName();
+        }
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				double money = g.sellAll();
-				JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
-				obsShop.notifyObserver(true);
-			}
-		});
-		/* Fine Pannello sell */
+        buyPanel.setBackground(sfondo);
+        buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.PAGE_AXIS));
+        buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
 
-		add(titlePanel);
-		add(buyPanel);
-		add(inventPanel);
-		add(sellPanel);
-		
-	}
-	private void inventoryUpdate() {
-		invTAfood.setText("");
-		invTAseed.setText("");
+        JComboBox<Object> selectSeed = new JComboBox<>(itemString);
+        selectSeed.setFont(buyFont);
 
-		for (var f : game.getPlayer().getInventory().getFoods().entrySet()) {
-			invTAfood.append("[Food Item]-> " + f.getKey() + "\t [Quantity]-> " + f.getValue() + "\n");
-		}
-		for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {
-			invTAseed.append("[Seed Item]-> " + f.getKey() + "\t [Quantity]-> " + f.getValue() + "\n");
-		}
-	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		inventoryUpdate();
-	}	
-	
-	public class ObserverShop implements Observer<Boolean>{
-		@Override
-		public void update(Boolean notify) {
-			inventoryUpdate();
-			repaint();
-			revalidate();
-		}
-	}
+        int startValue = 0, minValue = 0, maxValue = 1000, step = 1;
+        JSpinner quantity = new JSpinner(new SpinnerNumberModel(startValue, minValue, maxValue, step));
+        // quantity.setBorder(BorderFactory.createEmptyBorder(TOPB/4, LEFTB/4,
+        // BOTTOMB/4, RIGHTB/4));
+        quantity.setFont(buyFont);
+        quantity.setBackground(Color.WHITE);
+        buyPanel.add(selectSeed);
+        buyPanel.add(quantity);
+
+        JTextField prezzoTot = new JTextField(
+                "TOT: " + (SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+                        * ((Integer) quantity.getValue()));
+        prezzoTot.setEditable(false);
+        prezzoTot.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        prezzoTot.setMaximumSize(new Dimension(wBuy, hBuy));
+        buyPanel.add(prezzoTot);
+        buyPanel.add(Box.createRigidArea(new Dimension(0, 80)));
+        JButton buy = new JButton("COMPRA");
+        buy.setFont(buyFont);
+        buy.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, 0, RIGHTB));
+        buyPanel.add(buy);
+
+        quantity.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                // TODO Auto-generated method stub
+                prezzoTot.setText("TOT: "
+                        + Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+                                * ((Integer) quantity.getValue())));
+                obsShop.notifyObserver(true);
+            }
+        });
+        selectSeed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prezzoTot.setText("TOT: "
+                        + Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
+                                * ((Integer) quantity.getValue())));
+                obsShop.notifyObserver(true);
+            }
+        });
+        buy.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()),
+                        (Integer) quantity.getValue())) {
+                    JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
+                } else {
+                    JOptionPane.showMessageDialog(buyPanel, "You haven't got enough  money!");
+                }
+                obsShop.notifyObserver(true);
+            }
+        });
+        /* Fine Pannello buy */
+
+        /* Pannello sell */
+        JPanel sellPanel = new JPanel();
+        sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+        sellPanel.setBackground(sfondo);
+        JButton sellAll = new JButton("SELL ALL YOUR ITEMS");
+        sellAll.setFont(buyFont);
+        sellAll.setBorder(BorderFactory.createEmptyBorder((int) (TOPB * 1.1), LEFTB, BOTTOMB, RIGHTB));
+
+        sellPanel.add(sellAll, BorderLayout.CENTER);
+
+        sellAll.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double money = g.sellAll();
+                JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
+                obsShop.notifyObserver(true);
+            }
+        });
+        /* Fine Pannello sell */
+
+        add(titlePanel);
+        add(buyPanel);
+        add(inventPanel);
+        add(sellPanel);
+
+    }
+
+    private void inventoryUpdate() {
+        invTAfood.setText("");
+        invTAseed.setText("");
+
+        for (var f : game.getPlayer().getInventory().getFoods().entrySet()) {
+            invTAfood.append("[Food Item]-> " + f.getKey() + "\t [Quantity]-> " + f.getValue() + "\n");
+        }
+        for (var f : game.getPlayer().getInventory().getSeeds().entrySet()) {
+            invTAseed.append("[Seed Item]-> " + f.getKey() + "\t [Quantity]-> " + f.getValue() + "\n");
+        }
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponents(g);
+        inventoryUpdate();
+    }
+
+    public class ObserverShop implements Observer<Boolean> {
+        @Override
+        public void update(Boolean notify) {
+            inventoryUpdate();
+            repaint();
+            revalidate();
+        }
+    }
 }
