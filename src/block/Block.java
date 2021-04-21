@@ -1,9 +1,12 @@
 package block;
 
 public interface Block {
-	public boolean isWalkable();
-	public boolean isInteractable();
-	public BlockType getType();
-	public boolean isStall();
+    boolean isWalkable();
+
+    boolean isInteractable();
+
+    BlockType getType();
+
+    boolean isStall();
 
 }

@@ -1,7 +1,7 @@
 package block;
 
-public interface UnlockableBlock extends FieldBlock{
-	public boolean isLocked();
-	public void unlockBlock();
-	public void lockBlock();
+public interface UnlockableBlock extends FieldBlock {
+    boolean isLocked();
+    void unlockBlock();
+    void lockBlock();
 }

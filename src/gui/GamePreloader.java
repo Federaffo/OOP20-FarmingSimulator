@@ -23,7 +23,7 @@ public class GamePreloader implements Observable<Boolean> {
 				JOptionPane.YES_NO_OPTION);
 		if (result == JOptionPane.YES_OPTION) {
 			notifyObserver(true);
-		}else {
+		} else {
 			notifyObserver(false);
 		}
 	}

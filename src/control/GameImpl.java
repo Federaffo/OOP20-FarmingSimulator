@@ -23,7 +23,8 @@ import gameShop.Shop;
 import gameShop.ShopImpl;
 import item.SeedType;
 
-public class GameImpl implements Game{
+public class GameImpl implements Game {
+	private static final double PRICE_START = 50.0;
 	private static final int UNLOCK_STEP = 50;
 	private Player pg = new PlayerImpl(new Pair<>(1, 1));
 	private Map map = new MapImpl();
@@ -32,17 +33,17 @@ public class GameImpl implements Game{
 	private List<Animal> animals = new ArrayList<>();
 	private FactoryAnimal factoryAnimal = new FactoryAnimal();
 	private GameState state = GameState.PLAY;
-	private double unlockPrice = 50.0;
-	
+	private double unlockPrice = PRICE_START;
+
 	public GameImpl() {
 		generateAnimals();
-		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 5);
-		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 5);
-		pg.incrementMoney(50);
+		pg.getInventory().addSeeds(SeedType.WHEAT_SEED, 10);
+		pg.incrementMoney(PRICE_START);
 	}
 
 
-	public void loadGame(MapImpl map, PlayerImpl player) {
+
+	public void loadGame(final MapImpl map, final PlayerImpl player) {
 		this.pg = player;
 		this.map = map;
 	}
@@ -90,11 +91,11 @@ public class GameImpl implements Game{
 			pg.decreaseMoney(unlockPrice); // decremento i soldi del Player
 			unlockPrice += UNLOCK_STEP; // aumento il prezzo del prossimo blocco
 		}
-		if(pg.nearestAnimal(animals).isPresent()) {
+		if (pg.nearestAnimal(animals).isPresent()) {
 			interaction.playerAnimal(pg, pg.nearestAnimal(animals).get());
 		}
 	}
-	
+
 	public double getUnlockPrice() {
 		return this.unlockPrice;
 	}
@@ -109,7 +110,6 @@ public class GameImpl implements Game{
 			}
 		}
 	}
-
 
 	public void play() {
 		state = GameState.PLAY;
@@ -135,16 +135,16 @@ public class GameImpl implements Game{
 	public List<Animal> getAllAnimals() {
 		return this.animals;
 	}
-	
+
 	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
-        animals.add(factoryAnimal.generateAnimal(pos, type));
-    }
-	
+		animals.add(factoryAnimal.generateAnimal(pos, type));
+	}
+
 	public void resetAnimals() {
 		animals.clear();
 		generateAnimals();
 	}
-	
+
 	private void generateAnimals() {
 		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.CHICKEN);
 		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.COW);

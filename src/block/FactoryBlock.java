@@ -3,7 +3,6 @@ package block;
 import java.awt.Rectangle;
 import java.util.*;
 
-
 import entity.Pair;
 import item.FoodType;
 import item.Seed;
@@ -18,46 +17,78 @@ public class FactoryBlock {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		return true;
 	}
 
-	public BlockImpl getTerrainBlock(int posx, int posy) {
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return new Block of TERRAIN type
+	 */
+	public BlockImpl getTerrainBlock(final int posx, final int posy) {
 		return new BlockImpl(BlockType.TERRAIN, true, false, posx, posy);
 	}
 
-	public BlockImpl getObstacleBlock(int posx, int posy) {
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return new Block of WALL type
+	 */
+	public BlockImpl getObstacleBlock(final int posx, final int posy) {
 		return new BlockImpl(BlockType.WALL, false, false, posx, posy);
 	}
 
-	public BlockImpl getFieldBlock(int posx, int posy) {
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return new BlockField
+	 */
+	public BlockImpl getFieldBlock(final int posx, final int posy) {
 		return new BlockFieldImpl(BlockType.FIELD, true, true, posx, posy);
 	}
-	
-	public BlockImpl getLockedBlock(int posx, int posy) {
+
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return new Block of LOCKED type
+	 */
+	public BlockImpl getLockedBlock(final int posx, final int posy) {
 		return new UnlockableBlockImpl(BlockType.LOCKED, true, true, posx, posy);
 	}
-	
-	public BlockImpl getWaterBlock(int posx, int posy) {
+
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return a new Block of WATER type
+	 */
+	public BlockImpl getWaterBlock(final int posx, final int posy) {
 		return new BlockImpl(BlockType.WATER, true, false, posx, posy);
 	}
-	
-	public BlockImpl getStallBlock(int posx, int posy) {
+
+	/**
+	 * @param posx
+	 * @param posy
+	 * @return a new Block of STALL type
+	 */
+	public BlockImpl getStallBlock(final int posx, final int posy) {
 		return new BlockImpl(BlockType.STALL, true, false, posx, posy);
 	}
-	
-	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock{
-	
 
-		private boolean locked=true;
+	private class UnlockableBlockImpl extends BlockFieldImpl implements UnlockableBlock {
 
-		public UnlockableBlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
+		private boolean locked = true;
+
+		UnlockableBlockImpl(final BlockType bt, final boolean isWalkable, final boolean isInteractable, final int posx, final int posy) {
 			super(bt, isWalkable, isInteractable, posx, posy);
 		}
 
@@ -68,33 +99,32 @@ public class FactoryBlock {
 
 		@Override
 		public void unlockBlock() {
-			this.locked=false;
+			this.locked = false;
 		}
 
 		@Override
 		public void lockBlock() {
-			this.locked=true;
+			this.locked = true;
 		}
 
 		private FactoryBlock getEnclosingInstance() {
 			return FactoryBlock.this;
 		}
-		
+
 	}
-	
+
 	private class BlockFieldImpl extends BlockImpl implements FieldBlock {
 
 		private static final long serialVersionUID = 1L;
 		private Optional<Seed> myseed = Optional.empty();
 
-		public BlockFieldImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
+		BlockFieldImpl(final BlockType bt, final boolean isWalkable, final boolean isInteractable, final int posx, final int posy) {
 			super(bt, isWalkable, isInteractable, posx, posy);
 		}
 
-		public void plant(SeedType st) {
+		public void plant(final SeedType st) {
 			myseed = Optional.of(new SeedImpl(st));
 		}
-
 
 		public Pair<FoodType, Integer> harvest() {
 			FoodType food = myseed.get().harvest();
@@ -116,9 +146,10 @@ public class FactoryBlock {
 
 	}
 
+	/**
+	 *
+	 */
 	private class BlockImpl extends Rectangle implements Block {
-
-		
 
 		@Override
 		public int hashCode() {
@@ -133,36 +164,43 @@ public class FactoryBlock {
 		}
 
 		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
+		public boolean equals(final Object obj) {
+			if (this == obj) {
 				return true;
-			if (!super.equals(obj))
+			}
+			if (!super.equals(obj)) {
 				return false;
-			if (getClass() != obj.getClass())
+			}
+			if (getClass() != obj.getClass()) {
 				return false;
+			}
 			BlockImpl other = (BlockImpl) obj;
-			if (blockType != other.blockType)
+			if (blockType != other.blockType) {
 				return false;
-			if (isInteractable != other.isInteractable)
+			}
+			if (isInteractable != other.isInteractable) {
 				return false;
-			if (isWalkable != other.isWalkable)
+			}
+			if (isWalkable != other.isWalkable) {
 				return false;
-			if (posx != other.posx)
+			}
+			if (posx != other.posx) {
 				return false;
-			if (posy != other.posy)
+			}
+			if (posy != other.posy) {
 				return false;
+			}
 			return true;
 		}
 
-		public final static int SIZE = 50;
+		public static final int SIZE = 50;
 		private final BlockType blockType;
 		private final boolean isWalkable;
 		private final boolean isInteractable;
 		private final int posx;
 		private final int posy;
-		
-		
-		public BlockImpl(BlockType bt, boolean isWalkable, boolean isInteractable, int posx, int posy) {
+
+		BlockImpl(final BlockType bt, final boolean isWalkable, final boolean isInteractable, final int posx, final int posy) {
 			super(posx * SIZE, posy * SIZE, SIZE, SIZE);
 			this.blockType = bt;
 			this.isWalkable = isWalkable;
@@ -182,9 +220,9 @@ public class FactoryBlock {
 		public BlockType getType() {
 			return this.blockType;
 		}
-		
+
 		public boolean isStall() {
-			if(this.blockType==BlockType.STALL) {
+			if (this.blockType == BlockType.STALL) {
 				return true;
 			}
 			return false;

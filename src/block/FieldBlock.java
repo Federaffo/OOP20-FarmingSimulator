@@ -3,12 +3,11 @@ package block;
 import entity.Pair;
 import item.FoodType;
 import item.Seed;
-import item.SeedImpl;
 import item.SeedType;
 
-public interface FieldBlock extends Block{
-	public void plant(SeedType st);
-	public Pair<FoodType, Integer> harvest();
-	public boolean isEmpty();
-	public Seed getSeed();
+public interface FieldBlock extends Block {
+    void plant(SeedType st);
+    Pair<FoodType, Integer> harvest();
+    boolean isEmpty();
+    Seed getSeed();
 }
