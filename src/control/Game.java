@@ -14,6 +14,7 @@ import gameShop.Shop;
 import item.SeedType;
 
 public interface Game {
+
     void loadGame(MapImpl map, PlayerImpl player);
 
     void loop();
@@ -44,7 +45,6 @@ public interface Game {
 
     List<Animal> getAllAnimals();
 
-    void generateAnimal(Pair<Integer, Integer> pos, AnimalType type);
-
     void resetAnimals();
+
 }

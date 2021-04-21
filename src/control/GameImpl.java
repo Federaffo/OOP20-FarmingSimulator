@@ -136,19 +136,15 @@ public class GameImpl implements Game {
 		return this.animals;
 	}
 
-	public void generateAnimal(Pair<Integer, Integer> pos, AnimalType type) {
-		animals.add(factoryAnimal.generateAnimal(pos, type));
-	}
-
 	public void resetAnimals() {
 		animals.clear();
 		generateAnimals();
 	}
 
 	private void generateAnimals() {
-		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.CHICKEN);
-		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.COW);
-		this.generateAnimal(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall())), AnimalType.PIG);
+		animals.add(factoryAnimal.getChicken(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall()))));
+		animals.add(factoryAnimal.getCow(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall()))));
+		animals.add(factoryAnimal.getPig(map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.isStall()))));
 	}
 
 }
