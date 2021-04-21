@@ -16,6 +16,16 @@ import item.SeedType;
 import entity.AnimalType;
 
 public class Resources {
+	
+	
+	public static class LazyResources {
+			private static final Resources SINGLETON = new Resources();
+	}
+	
+	public static Resources getRes() {
+		return LazyResources.SINGLETON;
+	}
+	
 	private  final String FILE_SEPARATOR = File.separator;
 	private  final String TEXTURE_FOLDER = "/texture";
 
@@ -24,7 +34,7 @@ public class Resources {
 	private  int animationDelay = 0;
 	private  final int ANIMATION_SPEED = 500;
 
-	public Resources() {
+	private Resources() {
 		try {
 			//seed
 			textures.put(SeedType.CARROT_SEED, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER+"/carrot2.png")));

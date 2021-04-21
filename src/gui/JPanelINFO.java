@@ -60,7 +60,7 @@ public class JPanelINFO extends JPanel {
 
 		JLabel titleLabel = new JLabel();
 		ImageIcon imageIcon = new ImageIcon(
-				new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
+				new ImageIcon(Resources.getRes().getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
 		titleLabel.setIcon(imageIcon);
 		titleLabel.setText(title);
 		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, titleDim));

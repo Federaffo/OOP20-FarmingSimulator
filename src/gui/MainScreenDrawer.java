@@ -45,6 +45,7 @@ public class MainScreenDrawer extends GameDrawer {
 		drawAnimals(g);
 		revalidate();
 		repaint();
+		
 	}
 	
 	private void drawAnimals(Graphics g) {
@@ -58,7 +59,7 @@ public class MainScreenDrawer extends GameDrawer {
 				g.drawRect(posX, posY, BLOCK_SIZE, BLOCK_SIZE);
 			}
 			
-			g.drawImage(ResourcesLazy.getRes().getTextures(a.getType()), posX, posY, (int) (BASE_SIZE * resizer),
+			g.drawImage(Resources.getRes().getTextures(a.getType()), posX, posY, (int) (BASE_SIZE * resizer),
 					(int) (BASE_SIZE * resizer), null);
 		}
 	}
@@ -118,7 +119,7 @@ public class MainScreenDrawer extends GameDrawer {
 				Block block = game.getMap().getBlock(new Pair<Integer, Integer>(i, j));
 				game.getPlayer();
 
-				g.drawImage(ResourcesLazy.getRes().getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
+				g.drawImage(Resources.getRes().getTextures(block.getType()), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,
 						BLOCK_SIZE, null);
 
 				if (block.getType() == BlockType.FIELD) {
@@ -127,14 +128,14 @@ public class MainScreenDrawer extends GameDrawer {
 						Seed seed = fieldBlock.getSeed();
 						if (seed.getSeedState() == SeedState.PLANTED) {
 							if(seed.getSeedType().equals(SeedType.APPLE_SEED) || seed.getSeedType().equals(SeedType.ORANGE_SEED) || seed.getSeedType().equals(SeedType.CHERRY_SEED)) {
-								g.drawImage(ResourcesLazy.getRes().getTextures(Texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+								g.drawImage(Resources.getRes().getTextures(Texture.TREE), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
 										BLOCK_SIZE, null);
 							}else {
-								g.drawImage(ResourcesLazy.getRes().getTextures(Texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
+								g.drawImage(Resources.getRes().getTextures(Texture.SEED), i * BLOCK_SIZE, j * BLOCK_SIZE, BLOCK_SIZE,								
 										BLOCK_SIZE, null);
 							}
 						} else if (seed.getSeedState() == SeedState.GROWN) {
-							g.drawImage(ResourcesLazy.getRes().getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
+							g.drawImage(Resources.getRes().getTextures(seed.getFoodType()), i * BLOCK_SIZE, j * BLOCK_SIZE,
 									BLOCK_SIZE, BLOCK_SIZE, null);
 						}
 					}
@@ -152,7 +153,7 @@ public class MainScreenDrawer extends GameDrawer {
 		int posX = (int) (game.getPlayer().getPosX() * resizer);
 		int posY = (int) (game.getPlayer().getPosY() * resizer);
 
-		g.drawImage(ResourcesLazy.getRes().getPlayerInDirection(dir), posX, posY - (int) (offsetY * resizer), (int) (playerXSize * resizer),
+		g.drawImage(Resources.getRes().getPlayerInDirection(dir), posX, posY - (int) (offsetY * resizer), (int) (playerXSize * resizer),
 				(int) (playerYSize * resizer), null);
 	}
 
@@ -183,7 +184,7 @@ public class MainScreenDrawer extends GameDrawer {
 				}
 			}
 
-			ImageIcon boxIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(currSeed)).getImage()
+			ImageIcon boxIcon = new ImageIcon(new ImageIcon(Resources.getRes().getTextures(currSeed)).getImage()
 					.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 			label.setIcon(boxIcon);
 			label.setBackground(new Color(255, 255, 255, 50));

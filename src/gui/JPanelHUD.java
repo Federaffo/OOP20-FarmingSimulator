@@ -34,7 +34,7 @@ public class JPanelHUD extends JPanel {
 		this.changeFont = changeFont;
 		this.defaultText = defaultText;
 		myLabel = new JLabel();
-		imageIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
+		imageIcon = new ImageIcon(new ImageIcon(Resources.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
 				scaleDim, Image.SCALE_DEFAULT));
 		myLabel.setIcon(imageIcon);
 		myLabel.setText(defaultText);
@@ -53,7 +53,7 @@ public class JPanelHUD extends JPanel {
 		this.defaultText = defaultText;
 		this.game = game;
 		myLabel = new JLabel();
-		imageIcon = new ImageIcon(new ImageIcon(ResourcesLazy.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
+		imageIcon = new ImageIcon(new ImageIcon(Resources.getRes().getTextures(txt)).getImage().getScaledInstance(scaleDim,
 				scaleDim, Image.SCALE_DEFAULT));
 		myLabel.setIcon(imageIcon);
 		myLabel.setText(defaultText);
