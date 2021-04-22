@@ -97,8 +97,8 @@ public class InventoryImpl implements Inventory {
     @Override
     public void removeSeed(final SeedType type) {
         seeds.put(type, seeds.get(type) - 1);
-        if (seeds.get(type) == 0) {
-
+        if (seeds.get(type) == -1) {
+        	throw new IllegalStateException();
         }
     }
 

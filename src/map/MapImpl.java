@@ -100,11 +100,21 @@ public final class MapImpl implements Map {
     }
 
     public Block getBlock(final Pair<Integer, Integer> pos) {
+    	
+    	if(isInMap(pos) == false) {
+    		throw new IllegalArgumentException();
+    	}
+    	
         return mappa[pos.getX()][pos.getY()];
     }
 
     public void setBlock(final Pair<Integer, Integer> pos, final BlockType bt) {
-        Integer x = pos.getX();
+        
+    	if(isInMap(pos) == false) {
+    		throw new IllegalArgumentException();
+    	}
+    	
+    	Integer x = pos.getX();
         Integer y = pos.getY();
 
         if (bt == BlockType.FIELD) {
@@ -128,6 +138,7 @@ public final class MapImpl implements Map {
     }
 
     public Pair<Integer, Integer> getBlockCoordinates(final Block b) {
+    	
         for (int i = 0; i < COLUMN; i++) {
             for (int j = 0; j < ROW; j++) {
                 if (mappa[i][j].equals(b)) {
@@ -135,7 +146,7 @@ public final class MapImpl implements Map {
                 }
             }
         }
-        return null;
+        throw new IllegalArgumentException();
     }
 
     public Block getRandomFilterBlock(final Predicate<Block> blockFilter) {
@@ -156,5 +167,19 @@ public final class MapImpl implements Map {
     @Override
     public int getColumns() {
         return COLUMN;
+    }
+    
+    
+    /**
+     * @param pos
+     * @return false if the block is out of the map
+     */
+    private boolean isInMap(final Pair<Integer, Integer> pos) {
+    	
+    	if(pos.getX() < 0 || pos.getX() >= COLUMN || pos.getY() < 0 || pos.getY() >= ROW) {
+    		return false;
+    	} else {
+    		return true;
+    	}
     }
 }
