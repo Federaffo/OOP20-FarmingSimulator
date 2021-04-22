@@ -11,15 +11,15 @@
 \contentsline {subsection}{\numberline {2.2.1}Simone Rega}{6}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Federico Raffoni}{7}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Linda Fabbri}{8}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Giacomo Montali}{8}{subsection.2.2.4}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Testing automatizzato}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{14}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Note di sviluppo}{15}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{19}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{19}{section.4.2}%
-\contentsline {chapter}{\numberline {A}Guida utente}{21}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{22}{appendix.Alph2}%
-\contentsline {subsection}{\numberline {B.0.1}Paolino Paperino}{22}{subsection.Alph2.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Paperon De Paperoni}{22}{subsection.Alph2.0.2}%
+\contentsline {subsection}{\numberline {2.2.4}Giacomo Montali}{10}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Testing automatizzato}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Note di sviluppo}{14}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{18}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{18}{section.4.2}%
+\contentsline {chapter}{\numberline {A}Guida utente}{20}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{21}{appendix.Alph2}%
+\contentsline {subsection}{\numberline {B.0.1}Paolino Paperino}{21}{subsection.Alph2.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Paperon De Paperoni}{21}{subsection.Alph2.0.2}%

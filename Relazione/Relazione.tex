@@ -28,7 +28,7 @@
 \section{Requisiti}
 
 
-Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell. 
+Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell.
 Il progetto mira alla realizzazione di un ambiente agricolo in 2D, in cui il giocatore interagisce con le colture e gestisce le proprie finanze.
 Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli appezzamenti di terra e coltivando la maggior varietà di semi possibili.
 
@@ -49,6 +49,7 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 	\item Il programma deve poter essere eseguito sia su Windows sia su sistemi operativi Unix
 \end{itemize}
 
+\hfill\break
 \section{Analisi e modello del dominio}
 
 In Farming Simulator il soggetto principale è il personaggio virtuale, il quale si muove all'interno di una mappa, composta da diversi tipologie di blocchi. 
@@ -60,8 +61,8 @@ Questi ultimi possono essere comprati nel negozio (Shop) del videogioco, dentro 
 
 Il personaggio può interaggire con blocchi e animali (Animals), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (FieldBlock), sbloccare i blocchi non ancora accessibili (UnlockableBlock) e raccogliere i prodotti animali.
 
-\begin{figure}[h]
-\centerline{\includegraphics[width=18cm]{img/UML_1-1.png}}
+\begin{figure}[!htb]
+\centerline{\includegraphics[scale=.7]{img/UML_1-1.png}}
 \caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro}
 \label{img:analysis}
 \end{figure}
@@ -80,11 +81,13 @@ La parte di View è formata da diversi GameDrawer, i quali si occupano di interr
 
 Quando viene catturato un input da tastiera, il GameDrawer avvisa il keyNotifier dell’avvenuta pressione, così facendo il KeyNotifier è un observable per GameDrawer. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione ci permette di non dipendere dall'implementazione e poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
 
+\hfill\break
 In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura MVC del progetto, mostrando le classi principali.
 
-\begin{figure}[h]
-\centering{}
-\includegraphics[width=\textwidth]{img/UML_2-1.png}
+\hfill\break
+\begin{figure}[!htb]
+\centerline{\includegraphics[scale=.65]{img/UML_2-1.png}}
+
 \caption{Schema UML architetturale di Farming Simulator, MVC.}
 \label{img:MVC}
 \end{figure}
@@ -96,7 +99,6 @@ In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura 
 \section{Design dettagliato}
 
 In questa sezione vengono mostrati alcuni elementi di design con maggior dettaglio.
-
 Ogni membro del gruppo presenta gli elementi di design più significativi da lui prodotti, al fine di realizzare l’applicazione, predisponendola a future espansioni.
 
 
@@ -110,12 +112,13 @@ Ho ritenuto utile usare un pattern Observer in modo che al cambiamento di un oss
 È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce \textbf{Observer} e \textbf{Observable} di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
 Il ruolo di Observable è ricoperto dalla classe ObservableShopGUI mentre il ruolo di Observer è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
 
+\hfill\break
 In \Cref{img:SimoneRega_Observer} è esemplificato il diagramma UML che descrive l'architettura del pattern Observer usato da Simone Rega, mostrando le classi principali.
 \hfill\break
 
-\begin{figure}[h]
-	\centering{}
-	\includegraphics[width=\textwidth]{img/UML_ObserverSimo.png}
+\begin{figure}[!htb]
+	\centerline{\includegraphics[scale=0.8]{img/UML_ObserverSimo.png}}
+	
 	\caption{Schema UML architetturale del pattern Observer (Simone Rega).}
 	\label{img:SimoneRega_Observer}
 \end{figure}
@@ -130,8 +133,8 @@ In questa sezione ci occuperemo principalmente del caricamento delle risorse gra
  In \Cref{img:FedericoRaffoni_Singleton} è esemplificato il diagramma UML che descrive l'architettura singleton, mostrando le classi principali.
 \hfill\break
 
-\begin{figure}[h]
-	\centering{\includegraphics[width=\textwidth]{img/UML_SingletonRaffo.png}}
+\begin{figure}[!htb]
+	\centering{\includegraphics[scale=.6]{img/UML_SingletonRaffo.png}}
 	\caption{Schema UML architetturale del pattern Singleton (Federico Raffoni).}
 	\label{img:FedericoRaffoni_Singleton}
 \end{figure}
@@ -143,7 +146,7 @@ In particolare Engine è Observer, mentre la classe GamePreloader è Observable.
  In \Cref{img:FedericoRaffoni_Observer} è esemplificato il diagramma UML che descrive l'architettura Observer, mostrando le classi principali.
 
 \hfill\break
-\begin{figure}[h]
+\begin{figure}[!htb]
 	\centering{}
 	\includegraphics[width=\textwidth]{img/UML_ObserverRaffo.png}
 	\caption{Schema UML architetturale del pattern Observer (Federico Raffoni).}
@@ -162,7 +165,7 @@ Ho scelto l’utilizzo del pattern \textit{“Factory method”} allo scopo di c
 In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive l'architettura Factory Method, mostrando le classi principali.
 
 \hfill\break
-\begin{figure}[h]
+\begin{figure}[!htb]
 	\centering{}
 	\includegraphics[width=\textwidth]{img/UML_FactoryLinda.png}
 	\caption{Schema UML architetturale del pattern Factory Method (Linda Fabbri).}
@@ -180,7 +183,7 @@ Inoltre ho creato la classe abstract \textbf{Entity} per renderla classe padre d
 In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che descrive l'architettura delle classe Abstract Entity, mostrando le classi principali.
 
 \hfill\break
-\begin{figure}[h]
+\begin{figure}[!htb]
 	\centering{}
 	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
 	\caption{Schema UML architetturale della clase Entity (Giacomo Montali).}
