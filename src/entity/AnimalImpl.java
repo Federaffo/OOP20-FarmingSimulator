@@ -27,9 +27,6 @@ public class AnimalImpl extends EntityImpl implements Animal {
         reSchedule();
     }
 
-    /**
-     * 
-     */
     private TimerTask grower = new TimerTask() {
         public void run() {
             ready();
@@ -41,8 +38,9 @@ public class AnimalImpl extends EntityImpl implements Animal {
     }
 
     /**
-     *@return the food of the animal
+     *{@inheritDoc}
      */
+    @Override
     public Pair<FoodType, Integer> collect() {
         readyState = false;
         return new Pair<>(type.getReturnFood(), type.getReturnFood().getQuantity());
@@ -80,11 +78,9 @@ public class AnimalImpl extends EntityImpl implements Animal {
     }
 
     /**
-     * move the animal in a random direction.
-     * 
-     * @param map
-     * 
+     *{@inheritDoc}
      */
+    @Override
     public void randomMove(final Set<Block> map) {
         setRandomDirection();
         move();
@@ -92,15 +88,17 @@ public class AnimalImpl extends EntityImpl implements Animal {
     }
 
     /**
-     * @return true if the animal is ready
+     *{@inheritDoc}
      */
+    @Override
     public boolean isReady() {
         return readyState;
     }
 
     /**
-     * @return the type of the animal
+     *{@inheritDoc}
      */
+    @Override
     public AnimalType getType() {
         return type;
     }

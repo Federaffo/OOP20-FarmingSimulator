@@ -52,11 +52,11 @@ public class ShopDrawer extends GameDrawer {
         final Color sfondo = new Color(17, 96, 98);
         final int countSeed = g.getShop().getSeedItemList().size();
 
-        final ObservableShopGUI obsShop = new ObservableShopGUI();
-        final Observer sellButton = new ObserverShop();
-        final Observer cmbox = new ObserverShop();
-        final Observer buyButton = new ObserverShop();
-        final Observer spinnerButton = new ObserverShop();
+        final ObservableShopGUI<Boolean> obsShop = new ObservableShopGUI<>();
+        final Observer<Boolean> sellButton = new ObserverShop<>();
+        final Observer<Boolean> cmbox = new ObserverShop<>();
+        final Observer<Boolean> buyButton = new ObserverShop<>();
+        final Observer<Boolean> spinnerButton = new ObserverShop<>();
         obsShop.addObserver(sellButton);
         obsShop.addObserver(cmbox);
         obsShop.addObserver(buyButton);
@@ -255,7 +255,7 @@ public class ShopDrawer extends GameDrawer {
         inventoryUpdate();
     }
 
-    public class ObserverShop implements Observer<Boolean> {
+    public class ObserverShop<Boolean> implements Observer<Boolean> {
         /**
          *{@inheritDoc}
          */

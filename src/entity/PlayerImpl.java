@@ -21,38 +21,42 @@ public class PlayerImpl extends EntityImpl implements Player {
     }
 
     /**
-     *@param moneyToAdd
+     * {@inheritDoc}
      */
+    @Override
     public void incrementMoney(final double moneyToAdd) {
         money += moneyToAdd;
     }
 
     /**
-     *@param moneyToRemove
+     * {@inheritDoc}
      */
+    @Override
     public void decreaseMoney(final double moneyToRemove) {
         money -= moneyToRemove;
     }
 
     /**
-     *@return the money
+     * {@inheritDoc}
      */
+    @Override
     public double getMoney() {
         return money;
     }
 
     /**
-     *@return the inventory
+     * {@inheritDoc}
      */
+    @Override
     public Inventory getInventory() {
         return this.bag;
     }
 
     // animal to interact with (nearest)
     /**
-     *@param animals
-     *@return the nearest animal
+     * {@inheritDoc}
      */
+    @Override
     public Optional<Animal> nearestAnimal(final List<Animal> animals) {
         float area = 0;
         Optional<Animal> animalChoosen = Optional.empty();

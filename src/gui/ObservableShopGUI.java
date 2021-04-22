@@ -6,12 +6,12 @@ import java.util.Set;
 import utils.Observable;
 import utils.Observer;
 
-public class ObservableShopGUI implements Observable<Boolean> {
+public class ObservableShopGUI<Boolean> implements Observable<Boolean> {
 
-    private Set<Observer> obsSet = new HashSet<>();
+    private Set<Observer<Boolean>> obsSet = new HashSet<>();
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public void addObserver(final Observer obs) {
@@ -19,11 +19,11 @@ public class ObservableShopGUI implements Observable<Boolean> {
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public void notifyObserver(final Boolean notify) {
-        for (Observer o : this.obsSet) {
+        for (Observer<Boolean> o : this.obsSet) {
             o.update(notify);
         }
     }

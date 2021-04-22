@@ -22,7 +22,7 @@ public class Engine implements Observer<Boolean> {
     private GameSaver gameSaver = new GameSaver();
 
     /**
-     *
+     * {@inheritDoc}
      */
     @Override
     public void update(final Boolean loadLastGame) {
@@ -37,7 +37,7 @@ public class Engine implements Observer<Boolean> {
     }
 
     /**
-     * 
+     * create the actual game instance after checking if load file is present.
      */
     public void createGame() {
         if (gameSaver.isSavingPresent()) {
@@ -52,7 +52,7 @@ public class Engine implements Observer<Boolean> {
     }
 
     /**
-     * 
+     * start entities and the WindowManager.
      */
     public void start() {
 

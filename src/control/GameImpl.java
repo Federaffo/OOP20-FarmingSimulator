@@ -42,74 +42,77 @@ public class GameImpl implements Game {
         pg.incrementMoney(PRICE_START);
     }
 
-
     /**
-     *@param map
-     *@param player
+     * {@inheritDoc}
      */
+    @Override
     public void loadGame(final MapImpl map, final PlayerImpl player) {
         this.pg = player;
         this.map = map;
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void loop() {
         pg.move();
         pg.checkCollision(map.getMapSet(), x -> x.isWalkable());
         animals.forEach(x -> x.randomMove(map.getMapSet()));
     }
 
- 
-
     /**
-     *@return Map
+     * {@inheritDoc}
      */
+    @Override
     public Map getMap() {
         return this.map;
     }
 
     /**
-     *@return Player
+     * {@inheritDoc}
      */
+    @Override
     public Player getPlayer() {
         return this.pg;
     }
 
     /**
-     *@return Shop 
+     * {@inheritDoc}
      */
+    @Override
     public Shop getShop() {
         return this.shop;
     }
 
     /**
-     *@param st
-     *@param quantity
-     *@return The interaction to buy [quantity] of [st]
+     * {@inheritDoc}
      */
-    public boolean buy(SeedType st, int quantity) {
+    @Override
+    public boolean buy(final SeedType st, final int quantity) {
         return interaction.playerBuy(pg, st, quantity);
     }
 
     /**
-     *@return The interaction to sell all food that player have got in his inventory
+     * {@inheritDoc}
      */
+    @Override
     public double sellAll() {
         return interaction.playerSell(shop, pg);
     }
 
     /**
-     *@return the state of the Game
+     * {@inheritDoc}
      */
+    @Override
     public GameState getState() {
         return this.state;
     }
 
     /**
-     *This method manage the interaction between Player and FieldBlock.
+     * {@inheritDoc}
      */
+    @Override
     public void interact() {
         Block temp = pg.blockPosition(map.getMapSet());
         if (!(temp instanceof UnlockableBlock)) {
@@ -129,15 +132,17 @@ public class GameImpl implements Game {
     }
 
     /**
-     *@return the Price to unlock LOCKED Block
+     * {@inheritDoc}
      */
+    @Override
     public double getUnlockPrice() {
         return this.unlockPrice;
     }
 
     /**
-     *This method grow all seed.
+     * {@inheritDoc}
      */
+    @Override
     public void growAllSeed() {
         for (Block block : map.getMapSet()) {
             if (block instanceof FieldBlock) {
@@ -150,15 +155,17 @@ public class GameImpl implements Game {
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void play() {
         state = GameState.PLAY;
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void shop() {
         if (state == GameState.SHOP) {
             state = GameState.PLAY;
@@ -168,8 +175,9 @@ public class GameImpl implements Game {
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void info() {
         if (state == GameState.INFO) {
             state = GameState.PLAY;
@@ -179,7 +187,7 @@ public class GameImpl implements Game {
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
     @Override
     public List<Animal> getAllAnimals() {
@@ -187,8 +195,9 @@ public class GameImpl implements Game {
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void resetAnimals() {
         animals.clear();
         generateAnimals();

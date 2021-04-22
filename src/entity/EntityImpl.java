@@ -8,7 +8,6 @@ import block.Block;
 
 public abstract class EntityImpl extends Rectangle implements Entity {
 
-
     /**
      * 
      */
@@ -32,32 +31,36 @@ public abstract class EntityImpl extends Rectangle implements Entity {
     }
 
     /**
-     *@param isMoving
+     * {@inheritDoc}
      */
+    @Override
     public void setUp(final boolean isMoving) {
         direction.setUp(isMoving);
         updateIsMoving();
     }
 
     /**
-     *@param isMoving
+     * {@inheritDoc}
      */
+    @Override
     public void setDown(final boolean isMoving) {
         direction.setDown(isMoving);
         updateIsMoving();
     }
 
     /**
-     *@param isMoving
+     * {@inheritDoc}
      */
+    @Override
     public void setLeft(final boolean isMoving) {
         direction.setLeft(isMoving);
         updateIsMoving();
     }
 
     /**
-     *@param isMoving
+     * {@inheritDoc}
      */
+    @Override
     public void setRight(final boolean isMoving) {
 
         direction.setRight(isMoving);
@@ -65,33 +68,38 @@ public abstract class EntityImpl extends Rectangle implements Entity {
     }
 
     /**
-     *@param pos
+     * {@inheritDoc}
      */
+    @Override
     public void moveTo(final Pair<Integer, Integer> pos) {
         super.x = pos.getX() * SIZE;
         super.y = pos.getY() * SIZE;
     }
 
     /**
-     *
+     * {@inheritDoc}
      */
+    @Override
     public void move() {
-        if (direction.isUp())
+        if (direction.isUp()) {
             super.y -= SPEED;
-        if (direction.isDown())
+        }
+        if (direction.isDown()) {
             super.y += SPEED;
-        if (direction.isLeft())
+        }
+        if (direction.isLeft()) {
             super.x -= SPEED;
-        if (direction.isRight())
+        }
+        if (direction.isRight()) {
             super.x += SPEED;
+        }
 
     }
 
     /**
-     *@param <Block>
-     *@param map
-     *@param rightBlockFilter
+     * {@inheritDoc}
      */
+    @Override
     public <Block> void checkCollision(final Set<Block> map, final Predicate<Block> rightBlockFilter) {
         for (Block block : map) {
             Rectangle temp = this.intersection((Rectangle) block);
@@ -117,38 +125,41 @@ public abstract class EntityImpl extends Rectangle implements Entity {
     }
 
     /**
-     *@return the x position
+     * {@inheritDoc}
      */
+    @Override
     public int getPosX() {
         return super.x;
     }
 
     /**
-     *@return the y position
+     * {@inheritDoc}
      */
+    @Override
     public int getPosY() {
         return super.y;
     }
 
     /**
-     *@return true if the entity is moving
+     * {@inheritDoc}
      */
+    @Override
     public boolean isMoving() {
         return isMoving;
     }
 
     /**
-     *@return the direction of the movement
+     * {@inheritDoc}
      */
+    @Override
     public Direction getDirection() {
         return this.direction;
     }
 
- 
     /**
-     * @param array
-     *@return the block where the player is standing on
+     * {@inheritDoc}
      */
+    @Override
     public Block blockPosition(final Set<Block> array) {
         float area = 0;
         Block currentBlockPos = null;

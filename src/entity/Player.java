@@ -7,14 +7,12 @@ public interface Player extends Entity {
 
     // manage money
     /**
-     * @param moneyToAdd
-     * This method add {moneytoAdd} money.
+     * @param moneyToAdd This method add {moneytoAdd} money.
      */
     void incrementMoney(double moneyToAdd);
 
     /**
-     * @param moneyToRemove
-     * This method remove {moneyToRemove} money.
+     * @param moneyToRemove This method remove {moneyToRemove} money.
      */
     void decreaseMoney(double moneyToRemove);
 
@@ -32,7 +30,7 @@ public interface Player extends Entity {
     // get animal
     /**
      * @param animals
-     * @return the animal nearest the player
+     * @return the animal nearest to the player
      */
     Optional<Animal> nearestAnimal(List<Animal> animals);
 }

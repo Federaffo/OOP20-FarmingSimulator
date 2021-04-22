@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class InterfaceLoader {
 	
-	public static ArrayList<Class> getInterfaces(String packageName) throws ClassNotFoundException, IOException {
+	public static ArrayList<Class> getInterfaces(final String packageName) throws ClassNotFoundException, IOException {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		assert classLoader != null;
 		String path = packageName.replace('.', '/');
@@ -27,7 +27,7 @@ public class InterfaceLoader {
 		return classes;
 	}
 
-	private static List<Class> findInterfaces(File directory, String packageName) throws ClassNotFoundException {
+	private static List<Class> findInterfaces(final File directory, final String packageName) throws ClassNotFoundException {
 		List<Class> classes = new ArrayList<Class>();
 		if (!directory.exists()) {
 			return classes;

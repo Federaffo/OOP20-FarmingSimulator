@@ -21,6 +21,12 @@ public class QuitDrawer extends GameDrawer {
 
     }
 
+    /**
+     * @param g
+     * @param screenSize
+     * 
+     *   Generates the Panel
+     */
     private void generateQuitPanel(final Game g, final Dimension screenSize) {
         final int rightb = (int) -(screenSize.width * 0.90);
 

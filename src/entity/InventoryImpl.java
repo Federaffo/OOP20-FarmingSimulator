@@ -33,8 +33,9 @@ public class InventoryImpl implements Inventory {
     }
 
     /**
-     * @return a Pair of <SeedType, number of seeds> of the next seed
+     * {@inheritDoc}
      */
+    @Override
     public Optional<Pair<SeedType, Integer>> nextSeed() {
         boolean isThereASeed = false;
         moveBottom(activeSeed.element());
@@ -55,8 +56,9 @@ public class InventoryImpl implements Inventory {
     }
 
     /**
-     * @return the current seed selected
+     * {@inheritDoc}
      */
+    @Override
     public Optional<Pair<SeedType, Integer>> getCurrentSeed() {
         if (seeds.get(activeSeed.element()) > 0) {
             return Optional.of(new Pair<SeedType, Integer>(activeSeed.element(), seeds.get(activeSeed.element())));
@@ -81,19 +83,18 @@ public class InventoryImpl implements Inventory {
     }
 
     /**
-     * This method add {number} seeds of {type} type to inventory.
-     * @param type
-     * @param number 
+     * {@inheritDoc}
      */
+    @Override
     public void addSeeds(final SeedType type, final Integer number) {
         seeds.put(type, seeds.get(type) + number);
         moveTop(type); // set the activeSeed to the seed added to inventory
     }
 
     /**
-     * This method remove 1 seed of {type} type.
-     * @param type 
+     * {@inheritDoc}
      */
+    @Override
     public void removeSeed(final SeedType type) {
         seeds.put(type, seeds.get(type) - 1);
         if (seeds.get(type) == 0) {
@@ -102,54 +103,57 @@ public class InventoryImpl implements Inventory {
     }
 
     /**
-     * @param type
-     * @param number
-     * @return true if there are {number} seeds of {type} type inside inventory
+     * {@inheritDoc}
      */
+    @Override
     public boolean gotSeeds(final SeedType type, final Integer number) {
-        if (seeds.get(type) >= number)
+        if (seeds.get(type) >= number) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     /**
-     * @param type
-     * @param number This method add {number} foods of {type} type to inventory
+     * {@inheritDoc}
      */
+    @Override
     public void addFoods(final FoodType type, final Integer number) {
         foods.put(type, foods.get(type) + number);
     }
 
     /**
-     * @param type This method remove 1 food of {type} type
+     * {@inheritDoc}
      */
+    @Override
     public void removeFood(final FoodType type) {
         foods.put(type, foods.get(type) - 1);
     }
 
     /**
-     * @param type
-     * @param number
-     * @return true if there are {number} foods of {type} type inside inventory
+     * {@inheritDoc}
      */
+    @Override
     public boolean gotFoods(final FoodType type, final Integer number) {
-        if (foods.get(type) >= number)
+        if (foods.get(type) >= number) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     /**
-     * @return all food that there is in the inventory
+     * {@inheritDoc}
      */
+    @Override
     public Map<FoodType, Integer> getFoods() {
         return this.foods;
     }
 
     /**
-     * @return all seeds that there are in the inventory
+     * {@inheritDoc}
      */
+    @Override
     public Map<SeedType, Integer> getSeeds() {
         return this.seeds;
     }
@@ -157,8 +161,9 @@ public class InventoryImpl implements Inventory {
     // rimuove tutto il cibo nell'inventario
 
     /**
-     * This method remove all food that there is in the inventory.
+     * {@inheritDoc}
      */
+    @Override
     public void removeAllFood() {
         for (var food : foods.keySet()) {
             if (food instanceof FoodType) {

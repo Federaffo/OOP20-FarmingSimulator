@@ -8,8 +8,8 @@ public interface Observable<X> {
     void notifyObserver(X notify);
 
     /**
-     * @param obs
+     * @param obs is a new Observer to be added
      */
-    void addObserver(Observer obs);
+    void addObserver(Observer<X> obs);
 
 }

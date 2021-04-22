@@ -15,6 +15,9 @@ import map.Map;
 
 public final class InteractionImpl implements Interaction {
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public void playerPlant(final Player pg, final FieldBlock block) {
         // TODO Auto-generated method stub
@@ -23,6 +26,9 @@ public final class InteractionImpl implements Interaction {
         pg.getInventory().removeSeed(st);
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public void playerHarvest(final Player pg, final FieldBlock block) {
         // TODO Auto-generated method stub
@@ -30,6 +36,9 @@ public final class InteractionImpl implements Interaction {
         pg.getInventory().addFoods(food.getX(), food.getY());
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public void unlockBlock(final Player pg, final Map map, final Block block) {
         // TODO Auto-generated method stub
@@ -39,6 +48,9 @@ public final class InteractionImpl implements Interaction {
 
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public boolean playerBuy(final Player pg, final SeedType st, final int quantity) {
         // TODO Auto-generated method stub
@@ -50,6 +62,10 @@ public final class InteractionImpl implements Interaction {
         return false;
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public double playerSell(final Shop shop, final Player pg) {
         double money = shop.sellAll(pg.getInventory().getFoods());
         pg.incrementMoney(money);
@@ -57,8 +73,11 @@ public final class InteractionImpl implements Interaction {
         return money;
     }
 
-    @Override
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public void fieldInteraction(final Player pg, final FieldBlock block) {
         // TODO Auto-generated method stub
 
@@ -75,6 +94,9 @@ public final class InteractionImpl implements Interaction {
 
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public void playerAnimal(final Player pg, final Animal animal) {
         // TODO Auto-generated method stub

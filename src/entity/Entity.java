@@ -7,36 +7,67 @@ import block.Block;
 
 public interface Entity {
 
-    // move entity in the current direction
+    /**
+     * move entity in the current direction.
+     */
     void move();
 
-    // check if the entity is on a blocked block
-    // if it is, then this take the entity back to the walkable block
+    /**
+     * @param <Block>
+     * @param map
+     * @param filter  check if the entity is on a blocked block if it is, then this
+     *                take the entity back to the walkable block
+     */
     <Block> void checkCollision(Set<Block> map, Predicate<Block> filter);
 
-    // set entity directions
+    /**
+     * @param isMoving set the current direction of the entity
+     */
     void setUp(boolean isMoving);
 
+    /**
+     * @param isMoving set the current direction of the entity
+     */
     void setDown(boolean isMoving);
 
+    /**
+     * @param isMoving set the current direction of the entity
+     */
     void setLeft(boolean isMoving);
 
+    /**
+     * @param isMoving set the current direction of the entity
+     */
     void setRight(boolean isMoving);
 
-    // get entity direction
+    /**
+     * @return the entity direction
+     */
     Direction getDirection();
 
-    // getter isMoving
+    /**
+     * @return a true if the entity has some current direction, false otherwise
+     */
     boolean isMoving();
 
-    // move entity to that position
+    /**
+     * @param pos moves the entity to the current position
+     */
     void moveTo(Pair<Integer, Integer> pos);
 
-    // getter entity coordinates
+    /**
+     * @return entity X position
+     */
     int getPosX();
 
+    /**
+     * @return entity Y position
+     */
     int getPosY();
 
-    // get the block the entity is standing on
+    /**
+     * @param array
+     * @return the Block where the entity is standing on
+     */
     Block blockPosition(Set<Block> array);
 }
