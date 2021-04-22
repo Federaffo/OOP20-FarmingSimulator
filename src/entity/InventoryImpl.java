@@ -16,7 +16,7 @@ public class InventoryImpl implements Inventory {
     private Map<FoodType, Integer> foods;
     private Queue<SeedType> activeSeed;
 
-    // build a void inventory
+
     public InventoryImpl() {
         seeds = new HashMap<>();
         foods = new HashMap<>();
@@ -67,13 +67,21 @@ public class InventoryImpl implements Inventory {
         }
     }
 
-    // move the object to the bottom
+    /**
+     * This method move the object to the bottom.
+     * 
+     * @param type
+     */
     private void moveBottom(final SeedType type) {
         activeSeed.remove(type);
         activeSeed.add(type);
     }
 
-    // move the object to the top
+    /**
+     * This method move the object to the top.
+     * 
+     * @param type
+     */
     private void moveTop(final SeedType type) {
         for (SeedType seedType : List.copyOf(activeSeed)) {
             if (!seedType.equals(type)) {
@@ -98,7 +106,7 @@ public class InventoryImpl implements Inventory {
     public void removeSeed(final SeedType type) {
         seeds.put(type, seeds.get(type) - 1);
         if (seeds.get(type) == -1) {
-        	throw new IllegalStateException();
+            throw new IllegalStateException();
         }
     }
 
@@ -107,11 +115,7 @@ public class InventoryImpl implements Inventory {
      */
     @Override
     public boolean gotSeeds(final SeedType type, final Integer number) {
-        if (seeds.get(type) >= number) {
-            return true;
-        } else {
-            return false;
-        }
+        return (seeds.get(type) >= number);
     }
 
     /**
@@ -135,11 +139,7 @@ public class InventoryImpl implements Inventory {
      */
     @Override
     public boolean gotFoods(final FoodType type, final Integer number) {
-        if (foods.get(type) >= number) {
-            return true;
-        } else {
-            return false;
-        }
+        return (foods.get(type) >= number);
     }
 
     /**
