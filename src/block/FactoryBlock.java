@@ -228,10 +228,6 @@ public final class FactoryBlock {
             return false;
         }
 
-        private FactoryBlock getEnclosingInstance() {
-            return FactoryBlock.this;
-        }
-
     }
 
 }
