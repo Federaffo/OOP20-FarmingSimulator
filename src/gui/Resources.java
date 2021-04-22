@@ -167,6 +167,6 @@ public final class Resources {
     }
 
     public InputStream getMainTheme() {
-        return mainTheme;
+        return getClass().getResourceAsStream("/hd.wav");
     }
 }
