@@ -66,6 +66,22 @@ public class FarmingSimulatorTestClass {
         pg.setRight(false);
 
     }
+    
+    
+
+    
+    @Test
+    public void testCollision() {
+        
+        pg.moveTo(new Pair<Integer, Integer>(1, 1));
+        //Premo il tasto A
+        pg.setLeft(true);
+        g.loop();
+        
+        //Verifico che non sia uscito dalla mappa
+        assertEquals(new Pair<>(50, 50), new Pair<>(pg.getPosX(), pg.getPosY()));
+        
+    }
 
     @Test
     public void testPlayerPlant() {
@@ -161,12 +177,6 @@ public class FarmingSimulatorTestClass {
 
     @Test
     public void testBuy() {
-        pg.decreaseMoney(pg.getMoney());
-        g.buy(SeedType.CHERRY_SEED, 1);
-        // dopo aver settato i soldi a 0 provo a comprare, poi controllo che
-        // nell'inventario io non abbia alcun seme poiché non posso permettermelo
-        assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 0);
-
         pg.incrementMoney(Double.MAX_VALUE);
         g.buy(SeedType.CHERRY_SEED, 1);
         // dopo aver riempito i soldi del Player provo a comprare un seme, poi controllo
@@ -174,6 +184,15 @@ public class FarmingSimulatorTestClass {
         assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 1);
     }
 
+    @Test
+    public void testBuyWithoutMoney() {
+        pg.decreaseMoney(pg.getMoney());
+        g.buy(SeedType.CHERRY_SEED, 1);
+        // dopo aver settato i soldi a 0 provo a comprare, poi controllo che
+        // nell'inventario io non abbia alcun seme poiché non posso permettermelo
+        assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 0);
+    }
+    
     @Test
     public void testSell() throws InterruptedException {
         Pair<Integer, Integer> b = map
