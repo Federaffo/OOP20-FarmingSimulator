@@ -160,7 +160,7 @@ public abstract class EntityImpl extends Rectangle implements Entity {
      * {@inheritDoc}
      */
     @Override
-    public Block blockPosition(final Set<Block> array) {
+    public Block getBlockPosition(final Set<Block> array) {
         float area = 0;
         Block currentBlockPos = null;
 

@@ -114,7 +114,7 @@ public class GameImpl implements Game {
      */
     @Override
     public void interact() {
-        Block temp = pg.blockPosition(map.getMapSet());
+        Block temp = pg.getBlockPosition(map.getMapSet());
         if (!(temp instanceof UnlockableBlock)) {
 
             if (temp.getType() == BlockType.FIELD) {

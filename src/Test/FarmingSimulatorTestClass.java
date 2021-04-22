@@ -89,17 +89,17 @@ public class FarmingSimulatorTestClass {
                 .getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.FIELD));
         pg.moveTo(b);
 
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.FIELD);
 
         // Controllo che il blocco sia vuoto, cioè non ha nessun seme piantato
-        assertTrue(((FieldBlock) (pg.blockPosition(map.getMapSet()))).isEmpty());
+        assertTrue(((FieldBlock) (pg.getBlockPosition(map.getMapSet()))).isEmpty());
 
         // Pianto un seme nel blocco in posizione b
         g.interact();
 
         // Controllo che il blocco abbia il seme dopo averci interagito e aver inserito
         // un seme
-        assertFalse(((FieldBlock) pg.blockPosition(map.getMapSet())).isEmpty());
+        assertFalse(((FieldBlock) pg.getBlockPosition(map.getMapSet())).isEmpty());
     }
 
     @Test
@@ -110,16 +110,16 @@ public class FarmingSimulatorTestClass {
         pg.moveTo(b);
 
         // controllo che il blocco sia effettivamente di tipo LOCKED
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
 
         // controllo se di default il blocco LOCKED è bloccato
-        assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+        assertTrue(((UnlockableBlock) pg.getBlockPosition(map.getMapSet())).isLocked());
 
         // interagisco per sbloccare il blocco
         g.interact();
 
         // dopo aver interagito controllo che venga sbloccato e diventi di tipo FIELD
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.FIELD);
     }
 
     @Test
@@ -133,23 +133,23 @@ public class FarmingSimulatorTestClass {
         pg.moveTo(b);
 
         // controllo che il blocco sia effettivamente di tipo LOCKED
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
 
         // controllo se di default il blocco LOCKED è bloccato
-        assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+        assertTrue(((UnlockableBlock) pg.getBlockPosition(map.getMapSet())).isLocked());
 
         // interagisco per sbloccare il blocco
         g.interact();
 
         // dopo aver interagito controllo che non venga sbloccato perché non ho
         // abbastanza soldi per farlo
-        assertNotEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.FIELD);
+        assertNotEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.FIELD);
 
         // quindi controllo che il blocco sia rimasto di tipo LOCKED
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.LOCKED);
 
         // e che sia ancora Bloccato
-        assertTrue(((UnlockableBlock) pg.blockPosition(map.getMapSet())).isLocked());
+        assertTrue(((UnlockableBlock) pg.getBlockPosition(map.getMapSet())).isLocked());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class FarmingSimulatorTestClass {
         g.interact();
 
         // controllo di essere su una stalla
-        assertEquals(pg.blockPosition(map.getMapSet()).getType(), BlockType.STALL);
+        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.STALL);
 
         // controllo di avere nell'inventario un Prodotto di origine animale (EGG,
         // PORK_MEAT, MILK) dopo aver interagito
@@ -207,7 +207,7 @@ public class FarmingSimulatorTestClass {
         // aspetto che il grano cresca
         do {
             Thread.sleep(1000);
-        } while (!(((FieldBlock) pg.blockPosition(map.getMapSet())).getSeed().getSeedState() == SeedState.GROWN));
+        } while (!(((FieldBlock) pg.getBlockPosition(map.getMapSet())).getSeed().getSeedState() == SeedState.GROWN));
 
         g.interact();
         pg.decreaseMoney(pg.getMoney());
