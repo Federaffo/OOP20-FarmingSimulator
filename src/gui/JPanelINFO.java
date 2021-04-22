@@ -10,71 +10,72 @@ import javax.swing.JPanel;
 
 public class JPanelINFO extends JPanel {
 
-	private Texture txt;
-	private String title;
-	private String descr;
-	private final int height;
-	private final int width;
-	private final int imageDim;
+    private static final double IMG_RESIZER = 0.07;
+    private Texture txt;
+    private String title;
+    private String descr;
+    private final int height;
+    private final int width;
+    private final int imageDim;
 
-	public JPanelINFO(final String title, final int h, final int w) {
-		this.title = title;
-		this.height = h;
-		this.width = w;
-		this.imageDim = (int) (this.width*0.07);
+    public JPanelINFO(final String title, final int h, final int w) {
+        this.title = title;
+        this.height = h;
+        this.width = w;
+        this.imageDim = (int) (this.width * IMG_RESIZER);
 
-		createTitle();
-	}
+        createTitle();
+    }
 
-	public JPanelINFO(final int h, final int w, final Texture txt, final String title, final String descr) {
-		this.txt = txt;
-		this.title = title;
-		this.descr = descr;
-		this.height = h;
-		this.width = w;
-		this.imageDim = (int) (this.width*0.07);
+    public JPanelINFO(final int h, final int w, final Texture txt, final String title, final String descr) {
+        this.txt = txt;
+        this.title = title;
+        this.descr = descr;
+        this.height = h;
+        this.width = w;
+        this.imageDim = (int) (this.width * IMG_RESIZER);
 
-		createDescr();
-	}
+        createDescr();
+    }
 
-	private void createTitle() {
-		int titleDim = this.height/2;
-		JPanel myPanel = new JPanel();
-		myPanel.setPreferredSize(new Dimension(width, height));
-		JLabel titleLabel = new JLabel();
-		titleLabel.setText(title);
-		titleLabel.setFont(new Font("Arial", Font.BOLD, titleDim));
-		
-		myPanel.add(titleLabel);
-		myPanel.setOpaque(true);
-		myPanel.setBackground(Color.cyan);
-		add(myPanel);
-		setOpaque(false);
-	}
+    private void createTitle() {
+        int titleDim = this.height / 2;
+        JPanel myPanel = new JPanel();
+        myPanel.setPreferredSize(new Dimension(width, height));
+        JLabel titleLabel = new JLabel();
+        titleLabel.setText(title);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, titleDim));
 
-	private void createDescr() {
-		int titleDim = this.height/2;
-		int descrDim = this.height/3;
-		JPanel myPanel = new JPanel();
-		myPanel.setPreferredSize(new Dimension(width, height));
+        myPanel.add(titleLabel);
+        myPanel.setOpaque(true);
+        myPanel.setBackground(Color.cyan);
+        add(myPanel);
+        setOpaque(false);
+    }
 
-		JLabel titleLabel = new JLabel();
-		ImageIcon imageIcon = new ImageIcon(
-				new ImageIcon(Resources.getRes().getTextures(txt)).getImage().getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
-		titleLabel.setIcon(imageIcon);
-		titleLabel.setText(title);
-		titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, titleDim));
+    private void createDescr() {
+        int titleDim = this.height / 2;
+        int descrDim = this.height / 3;
+        JPanel myPanel = new JPanel();
+        myPanel.setPreferredSize(new Dimension(width, height));
 
-		JLabel descrLabel = new JLabel();
-		descrLabel.setText(descr);
-		descrLabel.setFont(new Font("Arial", Font.ITALIC, descrDim));
+        JLabel titleLabel = new JLabel();
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(Resources.getRes().getTextures(txt)).getImage()
+                .getScaledInstance(imageDim, imageDim, Image.SCALE_DEFAULT));
+        titleLabel.setIcon(imageIcon);
+        titleLabel.setText(title);
+        titleLabel.setFont(new Font("Arial", Font.ITALIC | Font.BOLD, titleDim));
 
-		myPanel.add(titleLabel);
-		myPanel.add(descrLabel);
-		myPanel.setOpaque(true);
-		myPanel.setBackground(Color.white);
-		add(myPanel);
-		setOpaque(false);
-	}
+        JLabel descrLabel = new JLabel();
+        descrLabel.setText(descr);
+        descrLabel.setFont(new Font("Arial", Font.ITALIC, descrDim));
+
+        myPanel.add(titleLabel);
+        myPanel.add(descrLabel);
+        myPanel.setOpaque(true);
+        myPanel.setBackground(Color.white);
+        add(myPanel);
+        setOpaque(false);
+    }
 
 }

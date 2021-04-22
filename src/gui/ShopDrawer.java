@@ -36,18 +36,18 @@ public class ShopDrawer extends GameDrawer {
     private JTextArea invTAfood = new JTextArea();
     private JTextArea invTAseed = new JTextArea();
 
-    public ShopDrawer(Game g, Dimension screenSize) {
+    public ShopDrawer(final Game g, final Dimension screenSize) {
         super(g, screenSize);
         this.game = g;
-        final int HGAP = (int) (screenSize.width * 0.005);
-        final int VGAP = (int) (screenSize.height * 0.01);
-        final int LEFTB = (int) (screenSize.width * 0.08);
-        final int RIGHTB = (int) (screenSize.width * 0.08);
-        final int TOPB = (int) (screenSize.height * 0.08);
-        final int BOTTOMB = (int) (screenSize.height * 0.08);
-        final int LEFTB_SCROLL = LEFTB / 4;
-        final int RIGHTB_SCROLL = RIGHTB / 4;
-        final int BOTTOMB_SCROLL = BOTTOMB / 2;
+        final int hgap = (int) (screenSize.width * 0.005);
+        final int vgap = (int) (screenSize.height * 0.01);
+        final int leftb = (int) (screenSize.width * 0.08);
+        final int rightb = (int) (screenSize.width * 0.08);
+        final int topb = (int) (screenSize.height * 0.08);
+        final int bottomb = (int) (screenSize.height * 0.08);
+        final int leftbScroll = leftb / 4;
+        final int rightbScroll = rightb / 4;
+        final int bottombScroll = bottomb / 2;
 
         final Color sfondo = new Color(17, 96, 98);
         final int countSeed = g.getShop().getSeedItemList().size();
@@ -62,7 +62,7 @@ public class ShopDrawer extends GameDrawer {
         obsShop.addObserver(buyButton);
         obsShop.addObserver(spinnerButton);
 
-        setLayout(new GridLayout(2, 3, HGAP, VGAP));
+        setLayout(new GridLayout(2, 3, hgap, vgap));
 
         /* Pannello Title */
         JPanel titlePanel = new JPanel();
@@ -93,9 +93,9 @@ public class ShopDrawer extends GameDrawer {
         descr.setEditable(false);
         descr.setFocusable(false);
 
-        title.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, 0, RIGHTB));
+        title.setBorder(BorderFactory.createEmptyBorder(topb, leftb, 0, rightb));
         title.setBackground(titlePanel.getBackground());
-        descr.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, BOTTOMB, RIGHTB));
+        descr.setBorder(BorderFactory.createEmptyBorder(0, leftb, bottomb, rightb));
         descr.setBackground(titlePanel.getBackground());
 
         titlePanel.add(title);
@@ -112,7 +112,7 @@ public class ShopDrawer extends GameDrawer {
 
         titleInv.setForeground(Color.white);
         titleInv.setFont(font3);
-        titleInv.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB_SCROLL, RIGHTB));
+        titleInv.setBorder(BorderFactory.createEmptyBorder(topb, leftb, bottombScroll, rightb));
 
         inventPanel.setLayout(new BoxLayout(inventPanel, BoxLayout.Y_AXIS));
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
@@ -125,10 +125,10 @@ public class ShopDrawer extends GameDrawer {
         invTAseed.setFocusable(false);
 
         jspF.setBackground(sfondo);
-        jspF.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL, BOTTOMB_SCROLL, RIGHTB_SCROLL));
+        jspF.setBorder(BorderFactory.createEmptyBorder(0, leftbScroll, bottombScroll, rightbScroll));
 
         jspS.setBackground(sfondo);
-        jspS.setBorder(BorderFactory.createEmptyBorder(0, LEFTB_SCROLL, BOTTOMB_SCROLL, RIGHTB_SCROLL));
+        jspS.setBorder(BorderFactory.createEmptyBorder(0, leftbScroll, bottombScroll, rightbScroll));
 
         scrollPanel.add(jspF);
         scrollPanel.add(jspS);
@@ -141,7 +141,7 @@ public class ShopDrawer extends GameDrawer {
         final int hBuy = screenSize.height;
         final int wBuy = screenSize.width;
         JPanel buyPanel = new JPanel();
-        buyPanel.add(Box.createRigidArea(new Dimension(0, HGAP)));
+        buyPanel.add(Box.createRigidArea(new Dimension(0, hgap)));
         Font buyFont = new Font("Arial", Font.BOLD, 20);
         String[] itemString = new String[countSeed];
         int i = 0;
@@ -151,7 +151,7 @@ public class ShopDrawer extends GameDrawer {
 
         buyPanel.setBackground(sfondo);
         buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.PAGE_AXIS));
-        buyPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+        buyPanel.setBorder(BorderFactory.createEmptyBorder(topb, leftb, bottomb, rightb));
 
         JComboBox<Object> selectSeed = new JComboBox<>(itemString);
         selectSeed.setFont(buyFont);
@@ -175,12 +175,12 @@ public class ShopDrawer extends GameDrawer {
         buyPanel.add(Box.createRigidArea(new Dimension(0, 80)));
         JButton buy = new JButton("COMPRA");
         buy.setFont(buyFont);
-        buy.setBorder(BorderFactory.createEmptyBorder(0, LEFTB, 0, RIGHTB));
+        buy.setBorder(BorderFactory.createEmptyBorder(0, leftb, 0, rightb));
         buyPanel.add(buy);
 
         quantity.addChangeListener(new ChangeListener() {
             @Override
-            public void stateChanged(ChangeEvent e) {
+            public void stateChanged(final ChangeEvent e) {
                 // TODO Auto-generated method stub
                 prezzoTot.setText("TOT: "
                         + Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
@@ -190,7 +190,7 @@ public class ShopDrawer extends GameDrawer {
         });
         selectSeed.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 prezzoTot.setText("TOT: "
                         + Double.toString((SeedType.getSeedType(selectSeed.getSelectedItem().toString()).getPrice())
                                 * ((Integer) quantity.getValue())));
@@ -198,7 +198,7 @@ public class ShopDrawer extends GameDrawer {
             }
         });
         buy.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (g.buy(SeedType.getSeedType(selectSeed.getSelectedItem().toString()),
                         (Integer) quantity.getValue())) {
                     JOptionPane.showMessageDialog(buyPanel, "Nice! Purchase made!");
@@ -212,18 +212,18 @@ public class ShopDrawer extends GameDrawer {
 
         /* Pannello sell */
         JPanel sellPanel = new JPanel();
-        sellPanel.setBorder(BorderFactory.createEmptyBorder(TOPB, LEFTB, BOTTOMB, RIGHTB));
+        sellPanel.setBorder(BorderFactory.createEmptyBorder(topb, leftb, bottomb, rightb));
         sellPanel.setBackground(sfondo);
         JButton sellAll = new JButton("SELL ALL YOUR ITEMS");
         sellAll.setFont(buyFont);
-        sellAll.setBorder(BorderFactory.createEmptyBorder((int) (TOPB * 1.1), LEFTB, BOTTOMB, RIGHTB));
+        sellAll.setBorder(BorderFactory.createEmptyBorder((int) (topb * 1.1), leftb, bottomb, rightb));
 
         sellPanel.add(sellAll, BorderLayout.CENTER);
 
         sellAll.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 double money = g.sellAll();
                 JOptionPane.showMessageDialog(sellPanel, "You earned " + money);
                 obsShop.notifyObserver(true);
@@ -256,8 +256,11 @@ public class ShopDrawer extends GameDrawer {
     }
 
     public class ObserverShop implements Observer<Boolean> {
+        /**
+         *{@inheritDoc}
+         */
         @Override
-        public void update(Boolean notify) {
+        public void update(final Boolean notify) {
             inventoryUpdate();
             repaint();
             revalidate();

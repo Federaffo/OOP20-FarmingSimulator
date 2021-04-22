@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -25,8 +24,7 @@ public final class Resources {
         return LazyResources.SINGLETON;
     }
 
-    private final String FILE_SEPARATOR = File.separator;
-    private final String TEXTURE_FOLDER = "/texture";
+    private static final String TEXTURE_FOLDER = "/texture";
 
     private final Map<Texturable, BufferedImage> textures = new HashMap<>();
     private InputStream mainTheme;

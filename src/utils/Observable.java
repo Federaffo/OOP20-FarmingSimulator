@@ -1,8 +1,15 @@
 package utils;
 
-public interface Observable <X> {
+public interface Observable<X> {
 
-	void notifyObserver(X notify);
-	void addObserver(Observer obs);
-	
+    /**
+     * @param notify
+     */
+    void notifyObserver(X notify);
+
+    /**
+     * @param obs
+     */
+    void addObserver(Observer obs);
+
 }

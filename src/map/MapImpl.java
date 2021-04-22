@@ -19,12 +19,11 @@ import entity.Pair;
 
 public final class MapImpl implements Map {
     private static final String MAP_PATH = "/map/map.txt";
-
-    private Block[][] mappa;
     private static final Integer ROW = 18;
     private static final Integer COLUMN = 32;
-    private FactoryBlock factory;
 
+    private Block[][] mappa;
+    private FactoryBlock factory;
 
     public MapImpl() {
         mappa = new Block[COLUMN][ROW];
@@ -74,7 +73,6 @@ public final class MapImpl implements Map {
         myReader.close();
     }
 
- 
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -101,11 +99,9 @@ public final class MapImpl implements Map {
         return true;
     }
 
-
     public Block getBlock(final Pair<Integer, Integer> pos) {
         return mappa[pos.getX()][pos.getY()];
     }
-
 
     public void setBlock(final Pair<Integer, Integer> pos, final BlockType bt) {
         Integer x = pos.getX();
@@ -115,7 +111,6 @@ public final class MapImpl implements Map {
             mappa[x][y] = factory.getFieldBlock(x, y);
         }
     }
-
 
     public Set<Block> getMapSet() {
         Set<Block> mapSet = new HashSet<>();
@@ -143,7 +138,6 @@ public final class MapImpl implements Map {
         return null;
     }
 
-
     public Block getRandomFilterBlock(final Predicate<Block> blockFilter) {
         Random rnd = new Random();
         Block b;
@@ -152,5 +146,15 @@ public final class MapImpl implements Map {
         } while (!blockFilter.test(b));
 
         return b;
+    }
+
+    @Override
+    public int getRows() {
+        return ROW;
+    }
+
+    @Override
+    public int getColumns() {
+        return COLUMN;
     }
 }
