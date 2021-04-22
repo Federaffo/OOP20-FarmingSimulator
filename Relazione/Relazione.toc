@@ -5,17 +5,21 @@
 \contentsline {subsubsection}{Requisiti funzionali}{2}{section*.2}%
 \contentsline {subsubsection}{Requisiti non funzionali}{3}{section*.3}%
 \contentsline {section}{\numberline {1.2}Analisi e modello del dominio}{3}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Design}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Architettura}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Design dettagliato}{4}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{10}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Testing automatizzato}{10}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Note di sviluppo}{12}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{15}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{15}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{15}{section.4.2}%
-\contentsline {chapter}{\numberline {A}Guida utente}{17}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{18}{appendix.Alph2}%
-\contentsline {subsection}{\numberline {B.0.1}Paolino Paperino}{18}{subsection.Alph2.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Paperon De Paperoni}{18}{subsection.Alph2.0.2}%
+\contentsline {chapter}{\numberline {2}Design}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Architettura}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Design dettagliato}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Simone Rega}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Federico Raffoni}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Linda Fabbri}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Giacomo Montali}{8}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Testing automatizzato}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Note di sviluppo}{15}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{19}{section.4.2}%
+\contentsline {chapter}{\numberline {A}Guida utente}{21}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{22}{appendix.Alph2}%
+\contentsline {subsection}{\numberline {B.0.1}Paolino Paperino}{22}{subsection.Alph2.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Paperon De Paperoni}{22}{subsection.Alph2.0.2}%
