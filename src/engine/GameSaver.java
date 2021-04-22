@@ -13,9 +13,9 @@ import control.GameImpl;
 import entity.Animal;
 import entity.Inventory;
 import entity.Player;
-import gameMap.Map;
 import gameShop.Shop;
 import item.Seed;
+import map.Map;
 
 public class GameSaver {
     private final String dot = ".";

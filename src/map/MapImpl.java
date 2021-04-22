@@ -1,4 +1,4 @@
-package gameMap;
+package map;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 import entity.Pair;
 
-public class MapImpl implements Map {
+public final class MapImpl implements Map {
     private static final String MAP_PATH = "/map/map.txt";
 
     private Block[][] mappa;
@@ -74,6 +74,7 @@ public class MapImpl implements Map {
         myReader.close();
     }
 
+ 
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -99,6 +100,7 @@ public class MapImpl implements Map {
         }
         return true;
     }
+
 
     public Block getBlock(final Pair<Integer, Integer> pos) {
         return mappa[pos.getX()][pos.getY()];

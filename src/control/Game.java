@@ -6,10 +6,10 @@ import engine.GameState;
 import entity.Animal;
 import entity.Player;
 import entity.PlayerImpl;
-import gameMap.MapImpl;
-import gameMap.Map;
 import gameShop.Shop;
 import item.SeedType;
+import map.Map;
+import map.MapImpl;
 
 public interface Game {
 

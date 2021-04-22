@@ -19,10 +19,10 @@ import engine.Engine;
 import engine.GameSaver;
 import entity.Pair;
 import entity.Player;
-import gameMap.Map;
 import item.FoodType;
 import item.SeedState;
 import item.SeedType;
+import map.Map;
 
 public class FarmingSimulatorTestClass {
     private Game g = null;

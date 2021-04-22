@@ -4,9 +4,9 @@ import entity.Player;
 import block.Block;
 import block.FieldBlock;
 import entity.Animal;
-import gameMap.Map;
 import gameShop.Shop;
 import item.SeedType;
+import map.Map;
 
 public interface Interaction {
 

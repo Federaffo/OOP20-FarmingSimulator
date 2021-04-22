@@ -7,11 +7,11 @@ import block.UnlockableBlock;
 import entity.Animal;
 import entity.Pair;
 import entity.Player;
-import gameMap.Map;
 import gameShop.Shop;
 import item.FoodType;
 import item.SeedState;
 import item.SeedType;
+import map.Map;
 
 public final class InteractionImpl implements Interaction {
 

@@ -15,11 +15,11 @@ import entity.FactoryAnimal;
 import entity.Pair;
 import entity.Player;
 import entity.PlayerImpl;
-import gameMap.MapImpl;
-import gameMap.Map;
 import gameShop.Shop;
 import gameShop.ShopImpl;
 import item.SeedType;
+import map.Map;
+import map.MapImpl;
 
 /**
  *
