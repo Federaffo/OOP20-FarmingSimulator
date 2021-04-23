@@ -10,10 +10,10 @@
 
 \usepackage[italian]{cleveref}
 
-\title{Relazione\\``Farming Simulator''}
+\title{Relazione\break``Farming Simulator''}
 
-\author{Linda Fabbri, Federico Raffoni, Simone Rega, Montali Giacomo}
-\date{\today}
+\author{Linda Fabbri, \\ Federico Raffoni,\\ Simone Rega,\\ Giacomo Montali}
+\date{20 Aprile 2021}
 
 
 \begin{document}
@@ -28,7 +28,7 @@
 \section{Requisiti}
 
 
-Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell. 
+Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell.
 Il progetto mira alla realizzazione di un ambiente agricolo in 2D, in cui il giocatore interagisce con le colture e gestisce le proprie finanze.
 Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli appezzamenti di terra e coltivando la maggior varietà di semi possibili.
 
@@ -49,6 +49,7 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 	\item Il programma deve poter essere eseguito sia su Windows sia su sistemi operativi Unix
 \end{itemize}
 
+\hfill\break
 \section{Analisi e modello del dominio}
 
 In Farming Simulator il soggetto principale è il personaggio virtuale, il quale si muove all'interno di una mappa, composta da diversi tipologie di blocchi. 
@@ -60,8 +61,8 @@ Questi ultimi possono essere comprati nel negozio (Shop) del videogioco, dentro 
 
 Il personaggio può interaggire con blocchi e animali (Animals), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (FieldBlock), sbloccare i blocchi non ancora accessibili (UnlockableBlock) e raccogliere i prodotti animali.
 
-\begin{figure}[h]
-\centering{\includegraphics[width=12cm]{img/UML_1-1.png}}
+\begin{figure}[!htb]
+\centerline{\includegraphics[scale=.7]{img/UML_1-1.png}}
 \caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro}
 \label{img:analysis}
 \end{figure}
@@ -70,7 +71,7 @@ Il personaggio può interaggire con blocchi e animali (Animals), in particolare 
 
 \section{Architettura}
 
-L’architettura di Farming Simulator è di tipo MVC. In particolare è stata sviluppata l’interfaccia Game che funge da controller e si posiziona tra view e model e gestisce eventuali interazioni tra componenti. All’arrivo di un input, game, si occupa di ordinare al Model il cambio di stato.
+L’architettura di Farming Simulator è basata su un pattern MVC. In particolare è stata sviluppata l’interfaccia Game che funge da Controller e si posiziona tra View e Model e gestisce eventuali interazioni tra componenti. All’arrivo di un input, game, si occupa di ordinare al Model il cambio di stato.
 
 \hfill\break
 Gli input da tastiera provenienti dall’utente passano attraverso la classe KeyNotifier, la quale si occupa di informare il game dell’avvenuto input. 
@@ -78,177 +79,139 @@ Gli input da tastiera provenienti dall’utente passano attraverso la classe Key
 \hfill\break
 La parte di View è formata da diversi GameDrawer, i quali si occupano di interrogare il game e mostrare a video il gioco.
 
- Quando viene catturato un input da tastiera, il GameDrawer avvisa il keyNotifier dell’avvenuta pressione, così facendo il KeyNotifier è un observable per GameDrawer. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione ci permette di non dipendere dall'implementazione e poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
+Quando viene catturato un input da tastiera, il GameDrawer avvisa il keyNotifier dell’avvenuta pressione, così facendo il KeyNotifier è un observable per GameDrawer. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione ci permette di non dipendere dall'implementazione e poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
 
+\hfill\break
+In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura MVC del progetto, mostrando le classi principali.
 
-\begin{figure}[h]
-\centering{}
-\includegraphics[width=\textwidth]{img/UML_2-1.png}
+\hfill\break
+\begin{figure}[!htb]
+\centerline{\includegraphics[scale=.65]{img/UML_2-1.png}}
+
 \caption{Schema UML architetturale di Farming Simulator, MVC.}
 \label{img:MVC}
 \end{figure}
 
 
-In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura MVC del progetto.
+
 
 
 \section{Design dettagliato}
 
-In questa sezione si possono approfondire alcuni elementi del design con maggior dettaglio.
-%
-Mentre ci attendiamo principalmente (o solo) interfacce negli schemi UML delle sezioni precedenti, in questa sezione è necessario scendere in maggior dettaglio presentando la struttura di alcune sottoparti rilevanti dell'applicazione.
-%
-È molto importante che, descrivendo un problema, quando possibile si mostri che non si è re-inventata la ruota ma si è applicato un design pattern noto.
-%
-È assolutamente inutile, ed è anzi controproducente, descrivere classe-per-classe (o peggio ancora metodo-per-metodo) com'è fatto il vostro software: è un livello di dettaglio proprio della documentazione dell'API (deducibile dalla Javadoc).
+In questa sezione vengono mostrati alcuni elementi di design con maggior dettaglio.
+Ogni membro del gruppo presenta gli elementi di design più significativi da lui prodotti, al fine di realizzare l’applicazione, predisponendola a future espansioni.
 
-\textbf{È necessario che ciascun membro del gruppo abbia una propria sezione di design dettagliato,
-di cui sarà il solo responsabile}.
-%
-Ciascun autore dovrà spiegare in modo corretto e giustamente approfondito (non troppo in dettaglio, non superficialmente) il proprio contributo.
-%
-È importante focalizzarsi sulle scelte che hanno un impatto positivo sul riuso, sull'estensibilità, e sulla chiarezza dell'applicazione.
-%
-Esattamente come nessun ingegnere meccanico presenta un solo foglio con l'intero progetto di una vettura di Formula 1, ma molteplici fogli di progetto che mostrano a livelli di dettaglio differenti le varie parti della vettura e le modalità di connessione fra le parti, così ci aspettiamo che voi, futuri ingegneri informatici, ci presentiate prima una visione globale del progetto, e via via siate in grado di dettagliare le singole parti, scartando i componenti che non interessano quella in esame.
-%
-Per continuare il parallelo con la vettura di Formula 1, se nei fogli di progetto che mostrano il
-design delle sospensioni anteriori appaiono pezzi che appartengono al volante o al turbo, c'è una
-chiara indicazione di qualche problema di design.
 
-Usare correttamente i design pattern in questa sezione è molto importante: se vengono utilizzati correttamente, è molto probabile riuscire a progettare il software in modo corretto, estensibile, e riusabile.
-%
-Per ogni pattern utilizzato si presenti:
-\begin{itemize}
-    \item almeno un paragrafo che spieghi come è reificato nel progetto (ad esempio: nel caso di Template Method, qual è il metodo template; nel caso di Strategy, quale interfaccia del progetto rappresenta la strategia, e quali sono le sue implementazioni; nel caso di Decorator, qual è la classe astratta che fa da Decorator e quali sono le sue implementazioni concrete; eccetera);
-    \item almeno uno schema UML che grafichi quanto sopra descritto.
-\end{itemize}
-%
-La presenza di pattern di progettazione \emph{correttamente utilizzati} è valutata molto positivamente.
-%
-L'uso inappropriato è invece valutato negativamente: a tal proposito, si raccomanda di porre particolare attenzione all'abuso di Singleton, che, se usato in modo inappropriato, è di fatto un anti-pattern.
 
-\subsection*{Elementi positivi}
+\subsection{Simone Rega}
+Io nel progetto mi sono occupato della parte riguardante l’aggiornamento dinamico della GUI nella sezione dello Shop, in particolare mi preoccupo di aggiornare il JPanel dello shop e la visualizzazione dell’inventario ogni qualvolta che si interagisce con i JButton di compra/vendita, la JComboBox e il JSpinner per comprare semi. 
 
-\begin{itemize}
-	\item Ogni membro del gruppo discute le proprie decisioni di progettazione, ed in particolare le azioni volte ad anticipare possibili cambiamenti futuri (ad esempio l'aggiunta di una nuova funzionalità, o il miglioramento di una esistente).
-	\item Si identificano, utilizzano \textit{appropriatamente}, e descrivono come suggerito diversi design pattern.
-	\item Ogni membro del gruppo identifica i pattern utilizzati nella sua sottoparte.
-	\item Si mostrano gli aspetti di design più rilevanti dell'applicazione, mettendo in luce la maniera in cui si è costruita la soluzione ai problemi descritti nell'analisi.
-	\item Si tralasciano aspetti strettamente implementativi e quelli non rilevanti, non mostrandoli negli schemi UML (ad esempio, campi privati) e non descrivendoli.
-	\item Si mostrano le principali interazioni fra le varie componenti che collaborano alla soluzione di un determinato problema.
-	\item Ciascun design pattern identificato presenta una piccola descrizione del problema calato
-nell'applicazione, uno schema UML che ne mostra la concretizzazione nelle classi del progetto, ed
-una breve descrizione della motivazione per cui tale pattern è stato scelto. Ad esempio, se si
-dichiara di aver usato Observer, è necessario specificare chi sia l'observable e chi l'observer; se
-si usa Template Method, è necessario indicare quale sia il metodo template; se si usa Strategy, è
-necessario identificare l'interfaccia che rappresenta la strategia; e via dicendo.
-\end{itemize}
+Ho ritenuto utile usare un pattern Observer in modo che al cambiamento di un osservatore, quindi un Evento sui componenti grafici descritti primi, gli altri osservatori vengono notificati per poi essere aggiornati.
 
-\subsection*{Elementi negativi}
-\begin{itemize}
-	\item Il design del modello risulta scorrelato dal problema descritto in analisi.
-	\item Si tratta in modo prolisso, classe per classe, il software realizzato, o comunque si riduce la sezione ad un mero elenco di quanto fatto.
-	\item Non si presentano schemi UML esemplificativi.
-	\item Non si individuano design pattern, o si individuano in modo errato (si spaccia per design pattern qualcosa che non lo è).
-	\item Si utilizzano design pattern in modo inopportuno. Un esempio classico è l'abuso di
-Singleton per entità che possono essere univoche ma non devono necessariamente esserlo. Si rammenta
-che Singleton ha senso nel secondo caso (ad esempio \texttt{System} e \texttt{Runtime} sono
-singleton), mentre rischia di essere un problema nel secondo. Ad esempio, se si rendesse singleton
-il motore di un videogioco, sarebbe impossibile riusarlo per costruire un server per partite online
-(dove, presumibilmente, si gestiscono parallelamente più partite).
-	\item Si producono schemi UML caotici e difficili da leggere, che comprendono inutili elementi
-di dettaglio.
-	\item Si presentano schemi UML con classi (nel senso UML del termine) che ``galleggiano'' nello schema, non connesse, ossia senza relazioni con il resto degli elementi inseriti.
-	\item Si tratta in modo inutilmente prolisso la divisione in package, elencando ad esempio le classi una per una.
-\end{itemize}
 
-\subsection*{Esempio minimale (e quindi parziale) di sezione di progetto con UML ben realizzati}
+È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce \textbf{Observer} e \textbf{Observable} di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
+Il ruolo di Observable è ricoperto dalla classe ObservableShopGUI mentre il ruolo di Observer è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
 
-In questa sezione ci si concentrerà sugli aspetti di personalità e sul funzionamento del reporting di GLaDOS.
+\hfill\break
+In \Cref{img:SimoneRega_Observer} è esemplificato il diagramma UML che descrive l'architettura del pattern Observer usato da Simone Rega, mostrando le classi principali.
+\hfill\break
 
-Il sistema per la gestione della personalità utilizza il pattern Strategy, come da
-\Cref{img:strategy}: le implementazioni di \texttt{Personality} possono essere modificate, e la
-modifica impatta direttamente sul comportamento di GLaDOS.
-
-\begin{figure}[h]
-\centering{}
-%\includegraphics[width=\textwidth]{img/strategy}
-\caption{Rappresentazione UML del pattern Strategy per la personalità di GLaDOS}
-\label{img:strategy}
+\begin{figure}[!htb]
+	\centerline{\includegraphics[scale=0.8]{img/UML_ObserverSimo.png}}
+	
+	\caption{Schema UML architetturale del pattern Observer (Simone Rega).}
+	\label{img:SimoneRega_Observer}
 \end{figure}
 
-\begin{figure}[h]
-\centering{}
-%\includegraphics[width=\textwidth]{img/template}
-\caption{Rappresentazione UML dell'applicazione del pattern Template Method alla gerarchia delle Personalità}
-\label{img:template}
+\subsection{Federico Raffoni}
+In questa sezione ci occuperemo principalmente del caricamento delle risorse grafiche e non solo. In particolare è stata creata la classe Resources la quale si occupa di caricare e distribuire tutte le risorse. 
+
+È stato usato il pattern SINGLETON per rendere unico nell’applicazione l’accesso alla classe Resources. In questo modo si evita che diversi GameDrawer carichino più volte le risorse sprecando memoria.
+
+ Le risorse verranno caricate solo alla prima chiamata, mentre le chiamate successive riceveranno una copia statica della classe risparmiando tempo e risorse.
+ 
+ In \Cref{img:FedericoRaffoni_Singleton} è esemplificato il diagramma UML che descrive l'architettura singleton, mostrando le classi principali.
+\hfill\break
+
+\begin{figure}[!htb]
+	\centering{\includegraphics[scale=.6]{img/UML_SingletonRaffo.png}}
+	\caption{Schema UML architetturale del pattern Singleton (Federico Raffoni).}
+	\label{img:FedericoRaffoni_Singleton}
 \end{figure}
 
-Sono state attualmente implementate due personalità, una buona ed una cattiva.
-Quella buona restituisce sempre una torta vera, mentre quella cattiva restituisce sempre la
-promessa di una torta che verrà in realtà disattesa.
-Dato che le due personalità differiscono solo per il comportamento da effettuarsi in caso di percorso completato con successo, è stato utilizzato il pattern template method per massimizzare il riuso, come da \Cref{img:template}.
-Il metodo template è \texttt{onSuccess()}, che chiama un metodo astratto e protetto
-\texttt{makeCake()}.
+Per quanto riguarda il caricamento di una partita salvata, è stato utilizzato il pattern Observer per consentire all’Engine di rimanere in attesa mentre la classe GamePreloader si occupa di chiedere alll’utente se continuare una partita salvata oppure iniziare una partita da zero.
 
-\begin{figure}[h]
-\centering{}
-%\includegraphics[width=.7\textwidth]{img/observer}
-\caption{Il pattern Observer è usato per consentire a GLaDOS di informare tutti i sistemi di output in ascolto}
-\label{img:observer}
+In particolare Engine è Observer, mentre la classe GamePreloader è Observable.  Sono state realizzate inoltre le interfacce Observer e Observable generiche, in modo da poter essere riutilizzate anche in altri campi.
+
+ In \Cref{img:FedericoRaffoni_Observer} è esemplificato il diagramma UML che descrive l'architettura Observer, mostrando le classi principali.
+
+\hfill\break
+\begin{figure}[!htb]
+	\centering{}
+	\includegraphics[width=\textwidth]{img/UML_ObserverRaffo.png}
+	\caption{Schema UML architetturale del pattern Observer (Federico Raffoni).}
+	\label{img:FedericoRaffoni_Observer}
 \end{figure}
 
-Per quanto riguarda il reporting, è stato utilizzato il pattern Observer per consentire la
-comunicazione uno-a-molti fra \texttt{GLaDOS} ed i sistemi di output.
-%
-\texttt{GLaDOS} è observable, e le istanze di \texttt{Input} sono observer.
-%
-Il suo utilizzo è esemplificato in \Cref{img:observer}
+\subsection{Linda Fabbri}
+La parte di progetto riguardo al design di cui mi sono occupata personalmente è quella riguardante i blocchi. 
 
-\subsection*{Contro-esempio: pessimo diagramma UML}
+Questa parte è composta da una classe enum (BlockType) per la classificazione delle tipologie dei vari blocchi, in base alla tipologia ho avuto la necessità di implementare metodi diversi, dunque ho creato tre interfacce: \textbf{Block} per tutti i generici blocchi, \textbf{FieldBlock} (estensione di Block) a cui ho aggiunto i metodi per i blocchi coltivabili (FIELD in BlockType), \textbf{UnlockableBlock}(estensione di FieldBlock) a cui ho aggiunto i metodi per i blocchi coltivabili bloccati (LOCKED in BlockType).
 
-In \Cref{img:badarch} è mostrato il modo \textbf{sbagliato} di fare le cose.
-%
-Questo schema è fatto male perché:
-\begin{itemize}
-	\item È caotico.
-	\item È difficile da leggere e capire.
-	\item Vi sono troppe classi, e non si capisce bene quali siano i rapporti che intercorrono fra loro.
-	\item Si mostrano elementi implementativi irrilevanti, come i campi e i metodi privati nella classe \texttt{AbstractEnvironment}.
-	\item Se l'intenzione era quella di costruire un diagramma architetturale, allora lo schema è ancora più sbagliato, perché mostra pezzi di implementazione.
-	\item Una delle classi, in alto al centro, galleggia nello schema, non connessa a nessuna altra classe, e di fatto costituisce da sola un secondo schema UML scorrelato al resto
-	\item Le interfacce presentano tutti i metodi e non una selezione che aiuti il lettore a capire quale parte del sistema si vuol mostrare.
-\end{itemize}
+L’implementazione di queste interfacce si trova in FactoryBlock come classi innestate. Inoltre, per ogni tipologia di blocco si ha un differente costruttore al fine di determinare i vari campi. 
 
+Ho scelto l’utilizzo del pattern \textit{“Factory method”} allo scopo di creare e ritornare blocchi in base al loro tipo mediante l’uso di costruttori differenti, delegando la responsabilità della scelta della creazione di ogni oggetto solo alla classe che implementa tale pattern.
 
-\begin{figure}[h]
-\centering{}
-%\includegraphics[width=\textwidth]{img/badarch}
-\caption{Schema UML mal fatto e con una pessima descrizione, che non aiuta a capire. Don't try this at home.}
-\label{img:badarch}
+In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive l'architettura Factory Method, mostrando le classi principali.
+
+\hfill\break
+\begin{figure}[!htb]
+	\centering{}
+	\includegraphics[width=\textwidth]{img/UML_FactoryLinda.png}
+	\caption{Schema UML architetturale del pattern Factory Method (Linda Fabbri).}
+	\label{img:LindaFabbri_Factory}
 \end{figure}
 
+\subsection{Giacomo Montali}
+
+I principali punti dei quali mi sono occupato in questo progetto sono le varie entità presenti in essa, cioè il Player e i vari animali. 
+
+In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl}. La suddivisione degli animali è stata effetuata grazie ad Enum.
+
+Inoltre ho creato la classe abstract \textbf{Entity} per renderla classe padre delle classi \textbf{PlayerImpl} e \textbf{AnimalImpl}, per evitare il riutilizzo di codice derivato dai metodi in comune come tutti i metodi che riguardano il movimento e la posizione sulla mappa.
+
+In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che descrive l'architettura delle classe Abstract Entity, mostrando le classi principali.
+
+\hfill\break
+\begin{figure}[!htb]
+	\centering{}
+	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
+	\caption{Schema UML architetturale della clase Entity (Giacomo Montali).}
+	\label{img:GiacomoMontali_Abstract}
+\end{figure}
 
 \chapter{Sviluppo}
 \section{Testing automatizzato}
 
 
-In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug. 
-
-Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
+In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug. Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
 
 Le classi che sono state testate sono:
 \begin{itemize}
-	\item \textbf{Player:} sulla classe Player sono state testate movimento all'interno della mappa, le relative collisioni; aumento e diminuzione dei soldi.
-	\item \textbf{Shop:} sono state testate le funzionalità di Buy e Sell, controllando inventario e soldi del Player
-	\item \textbf{Saver:} è stata testata la funzionalità di salvataggio della partita controllando lo stato di Player e Map 
-	\item \textbf{Interaction:} sono state testate le interazioni con:
+	\item \textbf{testPlayerMovement:} con questo test muovo il personaggio simulando la pressione dei tasti  
+	\item \textbf{testPlayerCollision:} con questo test controllo che non avvenga il movimento su blocchi o in direzioni in cui mi è permesso
+	\item \textbf{testPlayerPlant:} con questo test simulo l'interazione del personaggio con un blocco di tipo FieldBlock, piantando un seme e poi controllando che quel blocco non sia vuoto
+	\item \textbf{testUnlockBlock:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock
+	\item \textbf{testUnlockBlockWithoutMoney:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock senza soldi
+	\item \textbf{testPlayerAnimalInteraction:} con questo test mi sposto nella zona "Stalla" della mappa e aspetto che un Animal qualunque sia pronto per poi poter raccogliere il suo \textit{Food} simulando l'interazione tra \textit{Player} e \textit{Animal}
+	\item \textbf{testBuy:} con questo test provo a comprare un \textit{Seed} dallo \textit{Shop}, controllando poi che sia effettivamente presente nell'\textit{Inventory}
+	\item \textbf{testBuyWithoutMoney:} questo test è simile al precedente, ma ho zero money, verificando che non avvenga l'acquisto
+	\item \textbf{testSell:} in questo test simulo una normale interazione con un FieldBlock, ricavandone poi il raccolto che proverò a vendere, verificandone l'esistenza nell'inventario e l'ottenimento dei soldi ricavati dalla vendita
+	\item \textbf{testSaver:} con questo test simulo il salvataggio del gioco su file con relativa apertura da esso in una nuova esecuzione del gioco, verificando che i nuovi e vecchi \textit{Game} e \textit{Player} siano gli stessi e abbiano le stesse caratteristiche
+	\item \textbf{testSaverPlayer:} questo test è simile al precedente, differisce semplicemente per il fatto che il Player viene mosso nella nuova istanza di gioco, così da far risultare falso il fatto che l'istanza salvata e l'istanza nuova creata siano uguali
+
 	
-	\begin{itemize}
-		\item Piante (plant\footnote[1]{Plant = piantare il seme nel FieldBlock} e harvest\footnote[2]{Harvest = raccogliere l'elemento Food dal FieldBlock})
-		\item Animali (raccolta dei prodotti animali))
-		\item UnlockableBlock (sbloccaggio del blocco con e senza soldi)
-	\end{itemize}
+	
 \end{itemize}
 
 

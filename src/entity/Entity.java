@@ -69,5 +69,5 @@ public interface Entity {
      * @param array
      * @return the Block where the entity is standing on
      */
-    Block blockPosition(Set<Block> array);
+    Block getBlockPosition(Set<Block> array);
 }
