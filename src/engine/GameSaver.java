@@ -103,7 +103,6 @@ public class GameSaver {
             try {
                 return Class.forName(className);
             } catch (ClassNotFoundException e) {
-                // e.printStackTrace();
                 throw new JsonParseException(e.getMessage());
             }
         }
