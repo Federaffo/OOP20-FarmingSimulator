@@ -32,7 +32,7 @@ public class SeedImpl implements Seed {
 
     /**
      * 
-     * Grow the current Seed
+     * Grow the current Seed.
      */
     public void grow() {
         this.state = SeedState.GROWN;

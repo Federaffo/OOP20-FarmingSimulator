@@ -19,7 +19,7 @@ public interface FieldBlock extends Block {
     Pair<FoodType, Integer> harvest();
 
     /**
-     * @return true if there no seed planted int this block, false otherwise
+     * @return true if there no seed planted in this block, false otherwise
      */
     boolean isEmpty();
 
