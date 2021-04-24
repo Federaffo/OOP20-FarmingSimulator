@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 APR 2021 12:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 APR 2021 15:20
 entering extended mode
 **./Relazione.tex
 (Relazione.tex
@@ -376,66 +376,66 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
 <img/UML_1-1.png, id=216, 696.6025pt x 357.335pt>
 File: img/UML_1-1.png Graphic file (type png)
 <use img/UML_1-1.png>
-Package pdftex.def Info: img/UML_1-1.png  used on input line 66.
+Package pdftex.def Info: img/UML_1-1.png  used on input line 67.
 (pdftex.def)             Requested size: 390.0pt x 200.05716pt.
 [4] [5 <./img/UML_1-1.png>]
 Capitolo 2.
 <img/UML_2-1.png, id=231, 736.7525pt x 345.29pt>
 File: img/UML_2-1.png Graphic file (type png)
 <use img/UML_2-1.png>
-Package pdftex.def Info: img/UML_2-1.png  used on input line 90.
+Package pdftex.def Info: img/UML_2-1.png  used on input line 91.
 (pdftex.def)             Requested size: 478.88345pt x 224.43582pt.
 [6
 
 ] [7 <./img/UML_2-1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 116--119
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
 
  []
 
 <img/UML_ObserverSimo.png, id=247, 592.2125pt x 272.01625pt>
 File: img/UML_ObserverSimo.png Graphic file (type png)
 <use img/UML_ObserverSimo.png>
-Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 121.
+Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 118.
 (pdftex.def)             Requested size: 473.77063pt x 217.61328pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
 <img/UML_SingletonRaffo.png, id=249, 368.37625pt x 383.4325pt>
 File: img/UML_SingletonRaffo.png Graphic file (type png)
 <use img/UML_SingletonRaffo.png>
-Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 138.
+Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 135.
 (pdftex.def)             Requested size: 221.02744pt x 230.06126pt.
 [8 <./img/UML_ObserverSimo.png>]
 <img/UML_ObserverRaffo.png, id=258, 689.57625pt x 542.025pt>
 File: img/UML_ObserverRaffo.png Graphic file (type png)
 <use img/UML_ObserverRaffo.png>
-Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 152.
+Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 149.
 (pdftex.def)             Requested size: 390.0pt x 306.5507pt.
  [9 <./img/UML_SingletonRaffo.png>]
 <img/UML_FactoryLinda.png, id=266, 947.54pt x 490.83376pt>
 File: img/UML_FactoryLinda.png Graphic file (type png)
 <use img/UML_FactoryLinda.png>
-Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 170.
+Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 167.
 (pdftex.def)             Requested size: 473.76883pt x 245.41628pt.
  [10 <./img/UML_ObserverRaffo.png>]
 <img/UML_FactoryMonta.png, id=273, 531.9875pt x 254.9525pt>
 File: img/UML_FactoryMonta.png Graphic file (type png)
 <use img/UML_FactoryMonta.png>
-Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 185.
+Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 182.
 (pdftex.def)             Requested size: 390.0pt x 186.91125pt.
 <img/UML_AbstractMonta.png, id=276, 673.51625pt x 462.72874pt>
 File: img/UML_AbstractMonta.png Graphic file (type png)
 <use img/UML_AbstractMonta.png>
-Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 199.
+Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 196.
 (pdftex.def)             Requested size: 390.0pt x 267.9451pt.
  [11 <./img/UML_FactoryLinda.png>]
 
@@ -446,7 +446,7 @@ Capitolo 3.
 [13
 
 ] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
@@ -454,9 +454,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 311--312
 Capitolo 4.
 [19
 
-] [20]
+] [20] [21]
 Appendice A.
-[21
+[22
 
 ]
 Appendice B.
@@ -464,9 +464,9 @@ Appendice B.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 441.
 
-[22
+(Relazione.bbl [23
 
-] (Relazione.bbl [23]
+]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
@@ -477,11 +477,11 @@ Package cleveref Info: loaded `italian' language definitions on input line 21.
 Package cleveref Info: loaded `italian' language definitions on input line 22.
 )
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: FE2A5391DB9F22B4633D5419CFA4CF69;5205.
+(rerunfilecheck)             Checksum: 1BD67667F12EF528F020B7E354694476;5162.
  ) 
 Here is how much of TeX's memory you used:
- 11223 strings out of 479334
- 181193 string characters out of 2857084
+ 11222 strings out of 479334
+ 181183 string characters out of 2857084
  546776 words of memory out of 3000000
  28462 multiletter control sequences out of 15000+200000
  410566 words of font info for 51 fonts, out of 3000000 for 9000
@@ -506,9 +506,9 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/S
 imon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
 :/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 12.pfb>
-Output written on Relazione.pdf (25 pages, 294794 bytes).
+Output written on Relazione.pdf (25 pages, 293939 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 500000)
+ 414 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
  337 words of extra memory for PDF output out of 10000 (max. 10000000)
 

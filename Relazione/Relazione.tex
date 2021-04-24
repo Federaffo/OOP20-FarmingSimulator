@@ -41,6 +41,7 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 	\item Nella mappa deve comparire una zona per l'allevamento degli animali, grazie ai quali si possono raccogliere latte, uova e altri derivati.
 	\item Farming Simulator mette a disposizione un negozio in cui è possibile vedere il proprio inventario, vendere i prodotti agricoli raccolti in cambio di monete virtuali e comprare nuovi semi da coltivare.
 	\item Per aumentare la difficoltà di gioco vengono messi a disposizione appezzamenti di terreno coltivabili inizialmente bloccati, che si possono sbloccare tramite l'utilizzo delle monete virtuali.
+	\item Il gioco deve permettere il salvataggio della partita per poter dare la possibilità di essere ripreso in un secondo momento
 \end{itemize}
 
 
@@ -88,13 +89,9 @@ In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura 
 \hfill\break
 \begin{figure}[!htb]
 \centerline{\includegraphics[scale=.65]{img/UML_2-1.png}}
-
 \caption{Schema UML architetturale di Farming Simulator, MVC.}
 \label{img:MVC}
 \end{figure}
-
-
-
 
 
 \section{Design dettagliato}
@@ -382,7 +379,8 @@ Al fine di evitare pregiudizi involontari, l'intero capitolo verrà letto dai do
 \subsection{Simone Rega}
 Sin dall'inizio sono stato partecipe e disponibile per la progettazione e l'analisi del progetto. 
 
-Purtroppo non ho potuto lavorare troppo sulla logica di gioco (ho semplicemente svolto la parte riguardante la logica che può avere un seme quando piantato)
+Purtroppo non ho potuto lavorare troppo sulla logica di gioco, infatti non era possibile dividersi la logica di gioco in parti completamente eque tra 4 persone. 
+Nella 
 
 Sono abbastanza contento del risultato finale riguardante il lavoro da me svolto e della modesta qualità del mio codice, che è stata equilibrata e trasparente, permettendone un corretto e utile uso.
 
@@ -391,12 +389,20 @@ Devo dire che sono leggermente dispiaciuto perché avrei voluto essere più part
 Sono contento del Team con cui ho avuto modo di lavorare a questo progetto. La comunicazione è stata di fondamentale importanza.
 
 \subsection{Federico Raffoni}
+Sono molto soddisfatto del gruppo e di quello che abbiamo prodotto. Per me è stato il primo lavoro di sviluppo con altre persone, è stato quindi fondamentale per capire le dinamiche del lavoro di gruppo. 
+Il mio compito è stato quello di creare il collante tra parte di grafica e la parte logica, costruendo un semplice Engine di gioco.
+Probabilmente a causa di inesperienza e per mancanza di competenze (principalmente grafiche) abbiamo sovrastimato la quantità di lavoro necessaria per svolgere questo progetto, scartando altri progetti perché credevamo troppo grandi.
+Ad inizio progetto non avevo idea di come poter creare un engine che legasse la logica del gioco ad una buona interfaccia reattiva che mostrasse in tempo reale la posizione del personaggio. Seppur avessimo già utilizzato Java Swing a lezione non avevo ancora le basi necessarie a costruire un semplice gioco in 2d. Questo mi ha spinto subito a cercare una soluzione a questo problema impegnandomi per parecchio tempo ad inizio progetto.
 \subsection{Linda Fabbri}
 \subsection{Giacomo Montali}
 
 \section{Difficoltà incontrate e commenti per i docenti}
 
 \subsection{Simone Rega}
+In conclusione sono soddisfatto del mio percorso in questa materia e ritengo che il corso sia stato utile e funzionale al mio percorso di studi e formazione professionale. Ritengo che il carico del lavoro sia tarato abbastanza bene, senza inutili e superflue ripetizioni basilari o concetti magari già trattati da altri corsi come Programmazione e Algoritmi, ma anche senza lasciare troppe lacune o parti spiegate e non affrontate. 
+
+I professori sono stati a mio avviso capaci di spiegare e motivare al proseguimento attivo del corso.
+Venendo da un Istituto Tecnico Informatico mi sono accorto del salto di qualità presentato nel corso, in quanto non venivano solo spiegati gli elementi fondamentali di programmazione ad oggetti ma capivamo come utilizzarli al meglio e come metterli in relazione tra di loro, sempre con un occhio all'ottimizzazione o alla leggibilità del codice.
 
 buon corso, oop uni > iti
 gradle spiegata meglio
@@ -432,31 +438,20 @@ spaziatrice, o il tasto ``P'', è necessario che gli studenti lo segnalino.
 
 \chapter{Esercitazioni di laboratorio}
 
-In questo capitolo ciascuno studente elenca gli esercizi di laboratorio che ha svolto
-(se ne ha svolti),
-elencando i permalink dei post sul forum dove è avvenuta la consegna.
-
-\section*{Esempio}
-
-\subsection{Paolino Paperino}
+\subsection{Federico Raffoni}
 
 \begin{itemize}
- \item Laboratorio 04: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=12345#p123456}
- \item Laboratorio 06: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
+ \item Laboratorio 05: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=62684#p102596}
+ \item Laboratorio 06: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=62579#p103324}
+ \item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=64639#p104599}
+ \item Laboratorio 10: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=66753#p106746}
 \end{itemize}
 
-\subsection{Paperon De Paperoni}
+\subsection{Simone Rega}
 
 \begin{itemize}
- \item Laboratorio 04: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=12345#p123456}
- \item Laboratorio 05: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 06: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 07: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 08: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 10: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 11: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
+	\item Laboratorio 08: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=63865#p121222}
+	\item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=64639#p121220}
 \end{itemize}
 
 
