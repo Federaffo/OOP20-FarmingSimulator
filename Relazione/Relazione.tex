@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{setspace}
+\usepackage{wrapfig}
 
 % Questo commentalo se vuoi scrivere in inglese.
 \usepackage[italian]{babel}
@@ -30,7 +31,9 @@
 
 
 Il gruppo si pone come obiettivo quello di realizzare "Farming Simulator", un software a scopo ludico basato sul videogioco "Hay Day" \footnote{\url{https://supercell.com/en/games/hayday/}} sviluppato da Supercell.
-Il progetto mira alla realizzazione di un ambiente agricolo in 2D, in cui il giocatore interagisce con le colture e gestisce le proprie finanze.
+%
+Il progetto mira alla realizzazione di un ambiente agricolo in 2D, in cui il giocatore, per mezzo del personaggio virtuale, interagisce con le colture e gestisce le proprie finanze.
+%
 Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli appezzamenti di terra e coltivando la maggior varietà di semi possibili.
 
 
@@ -39,8 +42,8 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 	\item Questa applicazione deve permettere al giocatore di muoversi all'interno della mappa di gioco evitando di salire su zone di mappa non calpestabili.
 	\item Il personaggio ha la possibilità di coltivare piantagioni di grano, patate, pomodori, carote, alberi di ciliege e altri frutti.
 	\item Nella mappa deve comparire una zona per l'allevamento degli animali, grazie ai quali si possono raccogliere latte, uova e altri derivati.
-	\item Farming Simulator mette a disposizione un negozio in cui è possibile vedere il proprio inventario, vendere i prodotti agricoli raccolti in cambio di monete virtuali e comprare nuovi semi da coltivare.
-	\item Per aumentare la difficoltà di gioco vengono messi a disposizione appezzamenti di terreno coltivabili inizialmente bloccati, che si possono sbloccare tramite l'utilizzo delle monete virtuali.
+	\item Farming Simulator deve mettere a disposizione un negozio in cui è possibile vedere il proprio inventario, vendere i prodotti agricoli raccolti in cambio di monete virtuali e comprare nuovi semi da coltivare.
+	\item Per aumentare la difficoltà di gioco devono essere messi a disposizione appezzamenti di terreno coltivabili inizialmente bloccati, che si possono sbloccare tramite l'utilizzo delle monete virtuali.
 	\item Il gioco deve permettere il salvataggio della partita per poter dare la possibilità di essere ripreso in un secondo momento
 \end{itemize}
 
@@ -227,15 +230,15 @@ Le classi che sono state testate sono:
 
 \section{Metodologia di lavoro}
 
-\textbf{• Metodologia riguardante il progetto in generale}\hfill\break
+\subsection*{Metodologia riguardante il progetto in generale}
 Lo sviluppo del progetto è stato preceduto da una fase preliminare di analisi e progettazione, durante la quale abbiamo lavorato tutti insieme per definire prima le basi dell'applicazione, poi successivamente specificare i vari dettagli implementativi tramite UML sulla piattaforma Miro.
 
 In queste fasi la collaborazione e il confronto sono state molto intense.
 
 La suddivisioni delle parti di Farming Simulator  è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
 
-\hfill\break
-\textbf{• Distributed Version Control System}\hfill\break
+
+\subsection*{Distributed Version Control System}
 Come DVCS è stato usato Git, creando un repository su GitHub. Abbiamo lavorato sullo scheletro del progetto su un unico branch main, per poi creare diversi branch per implementare e/o mettere a punto la realizzazione di feature nuove o più sostanziose.
 
 \subsection{Federico Raffoni}
@@ -273,9 +276,37 @@ In collaborazione con Simone Rega si è implementata la classe ShopDrawer per la
 
 Ha collaborato all’implementazione della classe Game, in particolare per chiamare i metodi implementati in InteractionImpl. 
 
-In collaborazione con Simone Rega e Federico Raffoni ha eseguito il refactoring per correggere errori evidenziati dal checkstyle.
+In collaborazione con altri ha eseguito il refactoring per correggere errori evidenziati dal checkstyle.
 
 \hfill\break
+Classi sviluppate singolarmente:
+{\setstretch{0.6}
+	\begin{itemize}
+		\item Block
+		\item BlockType
+		\item FactoryBlock
+		\item FieldBlock
+		\item Interaction
+		\item InteractionImpl
+	\end{itemize}
+}
+\hfill\break
+
+Classi sviluppate insieme ad altre persone
+{\setstretch{0.6}
+	\begin{itemize}
+		\item MainScreenDrawer : implementazione del metodo drawMap per associare ai diversi tipi di blocco l'immagine corrispondente e in particolare l'immagine relativa ad ogni seme piantato.
+		\item ShopDrawer : la logica legata alla pressione dei tasti
+		\item FarmingSimulatorTestClass 
+		\item GameImpl : la parte che chiama i metodi relativi alle interazioni 
+		\item Shop
+		\item ShopImpl
+		\item UnlockableBlock
+	\end{itemize}
+}
+
+\hfill\break
+
 \textbf{•Problemi}\hfill\break
 In fase di progettazione nella classe Inventory si era pensato di creare solo i metodi gotFoods e gotSeeds, per verificare l’esistenza di un certo numero di Food o Seed nell’inventario, tuttavia per i metodi delle classi che sono state citate precedentemente, si è trovata la necessità di un metodo che ritornasse la mappa di tutte le tipologie di Food e Seed.
 
@@ -297,7 +328,6 @@ Classi sviluppate singolarmente:
 	\item Seed
 	\item SeedImpl
 	\item ItemConstants
-	\item UnlockableBlock
 	\item InfoDrawer
 	\item QuitDrawer
 	\item JPanelINFO
@@ -317,13 +347,39 @@ Classi sviluppate insieme ad altre persone
 	\item Observable
 	\item Shop
 	\item ShopImpl
+	\item UnlockableBlock
 \end{itemize}
 }
 
 \subsection{Giacomo Montali}
 Sviluppo del package entity, che riguarda principalmente Player, Animal e le relative classi ad esse connesse.
 
-Sviluppo della mappa di gioco dentro la quale interagiranno le entità. Caricamento della mappa di gioco da file.
+Sviluppo della mappa di gioco dentro la quale interagiranno le entità. Creazione del file della mappa. Caricamento della mappa di gioco da file. 
+
+Collaborazione nella classe Game per la realizzazione grafica a runtime degli animali.
+
+Classi sviluppate singolarmente:
+{\setstretch{0.6}
+\begin{itemize}
+	\item Entity
+	\item EntityImpl
+	\item Animal
+	\item AnimalImpl
+	\item AnimalType
+	\item FactoryAnimal
+	\item Direction
+	\item Player
+	\item PlayerImpl
+	\item Inventory
+	\item InventoryImpl
+	\item Map
+	\item MapImpl
+\end{itemize}
+}
+Classi riutilizzate:
+\begin{itemize}
+	\item Per comodità ho riutilizzato la classe Pair fornita dal professore Viroli durante le sue lezioni.
+\end{itemize}
 
 \section{Note di sviluppo}
 
@@ -359,20 +415,20 @@ So che queste due librerie sono state introdotte a lezione spiegandone i princip
 
 \begin{itemize}
 	\item \textbf{Optional: } nei blocchi per il loro contenuto
-	\item \
 \end{itemize}
 
 
 \subsection{Giacomo Montali}
 
+\begin{itemize}
+	\item \textbf{Filter:} utilizzato nella classe MapImpl e nella classe EntityImpl
+	\item \textbf{Lambda:} utilizzata per la creazione di animali nella classe Game, nelle classi InventoryImpl e AnimalImpl.
+	\item \textbf{Stream:} utilizzato nell’Inventory
+	\item \textbf{Optional:} utilizzato nell’Inventory
+\end{itemize}
+
 \chapter{Commenti finali}
 
-In quest'ultimo capitolo si tirano le somme del lavoro svolto e si delineano eventuali sviluppi
-futuri.
-
-\textit{Nessuna delle informazioni incluse in questo capitolo verrà utilizzata per formulare la valutazione finale}, a meno che non sia assente o manchino delle sezioni obbligatorie.
-%
-Al fine di evitare pregiudizi involontari, l'intero capitolo verrà letto dai docenti solo dopo aver formulato la valutazione.
 
 \section{Autovalutazione e lavori futuri}
 
@@ -390,11 +446,28 @@ Sono contento del Team con cui ho avuto modo di lavorare a questo progetto. La c
 
 \subsection{Federico Raffoni}
 Sono molto soddisfatto del gruppo e di quello che abbiamo prodotto. Per me è stato il primo lavoro di sviluppo con altre persone, è stato quindi fondamentale per capire le dinamiche del lavoro di gruppo. 
+
 Il mio compito è stato quello di creare il collante tra parte di grafica e la parte logica, costruendo un semplice Engine di gioco.
+
 Probabilmente a causa di inesperienza e per mancanza di competenze (principalmente grafiche) abbiamo sovrastimato la quantità di lavoro necessaria per svolgere questo progetto, scartando altri progetti perché credevamo troppo grandi.
+
 Ad inizio progetto non avevo idea di come poter creare un engine che legasse la logica del gioco ad una buona interfaccia reattiva che mostrasse in tempo reale la posizione del personaggio. Seppur avessimo già utilizzato Java Swing a lezione non avevo ancora le basi necessarie a costruire un semplice gioco in 2d. Questo mi ha spinto subito a cercare una soluzione a questo problema impegnandomi per parecchio tempo ad inizio progetto.
 \subsection{Linda Fabbri}
+Sono soddisfatta del mio operato in quanto è il mio primo approccio alla programmazione ad oggetti e al lavoro di gruppo. Ho riscontrato qualche difficoltà nella coordinazione con gli altri membri, specialmente all’inizio del progetto a causa delle tante idee differenti su come strutturare lo scheletro del gioco, tuttavia, una volta stabilite le linee guida sono riuscita a lavorare alla mia parte con tranquillità. 
+
+Ho riscontrato qualche problema nella scelta dei nomi di metodi e di campi in inglese, in quanto non padroneggio al pieno la lingua.
+
+In conclusione, sono soddisfatta del progetto ultimato, il quale rispecchia l’idea da cui eravamo partiti.
+
 \subsection{Giacomo Montali}
+
+Lo sviluppo di questo progetto mi ha permesso di crescere notevolmente dal punto di vista organizzativo, in quanto questo è stato il primo software prodotto lavorando in team. Questo ha infatti portato a delle iniziali difficoltà, dovute alla mancata conoscenza nella gestione di progetti di questa scala. 
+
+Al termine di questo però, mi trovo soddisfatto del lavoro svolto, grazie ad una ottima collaborazione all’interno del team e alle conoscenze apprese a lezione.
+
+Ritengo inoltre di aver acquisito abilità nello scrivere ed apprezzare codice di qualità.
+Inoltre ho trovato molto utile Git, software che inizialmente sottovalutavo, che si è invece rivelato fondamentale per il lavoro svolto.
+
 
 \section{Difficoltà incontrate e commenti per i docenti}
 
@@ -409,32 +482,52 @@ gradle spiegata meglio
 
 Purtroppo il mio percorso di sviluppo non è stato lineare nel tempo; nonostante fosse stimolante per me avere per la prima volta un progetto di programmazione così bello e complesso da portare avanti, questo non è stato sempre possibile poiché non sempre sono riuscito a trovare il tempo per dedicarmi ad esso dopo le lezioni o lo studio. È effettivamente il primo progetto di sviluppo software da zero a cui ho partecipato e mi ha fatto crescere dal punto di vista organizzativo, rendendomi cosciente di ciò che mi aspetta una volta uscito dall'università.
 \subsection{Federico Raffoni}
+In conclusione mi ritengo molto soddisfatto di questo corso. Ritengo che sia stato estremamente utile non solo per apprendere nuove skills di programmazione ad oggetti, ma anche per comprendere le dinamiche del lavoro di gruppo.
+
+Avrei preferito ricevere qualche nozione in più riguardo a Gradle, data la sua importanza all’interno dell’ambiente Java, in particolare nel contesto di un progetto grande come può essere questo.
+
+Tuttavia sono molto contento delle competenze ottenute durante questo corso e coltivate durante la costruzione e lo sviluppo dei questo progetto
+
 \subsection{Linda Fabbri}
 \subsection{Giacomo Montali}
+In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia capacità nello scrivere il codice ad un livello superiore.
 \appendix
 \chapter{Guida utente}
 
-Capitolo in cui si spiega come utilizzare il software. Nel caso in cui il suo uso sia del tutto
-banale, tale capitolo può essere omesso.
-%
-A tal riguardo, si fa presente agli studenti che i docenti non hanno mai utilizzato il software
-prima, per cui aspetti che sembrano del tutto banali a chi ha sviluppato l'applicazione possono non
-esserlo per chi la usa per la prima volta.
-%
-Se, ad esempio, per cominciare una partita con un videogioco è necessario premere la barra
-spaziatrice, o il tasto ``P'', è necessario che gli studenti lo segnalino.
+scopo del gioco e a chi è indirizzato
 
-\subsection*{Elementi positivi}
-
+\subsection{Schermata di Gioco}
+\begin{figure}[!htb]
+	\centerline{\includegraphics[width=\textwidth]{img/SchermataPrincipale.png}}
+	\caption{Schermata iniziale di gioco: 1)Pannello Informativo; 2)Stalla; 3)Personaggio; 4)Aree coltivabili; 5)Selezione seme. }
+	\label{img:schermata}
+\end{figure}
 \begin{itemize}
- \item Si istruisce in modo semplice l'utente sull'uso dell'applicazione, eventualmente facendo uso di schermate e descrizioni.
+	\item[1)] Pannello informativo: in questa parte della schermata puoi vedere le monete che hai a disposizione, il costo per sbloccare la prossima area coltivabile bloccata (vedere \cref{mappa}), il tempo trascorso dall'inizio della partita e premendo X in gioco compaiono le informazioni basilare sui controlli.
+	\item[2)] Stalla: luogo in cui vengono allevati gli animali(vedere \cref{animali}).
+	\item[3)] Personaggio: avatar virtuale che si muove nella mappa(vedere \cref{personaggio}).
+	\item[4)] Aree Coltivabili: aree in cui è possibile coltivare i prodotti.
+	\item[5)] Selezione seme: girando la rotellina del mouse è possibile scegliere il seme da piantare.
 \end{itemize}
+\subsection{Mappa di Gioco}
+		\label{mappa}
+		gnffghhtttuudytjehddddd
+		
+		dtjyjtdyjd
+	\begin{wrapfigure}{l}{5cm} 
+		\includegraphics[scale=0.5]{img/farmland.png}
+		\caption{caccahjksaw<edbfjkahnwes<jfhntr}
+	\end{wrapfigure}
 
-\subsection*{Elementi negativi}
-\begin{itemize}
- \item Si descrivono in modo eccessivamente minuzioso tutte le caratteristiche, anche minori, del software in oggetto.
- \item Manca una descrizione che consenta ad un utente qualunque di utilizzare almeno le funzionalità primarie dell'applicativo.
-\end{itemize}
+\subsection{Personaggio}
+	\label{personaggio}
+
+\subsection{Animali}
+	\label{animali}
+
+\subsection{Oggetti di gioco}
+
+\subsection{Negozio}
 
 \chapter{Esercitazioni di laboratorio}
 
