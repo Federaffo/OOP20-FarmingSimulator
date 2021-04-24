@@ -9,17 +9,17 @@ public enum AnimalType implements Texturable {
     /**
      * this is a cow, the food that cow made is milk.
      */
-    COW(FoodType.MILK, ItemConstants.HYPER_LONG_GROW_TIME, 2, "Cow"),
+    COW(FoodType.MILK, ItemConstants.HYPER_LONG_GROW_TIME, 1, "Cow"),
 
     /**
      * this is a chicken, the food that chicken made is egg.
      */
-    CHICKEN(FoodType.EGG, ItemConstants.MEDIUM_GROW_TIME, 4, "Chicken"),
+    CHICKEN(FoodType.EGG, ItemConstants.MEDIUM_GROW_TIME, 2, "Chicken"),
 
     /**
      * this is a pig, the food that pig made is pork meat.
      */
-    PIG(FoodType.PORK_MEAT, ItemConstants.VERY_LONG_GROW_TIME, 2, "Pig");
+    PIG(FoodType.PORK_MEAT, ItemConstants.VERY_LONG_GROW_TIME, 1, "Pig");
 
     private final long readyTime;
     private final FoodType returnFood;

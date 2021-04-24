@@ -17,6 +17,9 @@ import control.Game;
 import control.GameImpl;
 import engine.Engine;
 import engine.GameSaver;
+import entity.Animal;
+import entity.AnimalImpl;
+import entity.AnimalType;
 import entity.Pair;
 import entity.Player;
 import item.FoodType;
@@ -66,21 +69,18 @@ public class FarmingSimulatorTestClass {
         pg.setRight(false);
 
     }
-    
-    
 
-    
     @Test
     public void testCollision() {
-        
+
         pg.moveTo(new Pair<Integer, Integer>(1, 1));
-        //Premo il tasto A
+        // Premo il tasto A
         pg.setLeft(true);
         g.loop();
-        
-        //Verifico che non sia uscito dalla mappa
+
+        // Verifico che non sia uscito dalla mappa
         assertEquals(new Pair<>(50, 50), new Pair<>(pg.getPosX(), pg.getPosY()));
-        
+
     }
 
     @Test
@@ -157,13 +157,18 @@ public class FarmingSimulatorTestClass {
         Pair<Integer, Integer> b;
         // vado su un blocco stalla e aspetto di poter raccogliere materiale da un
         // animale
-        do {
+        try {
             do {
-                b = map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.STALL));
-                pg.moveTo(b);
-            } while (pg.nearestAnimal(g.getAllAnimals()).isEmpty());
-        } while (!pg.nearestAnimal(g.getAllAnimals()).get().isReady());
-        g.interact();
+                do {
+                    b = map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.STALL));
+                    pg.moveTo(b);
+
+                } while (pg.nearestAnimal(g.getAllAnimals()).isEmpty());
+            } while (!pg.nearestAnimal(g.getAllAnimals()).get().isReady());
+            g.interact();
+        } catch (Exception e) {
+            testPlayerAnimalInteraction();
+        }
 
         // controllo di essere su una stalla
         assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.STALL);
@@ -192,7 +197,7 @@ public class FarmingSimulatorTestClass {
         // nell'inventario io non abbia alcun seme poiché non posso permettermelo
         assertTrue(pg.getInventory().getSeeds().get(SeedType.CHERRY_SEED) == 0);
     }
-    
+
     @Test
     public void testSell() throws InterruptedException {
         Pair<Integer, Integer> b = map

@@ -27,6 +27,7 @@ public class MusicPlayer implements Runnable {
                 clip.open(audioIn);
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                 gainControl.setValue(REDUCER); // Reduce volume by {REDUCER} decibels.
+                clip.loop(clip.LOOP_CONTINUOUSLY);
                 clip.start();
             }
         } catch (Exception e) {

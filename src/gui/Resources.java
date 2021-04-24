@@ -32,7 +32,7 @@ public class Resources {
     private final Map<Texturable, BufferedImage> textures = new HashMap<>();
     private InputStream mainTheme;
     private int animationDelay = 0;
-    private static final int ANIMATION_SPEED = 500;
+    private static final int ANIMATION_SPEED = 400;
 
     private Resources() {
         try {
