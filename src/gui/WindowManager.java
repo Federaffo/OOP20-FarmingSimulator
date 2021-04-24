@@ -62,6 +62,9 @@ public class WindowManager extends JFrame {
         pack();
     }
 
+    /**
+     * create all panel.
+     */
     public void createPanel() {
         lpanel = new JLayeredPane();
 
