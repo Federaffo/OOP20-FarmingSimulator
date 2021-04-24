@@ -5,15 +5,15 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: alpha.bst
 Reallocating 'name_of_file' (item size: 1) to 12 items.
 I couldn't open database file 13-template.bib
----line 74 of file Relazione.aux
+---line 94 of file Relazione.aux
  : \bibdata{13-template
  :                     }
 I'm skipping whatever remains of this command
+I found no \citation commands---while reading file Relazione.aux
 I found no database files---while reading file Relazione.aux
-Warning--I didn't find a database entry for "mersenne"
 You've used 0 entries,
             2543 wiz_defined-function locations,
-            559 strings with 4456 characters,
+            558 strings with 4448 characters,
 and the built_in function-call counts, 24 in all, are:
 = -- 0
 > -- 0
@@ -52,4 +52,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 2
-(There were 2 error messages)
+(There were 3 error messages)
