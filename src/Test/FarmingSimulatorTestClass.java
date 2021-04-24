@@ -17,6 +17,8 @@ import control.Game;
 import control.GameImpl;
 import engine.Engine;
 import engine.GameSaver;
+import engine.Interaction;
+import engine.InteractionImpl;
 import entity.Animal;
 import entity.AnimalImpl;
 import entity.AnimalType;
@@ -153,31 +155,22 @@ public class FarmingSimulatorTestClass {
     }
 
     @Test
-    public void testPlayerAnimalInteraction() {
-        Pair<Integer, Integer> b;
-        // vado su un blocco stalla e aspetto di poter raccogliere materiale da un
-        // animale
-        try {
-            do {
-                do {
-                    b = map.getBlockCoordinates(map.getRandomFilterBlock(x -> x.getType() == BlockType.STALL));
-                    pg.moveTo(b);
+    public void testPlayerAnimalInteraction() throws InterruptedException {
+        Interaction interaction = new InteractionImpl();
 
-                } while (pg.nearestAnimal(g.getAllAnimals()).isEmpty());
-            } while (!pg.nearestAnimal(g.getAllAnimals()).get().isReady());
-            g.interact();
-        } catch (Exception e) {
-            testPlayerAnimalInteraction();
-        }
+        //Creo un animale nella stessa posizione del pg
+        Animal animal = new AnimalImpl(new Pair<Integer, Integer>(1, 1), AnimalType.CHICKEN);
+        pg.moveTo(new Pair<Integer, Integer>(1, 1));
 
-        // controllo di essere su una stalla
-        assertEquals(pg.getBlockPosition(map.getMapSet()).getType(), BlockType.STALL);
+        //aspetto che l'animale sia pronto
+        do {
+            Thread.sleep(1000);
+        } while (!animal.isReady());
 
-        // controllo di avere nell'inventario un Prodotto di origine animale (EGG,
-        // PORK_MEAT, MILK) dopo aver interagito
-        assertTrue(pg.getInventory().getFoods().get(FoodType.EGG) > 0
-                || pg.getInventory().getFoods().get(FoodType.PORK_MEAT) > 0
-                || pg.getInventory().getFoods().get(FoodType.MILK) > 0);
+        //lancio l'interazione
+        interaction.playerAnimal(pg, animal);
+        //controllo che mi abbia dato i frutti
+        assertTrue(pg.getInventory().getFoods().get(FoodType.EGG) > 0);
     }
 
     @Test

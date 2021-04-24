@@ -22,4 +22,8 @@ public final class ItemConstants {
      */
     public static final long HYPER_LONG_GROW_TIME = 75000;
 
+    public static final int SLOW_SPEED = 1;
+    public static final int MEDIUM_SPEED = 3;
+    public static final int FAST_SPEED = 5;
+
 }
