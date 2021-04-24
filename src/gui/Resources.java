@@ -14,12 +14,15 @@ import item.Texturable;
 import item.SeedType;
 import entity.AnimalType;
 
-public final class Resources {
+public class Resources {
 
     public static class LazyResources {
         private static final Resources SINGLETON = new Resources();
     }
 
+    /**
+     * @return a static istance of Resources.
+     */
     public static Resources getRes() {
         return LazyResources.SINGLETON;
     }
@@ -120,8 +123,6 @@ public final class Resources {
             textures.put(Texture.F_KEY, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/f.png")));
             textures.put(Texture.MOUSE_WHEEL,
                     ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/mouse.png")));
-
-            mainTheme = getClass().getResourceAsStream("/hd.wav");
 
         } catch (IOException e) {
             e.printStackTrace();

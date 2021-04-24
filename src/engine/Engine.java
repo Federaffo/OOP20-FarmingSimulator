@@ -22,7 +22,7 @@ public class Engine implements Observer<Boolean> {
     private GameSaver gameSaver = new GameSaver();
 
     /**
-     * {@inheritDoc}
+     * @param true if Engine have to load last game
      */
     @Override
     public void update(final Boolean loadLastGame) {
