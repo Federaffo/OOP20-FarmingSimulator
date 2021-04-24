@@ -18,14 +18,12 @@ import item.Seed;
 import map.Map;
 
 public class GameSaver {
-    private final String dot = ".";
     private final String filePath = System.getProperty("user.home") + File.separator + ".farmingSimulator_Save.json";
     private Gson gson;
 
     public GameSaver() {
         InterfaceAdapter interfaceAdapter = new InterfaceAdapter();
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
         gson = new GsonBuilder().registerTypeAdapter(Block.class, interfaceAdapter)
                 .registerTypeAdapter(Game.class, interfaceAdapter)
                 .registerTypeAdapter(Interaction.class, interfaceAdapter)
@@ -44,7 +42,7 @@ public class GameSaver {
     }
 
     /**
-     * @param game
+     * @param the game to save.
      */
     public void save(final Game game) {
         String json = gson.toJson(game);
