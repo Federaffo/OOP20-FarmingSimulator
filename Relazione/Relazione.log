@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 APR 2021 00:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 APR 2021 12:21
 entering extended mode
 **./Relazione.tex
 (Relazione.tex
@@ -362,7 +362,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 ...azioni di laboratorio}{21}{appendix.Alph2}
+l.34 ... {4.2.1}Simone Rega}{20}{subsection.4.2.1}
                                                   % [1
 
 ])
@@ -380,27 +380,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-<img/UML_1-1.png, id=181, 736.7525pt x 345.29pt>
+<img/UML_1-1.png, id=216, 696.6025pt x 357.335pt>
 File: img/UML_1-1.png Graphic file (type png)
 <use img/UML_1-1.png>
 Package pdftex.def Info: img/UML_1-1.png  used on input line 66.
-(pdftex.def)             Requested size: 515.72324pt x 241.70134pt.
+(pdftex.def)             Requested size: 390.0pt x 200.05716pt.
 [4] [5 <./img/UML_1-1.png>]
 Capitolo 2.
-<img/UML_2-1.png, id=196, 736.7525pt x 345.29pt>
+<img/UML_2-1.png, id=231, 736.7525pt x 345.29pt>
 File: img/UML_2-1.png Graphic file (type png)
 <use img/UML_2-1.png>
 Package pdftex.def Info: img/UML_2-1.png  used on input line 90.
 (pdftex.def)             Requested size: 478.88345pt x 224.43582pt.
 [6
 
-]
+] [7 <./img/UML_2-1.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 116--119
 
  []
 
-[7 <./img/UML_2-1.png>]
-<img/UML_ObserverSimo.png, id=212, 592.2125pt x 272.01625pt>
+<img/UML_ObserverSimo.png, id=247, 592.2125pt x 272.01625pt>
 File: img/UML_ObserverSimo.png Graphic file (type png)
 <use img/UML_ObserverSimo.png>
 Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 121.
@@ -410,105 +409,106 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
-<img/UML_SingletonRaffo.png, id=214, 368.37625pt x 383.4325pt>
+<img/UML_SingletonRaffo.png, id=249, 368.37625pt x 383.4325pt>
 File: img/UML_SingletonRaffo.png Graphic file (type png)
 <use img/UML_SingletonRaffo.png>
 Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 138.
 (pdftex.def)             Requested size: 221.02744pt x 230.06126pt.
 [8 <./img/UML_ObserverSimo.png>]
-<img/UML_ObserverRaffo.png, id=223, 689.57625pt x 542.025pt>
+<img/UML_ObserverRaffo.png, id=258, 689.57625pt x 542.025pt>
 File: img/UML_ObserverRaffo.png Graphic file (type png)
 <use img/UML_ObserverRaffo.png>
 Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 152.
 (pdftex.def)             Requested size: 390.0pt x 306.5507pt.
  [9 <./img/UML_SingletonRaffo.png>]
-<img/UML_FactoryLinda.png, id=231, 947.54pt x 490.83376pt>
+<img/UML_FactoryLinda.png, id=266, 947.54pt x 490.83376pt>
 File: img/UML_FactoryLinda.png Graphic file (type png)
 <use img/UML_FactoryLinda.png>
-Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 171.
-(pdftex.def)             Requested size: 390.0pt x 202.02205pt.
+Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 170.
+(pdftex.def)             Requested size: 473.76883pt x 245.41628pt.
  [10 <./img/UML_ObserverRaffo.png>]
-<img/UML_AbstractMonta.png, id=238, 673.51625pt x 462.72874pt>
-File: img/UML_AbstractMonta.png Graphic file (type png)
-<use img/UML_AbstractMonta.png>
-Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 184.
-(pdftex.def)             Requested size: 390.0pt x 267.9451pt.
-<img/UML_FactoryMonta.png, id=241, 531.9875pt x 254.9525pt>
+<img/UML_FactoryMonta.png, id=273, 531.9875pt x 254.9525pt>
 File: img/UML_FactoryMonta.png Graphic file (type png)
 <use img/UML_FactoryMonta.png>
-Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 198.
+Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 185.
 (pdftex.def)             Requested size: 390.0pt x 186.91125pt.
+<img/UML_AbstractMonta.png, id=276, 673.51625pt x 462.72874pt>
+File: img/UML_AbstractMonta.png Graphic file (type png)
+<use img/UML_AbstractMonta.png>
+Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 199.
+(pdftex.def)             Requested size: 390.0pt x 267.9451pt.
  [11 <./img/UML_FactoryLinda.png>]
 
 LaTeX Warning: Text page 12 contains only floats.
 
-[12 <./img/UML_AbstractMonta.png> <./img/UML_FactoryMonta.png>]
+[12 <./img/UML_FactoryMonta.png> <./img/UML_AbstractMonta.png>]
 Capitolo 3.
 [13
 
-] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+] [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
-[15] [16] [17]
+[16] [17] [18]
 Capitolo 4.
-[18
+[19
 
-] [19]
+] [20]
 Appendice A.
-[20
+[21
 
 ]
 Appendice B.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 399.
+(hyperref)                than one, level fixed on input line 441.
 
-[21
+[22
 
-] (Relazione.bbl [22]
+] (Relazione.bbl [23]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [23
+) [24
 
 ] (Relazione.aux
 Package cleveref Info: loaded `italian' language definitions on input line 21.
 Package cleveref Info: loaded `italian' language definitions on input line 22.
 )
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 22995925E96552DC3EB3EFB3CB9079EE;4457.
+(rerunfilecheck)             Checksum: FE2A5391DB9F22B4633D5419CFA4CF69;5205.
  ) 
 Here is how much of TeX's memory you used:
- 11206 strings out of 479334
- 180925 string characters out of 2857084
- 545776 words of memory out of 3000000
- 28454 multiletter control sequences out of 15000+200000
- 410225 words of font info for 50 fonts, out of 3000000 for 9000
+ 11223 strings out of 479334
+ 181193 string characters out of 2857084
+ 546776 words of memory out of 3000000
+ 28462 multiletter control sequences out of 15000+200000
+ 410566 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,74p,641b,771s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,8n,74p,641b,754s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
- <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
-00.pk><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr10.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Simon/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Simon/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Simon/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Simon/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/User
-s/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb
->
-Output written on Relazione.pdf (24 pages, 287532 bytes).
+ <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcbx12
+00.pk> <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+tcrm1200.pk><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr10.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Simon/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Simon/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Simon/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/S
+imon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
+:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
+12.pfb>
+Output written on Relazione.pdf (25 pages, 294794 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 71 named destinations out of 1000 (max. 500000)
- 281 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 426 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 

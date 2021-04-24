@@ -54,7 +54,7 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 \section{Analisi e modello del dominio}
 
 In Farming Simulator il soggetto principale è il personaggio virtuale, il quale si muove all'interno di una mappa, composta da diversi tipologie di blocchi. 
-%
+
 All'interno della mappa possiamo trovare blocchi coltivabili (Field Block), blocchi non calpestabili dal personaggio (Wall), blocchi estetici(Water), il quale unico compito è quello di abbellire la mappa, blocchi che compongono la stalla in cui possono muoversi gli animali(Stall), ed infine blocchi "locked"(Unlockable Block), ovvero che inizialmente sono bloccati e possono essere sbloccati durante la partita in cambio di monete virtuali.
 
 Il personaggio (Player), grazie all'inventario (Inventory), è in grado di mantenere risorse al suo interno. Tra le risorse collezionabili possiamo trovare: il cibo (Food) ottenuto dalla raccolta di coltivazioni o di animali oppure i semi (Seed).
@@ -63,7 +63,7 @@ Questi ultimi possono essere comprati nel negozio (Shop) del videogioco, dentro 
 Il personaggio può interaggire con blocchi e animali (Animals), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (FieldBlock), sbloccare i blocchi non ancora accessibili (UnlockableBlock) e raccogliere i prodotti animali.
 
 \begin{figure}[!htb]
-\centerline{\includegraphics[scale=.7]{img/UML_1-1.png}}
+\centerline{\includegraphics[width=\textwidth]{img/UML_1-1.png}}
 \caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro}
 \label{img:analysis}
 \end{figure}
@@ -107,9 +107,9 @@ Ogni membro del gruppo presenta gli elementi di design più significativi da lui
 \subsection{Simone Rega}
 Io nel progetto mi sono occupato della parte riguardante l’aggiornamento dinamico della GUI nella sezione dello Shop, in particolare mi preoccupo di aggiornare il JPanel dello shop e la visualizzazione dell’inventario ogni qualvolta che si interagisce con i JButton di compra/vendita, la JComboBox e il JSpinner per comprare semi. 
 
-Ho ritenuto utile usare un pattern Observer in modo che al cambiamento di un osservatore, quindi un Evento sui componenti grafici descritti primi, gli altri osservatori vengono notificati per poi essere aggiornati.
+Ho ritenuto utile usare un pattern Observer in modo che alla ricevuta notifica di un osservatore, quindi un Evento sui componenti grafici descritti prima, gli altri osservatori vengono notificati per poi essere aggiornati.
 
-
+\hfill\break
 È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce \textbf{Observer} e \textbf{Observable} di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
 Il ruolo di Observable è ricoperto dalla classe ObservableShopGUI mentre il ruolo di Observer è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
 
@@ -167,8 +167,7 @@ In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive
 
 \hfill\break
 \begin{figure}[!htb]
-	\centering{}
-	\includegraphics[width=\textwidth]{img/UML_FactoryLinda.png}
+	\centerline{\includegraphics[scale=.5]{img/UML_FactoryLinda.png}}	
 	\caption{Schema UML architetturale del pattern Factory Method (Linda Fabbri).}
 	\label{img:LindaFabbri_Factory}
 \end{figure}
@@ -177,11 +176,13 @@ In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive
 
 I principali punti dei quali mi sono occupato in questo progetto sono le varie entità presenti in essa, cioè il Player e i vari animali. 
 
-In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl} per  rendere più facile l'aggiunta di eventuali nuovi classi che implementano l'interfaccia Animal. La suddivisione degli animali è stata effetuata grazie ad un Enum.
+In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl} per  rendere più facile l'aggiunta di eventuali nuovi classi che implementano l'interfaccia Animal. 
+
+La suddivisione degli animali è stata effetuata grazie ad un Enum.
 
 \begin{figure}[!htb]
 	\centering{}
-	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
+	\includegraphics[width=\textwidth]{img/UML_FactoryMonta.png}
 	\caption{Schema UML architetturale del pattern Simple Factory (Giacomo Montali).}
 	\label{img:GiacomoMontali_Factory}
 \end{figure}
@@ -195,8 +196,8 @@ In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che desc
 \hfill\break
 \begin{figure}[!htb]
 	\centering{}
-	\includegraphics[width=\textwidth]{img/UML_FactoryMonta.png}
-	\caption{Schema UML architetturale della clase Entity (Giacomo Montali).}
+	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
+	\caption{Schema UML architetturale della classe Entity (Giacomo Montali).}
 	\label{img:GiacomoMontali_Abstract}
 \end{figure}
 
@@ -204,10 +205,12 @@ In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che desc
 \section{Testing automatizzato}
 
 
-In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug. Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
+In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug; non sono però mancati test riguardanti la View e salvataggio del gioco.
+Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
 
-Le classi che sono state testate sono:
+
 {\setstretch{0.6}
+Le classi che sono state testate sono:
 \begin{itemize}
 	\item \textbf{testPlayerMovement:} con questo test muovo il personaggio simulando la pressione dei tasti  
 	\item \textbf{testPlayerCollision:} con questo test controllo che non avvenga il movimento su blocchi o in direzioni in cui mi è permesso
@@ -227,17 +230,23 @@ Le classi che sono state testate sono:
 
 \section{Metodologia di lavoro}
 
-\subsection{Metodologia riguardante il progetto in generale}
+\textbf{• Metodologia riguardante il progetto in generale}\hfill\break
+Lo sviluppo del progetto è stato preceduto da una fase preliminare di analisi e progettazione, durante la quale abbiamo lavorato tutti insieme per definire prima le basi dell'applicazione, poi successivamente specificare i vari dettagli implementativi tramite UML sulla piattaforma Miro.
 
------fase di progettazione preliminare
------uml base su miro
+In queste fasi la collaborazione e il confronto sono state molto intense.
 
-Per la realizzazione dello sviluppo di Farming Simulator la suddivisioni delle parti è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
+La suddivisioni delle parti di Farming Simulator  è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
 
-Come DVCS è stato usato Git, creando un repository su GitHub. Abbiamo lavorato sullo scheletro del progetto su un unico branch main, per poi creare diversi branch per creare e/o mettere a punto la realizzazione di branch più importanti.
+\hfill\break
+\textbf{• Distributed Version Control System}\hfill\break
+Come DVCS è stato usato Git, creando un repository su GitHub. Abbiamo lavorato sullo scheletro del progetto su un unico branch main, per poi creare diversi branch per implementare e/o mettere a punto la realizzazione di feature nuove o più sostanziose.
 
 \subsection{Federico Raffoni}
-Sviluppo del motore grafico, in particolare l’Engine e la classe WindowManager, e le varie interazioni tra questi due elementi. Ideazione e creazione della classe abstract GameDrawer che ha portato alla realizzazione delle varie scene di gioco.  Sviluppo della classe KeyNotifier che permette l’interazione tra la view e il controller (Game). Implementazione della classe Resources. Ho inoltre sviluppato la classe che permette il salvataggio e il caricamento della partita (GameSaver) .
+Sviluppo del motore grafico, in particolare l’Engine e la classe WindowManager, e le varie interazioni tra questi due elementi. Ideazione e creazione della classe abstract GameDrawer che ha portato alla realizzazione delle varie scene di gioco.  Sviluppo della classe KeyNotifier che permette l’interazione tra la view e il controller (Game).
+
+ Implementazione della classe Resources. 
+ 
+ Ho inoltre sviluppato la classe che permette il salvataggio e il caricamento della partita (GameSaver) .
 
 \hfill\break
 Ho inoltre contribuito all'implementazione della classe Game  e  allo sviluppo della parte grafica nella classe MainScreenDrawer 
@@ -259,12 +268,28 @@ Classi sviluppate singolarmente:
 
 \subsection{Linda Fabbri}
 
+Si è occupata principalmente della parte riguardante la logica di gioco legata alle interazioni fra le entità e la parte che si occupa della creazione dei blocchi che compongono la mappa di gioco, in particolare le classi Interaction, InteractionImpl nel package engine e tutte le classi del package block. 
+
+Legato alle interazioni ha implementato i metodi riguardanti la compravendita di prodotti che si trovano nella classe ShopImpl, in particolare i metodi sellAll e buy. 
+
+In collaborazione con Simone Rega si è implementata la classe ShopDrawer per la parte che si occupa della grafica dei pannelli legati alla compravendita di semi e prodotti. 
+
+Ha collaborato all’implementazione della classe Game, in particolare per chiamare i metodi implementati in InteractionImpl. 
+
+In collaborazione con Simone Rega e Federico Raffoni ha eseguito il refactoring per correggere errori evidenziati dal checkstyle.
+
+\hfill\break
+\textbf{•Problemi}\hfill\break
+In fase di progettazione nella classe Inventory si era pensato di creare solo i metodi gotFoods e gotSeeds, per verificare l’esistenza di un certo numero di Food o Seed nell’inventario, tuttavia per i metodi delle classi che sono state citate precedentemente, si è trovata la necessità di un metodo che ritornasse la mappa di tutte le tipologie di Food e Seed.
+
 \subsection{Simone Rega}
 Sviluppo delle classi all'interno del package Item che riguardano principalmente la realizzazione degli elementi Seed e Food del gioco.
 
 Sviluppo della parte di grafica riguardante lo shop (ShopDrawer); le informazioni del gioco (InfoDrawer e implementazione di vari JPanelHUD nel MainScreenDrawer).
 
 Ideazione e creazione delle classi nel package gameShop riguardante la logica base dello Shop
+
+Ideazione e sviluppo della classe test in JUnit5 a cui hanno dato una mano allo sviluppo Linda Fabbri e Federico Raffoni.
 
 \hfill\break
 Classi sviluppate singolarmente:
@@ -275,8 +300,6 @@ Classi sviluppate singolarmente:
 	\item Seed
 	\item SeedImpl
 	\item ItemConstants
-	\item Shop
-	\item ShopImpl
 	\item UnlockableBlock
 	\item InfoDrawer
 	\item QuitDrawer
@@ -290,16 +313,20 @@ Classi sviluppate singolarmente:
 Classi sviluppate insieme ad altre persone
 {\setstretch{0.6}
 \begin{itemize}
-	\item MainScreenDrawer : implementazione di generateHUD per generare la barra di gioco superiore che visualizza 
+	\item MainScreenDrawer : implementazione di generateHUD per generare la barra di gioco superiore
 	\item ShopDrawer : quasi tutta la parte grafica
 	\item FarmingSimulatorTestClass 
 	\item Observer
 	\item Observable
+	\item Shop
+	\item ShopImpl
 \end{itemize}
 }
 
 \subsection{Giacomo Montali}
+Sviluppo del package entity, che riguarda principalmente Player, Animal e le relative classi ad esse connesse.
 
+Sviluppo della mappa di gioco dentro la quale interagiranno le entità. Caricamento della mappa di gioco da file.
 
 \section{Note di sviluppo}
 
@@ -329,10 +356,14 @@ Per quanto riguarda le librerie utilizzate
 	\item \textbf{Java AWT }
 	\item \textbf{Java Swing}
 \end{itemize}
-So che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che non abbiamo avuto modo di trattate a lezione .
+So che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che purtroppo non abbiamo avuto modo di trattate a lezione .
  
 \subsection{Linda Fabbri}
 
+\begin{itemize}
+	\item \textbf{Optional: } nei blocchi per il loro contenuto
+	\item \
+\end{itemize}
 
 
 \subsection{Giacomo Montali}
@@ -348,21 +379,32 @@ Al fine di evitare pregiudizi involontari, l'intero capitolo verrà letto dai do
 
 \section{Autovalutazione e lavori futuri}
 
-\textbf{È richiesta una sezione per ciascun membro del gruppo, obbligatoriamente}.
-%
-Ciascuno dovrà autovalutare il proprio lavoro, elencando i punti di forza e di debolezza in quanto prodotto.
-Si dovrà anche cercare di descrivere \emph{in modo quanto più obiettivo possibile} il proprio ruolo all'interno del gruppo.
-Si ricorda, a tal proposito, che ciascuno studente è responsabile solo della propria sezione: non è un problema se ci sono opinioni contrastanti, a patto che rispecchino effettivamente l'opinione di chi le scrive.
-Nel caso in cui si pensasse di portare avanti il progetto, ad esempio perché effettivamente impiegato, o perché sufficientemente ben riuscito da poter esser usato come dimostrazione di esser capaci progettisti, si descriva brevemente verso che direzione portarlo.
+\subsection{Simone Rega}
+Sin dall'inizio sono stato partecipe e disponibile per la progettazione e l'analisi del progetto. 
+
+Purtroppo non ho potuto lavorare troppo sulla logica di gioco (ho semplicemente svolto la parte riguardante la logica che può avere un seme quando piantato)
+
+Sono abbastanza contento del risultato finale riguardante il lavoro da me svolto e della modesta qualità del mio codice, che è stata equilibrata e trasparente, permettendone un corretto e utile uso.
+
+Devo dire che sono leggermente dispiaciuto perché avrei voluto essere più partecipe o comunque dedicarmi di più allo sviluppo del programma. Avrei potuto migliorare l'ottimizzazione del mio codice e le sue funzionalità, o magari osare di più con elementi di programmazioni più avanzati introducendo più Lambda e Stream ad esempio. 
+
+Sono contento del Team con cui ho avuto modo di lavorare a questo progetto. La comunicazione è stata di fondamentale importanza.
+
+\subsection{Federico Raffoni}
+\subsection{Linda Fabbri}
+\subsection{Giacomo Montali}
 
 \section{Difficoltà incontrate e commenti per i docenti}
 
-Questa sezione, \textbf{opzionale}, può essere utilizzata per segnalare ai docenti eventuali problemi o difficoltà incontrate nel corso o nello svolgimento del progetto, può essere vista come una seconda possibilità di valutare il corso (dopo quella offerta dalle rilevazioni della didattica) avendo anche conoscenza delle modalità e delle difficoltà collegate all'esame, cosa impossibile da fare usando le valutazioni in aula per ovvie ragioni.
-%
-È possibile che alcuni dei commenti forniti vengano utilizzati per migliorare il corso in futuro: sebbene non andrà a vostro beneficio, potreste fare un favore ai vostri futuri colleghi.
-%
-Ovviamente \textit{il contenuto della sezione non impatterà il voto finale}.
+\subsection{Simone Rega}
 
+buon corso, oop uni > iti
+gradle spiegata meglio
+
+Purtroppo il mio percorso di sviluppo non è stato lineare nel tempo; nonostante fosse stimolante per me avere per la prima volta un progetto di programmazione così bello e complesso da portare avanti, questo non è stato sempre possibile poiché non sempre sono riuscito a trovare il tempo per dedicarmi ad esso dopo le lezioni o lo studio. È effettivamente il primo progetto di sviluppo software da zero a cui ho partecipato e mi ha fatto crescere dal punto di vista organizzativo, rendendomi cosciente di ciò che mi aspetta una volta uscito dall'università.
+\subsection{Federico Raffoni}
+\subsection{Linda Fabbri}
+\subsection{Giacomo Montali}
 \appendix
 \chapter{Guida utente}
 
