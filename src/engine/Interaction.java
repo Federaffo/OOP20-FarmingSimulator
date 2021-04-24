@@ -13,12 +13,16 @@ public interface Interaction {
     /**
      * @param pg
      * @param block
+     * 
+     * let the player plant in a specified block
      */
     void playerPlant(Player pg, FieldBlock block);
 
     /**
      * @param pg
      * @param block
+     * 
+     * let the player harvest in a specified block
      */
     void playerHarvest(Player pg, FieldBlock block);
 
@@ -26,6 +30,8 @@ public interface Interaction {
      * @param pg
      * @param map
      * @param block
+     * 
+     * let the player unlock a specified block
      */
     void unlockBlock(Player pg, Map map, Block block);
 
@@ -47,12 +53,16 @@ public interface Interaction {
     /**
      * @param pg
      * @param block
+     * 
+     * let the player interact with a fieldblock
      */
     void fieldInteraction(Player pg, FieldBlock block);
 
     /**
      * @param pg
      * @param animal
+     * 
+     * let a player interact with an animal
      */
     void playerAnimal(Player pg, Animal animal);
 

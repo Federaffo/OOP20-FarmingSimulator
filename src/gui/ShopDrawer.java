@@ -82,6 +82,9 @@ public class ShopDrawer extends GameDrawer {
 
     }
 
+    /**
+     * updates inventory.
+     */
     private void inventoryUpdate() {
         invTAfood.setText("");
         invTAseed.setText("");
@@ -94,7 +97,10 @@ public class ShopDrawer extends GameDrawer {
         }
     }
 
-    public void titlePanel() {
+    /**
+     * create title panel.
+     */
+    private void titlePanel() {
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(SFONDO);
 
@@ -134,11 +140,14 @@ public class ShopDrawer extends GameDrawer {
         add(titlePanel);
     }
 
-    public void inventoryPanel() {
+    /**
+     * create inventory panel.
+     */
+    private void inventoryPanel() {
         JPanel inventPanel = new JPanel();
         JPanel scrollPanel = new JPanel();
         Font font3 = new Font("Garamond", Font.BOLD, 40);
-        JLabel titleInv = new JLabel("Inventario");
+        JLabel titleInv = new JLabel("Inventory");
         JScrollPane jspF = new JScrollPane(invTAfood);
         JScrollPane jspS = new JScrollPane(invTAseed);
 
@@ -171,7 +180,10 @@ public class ShopDrawer extends GameDrawer {
         add(inventPanel);
     }
 
-    public void buyPanel() {
+    /**
+     * create buy panel.
+     */
+    private void buyPanel() {
         final int hBuy = screenSize.height;
         final int wBuy = screenSize.width;
         JPanel buyPanel = new JPanel();
@@ -207,7 +219,7 @@ public class ShopDrawer extends GameDrawer {
         prezzoTot.setMaximumSize(new Dimension(wBuy, hBuy));
         buyPanel.add(prezzoTot);
         buyPanel.add(Box.createRigidArea(new Dimension(0, 80)));
-        JButton buy = new JButton("COMPRA");
+        JButton buy = new JButton("BUY");
         buy.setFont(BUYFONT);
         buy.setBorder(BorderFactory.createEmptyBorder(0, leftb, 0, rightb));
         buyPanel.add(buy);
@@ -246,7 +258,10 @@ public class ShopDrawer extends GameDrawer {
         add(buyPanel);
     }
 
-    public void sellPanel() {
+    /**
+     * create sell panel.
+     */
+    private void sellPanel() {
         JPanel sellPanel = new JPanel();
         sellPanel.setBorder(BorderFactory.createEmptyBorder(topb, leftb, bottomb, rightb));
         sellPanel.setBackground(SFONDO);
