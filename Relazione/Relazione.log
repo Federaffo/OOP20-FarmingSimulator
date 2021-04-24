@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.24)  24 APR 2021 22:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.24)  25 APR 2021 01:22
 entering extended mode
 **./Relazione.tex
 (Relazione.tex
@@ -408,14 +408,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-<img/UML_1-1.png, id=251, 696.6025pt x 357.335pt>
+<img/UML_1-1.png, id=241, 696.6025pt x 357.335pt>
 File: img/UML_1-1.png Graphic file (type png)
 <use img/UML_1-1.png>
 Package pdftex.def Info: img/UML_1-1.png  used on input line 71.
-(pdftex.def)             Requested size: 390.0pt x 200.05716pt.
+(pdftex.def)             Requested size: 487.61842pt x 250.13278pt.
 [4] [5 <./img/UML_1-1.png>]
 Capitolo 2.
-<img/UML_2-1.png, id=266, 736.7525pt x 345.29pt>
+<img/UML_2-1.png, id=257, 736.7525pt x 345.29pt>
 File: img/UML_2-1.png Graphic file (type png)
 <use img/UML_2-1.png>
 Package pdftex.def Info: img/UML_2-1.png  used on input line 95.
@@ -427,7 +427,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--115
 
  []
 
-<img/UML_ObserverSimo.png, id=276, 592.2125pt x 272.01625pt>
+<img/UML_ObserverSimo.png, id=267, 592.2125pt x 272.01625pt>
 File: img/UML_ObserverSimo.png Graphic file (type png)
 <use img/UML_ObserverSimo.png>
 Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 117.
@@ -437,32 +437,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 130--132
 
  []
 
-<img/UML_SingletonRaffo.png, id=285, 368.37625pt x 383.4325pt>
+<img/UML_SingletonRaffo.png, id=275, 368.37625pt x 383.4325pt>
 File: img/UML_SingletonRaffo.png Graphic file (type png)
 <use img/UML_SingletonRaffo.png>
 Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 134.
 (pdftex.def)             Requested size: 221.02744pt x 230.06126pt.
-<img/UML_ObserverRaffo.png, id=287, 689.57625pt x 542.025pt>
+<img/UML_ObserverRaffo.png, id=277, 689.57625pt x 542.025pt>
 File: img/UML_ObserverRaffo.png Graphic file (type png)
 <use img/UML_ObserverRaffo.png>
 Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 148.
 (pdftex.def)             Requested size: 390.0pt x 306.5507pt.
 [8 <./img/UML_ObserverSimo.png>] [9 <./img/UML_SingletonRaffo.png>]
-<img/UML_FactoryLinda.png, id=301, 947.54pt x 490.83376pt>
+<img/UML_FactoryLinda.png, id=291, 947.54pt x 490.83376pt>
 File: img/UML_FactoryLinda.png Graphic file (type png)
 <use img/UML_FactoryLinda.png>
 Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 166.
 (pdftex.def)             Requested size: 473.76883pt x 245.41628pt.
  [10 <./img/UML_ObserverRaffo.png>]
-<img/UML_FactoryMonta.png, id=308, 531.9875pt x 254.9525pt>
+<img/UML_FactoryMonta.png, id=298, 531.9875pt x 254.9525pt>
 File: img/UML_FactoryMonta.png Graphic file (type png)
 <use img/UML_FactoryMonta.png>
-Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 181.
+Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 182.
 (pdftex.def)             Requested size: 390.0pt x 186.91125pt.
-<img/UML_AbstractMonta.png, id=311, 673.51625pt x 462.72874pt>
+<img/UML_AbstractMonta.png, id=301, 673.51625pt x 462.72874pt>
 File: img/UML_AbstractMonta.png Graphic file (type png)
 <use img/UML_AbstractMonta.png>
-Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 195.
+Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 196.
 (pdftex.def)             Requested size: 390.0pt x 267.9451pt.
  [11 <./img/UML_FactoryLinda.png>]
 
@@ -470,20 +470,25 @@ LaTeX Warning: Text page 12 contains only floats.
 
 [12 <./img/UML_FactoryMonta.png> <./img/UML_AbstractMonta.png>]
 Capitolo 3.
-[13
 
-] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \hbox (badness 10000) in paragraph at lines 205--208
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+[13
+
+] [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
 
  []
 
@@ -495,58 +500,58 @@ Capitolo 4.
 Appendice A.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 491.
+(hyperref)                than one, level fixed on input line 498.
 
-<img/SchermataPrincipale.png, id=374, 1157.82562pt x 674.52pt>
+<img/SchermataPrincipale.png, id=367, 1157.82562pt x 674.52pt>
 File: img/SchermataPrincipale.png Graphic file (type png)
 <use img/SchermataPrincipale.png>
-Package pdftex.def Info: img/SchermataPrincipale.png  used on input line 493.
+Package pdftex.def Info: img/SchermataPrincipale.png  used on input line 500.
 (pdftex.def)             Requested size: 390.0pt x 227.20325pt.
 
-Overfull \hbox (6.0265pt too wide) in paragraph at lines 499--500
+Overfull \hbox (6.0265pt too wide) in paragraph at lines 506--507
 [][][][][][][] \OT1/cmr/m/n/12 luo-go in cui ven-go-no al-le-va-ti gli ani-ma-l
-i(vedere ap-pen-di-ce []A.0.4[]). 
+i(vedere ap-pen-di-ce []A.0.3[]). 
  []
 
 [24
 
  <./img/SchermataPrincipale.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 507--508
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
 
  []
 
-<img/farmland.png, id=385, 96.36pt x 96.36pt>
+<img/farmland.png, id=377, 96.36pt x 96.36pt>
 File: img/farmland.png Graphic file (type png)
 <use img/farmland.png>
-Package pdftex.def Info: img/farmland.png  used on input line 513.
+Package pdftex.def Info: img/farmland.png  used on input line 521.
 (pdftex.def)             Requested size: 58.5006pt x 58.50014pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 511--519
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 519--527
 []$[]$$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 511--519
+Underfull \hbox (badness 10000) in paragraph at lines 519--527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 511--519
+Underfull \hbox (badness 10000) in paragraph at lines 519--527
 
  []
 
-<img/lock3.png, id=386, 48.18pt x 48.18pt>
+<img/lock3.png, id=378, 48.18pt x 48.18pt>
 File: img/lock3.png Graphic file (type png)
 <use img/lock3.png>
-Package pdftex.def Info: img/lock3.png  used on input line 523.
+Package pdftex.def Info: img/lock3.png  used on input line 531.
 (pdftex.def)             Requested size: 58.5006pt x 58.5001pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 521--528
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 529--536
 []$[]$$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--528
+Underfull \hbox (badness 10000) in paragraph at lines 529--536
 
  []
 
@@ -554,31 +559,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 521--528
 Appendice B.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 545.
+(hyperref)                than one, level fixed on input line 553.
 
 [26
 
-] (Relazione.bbl [27]
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-) [28
-
-] (Relazione.aux
+] [27] (Relazione.aux
 Package cleveref Info: loaded `italian' language definitions on input line 21.
 Package cleveref Info: loaded `italian' language definitions on input line 22.
 )
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 5727BC658162030A04C05C5B117401C3;6127.
+(rerunfilecheck)             Checksum: 108AA7171A5D0EB23CFFA2C49F3AC608;5836.
  ) 
 Here is how much of TeX's memory you used:
- 11792 strings out of 479321
- 188684 string characters out of 2856583
+ 11780 strings out of 479321
+ 188430 string characters out of 2856583
  558290 words of memory out of 3000000
- 29013 multiletter control sequences out of 15000+600000
+ 29008 multiletter control sequences out of 15000+600000
  410566 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,74p,641b,755s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,8n,74p,612b,755s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -598,9 +597,9 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/L
 inda/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
 :/Users/Linda/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 12.pfb>
-Output written on Relazione.pdf (29 pages, 582202 bytes).
+Output written on Relazione.pdf (28 pages, 583117 bytes).
 PDF statistics:
- 483 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
- 408 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 468 PDF objects out of 1000 (max. 8388607)
+ 86 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
 

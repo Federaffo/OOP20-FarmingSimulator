@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {3.2.4}Giacomo Montali}{17}{subsection.3.2.4}%
 \contentsline {section}{\numberline {3.3}Note di sviluppo}{18}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Federico Raffoni}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Simone Rega}{18}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Simone Rega}{19}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Linda Fabbri}{19}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Giacomo Montali}{19}{subsection.3.3.4}%
 \contentsline {chapter}{\numberline {4}Commenti finali}{20}{chapter.4}%
@@ -33,15 +33,13 @@
 \contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{22}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Simone Rega}{22}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Federico Raffoni}{22}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Linda Fabbri}{23}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Linda Fabbri}{22}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Giacomo Montali}{23}{subsection.4.2.4}%
 \contentsline {chapter}{\numberline {A}Guida utente}{24}{appendix.Alph1}%
 \contentsline {subsection}{\numberline {A.0.1}Schermata di Gioco}{24}{subsection.Alph1.0.1}%
 \contentsline {subsection}{\numberline {A.0.2}Mappa di Gioco}{25}{subsection.Alph1.0.2}%
-\contentsline {subsection}{\numberline {A.0.3}Personaggio}{25}{subsection.Alph1.0.3}%
-\contentsline {subsection}{\numberline {A.0.4}Animali}{25}{subsection.Alph1.0.4}%
-\contentsline {subsection}{\numberline {A.0.5}Oggetti di gioco}{25}{subsection.Alph1.0.5}%
-\contentsline {subsection}{\numberline {A.0.6}Negozio}{25}{subsection.Alph1.0.6}%
+\contentsline {subsection}{\numberline {A.0.3}Animali}{25}{subsection.Alph1.0.3}%
+\contentsline {subsection}{\numberline {A.0.4}Negozio}{25}{subsection.Alph1.0.4}%
 \contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{26}{appendix.Alph2}%
 \contentsline {subsection}{\numberline {B.0.1}Federico Raffoni}{26}{subsection.Alph2.0.1}%
 \contentsline {subsection}{\numberline {B.0.2}Simone Rega}{26}{subsection.Alph2.0.2}%

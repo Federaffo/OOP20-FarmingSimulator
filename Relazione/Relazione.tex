@@ -41,18 +41,18 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 \subsubsection{Requisiti funzionali}
 \begin{itemize}
 	\item Questa applicazione deve permettere al giocatore di muoversi all'interno della mappa di gioco evitando di salire su zone di mappa non calpestabili.
-	\item Il personaggio ha la possibilità di coltivare piantagioni di grano, patate, pomodori, carote, alberi di ciliege e altri frutti.
+	\item Il personaggio deve avere la possibilità di coltivare piantagioni di grano, patate, pomodori, carote, alberi di ciliege e altri frutti.
 	\item Nella mappa deve comparire una zona per l'allevamento degli animali, grazie ai quali si possono raccogliere latte, uova e altri derivati.
 	\item Farming Simulator deve mettere a disposizione un negozio in cui è possibile vedere il proprio inventario, vendere i prodotti agricoli raccolti in cambio di monete virtuali e comprare nuovi semi da coltivare.
 	\item Per aumentare la difficoltà di gioco devono essere messi a disposizione appezzamenti di terreno coltivabili inizialmente bloccati, che si possono sbloccare tramite l'utilizzo delle monete virtuali.
-	\item Il gioco deve permettere il salvataggio della partita per poter dare la possibilità di essere ripreso in un secondo momento
+	\item Il gioco deve permettere il salvataggio della partita per poter dare la possibilità di essere ripreso in un secondo momento.
 \end{itemize}
 
 
 \subsubsection{Requisiti non funzionali}
 \begin{itemize}
 	\item Farming Simulator deve poter essere eseguito su dispositivi con schermi dotati di risoluzioni differenti.
-	\item Il programma deve poter essere eseguito sia su Windows sia su sistemi operativi Unix
+	\item Il programma deve poter essere eseguito sia su Windows sia su sistemi operativi Unix.
 \end{itemize}
 
 \hfill\break
@@ -60,16 +60,16 @@ Lo scopo del gioco è arrivare all'apice della ricchezza, sbloccando tutti gli a
 
 In Farming Simulator il soggetto principale è il personaggio virtuale, il quale si muove all'interno di una mappa, composta da diversi tipologie di blocchi. 
 
-All'interno della mappa possiamo trovare blocchi coltivabili (Field Block), blocchi non calpestabili dal personaggio (Wall), blocchi estetici(Water), il quale unico compito è quello di abbellire la mappa, blocchi che compongono la stalla in cui possono muoversi gli animali(Stall), ed infine blocchi "locked"(Unlockable Block), ovvero che inizialmente sono bloccati e possono essere sbloccati durante la partita in cambio di monete virtuali.
+All'interno della mappa possiamo trovare blocchi coltivabili (\textit{Field Block}), blocchi non calpestabili dal personaggio (\textit{Wall}), blocchi estetici (\textit{Water}), il quale unico compito è quello di abbellire la mappa, blocchi che compongono la stalla in cui possono muoversi gli animali (\textit{Stall}), ed infine blocchi "locked" (\textit{Unlockable Block}), ovvero che inizialmente sono bloccati e possono essere sbloccati durante la partita in cambio di monete virtuali.
 
-Il personaggio (Player), grazie all'inventario (Inventory), è in grado di mantenere risorse al suo interno. Tra le risorse collezionabili possiamo trovare: il cibo (Food) ottenuto dalla raccolta di coltivazioni o di animali oppure i semi (Seed).
-Questi ultimi possono essere comprati nel negozio (Shop) del videogioco, dentro il quale è anche possibile vendere il cibo che si è raccolto.
+Il personaggio (\textit{Player}), grazie all'inventario (\textit{Inventory}), è in grado di mantenere risorse al suo interno. Tra le risorse collezionabili possiamo trovare: il cibo (\textit{Food}) ottenuto dalla raccolta di coltivazioni o di animali oppure i semi (\textit{Seed}).
+Questi ultimi possono essere comprati nel negozio (\textit{Shop}) del videogioco, dentro il quale è anche possibile vendere il cibo che si è raccolto.
 
-Il personaggio può interaggire con blocchi e animali (Animals), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (FieldBlock), sbloccare i blocchi non ancora accessibili (UnlockableBlock) e raccogliere i prodotti animali.
+Il personaggio può interaggire con blocchi e animali (\textit{Animals}), in particolare può piantare e raccogliere i semi all'interno dei blocchi coltivabili (\textit{FieldBlock}), sbloccare i blocchi non ancora accessibili (\textit{UnlockableBlock}) e raccogliere i prodotti animali.
 
 \begin{figure}[!htb]
-\centerline{\includegraphics[width=\textwidth]{img/UML_1-1.png}}
-\caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro}
+\centerline{\includegraphics[scale=0.7]{img/UML_1-1.png}}
+\caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra loro.}
 \label{img:analysis}
 \end{figure}
 
@@ -77,15 +77,15 @@ Il personaggio può interaggire con blocchi e animali (Animals), in particolare 
 
 \section{Architettura}
 
-L’architettura di Farming Simulator è basata su un pattern MVC. In particolare è stata sviluppata l’interfaccia Game che funge da Controller e si posiziona tra View e Model e gestisce eventuali interazioni tra componenti. All’arrivo di un input, game, si occupa di ordinare al Model il cambio di stato.
+L’architettura di Farming Simulator è basata su un pattern MVC. In particolare è stata sviluppata l’interfaccia Game che funge da Controller e si posiziona tra View e Model. Game gestisce inoltre eventuali interazioni tra componenti. All’arrivo di un input Game si occupa di ordinare al Model il cambio di stato.
 
-\hfill\break
-Gli input da tastiera provenienti dall’utente passano attraverso la classe KeyNotifier, la quale si occupa di informare il game dell’avvenuto input. 
 
-\hfill\break
-La parte di View è formata da diversi GameDrawer, i quali si occupano di interrogare il game e mostrare a video il gioco.
+Gli input da tastiera provenienti dall’utente passano attraverso la classe KeyNotifier, la quale si occupa di informare il Game dell’avvenuto input. 
 
-Quando viene catturato un input da tastiera, il GameDrawer avvisa il keyNotifier dell’avvenuta pressione, così facendo il KeyNotifier è un observable per GameDrawer. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione ci permette di non dipendere dall'implementazione e poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
+
+La parte di View è formata da diversi GameDrawer, i quali si occupano di interrogare il Game e mostrare a video il gioco.
+
+Quando viene catturato un input da tastiera, il GameDrawer avvisa il KeyNotifier dell’avvenuta pressione. In questo modo il GameDrawer non si deve occupare della gestione degli input, spostando il carico di lavoro al KeyNotifier; questa astrazione permette al programma di non dipendere dall'implementazione e di poter cambiare il binding\footnote[1]{Binding = associazione di un tasto ad un determinato movimento e/o interazione visiva in gioco (ad esempio [WASD] per spostarsi nella mappa)} o addirittura dispositivo di input (ad esempio un Joystick). 
 
 \hfill\break
 In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura MVC del progetto, mostrando le classi principali.
@@ -103,11 +103,11 @@ In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura 
 \subsection{Simone Rega}
 Io nel progetto mi sono occupato della parte riguardante l’aggiornamento dinamico della GUI nella sezione dello Shop, in particolare mi preoccupo di aggiornare il JPanel dello shop e la visualizzazione dell’inventario ogni qualvolta che si interagisce con i JButton di compra/vendita, la JComboBox e il JSpinner per comprare semi. 
 
-Ho ritenuto utile usare un pattern \textbf{Observer} in modo che alla ricevuta notifica di un osservatore, quindi un Evento sui componenti grafici descritti prima, gli altri osservatori vengono notificati per poi essere aggiornati.
+Ho ritenuto utile usare un pattern Observer in modo che alla ricevuta notifica di un "Observable", quindi un Evento sui componenti grafici descritti prima, gli altri "Observer" vengano notificati per poi essere aggiornati.
 
 \hfill\break
-È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce \textbf{Observer} e \textbf{Observable} di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
-Il ruolo di \textbf{Observable} è ricoperto dalla classe ObservableShopGUI mentre il ruolo di \textbf{Observer} è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
+È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce Observer e Observable di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
+Il ruolo di Observable è ricoperto dalla classe ObservableShopGUI mentre il ruolo di Observer è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer). 
 
 \hfill\break
 In \Cref{img:SimoneRega_Observer} è esemplificato il diagramma UML che descrive l'architettura del pattern Observer usato da Simone Rega, mostrando le classi principali.
@@ -121,9 +121,9 @@ In \Cref{img:SimoneRega_Observer} è esemplificato il diagramma UML che descrive
 \end{figure}
 
 \subsection{Federico Raffoni}
-In questa sezione ci occuperemo principalmente del caricamento delle risorse grafiche e non solo. In particolare è stata creata la classe Resources la quale si occupa di caricare e distribuire tutte le risorse. 
+In questa sezione ci occuperemo principalmente del caricamento delle risorse grafiche e non solo. In particolare è stata creata la classe Resources, la quale si occupa di caricare e distribuire tutte le risorse. 
 
-È stato usato il pattern SINGLETON per rendere unico nell’applicazione l’accesso alla classe Resources. In questo modo si evita che diversi GameDrawer carichino più volte le risorse sprecando memoria.
+È stato usato il pattern Singleton per rendere unico nell’applicazione l’accesso alla classe Resources. In questo modo si evita che diversi GameDrawer carichino più volte le risorse sprecando memoria.
 
  Le risorse verranno caricate solo alla prima chiamata, mentre le chiamate successive riceveranno una copia statica della classe risparmiando tempo e risorse.
  
@@ -138,7 +138,7 @@ In questa sezione ci occuperemo principalmente del caricamento delle risorse gra
 
 Per quanto riguarda il caricamento di una partita salvata, è stato utilizzato il pattern Observer per consentire all’Engine di rimanere in attesa mentre la classe GamePreloader si occupa di chiedere alll’utente se continuare una partita salvata oppure iniziare una partita da zero.
 
-In particolare Engine è Observer, mentre la classe GamePreloader è Observable.  Sono state realizzate inoltre le interfacce Observer e Observable generiche, in modo da poter essere riutilizzate anche in altri campi.
+In particolare Engine è "Observer", mentre la classe GamePreloader è "Observable".  Sono state realizzate inoltre le interfacce Observer e Observable generiche, in modo da poter essere riutilizzate anche in altri campi.
 
  In \Cref{img:FedericoRaffoni_Observer} è esemplificato il diagramma UML che descrive l'architettura Observer, mostrando le classi principali.
 
@@ -151,13 +151,13 @@ In particolare Engine è Observer, mentre la classe GamePreloader è Observable.
 \end{figure}
 
 \subsection{Linda Fabbri}
-La parte di progetto riguardo al design di cui mi sono occupata personalmente è quella riguardante i blocchi. 
+La parte di progetto riguardo al design di cui mi sono occupata personalmente è quella sui blocchi. 
 
-Questa parte è composta da una classe enum (BlockType) per la classificazione delle tipologie dei vari blocchi, in base alla tipologia ho avuto la necessità di implementare metodi diversi, dunque ho creato tre interfacce: \textbf{Block} per tutti i generici blocchi, \textbf{FieldBlock} (estensione di Block) a cui ho aggiunto i metodi per i blocchi coltivabili (FIELD in BlockType), \textbf{UnlockableBlock}(estensione di FieldBlock) a cui ho aggiunto i metodi per i blocchi coltivabili bloccati (LOCKED in BlockType).
+Questa parte è composta da una classe enum (BlockType) per la classificazione delle tipologie dei vari blocchi, in base alla tipologia ho avuto la necessità di implementare metodi diversi, dunque ho creato tre interfacce: Block per tutti i generici blocchi, FieldBlock (estensione di Block) a cui ho aggiunto i metodi per i blocchi coltivabili (FIELD in BlockType), UnlockableBlock(estensione di FieldBlock) a cui ho aggiunto i metodi per i blocchi coltivabili bloccati (LOCKED in BlockType).
 
 L’implementazione di queste interfacce si trova in FactoryBlock come classi innestate. Inoltre, per ogni tipologia di blocco si ha un differente costruttore al fine di determinare i vari campi. 
 
-Ho scelto l’utilizzo del pattern \textit{“Factory method”} allo scopo di creare e ritornare blocchi in base al loro tipo mediante l’uso di costruttori differenti, delegando la responsabilità della scelta della creazione di ogni oggetto solo alla classe che implementa tale pattern.
+Ho scelto l’utilizzo del pattern “Factory method” allo scopo di creare e ritornare blocchi in base al loro tipo mediante l’uso di costruttori differenti, delegando la responsabilità della scelta della creazione di ogni oggetto solo alla classe che implementa tale pattern.
 
 In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive l'architettura Factory Method, mostrando le classi principali.
 
@@ -172,9 +172,10 @@ In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive
 
 I principali punti dei quali mi sono occupato in questo progetto sono le varie entità presenti in essa, cioè il Player e i vari animali. 
 
-In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl} per  rendere più facile l'aggiunta di eventuali nuovi classi che implementano l'interfaccia Animal. 
+In particolare per questi ultimi ho utilizzato il pattern “Simple Factory”  nella classe FactoryAnimal, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe AnimalImpl per  rendere più facile l'aggiunta di eventuali nuovi classi che implementano l'interfaccia Animal. 
 
-La suddivisione degli animali è stata effetuata grazie ad un Enum.
+La suddivisione degli animali è stata effetuata grazie ad un Enum (AnimalType).
+
 
 \begin{figure}[!htb]
 	\centering{}
@@ -185,7 +186,7 @@ La suddivisione degli animali è stata effetuata grazie ad un Enum.
 
 In \Cref{img:GiacomoMontali_Factory} è esemplificato il diagramma UML che descrive l'architettura del Pattern Simple Factory, mostrando le classi principali.
 
-Inoltre ho creato la classe abstract \textbf{Entity} per renderla classe padre delle classi \textbf{PlayerImpl} e \textbf{AnimalImpl}, per evitare il riutilizzo di codice derivato dai metodi in comune come tutti i metodi che riguardano il movimento e la posizione sulla mappa.
+Inoltre ho creato la classe astratta Entity al fine di renderla classe padre di PlayerImpl e AnimalImpl, evitando il riutilizzo del codice derivato dai metodi in comune, cioè quelli che riguardano il movimento e la posizione sulla mappa.
 
 In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che descrive l'architettura delle classe Abstract Entity, mostrando le classi principali.
 
@@ -201,24 +202,24 @@ In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che desc
 \section{Testing automatizzato}
 
 
-In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug; non sono però mancati test riguardanti la View e salvataggio del gioco.
+In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug; tuttavia non mancano test riguardanti la View e salvataggio del gioco.
 Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
-
+\hfill\break
 
 {\setstretch{0.6}
 Le classi che sono state testate sono:
 \begin{itemize}
-	\item \textbf{testPlayerMovement:} con questo test muovo il personaggio simulando la pressione dei tasti  
-	\item \textbf{testPlayerCollision:} con questo test controllo che non avvenga il movimento su blocchi o in direzioni in cui mi è permesso
-	\item \textbf{testPlayerPlant:} con questo test simulo l'interazione del personaggio con un blocco di tipo FieldBlock, piantando un seme e poi controllando che quel blocco non sia vuoto
-	\item \textbf{testUnlockBlock:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock
-	\item \textbf{testUnlockBlockWithoutMoney:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock senza soldi
-	\item \textbf{testPlayerAnimalInteraction:} con questo test mi sposto nella zona "Stalla" della mappa e aspetto che un Animal qualunque sia pronto per poi poter raccogliere il suo \textit{Food} simulando l'interazione tra \textit{Player} e \textit{Animal}
-	\item \textbf{testBuy:} con questo test provo a comprare un \textit{Seed} dallo \textit{Shop}, controllando poi che sia effettivamente presente nell'\textit{Inventory}
-	\item \textbf{testBuyWithoutMoney:} questo test è simile al precedente, ma ho zero money, verificando che non avvenga l'acquisto
-	\item \textbf{testSell:} in questo test simulo una normale interazione con un FieldBlock, ricavandone poi il raccolto che proverò a vendere, verificandone l'esistenza nell'inventario e l'ottenimento dei soldi ricavati dalla vendita
-	\item \textbf{testSaver:} con questo test simulo il salvataggio del gioco su file con relativa apertura da esso in una nuova esecuzione del gioco, verificando che i nuovi e vecchi \textit{Game} e \textit{Player} siano gli stessi e abbiano le stesse caratteristiche
-	\item \textbf{testSaverPlayer:} questo test è simile al precedente, differisce semplicemente per il fatto che il Player viene mosso nella nuova istanza di gioco, così da far risultare falso il fatto che l'istanza salvata e l'istanza nuova creata siano uguali	
+	\item \textbf{testPlayerMovement:} con questo test muovo il personaggio simulando la pressione dei tasti;
+	\item \textbf{testPlayerCollision:} con questo test controllo che non avvenga il movimento su blocchi o in direzioni in cui non mi è permesso;
+	\item \textbf{testPlayerPlant:} con questo test simulo l'interazione del personaggio con un blocco di tipo FieldBlock, piantando un seme e poi controllando che quel blocco non sia vuoto;
+	\item \textbf{testUnlockBlock:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock;
+	\item \textbf{testUnlockBlockWithoutMoney:} con questo test simulo l'interazione con un blocco di tipo UnlockableBlock senza soldi;
+	\item \textbf{testPlayerAnimalInteraction:} con questo test mi sposto nella zona "Stalla" della mappa e aspetto che un Animal qualunque sia pronto per poi poter raccogliere il suo \textit{Food} simulando l'interazione tra \textit{Player} e \textit{Animal};
+	\item \textbf{testBuy:} con questo test provo a comprare un \textit{Seed} dallo \textit{Shop}, controllando poi che sia effettivamente presente nell'\textit{Inventory};
+	\item \textbf{testBuyWithoutMoney:} questo test è simile al precedente, ma non ho monete, verificando quindi che non avvenga l'acquisto;
+	\item \textbf{testSell:} in questo test simulo una normale interazione con un FieldBlock, ricavandone poi il raccolto che proverò a vendere, verificandone l'esistenza nell'inventario e l'ottenimento dei soldi ricavati dalla vendita;
+	\item \textbf{testSaver:} con questo test simulo il salvataggio del gioco su file con relativa apertura da esso in una nuova esecuzione del gioco, verificando che i nuovi e vecchi \textit{Game} e \textit{Player} siano gli stessi e abbiano le stesse caratteristiche;
+	\item \textbf{testSaverPlayer:} questo test è simile al precedente, differisce semplicemente per il fatto che il Player viene mosso nella nuova istanza di gioco, così da far risultare falso il fatto che l'istanza salvata e l'istanza nuova creata siano uguali.
 \end{itemize}
 }
 
@@ -227,25 +228,25 @@ Le classi che sono state testate sono:
 \section{Metodologia di lavoro}
 
 \subsection*{Metodologia riguardante il progetto in generale}
-Lo sviluppo del progetto è stato preceduto da una fase preliminare di analisi e progettazione, durante la quale abbiamo lavorato tutti insieme per definire prima le basi dell'applicazione, poi successivamente specificare i vari dettagli implementativi tramite UML sulla piattaforma Miro.
+Lo sviluppo del progetto è stato preceduto da una fase preliminare di analisi e progettazione, durante la quale tutti insieme abbiamo lavorato per definire le basi dell'applicazione e, successivamente, per specificare i vari dettagli implementativi tramite UML sulla piattaforma Miro.
 
 In queste fasi la collaborazione e il confronto sono state molto intense.
 
-La suddivisioni delle parti di Farming Simulator  è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
+La suddivisione delle parti di Farming Simulator  è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
 
 
 \subsection*{Distributed Version Control System}
 Come DVCS è stato usato Git, creando un repository su GitHub. Abbiamo lavorato sullo scheletro del progetto su un unico branch main, per poi creare diversi branch per implementare e/o mettere a punto la realizzazione di feature nuove o più sostanziose.
 
 \subsection{Federico Raffoni}
-Sviluppo del motore grafico, in particolare l’Engine e la classe WindowManager, e le varie interazioni tra questi due elementi. Ideazione e creazione della classe abstract GameDrawer che ha portato alla realizzazione delle varie scene di gioco.  Sviluppo della classe KeyNotifier che permette l’interazione tra la view e il controller (Game).
+Sviluppo del motore grafico, in particolare l’Engine, la classe WindowManager e le varie interazioni tra questi due elementi. Ideazione e creazione della classe abstract GameDrawer che ha portato alla realizzazione delle varie scene di gioco.  Sviluppo della classe KeyNotifier che permette l’interazione tra la view e il controller (Game).
 
- Implementazione della classe Resources. 
+Implementazione della classe Resources. 
  
- Ho inoltre sviluppato la classe che permette il salvataggio e il caricamento della partita (GameSaver) .
+Sviluppo della classe che permette il salvataggio e il caricamento della partita (GameSaver).
 
 \hfill\break
-Ho inoltre contribuito all'implementazione della classe Game  e  allo sviluppo della parte grafica nella classe MainScreenDrawer 
+Ho inoltre contribuito all'implementazione della classe Game, allo sviluppo della parte grafica nella classe MainScreenDrawer e allo sviluppo dei vari Test di gioco.
 
 \hfill\break
 Classi sviluppate singolarmente:
@@ -268,7 +269,7 @@ Si è occupata principalmente della parte riguardante la logica di gioco legata 
 
 Legato alle interazioni ha implementato i metodi riguardanti la compravendita di prodotti che si trovano nella classe ShopImpl, in particolare i metodi sellAll e buy. 
 
-In collaborazione con Simone Rega si è implementata la classe ShopDrawer per la parte che si occupa della grafica dei pannelli legati alla compravendita di semi e prodotti. 
+In collaborazione con Simone Rega è stata implementata la classe ShopDrawer per la parte che si occupa della grafica dei pannelli legati alla compravendita di semi e prodotti. 
 
 Ha collaborato all’implementazione della classe Game, in particolare per chiamare i metodi implementati in InteractionImpl. 
 
@@ -288,13 +289,13 @@ Classi sviluppate singolarmente:
 }
 \hfill\break
 
-Classi sviluppate insieme ad altre persone
+Classi sviluppate insieme ad altre persone:
 {\setstretch{0.6}
 	\begin{itemize}
-		\item MainScreenDrawer : implementazione del metodo drawMap per associare ai diversi tipi di blocco l'immagine corrispondente e in particolare l'immagine relativa ad ogni seme piantato.
-		\item ShopDrawer : la logica legata alla pressione dei tasti
+		\item MainScreenDrawer: implementazione del metodo drawMap per associare ai diversi tipi di blocco l'immagine corrispondente e in particolare l'immagine relativa ad ogni seme piantato.
+		\item ShopDrawer: la logica legata alla pressione dei tasti
 		\item FarmingSimulatorTestClass 
-		\item GameImpl : la parte che chiama i metodi relativi alle interazioni 
+		\item GameImpl: la parte che chiama i metodi relativi alle interazioni 
 		\item Shop
 		\item ShopImpl
 		\item UnlockableBlock
@@ -304,16 +305,16 @@ Classi sviluppate insieme ad altre persone
 \hfill\break
 
 \textbf{•Problemi}\hfill\break
-In fase di progettazione nella classe Inventory si era pensato di creare solo i metodi gotFoods e gotSeeds, per verificare l’esistenza di un certo numero di Food o Seed nell’inventario, tuttavia per i metodi delle classi che sono state citate precedentemente, si è trovata la necessità di un metodo che ritornasse la mappa di tutte le tipologie di Food e Seed.
+In fase di progettazione nella classe Inventory si era pensato di creare solo i metodi gotFoods e gotSeeds, per verificare l’esistenza di un certo numero di Food o Seed nell’inventario tuttavia ,per i metodi delle classi che sono state citate precedentemente, si è trovata la necessità di un metodo che ritornasse la mappa di tutte le tipologie di Food e Seed.
 
 \subsection{Simone Rega}
 Sviluppo delle classi all'interno del package Item che riguardano principalmente la realizzazione degli elementi Seed e Food del gioco.
 
 Sviluppo della parte di grafica riguardante lo shop (ShopDrawer); le informazioni del gioco (InfoDrawer e implementazione di vari JPanelHUD nel MainScreenDrawer).
 
-Ideazione e creazione delle classi nel package gameShop riguardante la logica base dello Shop
+Ideazione e creazione delle classi nel package gameShop riguardante la logica base dello Shop.
 
-Ideazione e sviluppo della classe test in JUnit5 a cui hanno dato una mano allo sviluppo Linda Fabbri e Federico Raffoni.
+Ideazione e sviluppo della classe test in JUnit5 a cui hanno collaborato allo sviluppo Linda Fabbri e Federico Raffoni.
 
 \hfill\break
 Classi sviluppate singolarmente:
@@ -350,7 +351,7 @@ Classi sviluppate insieme ad altre persone
 \subsection{Giacomo Montali}
 Sviluppo del package entity, che riguarda principalmente Player, Animal e le relative classi ad esse connesse.
 
-Sviluppo della mappa di gioco dentro la quale interagiranno le entità. Creazione del file della mappa. Caricamento della mappa di gioco da file. 
+Sviluppo della mappa di gioco dentro la quale interagiranno le entità, creazione del file della mappa e caricamento della mappa di gioco da file. 
 
 Collaborazione nella classe Game per la realizzazione grafica a runtime degli animali.
 
@@ -384,16 +385,16 @@ Classi sviluppate singolarmente:
 \end{itemize}
 
 Ho utilizzato la libreria Gson per serializzare e deserializzare i componenti di gioco per permettere il salvataggio e il caricamento della partita.
-Nell’implementazione della classe GameSaver è stato necessario sviluppare un serializzatore di interfacce il quale è stato scritto prendendo spunto da questo thread (source: https://stackoverflow.com/questions/62358189/gson-stackoverflowerror-during-serialization)
+Nell’implementazione della classe GameSaver è stato necessario sviluppare un serializzatore di interfacce il quale è stato scritto prendendo spunto da questo thread (\url{https://stackoverflow.com/questions/62358189/gson-stackoverflowerror-during-serialization})
 
-Per la creazione della classe MusicPlayer, non essendo pratico delle funzioni di libreria di javax.sound, ho fatto riferimento a snippet presenti sul web
+Per la creazione della classe MusicPlayer, non essendo pratico delle funzioni di libreria di javax.sound, ho fatto riferimento a snippet presenti sul web.
 
 
 \subsection{Simone Rega}
 Per quanto riguarda le Feature Avanzate del linguaggio: 
 \begin{itemize}
-	\item \textbf{Lambda :} utilizzate nella classe FarmingSimulatorTestClass per i test sul Player e sui Blocchi	
-	\item \textbf{IntStream: }utilizzate nella classe FarmingSimulatorTestClass .
+	\item \textbf{Lambda: }utilizzate nella classe FarmingSimulatorTestClass per i test sul Player e sui Blocchi;	
+	\item \textbf{IntStream: }utilizzate nella classe FarmingSimulatorTestClass.
 \end{itemize}
 
 \hfill\break
@@ -405,23 +406,24 @@ Per quanto riguarda le librerie utilizzate
 Sono consapevole che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che purtroppo non abbiamo avuto tempo e  modo di trattate a lezione.
  
 \subsection{Linda Fabbri}
-
+Per quanto riguarda le Feature Avanzate del linguaggio:
 \begin{itemize}
-	\item \textbf{Optional: } nei blocchi per il loro contenuto
+	\item \textbf{Optional: }nella classe riguardanti i blocchi per verificare se il terreno è stato seminato o se può essere seminato;
+	\item \textbf{Lambda:}utilizzate nella classe FarmingSimulatorTestClass per i test sullo Shop.
 \end{itemize}
 
 
 \subsection{Giacomo Montali}
-
+Per quanto riguarda le Feature Avanzate del linguaggio:
 \begin{itemize}
-	\item \textbf{Filter:} utilizzato nella classe MapImpl e nella classe EntityImpl
-	\item \textbf{Lambda:} utilizzata per la creazione di animali nella classe Game, nelle classi InventoryImpl e AnimalImpl.
-	\item \textbf{Stream:} utilizzato nell’Inventory
-	\item \textbf{Optional:} utilizzato nell’Inventory
+	\item \textbf{Filter:} utilizzato nella classe MapImpl e nella classe EntityImpl;
+	\item \textbf{Lambda:} utilizzata per la creazione di animali nella classe Game, nelle classi InventoryImpl e AnimalImpl;
+	\item \textbf{Stream:} utilizzato nell’Inventory;
+	\item \textbf{Optional:} utilizzato nell’Inventory.
 \end{itemize}
 Classi riutilizzate:
 \begin{itemize}
-	\item Per comodità ho riutilizzato la classe Pair fornita dal professore Viroli durante le sue lezioni apportandole qualche piccola modifica.
+	\item Per comodità ho riutilizzato la classe Pair fornita dal professore Viroli durante le sue lezioni, apportandole qualche piccola modifica.
 \end{itemize}
 
 \chapter{Commenti finali}
@@ -432,10 +434,10 @@ Classi riutilizzate:
 \subsection{Simone Rega}
 Sin dall'inizio sono stato partecipe e disponibile per la progettazione e l'analisi del progetto. 
 
-Devo dire che sono leggermente dispiaciuto perché nella fase di sviluppo avrei voluto essere più partecipe o comunque dedicarmi di più allo sviluppo del programma. Avrei potuto migliorare l'ottimizzazione del mio codice e le sue funzionalità, o magari osare di più con elementi di programmazioni più avanzati introdotti a lezione. 
+Devo dire che sono leggermente dispiaciuto perché nella fase di sviluppo avrei voluto essere più partecipe o comunque dedicarmi di più allo sviluppo del programma. Avrei potuto migliorare l'ottimizzazione del mio codice e le sue funzionalità, o magari osare di più con elementi di programmazione più avanzati introdotti a lezione. 
 
 Sono contento del Team con cui ho avuto modo di lavorare a questo progetto. La comunicazione è stata di fondamentale importanza.
-È stato il primo vero progetto di Programmazione ad Oggetti a cui ho preso parte e se devo essere sincero l'inesperienza si è fatta sentire, non avevamo punti di riferimento riguardo a mole e tempo di lavoro necessario, i quali ci hanno forse portato a non sfruttare al meglio le nostre capacità.
+È stato il primo vero progetto di Programmazione ad Oggetti a cui ho preso parte e, se devo essere sincero, l'inesperienza si è fatta sentire: non avevamo punti di riferimento riguardo a mole e tempo di lavoro necessario, i quali ci hanno forse portato a non sfruttare al meglio le nostre capacità.
 
 Sono abbastanza contento del risultato finale riguardante il lavoro da me svolto e della modesta qualità del mio codice, che è stata equilibrata e trasparente, permettendone un utilizzo corretto e utile; ma sono contento anche del risultato finale generale che ha portato alla realizzazione di un gioco molto fedele alla nostra idea in fase di progettazione.
 
@@ -458,10 +460,9 @@ In conclusione, sono soddisfatta del progetto ultimato, il quale rispecchia l’
 
 Lo sviluppo di questo progetto mi ha permesso di crescere notevolmente dal punto di vista organizzativo, in quanto questo è stato il primo software prodotto lavorando in team. Questo ha infatti portato a delle iniziali difficoltà, dovute alla mancata conoscenza nella gestione di progetti di questa scala. 
 
-Al termine di questo però, mi trovo soddisfatto del lavoro svolto, grazie ad una ottima collaborazione all’interno del team e alle conoscenze apprese a lezione.
+Nonostante tutto, al termine di questo, grazie ad una ottima collaborazione all’interno del team e alle conoscenze apprese a lezione, mi trovo soddisfatto del lavoro svolto.
 
-Ritengo inoltre di aver acquisito abilità nello scrivere ed apprezzare codice di qualità.
-Inoltre ho trovato molto utile Git, software che inizialmente sottovalutavo, che si è invece rivelato fondamentale per il lavoro svolto.
+Ritengo di aver acquisito abilità nello scrivere ed apprezzare codice di qualità; inoltre ho trovato molto utile Git, software che inizialmente sottovalutavo, il quale si è invece rivelato fondamentale per la realizzazione del progetto e la gestione di esso.
 
 
 \section{Difficoltà incontrate e commenti per i docenti}
@@ -470,7 +471,6 @@ Inoltre ho trovato molto utile Git, software che inizialmente sottovalutavo, che
 In conclusione sono soddisfatto del mio percorso in questa materia e ritengo che il corso sia stato utile e funzionale al mio percorso di studi e formazione professionale. Ritengo che il carico del lavoro sia tarato abbastanza bene, senza inutili e superflue ripetizioni basilari o concetti magari già trattati da altri corsi come Programmazione e Algoritmi, ma anche senza lasciare troppe lacune o parti spiegate e non affrontate. 
 
 I professori sono stati a mio avviso capaci di spiegare e motivare al proseguimento attivo del corso.
-Venendo da un Istituto Tecnico Informatico mi sono accorto del salto di qualità presentato nel corso, in quanto non venivano solo spiegati gli elementi fondamentali di programmazione ad oggetti ma capivamo come utilizzarli al meglio e come metterli in relazione tra di loro, sempre con un occhio all'ottimizzazione o alla leggibilità del codice.
 
 Purtroppo il mio percorso di sviluppo del progetto di OOP non è stato lineare nel tempo; nonostante fosse stimolante per me avere per la prima volta un progetto di programmazione così bello e complesso da portare avanti, questo non è stato sempre possibile poiché non sempre sono riuscito a trovare il tempo per dedicarmi ad esso dopo le lezioni o lo studio. È effettivamente il primo progetto di sviluppo software da zero a cui ho partecipato e mi ha fatto crescere dal punto di vista organizzativo, rendendomi cosciente di ciò che mi aspetta una volta uscito dall'università.
 
@@ -480,11 +480,18 @@ In conclusione mi ritengo molto soddisfatto di questo corso. Ritengo che sia sta
 
 Avrei preferito ricevere qualche nozione in più riguardo a Gradle, data la sua importanza all’interno dell’ambiente Java, in particolare nel contesto di un progetto grande come può essere questo.
 
-Tuttavia sono molto contento delle competenze ottenute durante questo corso e coltivate durante la costruzione e lo sviluppo dei questo progetto
+Tuttavia sono molto contento delle competenze ottenute durante questo corso e coltivate durante la costruzione e lo sviluppo di questo progetto.
 
 \subsection{Linda Fabbri}
+Il corso, secondo la mia opinione, è stato chiaro ed esaustivo per quanto riguarda le basi della programmazione ad oggetti.
+Ho riscontrato alcune difficoltà a seguire al pieno le lezioni a causa delle scarse pause.
+Un problema che ho riscontrato durante l'esame è stata la mancanza di concentrazione e il poco tempo a disposizione, forse dovuti principalmente alla modalità "in remoto" dell'esame e alla scarsa efficienza del mio pc.
+
+
 \subsection{Giacomo Montali}
-In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia capacità nello scrivere il codice ad un livello superiore.
+In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia capacità nello scrivere il codice ad un livello superiore, che ha già portato risultati come per esempio in altri miei progetti.
+Valuto quindi questo come uno dei corsi più interessanti sostenuti fin'ora.
+
 \appendix
 \chapter{Guida utente}
 
@@ -495,11 +502,12 @@ In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia
 	\label{img:schermata}
 \end{figure}
 \begin{itemize}
-	\item[1)] \colorbox{red}{Pannello informativo:} in questa parte della schermata puoi vedere le monete che hai a disposizione, il costo per sbloccare la prossima area coltivabile bloccata (vedere \cref{mappa}), il tempo trascorso dall'inizio della partita e premendo X in gioco compaiono le informazioni basilare sui controlli.
+	\item[1)] \colorbox{red}{Pannello informativo:} in questa parte della schermata puoi vedere le monete che hai a disposizione, il costo per sbloccare la prossima area coltivabile bloccata (vedere \cref{mappa}), il tempo trascorso dall'inizio della partita e, premendo X in gioco, compaiono le informazioni basilari sui controlli.
 	\item[2)] \colorbox{cyan}{\textcolor{black}{Stalla:}} luogo in cui vengono allevati gli animali(vedere \cref{animali}).
-	\item[3)] \colorbox{orange}{Personaggio:} avatar virtuale che si muove nella mappa(vedere \cref{personaggio}).
-	\item[4)] Aree Coltivabili: aree in cui è possibile coltivare i prodotti.
-	\item[5)] Selezione seme: girando la rotellina del mouse è possibile scegliere il seme da piantare.
+	\item[3)] \colorbox{orange}{Personaggio:} avatar virtuale che si muove nella mappa tramite la pressione dei tasti WASD.
+	Può interagire con alcune zone della mappa e con gli animali.
+	\item[4)] \colorbox{gray}{\textcolor{black}{Aree Coltivabili:}} aree in cui è possibile coltivare i prodotti.
+	\item[5)] \colorbox{green}{\textcolor{black}{Selezione seme:}} girando la rotellina del mouse è possibile scegliere il seme da piantare.
 \end{itemize}
 \subsection{Mappa di Gioco}
 		\label{mappa}
@@ -526,19 +534,19 @@ In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia
 			{Se hai a disposizione abbastanza monete virtuali per sbloccare la zona di terra, premendo F su di essa potrai sbloccarla facendola diventare una zona coltivabile.}
 		\end{minipage}\\
 
-\subsection{Personaggio}
-	\label{personaggio}
-	Il personaggio si può muovere in tutte le direzioni tramite la pressione dei tasti WASD.\\
-	Può interagire con alcune zone della mappa e con gli animali(vedere \cref{animali})
-
-	
 
 \subsection{Animali}
 	\label{animali}
-
-\subsection{Oggetti di gioco}
+	Il personaggio può interagire con gli animali che si trovano nella stalla solo quando quest'ultimi sono "pronti", cioè contornati di giallo. 
+	
+	Per interagire con questi bisogna premere la F.
+	
 
 \subsection{Negozio}
+	Premendo E si entra nel negozio, in cui si possono comprare semi da piantare nella parte in basso a sinistra e vendere i prodotti raccolti nella parte in basso a destra.
+	
+	Nella parte in alto a destra puoi trovare l'inventario.
+	
 
 \chapter{Esercitazioni di laboratorio}
 
@@ -566,7 +574,6 @@ In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia
 	\item Laboratorio 08: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=63865#p121223}
 	\item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=64639#p121226}
 \end{itemize}
-\bibliographystyle{alpha}
-\bibliography{13-template}
+
 
 \end{document}
