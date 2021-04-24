@@ -30,16 +30,15 @@ public class SeedImpl implements Seed {
         }
     };
 
-    
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public void grow() {
         this.state = SeedState.GROWN;
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public FoodType harvest() {
         this.state = SeedState.HARVESTED;
@@ -47,28 +46,28 @@ public class SeedImpl implements Seed {
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public SeedState getSeedState() {
         return this.state;
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public double getGrowTime() {
         return this.growTime;
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public FoodType getFoodType() {
         return this.ofWhichFood;
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     public SeedType getSeedType() {
         return this.seedType;

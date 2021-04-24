@@ -99,6 +99,10 @@ public final class MapImpl implements Map {
         return true;
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public Block getBlock(final Pair<Integer, Integer> pos) {
 
         if (!isInMap(pos)) {
@@ -108,6 +112,10 @@ public final class MapImpl implements Map {
         return mappa[pos.getX()][pos.getY()];
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public void setBlock(final Pair<Integer, Integer> pos, final BlockType bt) {
 
         if (!isInMap(pos)) {
@@ -122,6 +130,10 @@ public final class MapImpl implements Map {
         }
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public Set<Block> getMapSet() {
         Set<Block> mapSet = new HashSet<>();
 
@@ -137,6 +149,10 @@ public final class MapImpl implements Map {
         return mapSet;
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public Pair<Integer, Integer> getBlockCoordinates(final Block b) {
 
         for (int i = 0; i < COLUMN; i++) {
@@ -149,6 +165,10 @@ public final class MapImpl implements Map {
         throw new IllegalArgumentException();
     }
 
+    /**
+     *{@inheritDoc}
+     */
+    @Override
     public Block getRandomFilterBlock(final Predicate<Block> blockFilter) {
         Random rnd = new Random();
         Block b;
@@ -159,11 +179,17 @@ public final class MapImpl implements Map {
         return b;
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public int getRows() {
         return ROW;
     }
 
+    /**
+     *{@inheritDoc}
+     */
     @Override
     public int getColumns() {
         return COLUMN;

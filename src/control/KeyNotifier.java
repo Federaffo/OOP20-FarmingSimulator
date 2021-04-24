@@ -16,7 +16,7 @@ public class KeyNotifier {
     }
 
     /**
-     * @param e
+     * @param e is the event key pressed
      */
     public void keyPressed(final KeyEvent e) {
 
@@ -48,7 +48,7 @@ public class KeyNotifier {
     }
 
     /**
-     * @param e
+     * @param e is the event key released
      */
     public void keyReleased(final KeyEvent e) {
 
@@ -72,7 +72,7 @@ public class KeyNotifier {
     }
 
     /**
-     * @param e
+     * @param e is the mouse wheel event
      */
     public void mouseWheelMoved(final MouseWheelEvent e) {
         pg.getInventory().nextSeed();

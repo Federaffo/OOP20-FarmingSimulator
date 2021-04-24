@@ -9,7 +9,7 @@ public enum FoodType implements Texturable {
     PORK_MEAT(20, "Pork", 1), EGG(5, "Egg", 1), MILK(8, "Milk", 1),
 
     /**
-     *  vegetables.
+     *  Vegetables.
      */
     WHEAT(4, "Wheat", 3), CARROT(13, "Carrot", 3), POTATO(22, "Potato", 3), TOMATO(40, "Tomato", 3),
 

@@ -124,6 +124,10 @@ public class Resources {
         }
     }
 
+    /**
+     * @param dir
+     * @return a BufferedImage of the current Entity direction
+     */
     public BufferedImage getPlayerInDirection(final Direction dir) {
         animationDelay++;
         animationDelay %= ANIMATION_SPEED;
@@ -158,10 +162,17 @@ public class Resources {
         }
     }
 
+    /**
+     * @param item
+     * @return a BufferedImage texture of the current item
+     */
     public BufferedImage getTextures(final Texturable item) {
         return textures.get(item);
     }
 
+    /**
+     * @return an InputStream that contains the music theme
+     */
     public InputStream getMainTheme() {
         return getClass().getResourceAsStream("/hd.wav");
     }
