@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  22 APR 2021 23:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 APR 2021 00:48
 entering extended mode
 **./Relazione.tex
 (Relazione.tex
@@ -205,6 +205,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip49
 )
+(C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 (C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2021/01/26 3.53 The Babel package
 
@@ -259,24 +262,24 @@ File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
 ) (Relazione.aux)
 \openout1 = `Relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 (C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -307,7 +310,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
 )
-Package hyperref Info: Link coloring OFF on input line 19.
+Package hyperref Info: Link coloring OFF on input line 20.
 
 (C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -321,15 +324,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count280
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
  (Relazione.out) (Relazione.out)
 \@outlinefile=\write4
 \openout4 = `Relazione.out'.
 
-LaTeX Info: Redefining \it@ocap on input line 19.
-LaTeX Info: Redefining \it@ccap on input line 19.
+LaTeX Info: Redefining \it@ocap on input line 20.
+LaTeX Info: Redefining \it@ccap on input line 20.
 
 
 File italian.ldf warning: 
@@ -337,12 +340,12 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 19.
+italian.ldf    on input line 20.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 22.
+(Font)              <14.4> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 22.
+(Font)              <7> on input line 23.
 [1
 
 {C:/Users/Simon/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
@@ -355,90 +358,100 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 4.
-)
-\tf@toc=\write5
-\openout5 = `Relazione.toc'.
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.25 \chapter
-             {Analisi} [1
+l.32 ...azioni di laboratorio}{21}{appendix.Alph2}
+                                                  % [1
 
-]
+])
+\tf@toc=\write5
+\openout5 = `Relazione.toc'.
+
+ [2]
 Capitolo 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
-[2
+(Font)              <5> on input line 32.
+[3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-<img/UML_1-1.png, id=132, 736.7525pt x 345.29pt>
+<img/UML_1-1.png, id=181, 736.7525pt x 345.29pt>
 File: img/UML_1-1.png Graphic file (type png)
 <use img/UML_1-1.png>
-Package pdftex.def Info: img/UML_1-1.png  used on input line 65.
+Package pdftex.def Info: img/UML_1-1.png  used on input line 66.
 (pdftex.def)             Requested size: 515.72324pt x 241.70134pt.
-[3] [4 <./img/UML_1-1.png>]
+[4] [5 <./img/UML_1-1.png>]
 Capitolo 2.
-<img/UML_2-1.png, id=147, 736.7525pt x 345.29pt>
+<img/UML_2-1.png, id=196, 736.7525pt x 345.29pt>
 File: img/UML_2-1.png Graphic file (type png)
 <use img/UML_2-1.png>
-Package pdftex.def Info: img/UML_2-1.png  used on input line 89.
+Package pdftex.def Info: img/UML_2-1.png  used on input line 90.
 (pdftex.def)             Requested size: 478.88345pt x 224.43582pt.
-[5
+[6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 115--118
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
 
  []
 
-[6 <./img/UML_2-1.png>]
-<img/UML_ObserverSimo.png, id=163, 592.2125pt x 272.01625pt>
+[7 <./img/UML_2-1.png>]
+<img/UML_ObserverSimo.png, id=212, 592.2125pt x 272.01625pt>
 File: img/UML_ObserverSimo.png Graphic file (type png)
 <use img/UML_ObserverSimo.png>
-Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 120.
+Package pdftex.def Info: img/UML_ObserverSimo.png  used on input line 121.
 (pdftex.def)             Requested size: 473.77063pt x 217.61328pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
-<img/UML_SingletonRaffo.png, id=165, 368.37625pt x 383.4325pt>
+<img/UML_SingletonRaffo.png, id=214, 368.37625pt x 383.4325pt>
 File: img/UML_SingletonRaffo.png Graphic file (type png)
 <use img/UML_SingletonRaffo.png>
-Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 137.
+Package pdftex.def Info: img/UML_SingletonRaffo.png  used on input line 138.
 (pdftex.def)             Requested size: 221.02744pt x 230.06126pt.
-[7 <./img/UML_ObserverSimo.png>]
-<img/UML_ObserverRaffo.png, id=174, 689.57625pt x 542.025pt>
+[8 <./img/UML_ObserverSimo.png>]
+<img/UML_ObserverRaffo.png, id=223, 689.57625pt x 542.025pt>
 File: img/UML_ObserverRaffo.png Graphic file (type png)
 <use img/UML_ObserverRaffo.png>
-Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 151.
+Package pdftex.def Info: img/UML_ObserverRaffo.png  used on input line 152.
 (pdftex.def)             Requested size: 390.0pt x 306.5507pt.
- [8 <./img/UML_SingletonRaffo.png>]
-<img/UML_FactoryLinda.png, id=182, 947.54pt x 490.83376pt>
+ [9 <./img/UML_SingletonRaffo.png>]
+<img/UML_FactoryLinda.png, id=231, 947.54pt x 490.83376pt>
 File: img/UML_FactoryLinda.png Graphic file (type png)
 <use img/UML_FactoryLinda.png>
-Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 170.
+Package pdftex.def Info: img/UML_FactoryLinda.png  used on input line 171.
 (pdftex.def)             Requested size: 390.0pt x 202.02205pt.
- [9 <./img/UML_ObserverRaffo.png>]
-<img/UML_AbstractMonta.png, id=190, 673.51625pt x 462.72874pt>
+ [10 <./img/UML_ObserverRaffo.png>]
+<img/UML_AbstractMonta.png, id=238, 673.51625pt x 462.72874pt>
 File: img/UML_AbstractMonta.png Graphic file (type png)
 <use img/UML_AbstractMonta.png>
-Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 188.
+Package pdftex.def Info: img/UML_AbstractMonta.png  used on input line 184.
 (pdftex.def)             Requested size: 390.0pt x 267.9451pt.
- [10 <./img/UML_FactoryLinda.png>] [11 <./img/UML_AbstractMonta.png>]
+<img/UML_FactoryMonta.png, id=241, 531.9875pt x 254.9525pt>
+File: img/UML_FactoryMonta.png Graphic file (type png)
+<use img/UML_FactoryMonta.png>
+Package pdftex.def Info: img/UML_FactoryMonta.png  used on input line 198.
+(pdftex.def)             Requested size: 390.0pt x 186.91125pt.
+ [11 <./img/UML_FactoryLinda.png>]
+
+LaTeX Warning: Text page 12 contains only floats.
+
+[12 <./img/UML_AbstractMonta.png> <./img/UML_FactoryMonta.png>]
 Capitolo 3.
-[12
+[13
 
-] [13] [14] [15]
+] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
-LaTeX Warning: Citation `mersenne' on page 16 undefined on input line 291.
+ []
 
-[16] [17]
+[15] [16] [17]
 Capitolo 4.
 [18
 
@@ -450,7 +463,7 @@ Appendice A.
 Appendice B.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 379.
+(hyperref)                than one, level fixed on input line 399.
 
 [21
 
@@ -464,35 +477,38 @@ LaTeX Warning: Empty `thebibliography' environment on input line 3.
 Package cleveref Info: loaded `italian' language definitions on input line 21.
 Package cleveref Info: loaded `italian' language definitions on input line 22.
 )
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 05FACD9264024E2D17D00C309CFCFFFE;3085.
+(rerunfilecheck)             Checksum: 22995925E96552DC3EB3EFB3CB9079EE;4457.
  ) 
 Here is how much of TeX's memory you used:
- 11148 strings out of 479334
- 179749 string characters out of 2857084
- 544487 words of memory out of 3000000
- 28407 multiletter control sequences out of 15000+200000
+ 11206 strings out of 479334
+ 180925 string characters out of 2857084
+ 545776 words of memory out of 3000000
+ 28454 multiletter control sequences out of 15000+200000
  410225 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,74p,783b,484s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1200.pk><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Simon/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Simon/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Simon/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Simon
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Us
-ers/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.p
-fb>
-Output written on Relazione.pdf (24 pages, 277687 bytes).
+ 71i,8n,74p,641b,771s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+ <C:\Users\Simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
+00.pk><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmr10.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Simon/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Simon/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Simon/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Simon/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/User
+s/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb
+>
+Output written on Relazione.pdf (24 pages, 287532 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 204 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 281 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{setspace}
 
 % Questo commentalo se vuoi scrivere in inglese.
 \usepackage[italian]{babel}
@@ -176,7 +177,16 @@ In \Cref{img:LindaFabbri_Factory} è esemplificato il diagramma UML che descrive
 
 I principali punti dei quali mi sono occupato in questo progetto sono le varie entità presenti in essa, cioè il Player e i vari animali. 
 
-In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl}. La suddivisione degli animali è stata effetuata grazie ad Enum.
+In particolare per questi ultimi ho utilizzato il pattern \textit{“Simple Factory”}  nella classe \textbf{FactoryAnimal}, con l’obiettivo di delegare la creazione degli animali a quest’ultima, separandola così dalla classe \textbf{AnimalImpl} per  rendere più facile l'aggiunta di eventuali nuovi classi che implementano l'interfaccia Animal. La suddivisione degli animali è stata effetuata grazie ad un Enum.
+
+\begin{figure}[!htb]
+	\centering{}
+	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
+	\caption{Schema UML architetturale del pattern Simple Factory (Giacomo Montali).}
+	\label{img:GiacomoMontali_Factory}
+\end{figure}
+
+In \Cref{img:GiacomoMontali_Factory} è esemplificato il diagramma UML che descrive l'architettura del Pattern Simple Factory, mostrando le classi principali.
 
 Inoltre ho creato la classe abstract \textbf{Entity} per renderla classe padre delle classi \textbf{PlayerImpl} e \textbf{AnimalImpl}, per evitare il riutilizzo di codice derivato dai metodi in comune come tutti i metodi che riguardano il movimento e la posizione sulla mappa.
 
@@ -185,7 +195,7 @@ In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che desc
 \hfill\break
 \begin{figure}[!htb]
 	\centering{}
-	\includegraphics[width=\textwidth]{img/UML_AbstractMonta.png}
+	\includegraphics[width=\textwidth]{img/UML_FactoryMonta.png}
 	\caption{Schema UML architetturale della clase Entity (Giacomo Montali).}
 	\label{img:GiacomoMontali_Abstract}
 \end{figure}
@@ -197,6 +207,7 @@ In \Cref{img:GiacomoMontali_Abstract} è esemplificato il diagramma UML che desc
 In questo progetto abbiamo deciso di testare prevalentemente la parte di Model poiché riteniamo sia la più propensa ad avere bug. Per svolgere test completamente automatizzati sul progetto è stato usato JUnit5.
 
 Le classi che sono state testate sono:
+{\setstretch{0.6}
 \begin{itemize}
 	\item \textbf{testPlayerMovement:} con questo test muovo il personaggio simulando la pressione dei tasti  
 	\item \textbf{testPlayerCollision:} con questo test controllo che non avvenga il movimento su blocchi o in direzioni in cui mi è permesso
@@ -208,114 +219,123 @@ Le classi che sono state testate sono:
 	\item \textbf{testBuyWithoutMoney:} questo test è simile al precedente, ma ho zero money, verificando che non avvenga l'acquisto
 	\item \textbf{testSell:} in questo test simulo una normale interazione con un FieldBlock, ricavandone poi il raccolto che proverò a vendere, verificandone l'esistenza nell'inventario e l'ottenimento dei soldi ricavati dalla vendita
 	\item \textbf{testSaver:} con questo test simulo il salvataggio del gioco su file con relativa apertura da esso in una nuova esecuzione del gioco, verificando che i nuovi e vecchi \textit{Game} e \textit{Player} siano gli stessi e abbiano le stesse caratteristiche
-	\item \textbf{testSaverPlayer:} questo test è simile al precedente, differisce semplicemente per il fatto che il Player viene mosso nella nuova istanza di gioco, così da far risultare falso il fatto che l'istanza salvata e l'istanza nuova creata siano uguali
-
-	
-	
+	\item \textbf{testSaverPlayer:} questo test è simile al precedente, differisce semplicemente per il fatto che il Player viene mosso nella nuova istanza di gioco, così da far risultare falso il fatto che l'istanza salvata e l'istanza nuova creata siano uguali	
 \end{itemize}
-
+}
 
 
 
 \section{Metodologia di lavoro}
 
-Ci aspettiamo, leggendo questa sezione, di trovare conferma alla divisione operata nella sezione del design di dettaglio, e di capire come è stato svolto il lavoro di integrazione.
-%
-\textbf{Andrà realizzata una sotto-sezione separata per ciascuno studente} che identifichi le porzioni di progetto sviluppate, separando quelle svolte in autonomia da quelle sviluppate in collaborazione.
-%
-Diversamente dalla sezione di design, in questa è consentito elencare package/classi, se lo studente ritiene sia il modo più efficace di convogliare l'informazione.
-%
-Si ricorda che l'impegno deve giustificare circa 40-50 ore di sviluppo (è normale e fisiologico che approssimativamente la metà del tempo sia impiegata in analisi e progettazione).
+\subsection{Metodologia riguardante il progetto in generale}
 
-\subsection*{Elementi positivi}
+-----fase di progettazione preliminare
+-----uml base su miro
 
+Per la realizzazione dello sviluppo di Farming Simulator la suddivisioni delle parti è avvenuta in modo abbastanza equo assegnando a ciascuno una parte significativa e importante del progetto, anche in base alle nostre preferenze. 
+
+Come DVCS è stato usato Git, creando un repository su GitHub. Abbiamo lavorato sullo scheletro del progetto su un unico branch main, per poi creare diversi branch per creare e/o mettere a punto la realizzazione di branch più importanti.
+
+\subsection{Federico Raffoni}
+Sviluppo del motore grafico, in particolare l’Engine e la classe WindowManager, e le varie interazioni tra questi due elementi. Ideazione e creazione della classe abstract GameDrawer che ha portato alla realizzazione delle varie scene di gioco.  Sviluppo della classe KeyNotifier che permette l’interazione tra la view e il controller (Game). Implementazione della classe Resources. Ho inoltre sviluppato la classe che permette il salvataggio e il caricamento della partita (GameSaver) .
+
+\hfill\break
+Ho inoltre contribuito all'implementazione della classe Game  e  allo sviluppo della parte grafica nella classe MainScreenDrawer 
+
+\hfill\break
+Classi sviluppate singolarmente:
+{\setstretch{0.6}
 \begin{itemize}
-	\item Si identifica con precisione il ruolo di ciascuno all'interno del gruppo, ossia su quale parte del progetto ciascuno dei componenti si è concentrato maggiormente.
-	\item La divisione dei compiti è equa, ossia non vi sono membri del gruppo che hanno svolto molto più lavoro di altri.
-	\item La divisione dei compiti è coerente con quanto descritto nelle parti precedenti della relazione.
-	\item La divisione dei compiti è realistica, ossia le dipendenze fra le parti sviluppate sono minime.
-	\item Si identifica quale parte del software è stato sviluppato da tutti i componenti insieme.
-	\item Si spiega in che modo si sono integrate le parti di codice sviluppate separatamente, evidenziando eventuali problemi. Ad esempio, una strategia è convenire sulle interfacce da usare (ossia, occuparsi insieme di stabilire l'architettura) e quindi procedere indipendentemente allo sviluppo di parti differenti. Una possibile problematica potrebbe essere una dimenticanza in fase di design architetturale che ha costretto ad un cambio e a modifiche in fase di integrazione. Una situazione simile è la norma nell'ingegneria di un sistema software non banale, ed il processo di progettazione top-down con raffinamento successivo è il così detto processo ``a spirale''.
-	\item Si descrive in che modo è stato impiegato il DVCS.
+	\item KeyNotifier
+	\item Engine
+	\item GameSaver
+	\item GameDrawer
+	\item GamePreloader
+	\item Resources
+	\item WindowManager
+	\item MusicPlayer
 \end{itemize}
+}
 
-\subsection*{Elementi negativi}
+\subsection{Linda Fabbri}
+
+\subsection{Simone Rega}
+Sviluppo delle classi all'interno del package Item che riguardano principalmente la realizzazione degli elementi Seed e Food del gioco.
+
+Sviluppo della parte di grafica riguardante lo shop (ShopDrawer); le informazioni del gioco (InfoDrawer e implementazione di vari JPanelHUD nel MainScreenDrawer).
+
+Ideazione e creazione delle classi nel package gameShop riguardante la logica base dello Shop
+
+\hfill\break
+Classi sviluppate singolarmente:
+{\setstretch{0.6}
 \begin{itemize}
-	\item Non si chiarisce chi ha fatto cosa.
-	\item C'è discrepanza fra questa sezione e le sezioni che descrivono il design dettagliato.
-	\item Tutto il progetto è stato svolto lavorando insieme invece che assegnando una parte a ciascuno.
-	\item Non viene descritta la metodologia di integrazione delle parti sviluppate indipendentemente.
-	\item Uso superficiale del DVCS.
+	\item FoodType
+	\item SeedType
+	\item Seed
+	\item SeedImpl
+	\item ItemConstants
+	\item Shop
+	\item ShopImpl
+	\item UnlockableBlock
+	\item InfoDrawer
+	\item QuitDrawer
+	\item JPanelINFO
+	\item JPanelHUD
+	\item ObservableShopGUI
 \end{itemize}
+}
+\hfill\break
+
+Classi sviluppate insieme ad altre persone
+{\setstretch{0.6}
+\begin{itemize}
+	\item MainScreenDrawer : implementazione di generateHUD per generare la barra di gioco superiore che visualizza 
+	\item ShopDrawer : quasi tutta la parte grafica
+	\item FarmingSimulatorTestClass 
+	\item Observer
+	\item Observable
+\end{itemize}
+}
+
+\subsection{Giacomo Montali}
+
 
 \section{Note di sviluppo}
 
-Questa sezione, come quella riguardante il design dettagliato va svolta \textbf{singolarmente da ogni membro del gruppo}.
-
-Ciascuno dovrà mettere in evidenza eventuali particolarità del suo metodo di sviluppo, ed in particolare:
-\begin{itemize}
-	\item \textbf{Elencare} (fare un semplice elenco per punti, non un testo!) le feature \textit{avanzate} del linguaggio e dell'ecosistema Java che sono state
-utilizzate. Le feature di interesse sono:
-	\begin{itemize}
-		\item Progettazione con generici, ad esempio costruzione di nuovi tipi generici, e uso di generici bounded. Uso di classi generiche di libreria non è considerato avanzato.
-		\item Uso di lambda expressions
-		\item Uso di \texttt{Stream}, di \texttt{Optional} o di altri costrutti funzionali
-		\item Uso della reflection
-		\item Definizione ed uso di nuove annotazioni
-		\item Uso del Java Platform Module System
-		\item Uso di parti di libreria non spiegate a lezione (networking, compressione, parsing XML, eccetera...)
-		\item Uso di librerie di terze parti (incluso JavaFX): Google Guava, Apache Commons...
-		\item Uso di build systems
-	\end{itemize}
-	Si faccia molta attenzione a non scrivere banalità, elencando qui features di tipo ``core'', come le eccezioni, le enumerazioni, o le inner class: nessuna di queste è considerata avanzata.
-	\item Descrivere \textit{molto brevemente} le librerie utilizzate nella propria parte di progetto, se non trattate a lezione (ossia, se librerie di terze parti e/o se componenti del JDK non visti, come le socket). Si ricorda che l'utilizzo di librerie è valutato \emph{positivamente}.
-	\item Sviluppo di algoritmi particolarmente interessanti \emph{non forniti da alcuna libreria} (spesso può convenirvi chiedere sul forum se ci sia una libreria per fare una certa cosa, prima di gettarvi a capofitto per scriverla voi stessi).
-\end{itemize}
-%
-In questa sezione, \textit{dopo l'elenco}, è anche bene evidenziare eventuali pezzi di codice ``riadattati'' (o scopiazzati...) da Internet o da altri progetti, pratica che tolleriamo ma che non raccomandiamo.
-%
-I pattern di design, invece \textbf{non} vanno messi qui.
-%
-L'uso di pattern di design (come suggerisce il nome) è un aspetto avanzato di design, non di implementazione,
-e non va in questa sezione.
-
-\subsection*{Elementi positivi}
+\subsection{Federico Raffoni}
 
 \begin{itemize}
-	\item Si elencano gli aspetti avanzati di linguaggio che sono stati impiegati
-	\item Si elencano le librerie che sono state utilizzate
-	\item Si descrivono aspetti particolarmente complicati o rilevanti relativi all'implementazione,
-ad esempio, in un'applicazione performance critical, un uso particolarmente avanzato di meccanismi
-di caching, oppure l'implementazione di uno specifico algoritmo.
-	\item Se si è utilizzato un particolare algoritmo, se ne cita la fonte originale. Ad esempio, se
-si è usato Mersenne Twister per la generazione dei numeri pseudo-random, si cita \cite{mersenne}.
-	\item Si identificano parti di codice prese da altri progetti, dal web, o comunque scritte in forma originale da altre persone. In tal senso, si ricorda che agli ingegneri non è richiesto di re-inventare la ruota continuamente: se si cita debitamente la sorgente è tollerato fare uso di di snippet di codice per risolvere velocemente problemi non banali. Nel caso in cui si usino snippet di codice di qualità discutibile, oltre a menzionarne l'autore originale si invitano gli studenti ad adeguare tali parti di codice agli standard e allo stile del progetto. Contestualmente, si fa presente che è largamente meglio fare uso di una libreria che copiarsi pezzi di codice: qualora vi sia scelta (e tipicamente c'è), si preferisca la prima via.
+	\item \textbf{Lambda:} ho usato le lambda all’interno del metodo loop della classe GameImpl per muovere tutte le entità e per impostare i blocchi camminabili dal player
+	\item\textbf{Reflection:} All’interno della classe GameSaver
 \end{itemize}
 
-\subsection*{Elementi negativi}
+Ho utilizzato la libreria Gson per serializzare e deserializzare i componenti di gioco per permettere il salvataggio e il caricamento della partita.
+Nell’implementazione della classe GameSaver è stato necessario sviluppare un serializzatore di interfacce il quale è stato scritto prendendo spunto da questo thread (source: https://stackoverflow.com/questions/62358189/gson-stackoverflowerror-during-serialization)
+
+Per la creazione della classe MusicPlayer, non essendo pratico delle funzioni di libreria di javax.sound, ho fatto riferimento a snippet presenti sul web
+
+
+\subsection{Simone Rega}
+Per quanto riguarda le Feature Avanzate del linguaggio: 
 \begin{itemize}
-	\item Si elencano feature core del linguaggio invece di quelle segnalate. Esempi di feature
-core da non menzionare sono:
-    \begin{itemize}
-        \item eccezioni;
-        \item classi innestate;
-        \item enumerazioni;
-        \item interfacce.
-    \end{itemize}
-	\item Si elencano applicazioni di terze parti (peggio se per usarle occorre licenza, e lo
-studente ne è sprovvisto) che non c'entrano nulla con lo sviluppo, ad esempio:
-    \begin{itemize}
-        \item Editor di grafica vettoriale come Inkscape o Adobe Illustrator;
-        \item Editor di grafica scalare come GIMP o Adobe Photoshop;
-        \item Editor di audio come Audacity;
-        \item Strumenti di design dell'interfaccia grafica come SceneBuilder: il codice è in ogni caso inteso come sviluppato da voi.
-    \end{itemize}
-	\item Si descrivono aspetti di scarsa rilevanza, o si scende in dettagli inutili.
-	\item Sono presenti parti di codice sviluppate originalmente da altri che non vengono
-debitamente segnalate. In tal senso, si ricorda agli studenti che i docenti hanno accesso a tutti i
-progetti degli anni passati, a Stack Overflow, ai principali blog di sviluppatori ed esperti Java (o sedicenti tali), ai blog dedicati allo sviluppo di soluzioni e applicazioni (inclusi blog dedicati ad Android e allo sviluppo di videogame), nonché ai social network. Conseguentemente, è \emph{molto} conveniente \emph{citare} una fonte ed usarla invece di tentare di spacciare per proprio il lavoro di altri.
-	\item Si elencano design pattern
+	\item \textbf{Lambda :} utilizzate nella classe FarmingSimulatorTestClass per i test sul Player e sui Blocchi	
+	\item \textbf{IntStream: }utilizzate nella classe FarmingSimulatorTestClass .
 \end{itemize}
+
+\hfill\break
+Per quanto riguarda le librerie utilizzate
+\begin{itemize}
+	\item \textbf{Java AWT }
+	\item \textbf{Java Swing}
+\end{itemize}
+So che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che non abbiamo avuto modo di trattate a lezione .
+ 
+\subsection{Linda Fabbri}
+
+
+
+\subsection{Giacomo Montali}
 
 \chapter{Commenti finali}
 
