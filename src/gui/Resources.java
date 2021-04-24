@@ -54,10 +54,6 @@ public class Resources {
 
             // food
 
-            textures.put(FoodType.PORK_MEAT,
-                    ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/carrot.png")));
-            textures.put(FoodType.EGG, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/carrot.png")));
-            textures.put(FoodType.MILK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/carrot.png")));
             textures.put(FoodType.CARROT,
                     ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/carrot2.png")));
             textures.put(FoodType.POTATO,
@@ -84,8 +80,7 @@ public class Resources {
 
             textures.put(Texture.LOCK, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/lucchetto.png")));
             textures.put(Texture.TREE, ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/tree.png")));
-            // textures.put(texture.LABELHUD,
-            // ImageIO.read(getClass().getResourceAsStream("/labelHUD.png")));
+
 
             textures.put(Texture.MONEY,
                     ImageIO.read(getClass().getResourceAsStream(TEXTURE_FOLDER + "/moneyIcon.png")));
