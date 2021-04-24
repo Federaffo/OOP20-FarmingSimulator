@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {2.2.1}Simone Rega}{7}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Federico Raffoni}{8}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Linda Fabbri}{9}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Giacomo Montali}{11}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.4}Giacomo Montali}{10}{subsection.2.2.4}%
 \contentsline {chapter}{\numberline {3}Sviluppo}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Testing automatizzato}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Metodologia di lavoro}{14}{section.3.2}%
@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {3.2.4}Giacomo Montali}{17}{subsection.3.2.4}%
 \contentsline {section}{\numberline {3.3}Note di sviluppo}{18}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Federico Raffoni}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Simone Rega}{19}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Simone Rega}{18}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Linda Fabbri}{19}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Giacomo Montali}{19}{subsection.3.3.4}%
 \contentsline {chapter}{\numberline {4}Commenti finali}{20}{chapter.4}%

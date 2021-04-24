@@ -6,6 +6,7 @@
 \usepackage{hyperref}
 \usepackage{setspace}
 \usepackage{wrapfig}
+\usepackage{xcolor}
 
 % Questo commentalo se vuoi scrivere in inglese.
 \usepackage[italian]{babel}
@@ -99,19 +100,14 @@ In \Cref{img:MVC} è esemplificato il diagramma UML che descrive l'architettura 
 
 \section{Design dettagliato}
 
-In questa sezione vengono mostrati alcuni elementi di design con maggior dettaglio.
-Ogni membro del gruppo presenta gli elementi di design più significativi da lui prodotti, al fine di realizzare l’applicazione, predisponendola a future espansioni.
-
-
-
 \subsection{Simone Rega}
 Io nel progetto mi sono occupato della parte riguardante l’aggiornamento dinamico della GUI nella sezione dello Shop, in particolare mi preoccupo di aggiornare il JPanel dello shop e la visualizzazione dell’inventario ogni qualvolta che si interagisce con i JButton di compra/vendita, la JComboBox e il JSpinner per comprare semi. 
 
-Ho ritenuto utile usare un pattern Observer in modo che alla ricevuta notifica di un osservatore, quindi un Evento sui componenti grafici descritti prima, gli altri osservatori vengono notificati per poi essere aggiornati.
+Ho ritenuto utile usare un pattern \textbf{Observer} in modo che alla ricevuta notifica di un osservatore, quindi un Evento sui componenti grafici descritti prima, gli altri osservatori vengono notificati per poi essere aggiornati.
 
 \hfill\break
 È stato deciso insieme a\textit{ Federico Raffoni} di creare le interfacce \textbf{Observer} e \textbf{Observable} di tipo generico, in modo da poter implementare le classi in più possibili situazioni eterogenee.
-Il ruolo di Observable è ricoperto dalla classe ObservableShopGUI mentre il ruolo di Observer è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
+Il ruolo di \textbf{Observable} è ricoperto dalla classe ObservableShopGUI mentre il ruolo di \textbf{Observer} è ricoperto da ObserverShop (classe innestata all’interno di ShopDrawer.java). 
 
 \hfill\break
 In \Cref{img:SimoneRega_Observer} è esemplificato il diagramma UML che descrive l'architettura del pattern Observer usato da Simone Rega, mostrando le classi principali.
@@ -376,10 +372,7 @@ Classi sviluppate singolarmente:
 	\item MapImpl
 \end{itemize}
 }
-Classi riutilizzate:
-\begin{itemize}
-	\item Per comodità ho riutilizzato la classe Pair fornita dal professore Viroli durante le sue lezioni.
-\end{itemize}
+
 
 \section{Note di sviluppo}
 
@@ -409,7 +402,7 @@ Per quanto riguarda le librerie utilizzate
 	\item \textbf{Java AWT }
 	\item \textbf{Java Swing}
 \end{itemize}
-So che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che purtroppo non abbiamo avuto modo di trattate a lezione .
+Sono consapevole che queste due librerie sono state introdotte a lezione spiegandone i principali elementi di maggior rilevanza ma ci tengo comunque a precisare lo studio e l'approfondimento per poter realizzare elementi di grafica più complessi o che purtroppo non abbiamo avuto tempo e  modo di trattate a lezione.
  
 \subsection{Linda Fabbri}
 
@@ -426,6 +419,10 @@ So che queste due librerie sono state introdotte a lezione spiegandone i princip
 	\item \textbf{Stream:} utilizzato nell’Inventory
 	\item \textbf{Optional:} utilizzato nell’Inventory
 \end{itemize}
+Classi riutilizzate:
+\begin{itemize}
+	\item Per comodità ho riutilizzato la classe Pair fornita dal professore Viroli durante le sue lezioni apportandole qualche piccola modifica.
+\end{itemize}
 
 \chapter{Commenti finali}
 
@@ -435,14 +432,12 @@ So che queste due librerie sono state introdotte a lezione spiegandone i princip
 \subsection{Simone Rega}
 Sin dall'inizio sono stato partecipe e disponibile per la progettazione e l'analisi del progetto. 
 
-Purtroppo non ho potuto lavorare troppo sulla logica di gioco, infatti non era possibile dividersi la logica di gioco in parti completamente eque tra 4 persone. 
-Nella 
-
-Sono abbastanza contento del risultato finale riguardante il lavoro da me svolto e della modesta qualità del mio codice, che è stata equilibrata e trasparente, permettendone un corretto e utile uso.
-
-Devo dire che sono leggermente dispiaciuto perché avrei voluto essere più partecipe o comunque dedicarmi di più allo sviluppo del programma. Avrei potuto migliorare l'ottimizzazione del mio codice e le sue funzionalità, o magari osare di più con elementi di programmazioni più avanzati introducendo più Lambda e Stream ad esempio. 
+Devo dire che sono leggermente dispiaciuto perché nella fase di sviluppo avrei voluto essere più partecipe o comunque dedicarmi di più allo sviluppo del programma. Avrei potuto migliorare l'ottimizzazione del mio codice e le sue funzionalità, o magari osare di più con elementi di programmazioni più avanzati introdotti a lezione. 
 
 Sono contento del Team con cui ho avuto modo di lavorare a questo progetto. La comunicazione è stata di fondamentale importanza.
+È stato il primo vero progetto di Programmazione ad Oggetti a cui ho preso parte e se devo essere sincero l'inesperienza si è fatta sentire, non avevamo punti di riferimento riguardo a mole e tempo di lavoro necessario, i quali ci hanno forse portato a non sfruttare al meglio le nostre capacità.
+
+Sono abbastanza contento del risultato finale riguardante il lavoro da me svolto e della modesta qualità del mio codice, che è stata equilibrata e trasparente, permettendone un utilizzo corretto e utile; ma sono contento anche del risultato finale generale che ha portato alla realizzazione di un gioco molto fedele alla nostra idea in fase di progettazione.
 
 \subsection{Federico Raffoni}
 Sono molto soddisfatto del gruppo e di quello che abbiamo prodotto. Per me è stato il primo lavoro di sviluppo con altre persone, è stato quindi fondamentale per capire le dinamiche del lavoro di gruppo. 
@@ -477,10 +472,9 @@ In conclusione sono soddisfatto del mio percorso in questa materia e ritengo che
 I professori sono stati a mio avviso capaci di spiegare e motivare al proseguimento attivo del corso.
 Venendo da un Istituto Tecnico Informatico mi sono accorto del salto di qualità presentato nel corso, in quanto non venivano solo spiegati gli elementi fondamentali di programmazione ad oggetti ma capivamo come utilizzarli al meglio e come metterli in relazione tra di loro, sempre con un occhio all'ottimizzazione o alla leggibilità del codice.
 
-buon corso, oop uni > iti
-gradle spiegata meglio
+Purtroppo il mio percorso di sviluppo del progetto di OOP non è stato lineare nel tempo; nonostante fosse stimolante per me avere per la prima volta un progetto di programmazione così bello e complesso da portare avanti, questo non è stato sempre possibile poiché non sempre sono riuscito a trovare il tempo per dedicarmi ad esso dopo le lezioni o lo studio. È effettivamente il primo progetto di sviluppo software da zero a cui ho partecipato e mi ha fatto crescere dal punto di vista organizzativo, rendendomi cosciente di ciò che mi aspetta una volta uscito dall'università.
 
-Purtroppo il mio percorso di sviluppo non è stato lineare nel tempo; nonostante fosse stimolante per me avere per la prima volta un progetto di programmazione così bello e complesso da portare avanti, questo non è stato sempre possibile poiché non sempre sono riuscito a trovare il tempo per dedicarmi ad esso dopo le lezioni o lo studio. È effettivamente il primo progetto di sviluppo software da zero a cui ho partecipato e mi ha fatto crescere dal punto di vista organizzativo, rendendomi cosciente di ciò che mi aspetta una volta uscito dall'università.
+
 \subsection{Federico Raffoni}
 In conclusione mi ritengo molto soddisfatto di questo corso. Ritengo che sia stato estremamente utile non solo per apprendere nuove skills di programmazione ad oggetti, ma anche per comprendere le dinamiche del lavoro di gruppo.
 
@@ -494,8 +488,6 @@ In conclusione ritengo questo un ottimo corso, grazie al quale ho portato la mia
 \appendix
 \chapter{Guida utente}
 
-scopo del gioco e a chi è indirizzato
-
 \subsection{Schermata di Gioco}
 \begin{figure}[!htb]
 	\centerline{\includegraphics[width=\textwidth]{img/SchermataPrincipale.png}}
@@ -503,9 +495,9 @@ scopo del gioco e a chi è indirizzato
 	\label{img:schermata}
 \end{figure}
 \begin{itemize}
-	\item[1)] Pannello informativo: in questa parte della schermata puoi vedere le monete che hai a disposizione, il costo per sbloccare la prossima area coltivabile bloccata (vedere \cref{mappa}), il tempo trascorso dall'inizio della partita e premendo X in gioco compaiono le informazioni basilare sui controlli.
-	\item[2)] Stalla: luogo in cui vengono allevati gli animali(vedere \cref{animali}).
-	\item[3)] Personaggio: avatar virtuale che si muove nella mappa(vedere \cref{personaggio}).
+	\item[1)] \colorbox{red}{Pannello informativo:} in questa parte della schermata puoi vedere le monete che hai a disposizione, il costo per sbloccare la prossima area coltivabile bloccata (vedere \cref{mappa}), il tempo trascorso dall'inizio della partita e premendo X in gioco compaiono le informazioni basilare sui controlli.
+	\item[2)] \colorbox{cyan}{\textcolor{black}{Stalla:}} luogo in cui vengono allevati gli animali(vedere \cref{animali}).
+	\item[3)] \colorbox{orange}{Personaggio:} avatar virtuale che si muove nella mappa(vedere \cref{personaggio}).
 	\item[4)] Aree Coltivabili: aree in cui è possibile coltivare i prodotti.
 	\item[5)] Selezione seme: girando la rotellina del mouse è possibile scegliere il seme da piantare.
 \end{itemize}
