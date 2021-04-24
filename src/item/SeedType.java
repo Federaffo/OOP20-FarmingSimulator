@@ -3,32 +3,32 @@ package item;
 public enum SeedType implements Texturable {
 
     /**
-     * This is Wheat
+     * This is Wheat.
      */
     WHEAT_SEED(FoodType.WHEAT, ItemConstants.SHORT_GROW_TIME, 10, "Wheat"),
     /**
-     * This is CARROT
+     * This is CARROT.
      */
     CARROT_SEED(FoodType.CARROT, ItemConstants.MEDIUM_GROW_TIME, 30, "Carrot"),
     /**
-     * This is POTATO
+     * This is POTATO.
      */
     POTATO_SEED(FoodType.POTATO, ItemConstants.MEDIUM_GROW_TIME, 50, "Potato"),
     /**
-     * This is TOMATO
+     * This is TOMATO.
      */
     TOMATO_SEED(FoodType.TOMATO, ItemConstants.LONG_GROW_TIME, 100, "Tomato"),
     /**
-     * This is APPLE
+     * This is APPLE.
      */
     APPLE_SEED(FoodType.APPLE, ItemConstants.MEDIUM_GROW_TIME, 300, "Apple"),
     /**
-     * This is ORANGE
+     * This is ORANGE.
      */
     ORANGE_SEED(FoodType.ORANGE, ItemConstants.MEDIUM_GROW_TIME, 500, "Orange"),
 
     /**
-     * This is CHERRY
+     * This is CHERRY.
      */
     CHERRY_SEED(FoodType.CHERRY, ItemConstants.LONG_GROW_TIME, 1000, "Cherry");
 
@@ -44,23 +44,38 @@ public enum SeedType implements Texturable {
         this.name = name;
     }
 
+    /**
+     * @return the price of the current seed
+     */
     public double getPrice() {
         return this.price;
     }
 
+    /**
+     * @return the type (FoodType) of the current seed
+     */
     public FoodType getFoodType() {
         return this.ofWhichFood;
     }
 
+    /**
+     * @return the time the seed takes to grow
+     */
     public long getGrowTime() {
         return this.growTime;
     }
 
+    /**
+     * @return the name of the selected seed (String)
+     */
     public String getName() {
         return this.name;
     }
 
-    // dalla stringa capisco che tipo è
+    /**
+     * @param name
+     * @return the type (SeedType) of the seed which name is {name}
+     */
     public static SeedType getSeedType(final String name) {
         for (SeedType st : SeedType.values()) {
             if (st.getName() == name) {
